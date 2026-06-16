@@ -11,24 +11,22 @@ import Button from '../../components/Button.astro';
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="relative flex items-end overflow-hidden bg-ink" style="min-height: 88vh;">
-    <!-- Background: NYSE — global financial markets -->
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style="background-image: url('https://images.unsplash.com/photo-1761233138997-44d9b002a08f?auto=format&fit=crop&w=2400&q=80');"
-      aria-hidden="true"
-    ></div>
-    <!-- Light overlay — image stays visible -->
-    <div
-      class="absolute inset-0"
-      style="background: linear-gradient(110deg, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.18) 55%, rgba(11,11,11,0.02) 100%);"
-      aria-hidden="true"
-    ></div>
-    <!-- Subtle accent bar left edge -->
-    <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid" aria-hidden="true"></div>
+  <section class="relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h));">
+    <!-- Background layer — overflow-hidden here, never on the section -->
+    <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style="background-image: url('https://images.unsplash.com/photo-1761233138997-44d9b002a08f?auto=format&fit=crop&w=2400&q=80');"
+      ></div>
+      <div
+        class="absolute inset-0"
+        style="background: linear-gradient(110deg, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.18) 55%, rgba(11,11,11,0.02) 100%);"
+      ></div>
+      <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
+    </div>
 
-    <!-- Content -->
-    <div class="relative z-10 container-big py-24 md:py-32">
+    <!-- Content — never clipped -->
+    <div class="relative z-10 container-big pt-12 pb-20 md:pb-28">
       <div class="max-w-2xl">
         <p class="label text-acid mb-5">PSX &amp; Global Markets</p>
         <h1
@@ -49,7 +47,6 @@ import Button from '../../components/Button.astro';
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="absolute bottom-8 right-16 hidden lg:flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
       <span class="font-sans text-xs text-white tracking-widest uppercase">Scroll</span>
       <div class="w-px h-12 bg-white/60"></div>
