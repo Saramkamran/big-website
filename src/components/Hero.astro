@@ -2,7 +2,10 @@
 import Button from './Button.astro';
 ---
 
-<section class="relative min-h-[90vh] flex items-end overflow-hidden bg-ink">
+<section
+  class="relative flex items-center overflow-hidden bg-ink"
+  style="min-height: calc(100vh - var(--header-h));"
+>
   <!-- Background: Karachi aerial cityscape at night -->
   <div
     class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -26,15 +29,17 @@ import Button from './Button.astro';
     BIG
   </div>
 
-  <!-- Content -->
-  <div class="relative z-10 container-big py-24 md:py-32 max-w-3xl">
-    <p class="label text-acid mb-6">Shariah-Compliant Investing</p>
-    <h1 class="font-serif text-white font-normal leading-[1.05] mb-8" style="font-size: clamp(44px, 7vw, 80px);">
-      Principled capital.<br/>Halal growth.<br/>Global reach.
-    </h1>
-    <p class="font-sans text-white/80 text-lg leading-relaxed mb-10 max-w-xl">
-      Black Stone Islamic Global delivers disciplined, Shariah-compliant brokerage, asset management, and private wealth solutions across the Pakistan Stock Exchange and global markets.
-    </p>
-    <Button variant="acid" href="/#what-we-do">Explore What We Do</Button>
+  <!-- Content: container spans full width; inner div constrains text to left -->
+  <div class="relative z-10 container-big w-full py-16">
+    <div class="max-w-2xl">
+      <p class="label text-acid mb-6">Shariah-Compliant Investing</p>
+      <h1 class="font-serif text-white font-normal leading-[1.05] mb-8" style="font-size: clamp(44px, 7vw, 80px);">
+        Principled capital.<br/>Halal growth.<br/>Global reach.
+      </h1>
+      <p class="font-sans text-white/80 text-lg leading-relaxed mb-10 max-w-xl">
+        Black Stone Islamic Global delivers disciplined, Shariah-compliant brokerage, asset management, and private wealth solutions across the Pakistan Stock Exchange and global markets.
+      </p>
+      <Button variant="acid" href="/#what-we-do">Explore What We Do</Button>
+    </div>
   </div>
 </section>
