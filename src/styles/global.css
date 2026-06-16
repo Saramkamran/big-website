@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --acid:     #CCFF00;
+  --acid-600: #A6D400;
+  --ink:      #0B0B0B;
+  --paper:    #FFFFFF;
+  --mist:     #F3F5EE;
+  --stone:    #6B7280;
+  --line:     #E5E7EB;
+  --header-h: 72px;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Anchor offset for sticky header */
+  [id] {
+    scroll-margin-top: var(--header-h);
+  }
+}
+
+@layer components {
+  /* Section label eyebrow */
+  .label {
+    @apply font-sans text-label font-semibold uppercase tracking-widest text-stone;
+  }
+
+  /* Arrow link */
+  .arrow-link {
+    @apply inline-flex items-center gap-2 font-sans text-sm font-medium text-ink transition-all duration-200;
+  }
+  .arrow-link:hover .arrow-icon {
+    @apply translate-x-1;
+  }
+  .arrow-icon {
+    @apply transition-transform duration-200;
+  }
+
+  /* Section container */
+  .container-big {
+    @apply max-w-content mx-auto px-6 lg:px-16;
+  }
+
+  /* Hairline divider */
+  .divider {
+    @apply border-t border-line;
+  }
+}

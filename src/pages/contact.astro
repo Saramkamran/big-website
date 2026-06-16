@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+const sent = Astro.url.searchParams.get('sent') === 'true';
+
+const services = [
+  'Shariah Equities — Portfolio Advisory',
+  'Shariah Equities — Portfolio Management',
+  'Green Sukuks',
+  'Transaction Services',
+  'Blackstone Intel (WhatsApp Channel)',
+  'Blackstone Investments (WhatsApp Group)',
+  'Asset Management — Fixed Income',
+  'Asset Management — Equity Funds',
+  'Asset Management — ETFs',
+  'Asset Management — Multi-Asset',
+  'Asset Management — Pensions',
+  'Private Wealth — Wealth Planning',
+  'Private Wealth — Dedicated Investments',
+  'Private Wealth — Private Equity',
+  'Private Wealth — Real Estate',
+  'Private Wealth — Pakistan Energy',
+  'Private Wealth — Philanthropy & Zakat',
+  'Private Wealth — Professional Services',
+  'Specialized — BIG Family Office',
+  'Specialized — Alternative Investments',
+  'Specialized — M&A and Carve-Out',
+  'Specialized — IPOs (Pakistan & US)',
+  'General Enquiry',
+];
+---
+
+<BaseLayout
+  title="Contact | Black Stone Islamic Global"
+  description="Get in touch with Black Stone Islamic Global — our team is ready to assist with your Shariah-compliant investment enquiries."
+>
+  <section class="py-section bg-paper border-b border-line">
+    <div class="container-big">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <!-- Left: intro -->
+        <div class="lg:col-span-4">
+          <p class="label mb-4">Contact</p>
+          <h1 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(28px, 3.5vw, 48px); line-height: 1.1;">
+            How Can We Help?
+          </h1>
+          <p class="font-sans text-base text-stone leading-relaxed mb-10">
+            Whether you are a first-time investor or a sophisticated institution, our team is here to understand your needs and guide you to the right Shariah-compliant solution.
+          </p>
+
+          <!-- Office / contact placeholders -->
+          <div class="space-y-6 font-sans text-sm text-stone">
+            <div>
+              <p class="font-semibold text-ink mb-1">Registered Office</p>
+              <p>[Office address — placeholder pending client confirmation]</p>
+            </div>
+            <div>
+              <p class="font-semibold text-ink mb-1">Email</p>
+              <p>[info@blackstoneislamicglobal.com — placeholder]</p>
+            </div>
+            <div>
+              <p class="font-semibold text-ink mb-1">Phone</p>
+              <p>[+92 XXX XXXXXXX — placeholder]</p>
+            </div>
+            <div>
+              <p class="font-semibold text-ink mb-1">WhatsApp — Blackstone Intel</p>
+              <p><a href="#" class="underline hover:text-ink">Join Channel (link placeholder)</a></p>
+            </div>
+            <div>
+              <p class="font-semibold text-ink mb-1">WhatsApp — Blackstone Investments</p>
+              <p><a href="#" class="underline hover:text-ink">Contact Client Care for access</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="lg:col-span-8">
+          {sent ? (
+            <div class="bg-mist border-l-4 border-acid px-8 py-10">
+              <h2 class="font-serif font-normal text-ink text-2xl mb-3">Thank you for reaching out.</h2>
+              <p class="font-sans text-base text-stone leading-relaxed">
+                A member of our team will be in touch shortly. We look forward to exploring how BIG can serve your investment needs.
+              </p>
+            </div>
+          ) : (
+            <form
+              method="POST"
+              action="https://formspree.io/f/REPLACE_WITH_CONTACT_FORM_ID"
+              class="space-y-6"
+            >
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block font-sans text-sm font-medium text-ink mb-2">Full Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full px-4 py-3 border border-line font-sans text-sm text-ink bg-paper focus:outline-none focus:ring-2 focus:ring-ink focus:border-ink"
+                    placeholder="Your full name"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block font-sans text-sm font-medium text-ink mb-2">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-4 py-3 border border-line font-sans text-sm text-ink bg-paper focus:outline-none focus:ring-2 focus:ring-ink focus:border-ink"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="phone" class="block font-sans text-sm font-medium text-ink mb-2">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="w-full px-4 py-3 border border-line font-sans text-sm text-ink bg-paper focus:outline-none focus:ring-2 focus:ring-ink focus:border-ink"
+                    placeholder="+92 or international"
+                  />
+                </div>
+                <div>
+                  <label for="subject" class="block font-sans text-sm font-medium text-ink mb-2">Subject *</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    class="w-full px-4 py-3 border border-line font-sans text-sm text-ink bg-paper focus:outline-none focus:ring-2 focus:ring-ink focus:border-ink"
+                    placeholder="Brief subject"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="service" class="block font-sans text-sm font-medium text-ink mb-2">Service of Interest</label>
+                <select
+                  id="service"
+                  name="service"
+                  class="w-full px-4 py-3 border border-line font-sans text-sm text-ink bg-paper focus:outline-none focus:ring-2 focus:ring-ink focus:border-ink"
+                >
+                  <option value="">Select a service...</option>
+                  {services.map(s => <option value={s}>{s}</option>)}
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block font-sans text-sm font-medium text-ink mb-2">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={6}
+                  class="w-full px-4 py-3 border border-line font-sans text-sm text-ink bg-paper focus:outline-none focus:ring-2 focus:ring-ink focus:border-ink resize-none"
+                  placeholder="Tell us about your investment goals and how we can help..."
+                ></textarea>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  name="privacy"
+                  required
+                  class="mt-1 w-4 h-4 accent-ink"
+                />
+                <label for="privacy" class="font-sans text-xs text-stone leading-relaxed">
+                  I agree to the <a href="#" class="underline hover:text-ink">Privacy Policy</a> and consent to BIG contacting me regarding my enquiry.
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="inline-flex items-center px-8 py-4 bg-ink text-white font-sans text-sm font-semibold hover:bg-stone transition-colors"
+              >
+                Send Enquiry →
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map placeholder -->
+  <section class="h-64 bg-mist flex items-center justify-center border-t border-line">
+    <p class="font-sans text-sm text-stone italic">
+      [Map placeholder — office location to be confirmed]
+    </p>
+  </section>
+</BaseLayout>

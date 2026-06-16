@@ -1,0 +1,94 @@
+backend:
+  name: github
+  repo: Saramkamran/big-website
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+# For local development: uncomment and run `npx decap-server`
+# local_backend: true
+
+collections:
+  # ─── Insights ──────────────────────────────────────────────────────────────
+  - name: "insights"
+    label: "Insights"
+    folder: "src/content/insights"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "MARKETS"
+          - "SUSTAINABLE FINANCE"
+          - "SHARIAH COMPLIANCE"
+          - "PRIVATE WEALTH"
+          - "ASSET MANAGEMENT"
+          - "ECONOMY"
+          - "DEAL SPOTLIGHT"
+          - "TALKS AT BIG"
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options: ["Article", "Video", "Podcast", "Report"]
+      - { label: "Date", name: "date", widget: "string" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Featured (show as hero on homepage)", name: "featured", widget: "boolean", default: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── Home (file collection) ─────────────────────────────────────────────────
+  - name: "home"
+    label: "Home Page"
+    files:
+      - label: "Home Page Content"
+        name: "home"
+        file: "src/content/pages/home.json"
+        fields:
+          - { label: "Hero Eyebrow", name: "heroEyebrow", widget: "string", default: "Shariah-Compliant Investing" }
+          - { label: "Hero Headline", name: "heroHeadline", widget: "string" }
+          - { label: "Hero Subtext", name: "heroSubtext", widget: "text" }
+          - { label: "Newsletter Heading", name: "newsletterHeading", widget: "string", default: "Subscribe to BIG Briefings" }
+          - { label: "Newsletter Blurb", name: "newsletterBlurb", widget: "text" }
+
+  # ─── Stats (file collection) ─────────────────────────────────────────────────
+  - name: "stats"
+    label: "Stat Band"
+    files:
+      - label: "Stat Band Figures"
+        name: "stats"
+        file: "src/content/pages/stats.json"
+        fields:
+          - { label: "Stat 1 Number", name: "stat1Number", widget: "string", default: "25+" }
+          - { label: "Stat 1 Label", name: "stat1Label", widget: "string" }
+          - { label: "Stat 2 Number", name: "stat2Number", widget: "string", default: "100%" }
+          - { label: "Stat 2 Label", name: "stat2Label", widget: "string" }
+          - { label: "Stat 3 Number", name: "stat3Number", widget: "string", default: "3" }
+          - { label: "Stat 3 Label", name: "stat3Label", widget: "string" }
+          - { label: "Disclaimer", name: "disclaimer", widget: "string" }
+
+  # ─── Settings (file collection) ────────────────────────────────────────────
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Contact & Social"
+        name: "settings"
+        file: "src/content/pages/settings.json"
+        fields:
+          - { label: "Office Address", name: "officeAddress", widget: "text", hint: "Registered office address" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "WhatsApp — Blackstone Intel URL", name: "whatsappIntel", widget: "string" }
+          - { label: "WhatsApp — Blackstone Investments URL", name: "whatsappInvestments", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "YouTube URL", name: "youtube", widget: "string" }
+          - { label: "X (Twitter) URL", name: "twitter", widget: "string" }
+          - { label: "Client Portal URL", name: "portalUrl", widget: "string" }
+          - { label: "Privacy Policy URL", name: "privacyUrl", widget: "string" }
+          - { label: "Terms & Conditions URL", name: "termsUrl", widget: "string" }
+          - { label: "Regulatory Disclosures URL", name: "regulatoryUrl", widget: "string" }
+          - { label: "Copyright Year", name: "copyrightYear", widget: "string", default: "2026" }

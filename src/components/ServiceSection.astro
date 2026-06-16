@@ -1,0 +1,68 @@
+---
+interface Service {
+  id: string;
+  title: string;
+  body: string;
+  subServices?: { title: string; body: string }[];
+}
+
+interface Props {
+  pillar: string;
+  headline: string;
+  intro?: string;
+  services: Service[];
+  image?: string;
+  imageAlt?: string;
+  bgClass?: string;
+}
+
+const { pillar, headline, intro, services, image, imageAlt = '', bgClass = 'bg-paper' } = Astro.props;
+---
+
+<section class={`${bgClass} py-section`} id={pillar.toLowerCase().replace(/\s+/g, '-')}>
+  <div class="container-big">
+    <!-- Pillar header -->
+    <div class="mb-16">
+      <p class="label mb-4">{pillar}</p>
+      <h2 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1; max-width: 680px;">
+        {headline}
+      </h2>
+      {intro && (
+        <p class="font-sans text-base text-stone leading-relaxed max-w-2xl">{intro}</p>
+      )}
+    </div>
+
+    <!-- Optional pillar image -->
+    {image && (
+      <div class="mb-16 overflow-hidden">
+        <img src={image} alt={imageAlt} class="w-full h-64 md:h-96 object-cover" loading="lazy" />
+      </div>
+    )}
+
+    <!-- Services list -->
+    <div class="space-y-16">
+      {services.map((svc, i) => (
+        <div id={svc.id} class="grid grid-cols-1 lg:grid-cols-12 gap-8 border-t border-line pt-10">
+          <div class="lg:col-span-4">
+            <h3 class="font-serif font-normal text-ink" style="font-size: clamp(20px, 2vw, 26px); line-height: 1.25;">
+              {svc.title}
+            </h3>
+          </div>
+          <div class="lg:col-span-8">
+            <p class="font-sans text-base text-stone leading-relaxed mb-6">{svc.body}</p>
+            {svc.subServices && svc.subServices.length > 0 && (
+              <div class="space-y-6 mt-6">
+                {svc.subServices.map(sub => (
+                  <div class="pl-5 border-l-2 border-acid">
+                    <h4 class="font-sans font-semibold text-sm text-ink mb-2">{sub.title}</h4>
+                    <p class="font-sans text-sm text-stone leading-relaxed">{sub.body}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

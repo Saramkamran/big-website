@@ -1,0 +1,306 @@
+---
+---
+
+<header id="site-header" class="sticky top-0 z-50 bg-acid border-b-2 border-acid" style="height: var(--header-h);">
+  <div class="container-big h-full flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 no-underline" aria-label="Black Stone Islamic Global — Home">
+      <span class="font-sans font-extrabold text-2xl tracking-[-0.04em] text-ink leading-none">BIG</span>
+      <span class="hidden sm:block h-5 w-px bg-ink/30"></span>
+      <span class="hidden sm:block font-sans text-xs font-medium text-ink/70 tracking-wide leading-tight max-w-[120px]">
+        Black Stone<br/>Islamic Global
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+      <!-- Services with mega-menu trigger -->
+      <div class="relative group" id="services-menu-container">
+        <button
+          id="services-btn"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mega-menu"
+          class="flex items-center gap-1 font-sans text-sm font-semibold text-ink hover:text-ink/70 transition-colors py-2"
+        >
+          Services
+          <svg class="w-3 h-3 transition-transform duration-200" id="services-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
+      <a href="/insights" class="font-sans text-sm font-semibold text-ink hover:text-ink/70 transition-colors py-2">Insights</a>
+      <a href="/about" class="font-sans text-sm font-semibold text-ink hover:text-ink/70 transition-colors py-2">About</a>
+      <a href="/contact" class="font-sans text-sm font-semibold text-ink hover:text-ink/70 transition-colors py-2">Contact</a>
+    </nav>
+
+    <!-- Right actions -->
+    <div class="flex items-center gap-4">
+      <a
+        href="/login"
+        class="hidden lg:inline-flex items-center px-5 py-2 bg-ink text-white font-sans text-sm font-semibold transition-colors hover:bg-stone"
+      >
+        Account Login
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 text-ink"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" id="hamburger-icon">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" id="close-icon">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mega Menu (desktop) -->
+  <div
+    id="mega-menu"
+    role="region"
+    aria-label="Services menu"
+    class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-xl z-40"
+  >
+    <div class="container-big py-10">
+      <div class="grid grid-cols-4 gap-8">
+        <!-- Column 1: PSX & Global Markets -->
+        <div>
+          <p class="label mb-5 text-ink">PSX &amp; Global Markets</p>
+          <ul class="space-y-3">
+            <li><a href="/#shariah-equities" class="mega-link">Shariah Equities</a></li>
+            <li><a href="/#green-sukuks" class="mega-link">Green Sukuks</a></li>
+            <li><a href="/#transaction-services" class="mega-link">Transaction Services</a></li>
+            <li><a href="/#blackstone-intel" class="mega-link">Blackstone Intel</a></li>
+            <li><a href="/#blackstone-investments" class="mega-link">Blackstone Investments</a></li>
+          </ul>
+        </div>
+        <!-- Column 2: Asset Management -->
+        <div>
+          <p class="label mb-5 text-ink">Asset Management</p>
+          <ul class="space-y-3">
+            <li><a href="/#am-fixed-income" class="mega-link">Shariah Fixed Income</a></li>
+            <li><a href="/#am-equity" class="mega-link">Shariah Equity</a></li>
+            <li><a href="/#am-etfs" class="mega-link">Shariah ETFs</a></li>
+            <li><a href="/#am-multi-asset" class="mega-link">Shariah Multi-Asset</a></li>
+            <li><a href="/#am-pensions" class="mega-link">Shariah Pensions</a></li>
+          </ul>
+        </div>
+        <!-- Column 3: Private Wealth -->
+        <div>
+          <p class="label mb-5 text-ink">Private Wealth Mgmt</p>
+          <ul class="space-y-3">
+            <li><a href="/#wealth-planning" class="mega-link">Wealth Planning</a></li>
+            <li><a href="/#dedicated-investments" class="mega-link">Dedicated Investments</a></li>
+            <li><a href="/#private-equity" class="mega-link">Private Equity</a></li>
+            <li><a href="/#real-estate" class="mega-link">Real Estate</a></li>
+            <li><a href="/#pakistan-energy" class="mega-link">Pakistan Energy</a></li>
+            <li><a href="/#philanthropy-zakat" class="mega-link">Philanthropy &amp; Zakat</a></li>
+            <li><a href="/#professional-services" class="mega-link">Professional Services</a></li>
+          </ul>
+        </div>
+        <!-- Column 4: Specialized Services -->
+        <div>
+          <p class="label mb-5 text-ink">Specialized Services</p>
+          <ul class="space-y-3">
+            <li><a href="/#family-office" class="mega-link">BIG Family Office</a></li>
+            <li><a href="/#alternatives" class="mega-link">Alternative Investments</a></li>
+            <li><a href="/#mergers-acquisitions" class="mega-link">M&amp;A and Carve-Out</a></li>
+            <li><a href="/#ipos" class="mega-link">IPOs (Pakistan &amp; US)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu drawer -->
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden fixed inset-0 top-[72px] bg-white z-30 overflow-y-auto"
+  >
+    <div class="container-big py-8 space-y-1">
+      <!-- Mobile Services accordion -->
+      <div>
+        <button
+          id="mobile-services-btn"
+          class="w-full flex items-center justify-between py-4 font-sans text-base font-semibold text-ink border-b border-line"
+          aria-expanded="false"
+        >
+          Services
+          <svg class="w-4 h-4 transition-transform duration-200" id="mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-services-panel" class="hidden bg-mist px-4 py-4 space-y-6">
+          <div>
+            <p class="label mb-3">PSX &amp; Global Markets</p>
+            <ul class="space-y-2 pl-2">
+              <li><a href="/#shariah-equities" class="mobile-sub-link">Shariah Equities</a></li>
+              <li><a href="/#green-sukuks" class="mobile-sub-link">Green Sukuks</a></li>
+              <li><a href="/#transaction-services" class="mobile-sub-link">Transaction Services</a></li>
+              <li><a href="/#blackstone-intel" class="mobile-sub-link">Blackstone Intel</a></li>
+              <li><a href="/#blackstone-investments" class="mobile-sub-link">Blackstone Investments</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="label mb-3">Asset Management</p>
+            <ul class="space-y-2 pl-2">
+              <li><a href="/#am-fixed-income" class="mobile-sub-link">Shariah Fixed Income</a></li>
+              <li><a href="/#am-equity" class="mobile-sub-link">Shariah Equity</a></li>
+              <li><a href="/#am-etfs" class="mobile-sub-link">Shariah ETFs</a></li>
+              <li><a href="/#am-multi-asset" class="mobile-sub-link">Shariah Multi-Asset</a></li>
+              <li><a href="/#am-pensions" class="mobile-sub-link">Shariah Pensions</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="label mb-3">Private Wealth Mgmt</p>
+            <ul class="space-y-2 pl-2">
+              <li><a href="/#wealth-planning" class="mobile-sub-link">Wealth Planning</a></li>
+              <li><a href="/#dedicated-investments" class="mobile-sub-link">Dedicated Investments</a></li>
+              <li><a href="/#private-equity" class="mobile-sub-link">Private Equity</a></li>
+              <li><a href="/#real-estate" class="mobile-sub-link">Real Estate</a></li>
+              <li><a href="/#pakistan-energy" class="mobile-sub-link">Pakistan Energy</a></li>
+              <li><a href="/#philanthropy-zakat" class="mobile-sub-link">Philanthropy &amp; Zakat</a></li>
+              <li><a href="/#professional-services" class="mobile-sub-link">Professional Services</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="label mb-3">Specialized Services</p>
+            <ul class="space-y-2 pl-2">
+              <li><a href="/#family-office" class="mobile-sub-link">BIG Family Office</a></li>
+              <li><a href="/#alternatives" class="mobile-sub-link">Alternative Investments</a></li>
+              <li><a href="/#mergers-acquisitions" class="mobile-sub-link">M&amp;A and Carve-Out</a></li>
+              <li><a href="/#ipos" class="mobile-sub-link">IPOs (Pakistan &amp; US)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <a href="/insights" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Insights</a>
+      <a href="/about" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">About</a>
+      <a href="/contact" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Contact</a>
+      <div class="pt-4">
+        <a href="/login" class="inline-flex items-center px-6 py-3 bg-ink text-white font-sans text-sm font-semibold w-full justify-center">
+          Account Login
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .mega-link {
+    @apply font-sans text-sm text-ink/80 hover:text-ink hover:underline decoration-acid underline-offset-2 transition-colors;
+  }
+  .mobile-sub-link {
+    @apply block font-sans text-sm text-ink/80 hover:text-ink py-1 transition-colors;
+  }
+</style>
+
+<script>
+  const servicesBtn = document.getElementById('services-btn');
+  const megaMenu = document.getElementById('mega-menu');
+  const servicesChevron = document.getElementById('services-chevron');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileServicesBtn = document.getElementById('mobile-services-btn');
+  const mobileServicesPanel = document.getElementById('mobile-services-panel');
+  const mobileChevron = document.getElementById('mobile-chevron');
+
+  // Desktop mega-menu: toggle on click
+  servicesBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = megaMenu?.classList.contains('hidden') === false;
+    if (isOpen) {
+      closeMegaMenu();
+    } else {
+      openMegaMenu();
+    }
+  });
+
+  function openMegaMenu() {
+    megaMenu?.classList.remove('hidden');
+    servicesBtn?.setAttribute('aria-expanded', 'true');
+    servicesChevron?.classList.add('rotate-180');
+  }
+
+  function closeMegaMenu() {
+    megaMenu?.classList.add('hidden');
+    servicesBtn?.setAttribute('aria-expanded', 'false');
+    servicesChevron?.classList.remove('rotate-180');
+  }
+
+  // Close on Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMegaMenu();
+      closeMobileMenu();
+    }
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    const container = document.getElementById('services-menu-container');
+    if (container && !container.contains(e.target as Node) && megaMenu && !megaMenu.contains(e.target as Node)) {
+      closeMegaMenu();
+    }
+  });
+
+  // Close mega-menu on link click
+  megaMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMegaMenu);
+  });
+
+  // Mobile menu toggle
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('hidden') === false;
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  function openMobileMenu() {
+    mobileMenu?.classList.remove('hidden');
+    mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+    hamburgerIcon?.classList.add('hidden');
+    closeIcon?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    mobileMenu?.classList.add('hidden');
+    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    hamburgerIcon?.classList.remove('hidden');
+    closeIcon?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Mobile services accordion
+  mobileServicesBtn?.addEventListener('click', () => {
+    const isOpen = mobileServicesPanel?.classList.contains('hidden') === false;
+    if (isOpen) {
+      mobileServicesPanel?.classList.add('hidden');
+      mobileServicesBtn?.setAttribute('aria-expanded', 'false');
+      mobileChevron?.classList.remove('rotate-180');
+    } else {
+      mobileServicesPanel?.classList.remove('hidden');
+      mobileServicesBtn?.setAttribute('aria-expanded', 'true');
+      mobileChevron?.classList.add('rotate-180');
+    }
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+</script>

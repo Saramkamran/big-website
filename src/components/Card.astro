@@ -1,0 +1,32 @@
+---
+import ArrowLink from './ArrowLink.astro';
+
+interface Props {
+  image?: string;
+  imageAlt?: string;
+  label?: string;
+  title: string;
+  excerpt?: string;
+  href: string;
+  class?: string;
+}
+
+const { image, imageAlt = '', label, title, excerpt, href, class: className = '' } = Astro.props;
+---
+
+<article class={`flex flex-col ${className}`}>
+  {image && (
+    <div class="overflow-hidden mb-5">
+      <img
+        src={image}
+        alt={imageAlt}
+        class="w-full h-56 object-cover transition-transform duration-500 hover:scale-105"
+        loading="lazy"
+      />
+    </div>
+  )}
+  {label && <p class="label mb-3">{label}</p>}
+  <h3 class="font-serif text-h3 font-normal text-ink mb-3 leading-snug">{title}</h3>
+  {excerpt && <p class="font-sans text-body text-stone mb-4 flex-1">{excerpt}</p>}
+  <ArrowLink href={href} class="mt-auto text-sm font-medium">Learn more</ArrowLink>
+</article>

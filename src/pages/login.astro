@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout
+  title="Account Login | Black Stone Islamic Global"
+  description="Access your Black Stone Islamic Global client portal."
+>
+  <section class="min-h-[calc(100vh-72px)] flex items-center bg-paper">
+    <div class="container-big py-section">
+      <div class="max-w-lg mx-auto text-center">
+        <p class="label mb-4">Client Portal</p>
+        <h1 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(28px, 4vw, 52px); line-height: 1.1;">
+          Account Login
+        </h1>
+        <p class="font-sans text-base text-stone leading-relaxed mb-10">
+          Access your portfolio, research reports, and account statements through the BIG client portal. Your secure login credentials are provided upon account opening.
+        </p>
+        <Button variant="acid" href="#">
+          Access Client Portal →
+        </Button>
+        <p class="font-sans text-xs text-stone mt-4">
+          [Portal URL placeholder — to be provided by client]
+        </p>
+        <div class="mt-12 pt-10 border-t border-line">
+          <p class="font-sans text-sm text-stone mb-4">Don't have an account yet?</p>
+          <Button variant="outline" href="/contact">Open an Account</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

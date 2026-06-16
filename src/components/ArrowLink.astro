@@ -1,0 +1,11 @@
+---
+interface Props {
+  href: string;
+  class?: string;
+}
+const { href, class: className = '' } = Astro.props;
+---
+<a href={href} class={`arrow-link group ${className}`}>
+  <slot />
+  <span class="arrow-icon inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+</a>

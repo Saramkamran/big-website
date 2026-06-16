@@ -1,0 +1,36 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="relative min-h-[90vh] flex items-end overflow-hidden bg-ink">
+  <!-- Background image placeholder (client to swap) -->
+  <div
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/images/hero.jpg');"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Dark gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/30" aria-hidden="true"></div>
+
+  <!-- Decorative oversized BIG watermark -->
+  <div
+    class="absolute top-0 right-0 font-sans font-extrabold text-white/5 select-none pointer-events-none leading-none"
+    style="font-size: clamp(120px, 20vw, 280px); letter-spacing: -0.04em; transform: translate(5%, -5%);"
+    aria-hidden="true"
+  >
+    BIG
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 container-big py-24 md:py-32 max-w-3xl">
+    <p class="label text-acid mb-6">Shariah-Compliant Investing</p>
+    <h1 class="font-serif text-white font-normal leading-[1.05] mb-8" style="font-size: clamp(44px, 7vw, 80px);">
+      Principled capital.<br/>Halal growth.<br/>Global reach.
+    </h1>
+    <p class="font-sans text-white/80 text-lg leading-relaxed mb-10 max-w-xl">
+      Black Stone Islamic Global delivers disciplined, Shariah-compliant brokerage, asset management, and private wealth solutions across the Pakistan Stock Exchange and global markets.
+    </p>
+    <Button variant="acid" href="/#what-we-do">Explore What We Do</Button>
+  </div>
+</section>

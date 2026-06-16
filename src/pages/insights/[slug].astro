@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+import Button from '../../components/Button.astro';
+
+export async function getStaticPaths() {
+  const insights = await getCollection('insights');
+  return insights.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout
+  title={`${entry.data.title} | BIG Insights`}
+  description={entry.data.excerpt}
+  image={entry.data.image}
+>
+  <!-- Article header -->
+  <section class="py-section bg-paper border-b border-line">
+    <div class="container-big max-w-3xl">
+      <div class="mb-4">
+        <a href="/insights" class="font-sans text-xs text-stone hover:text-ink transition-colors">← Back to Insights</a>
+      </div>
+      <p class="label mb-4">{entry.data.category}</p>
+      <h1 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(28px, 4vw, 52px); line-height: 1.1;">
+        {entry.data.title}
+      </h1>
+      <p class="font-sans text-meta text-stone">{entry.data.type} | {entry.data.date}</p>
+    </div>
+  </section>
+
+  <!-- Featured image -->
+  {entry.data.image && (
+    <div class="bg-mist">
+      <div class="container-big max-w-3xl py-0">
+        <img
+          src={entry.data.image}
+          alt={entry.data.title}
+          class="w-full max-h-[480px] object-cover"
+          loading="eager"
+        />
+      </div>
+    </div>
+  )}
+
+  <!-- Article body -->
+  <section class="py-section bg-paper">
+    <div class="container-big max-w-3xl">
+      <div class="prose prose-slate max-w-none font-sans text-base text-stone leading-relaxed
+        prose-headings:font-serif prose-headings:font-normal prose-headings:text-ink
+        prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+        prose-strong:font-semibold prose-strong:text-ink
+        prose-a:text-ink prose-a:underline prose-a:decoration-acid">
+        <Content />
+      </div>
+
+      <!-- Share + CTA -->
+      <div class="mt-16 pt-10 border-t border-line flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <p class="font-sans text-sm font-semibold text-ink mb-2">Interested in acting on these insights?</p>
+          <p class="font-sans text-sm text-stone">Speak with our investment team for personalised guidance.</p>
+        </div>
+        <Button variant="ink" href="/contact">Contact Us</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

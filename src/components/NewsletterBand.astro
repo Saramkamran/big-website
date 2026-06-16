@@ -1,0 +1,44 @@
+---
+const sent = Astro.url.searchParams.get('newsletter') === 'sent';
+---
+
+<section class="bg-acid py-section">
+  <div class="container-big max-w-2xl">
+    <h2 class="font-serif font-normal text-ink mb-4" style="font-size: clamp(32px, 4vw, 52px); line-height: 1.1;">
+      Subscribe to BIG Briefings
+    </h2>
+    <p class="font-sans text-base text-ink/70 mb-8 leading-relaxed">
+      Our weekly briefings deliver the latest insights on PSX, global Islamic markets, and Shariah-compliant investing — from BIG analysts and economists.
+    </p>
+
+    {sent ? (
+      <div class="bg-ink text-white px-6 py-4 font-sans text-sm font-medium">
+        Thank you for subscribing! You'll receive our next briefing shortly.
+      </div>
+    ) : (
+      <form
+        method="POST"
+        action="https://formspree.io/f/REPLACE_WITH_NEWSLETTER_FORM_ID"
+        class="flex flex-col sm:flex-row gap-0 max-w-lg"
+      >
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="Enter your email"
+          class="flex-1 px-5 py-3 font-sans text-sm text-ink bg-white border border-ink/20 focus:outline-none focus:ring-2 focus:ring-ink placeholder:text-ink/40 sm:border-r-0"
+        />
+        <button
+          type="submit"
+          class="px-6 py-3 bg-ink text-white font-sans text-sm font-semibold hover:bg-stone transition-colors whitespace-nowrap"
+        >
+          Subscribe
+        </button>
+      </form>
+    )}
+
+    <p class="font-sans text-xs text-ink/50 mt-4">
+      You may unsubscribe at any time. Submissions are subject to our <a href="#" class="underline hover:text-ink">Privacy Policy</a>.
+    </p>
+  </div>
+</section>

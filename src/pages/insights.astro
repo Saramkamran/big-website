@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import Button from '../components/Button.astro';
+
+const allInsights = await getCollection('insights');
+const sorted = allInsights.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const categories = ['All', ...new Set(sorted.map(i => i.data.category))];
+---
+
+<BaseLayout
+  title="Insights | Black Stone Islamic Global"
+  description="Research, analysis, and market insights on Shariah-compliant investing, PSX equities, Islamic finance, and global markets from BIG."
+>
+  <!-- Header -->
+  <section class="py-section bg-paper border-b border-line">
+    <div class="container-big">
+      <p class="label mb-4">Insights</p>
+      <h1 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(32px, 5vw, 64px); line-height: 1.05; max-width: 700px;">
+        Insights on Islamic Finance and Global Markets
+      </h1>
+      <p class="font-sans text-base text-stone leading-relaxed max-w-xl">
+        Research, analysis, and perspectives on Shariah-compliant investing, the Pakistan Stock Exchange, and global Islamic capital markets — from the BIG investment team.
+      </p>
+    </div>
+  </section>
+
+  <!-- Insights grid -->
+  <section class="py-section bg-paper">
+    <div class="container-big">
+      <!-- Category filter labels -->
+      <div class="flex gap-3 flex-wrap mb-12">
+        {categories.map(cat => (
+          <span class="font-sans text-xs font-semibold px-4 py-2 border border-line text-stone hover:border-ink hover:text-ink cursor-pointer transition-colors">
+            {cat}
+          </span>
+        ))}
+      </div>
+
+      <!-- Insights grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {sorted.map(item => (
+          <article>
+            <a href={`/insights/${item.slug}`} class="block group">
+              <div class="overflow-hidden mb-5 bg-mist aspect-video">
+                {item.data.image && (
+                  <img
+                    src={item.data.image}
+                    alt={item.data.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+              <p class="label mb-3">{item.data.category}</p>
+              <h2 class="font-serif font-normal text-ink mb-3 leading-snug group-hover:underline" style="font-size: clamp(18px, 1.8vw, 22px);">
+                {item.data.title}
+              </h2>
+              {item.data.excerpt && (
+                <p class="font-sans text-sm text-stone leading-relaxed mb-4">{item.data.excerpt}</p>
+              )}
+              <p class="font-sans text-xs text-stone">{item.data.type} | {item.data.date}</p>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      {sorted.length === 0 && (
+        <p class="font-sans text-base text-stone text-center py-20">
+          No insights published yet. Check back soon.
+        </p>
+      )}
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-section bg-mist border-t border-line">
+    <div class="container-big text-center">
+      <p class="label mb-4">Stay Informed</p>
+      <h2 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(24px, 3vw, 40px); line-height: 1.1;">
+        Never Miss a BIG Briefing
+      </h2>
+      <p class="font-sans text-base text-stone mb-8 max-w-md mx-auto leading-relaxed">
+        Subscribe for weekly insights on Pakistani and global Islamic capital markets.
+      </p>
+      <Button variant="ink" href="/#newsletter">Subscribe to Briefings</Button>
+    </div>
+  </section>
+</BaseLayout>

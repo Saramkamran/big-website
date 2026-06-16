@@ -1,0 +1,362 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import StatBand from '../components/StatBand.astro';
+import ServiceSection from '../components/ServiceSection.astro';
+import NewsletterBand from '../components/NewsletterBand.astro';
+import Card from '../components/Card.astro';
+import ArrowLink from '../components/ArrowLink.astro';
+import Button from '../components/Button.astro';
+
+const insights = [
+  {
+    slug: 'pakistan-equity-outlook-2026',
+    category: 'MARKETS',
+    title: 'Pakistan Equity Outlook 2026: Navigating Reform and Recovery',
+    type: 'Article',
+    date: 'Jun 12, 2026',
+    image: '/images/insight-1.jpg',
+    featured: true,
+  },
+  {
+    slug: 'green-sukuk-growth-esgs',
+    category: 'SUSTAINABLE FINANCE',
+    title: 'Green Sukuk: Pakistan\'s Gateway to ESG Capital Markets',
+    type: 'Article',
+    date: 'Jun 5, 2026',
+    image: '/images/insight-2.jpg',
+    featured: false,
+  },
+  {
+    slug: 'shariah-screening-methodology',
+    category: 'SHARIAH COMPLIANCE',
+    title: 'How Our Shariah Screening Methodology Works',
+    type: 'Video',
+    date: 'May 28, 2026',
+    image: '/images/insight-3.jpg',
+    featured: false,
+  },
+  {
+    slug: 'wealth-planning-overseas-pakistanis',
+    category: 'PRIVATE WEALTH',
+    title: 'Wealth Planning for Overseas Pakistanis: Key Considerations',
+    type: 'Podcast',
+    date: 'May 20, 2026',
+    image: '/images/insight-4.jpg',
+    featured: false,
+  },
+];
+
+const firmInAction = [
+  {
+    category: 'AWARDS & RECOGNITION',
+    title: 'BIG Recognised as Top Shariah-Compliant Brokerage in Pakistan',
+    image: '/images/firm-1.jpg',
+    excerpt: 'Black Stone Islamic Global has been honoured for its commitment to Shariah-compliant investing and client excellence.',
+  },
+  {
+    category: 'DEAL SPOTLIGHT',
+    title: 'Advising on Pakistan\'s First Sovereign Green Sukuk Issuance',
+    image: '/images/firm-2.jpg',
+    excerpt: 'BIG advised on a landmark Rs 25B sovereign green sukuk transaction, channelling capital into renewable energy.',
+  },
+  {
+    category: 'AWARDS & RECOGNITION',
+    title: 'ACCA & ICAP Employer Accreditation Renewed for 2026',
+    image: '/images/firm-3.jpg',
+    excerpt: 'BIG maintains its prestigious ACCA and ICAP employer accreditations, reflecting our investment in professional talent.',
+  },
+];
+---
+
+<BaseLayout>
+  <Hero />
+
+  <StatBand />
+
+  <!-- What We Do intro -->
+  <section id="what-we-do" class="py-section bg-paper">
+    <div class="container-big">
+      <p class="label mb-4">What We Do</p>
+      <h2 class="font-serif font-normal text-ink mb-12" style="font-size: clamp(32px, 4vw, 52px); line-height: 1.1; max-width: 640px;">
+        Delivering for Our Clients
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <Card
+          image="/images/pillar-markets.jpg"
+          imageAlt="Trading screens showing market data"
+          label="PSX & GLOBAL MARKETS"
+          title="Shariah-Compliant Equities & Sukuks"
+          excerpt="Bespoke halal equity strategies, green sukuk access, and seamless transaction services for domestic and overseas investors."
+          href="/#shariah-equities"
+        />
+        <Card
+          image="/images/pillar-am.jpg"
+          imageAlt="Asset management professionals"
+          label="ASSET MANAGEMENT"
+          title="Shariah-Screened Funds & ETFs"
+          excerpt="Fixed income, equity, multi-asset, and ETF solutions — rigorously screened and professionally managed."
+          href="/#am-fixed-income"
+        />
+        <Card
+          image="/images/pillar-wealth.jpg"
+          imageAlt="Private wealth advisory"
+          label="PRIVATE WEALTH"
+          title="Bespoke Wealth & Legacy Planning"
+          excerpt="Personalised à la carte strategies across wealth planning, real estate, private equity, and philanthropy."
+          href="/#wealth-planning"
+        />
+        <Card
+          image="/images/pillar-specialized.jpg"
+          imageAlt="Corporate advisors"
+          label="SPECIALIZED SERVICES"
+          title="Family Office, M&A & IPO Advisory"
+          excerpt="Coordinated family office oversight, alternative investments, M&A advisory, and equity capital markets."
+          href="/#family-office"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- PSX & Global Markets -->
+  <ServiceSection
+    pillar="PSX & Global Markets"
+    headline="Halal Capital Deployment in Pakistan and Beyond"
+    intro="Our boutique PSX and global markets business combines disciplined investment research, rigorous Islamic screening, and deep market expertise to deliver tailored halal investment solutions."
+    bgClass="bg-mist"
+    services={[
+      {
+        id: 'shariah-equities',
+        title: 'Shariah Equities',
+        body: 'Our Shariah-compliant boutique equities business combines disciplined investment research, rigorous Islamic screening, and deep expertise to deliver tailored halal investment solutions for institutional and individual investors. We work closely with our clients to understand their investment objectives and provide a high-touch, bespoke advisory experience designed to align capital deployment with their financial goals and risk profile. Across Swing, Positional, and Long-Term proprietary strategies, we identify opportunities in Shariah-compliant businesses supported by strong fundamentals, favourable technical trends, and constructive market sentiment. Through disciplined portfolio construction, proactive risk management, and a focus on wealth creation, we seek to deliver maximum returns and sustainable value for our global clientele.',
+        subServices: [
+          {
+            title: 'Portfolio Advisory',
+            body: 'Our Portfolio Advisory services provide tailored investment solutions focused on opportunities within the Pakistan Stock Exchange (PSX). Leveraging bespoke analysis combined with market insights and structured portfolio construction, we help investors capitalize on market opportunities and achieve their tactical capital-growth objectives. Designed for self-directed investors who execute transactions independently, our advisory approach provides timely market intelligence, actionable recommendations, and strategic guidance to navigate market volatility with confidence.',
+          },
+          {
+            title: 'Portfolio Management',
+            body: 'Our Portfolio Management services provide a fully managed, end-to-end investment experience for clients who prefer to delegate investment decisions and execution to our portfolio and wealth managers. Through a discretionary mandate, we oversee portfolio strategy, instrument selection, trade execution, and risk management, ensuring capital is actively managed in line with each client\'s objectives and risk profile. Access to this white-glove service is subject to a minimum portfolio size requirement; contact our Client Care team for eligibility details.',
+          },
+        ],
+      },
+      {
+        id: 'green-sukuks',
+        title: 'Green Sukuks',
+        body: 'Whether our clients seek capital preservation, regular income, or long-term growth, our curated Sukuk offerings provide access to high-quality sovereign and corporate issuers. Combining Shariah compliance with competitive returns, our primary and secondary Sukuk desk serves as an effective platform for building wealth through ethically structured fixed-income alternatives. We are proud to be among the pioneers championing Green Sukuk as a sustainable financing solution for Pakistan. By connecting investors with ESG-aligned opportunities, we facilitate capital deployment into renewable energy, sustainable infrastructure, and climate-resilient projects.',
+      },
+      {
+        id: 'transaction-services',
+        title: 'Transaction Services',
+        body: 'Our Transaction Services platform provides seamless market access through RAAST ID integration, Special Convertible Rupee Accounts (SCRA), and Roshan Digital Account (RDA)-linked Roshan Equity Investment Accounts (REIA). Designed for both domestic and overseas investors, we offer efficient trade execution, swift settlement, and comprehensive post-trade support across equities, Sukuk, and other products. Combining secure, encrypted infrastructure with dedicated client care, we facilitate transactions for retail, corporate, and institutional clients with speed, transparency, and operational excellence.',
+      },
+      {
+        id: 'blackstone-intel',
+        title: 'Blackstone Intel',
+        body: 'We operate our dedicated WhatsApp channel, Blackstone Intel, to promote financial literacy and awareness of investment opportunities within the PSX. Through educational content, market insights, and investor-awareness initiatives, we help aspiring investors better understand capital markets and make informed decisions. Join free of charge for regular market updates and investor coaching.',
+      },
+      {
+        id: 'blackstone-investments',
+        title: 'Blackstone Investments',
+        body: 'For clients and premium members seeking exclusive research, proprietary insights, and market-leading advisory, we invite you to join our dedicated WhatsApp group, Blackstone Investments. Contact our Client Care team to learn about membership benefits and enrolment.',
+      },
+    ]}
+  />
+
+  <!-- Asset Management -->
+  <ServiceSection
+    pillar="Asset Management"
+    headline="Public Investing. Rigorously Screened."
+    intro="Our comprehensive suite of asset-management solutions across fixed income, equity, and multi-asset proprietary strategies is designed to navigate market challenges and deliver returns aligned with clients' expectations."
+    bgClass="bg-paper"
+    services={[
+      {
+        id: 'am-fixed-income',
+        title: 'Shariah Fixed Income',
+        body: 'We help clients navigate fixed-income markets with confidence, identify high-quality opportunities focused on capital preservation and stable returns, and pursue their financial goals through a curated selection of Pakistan\'s leading mutual funds.',
+      },
+      {
+        id: 'am-equity',
+        title: 'Shariah Equity',
+        body: 'Drawing on over two decades of experience in PSX, FTSE, and NYSE equities, we help investors capitalize on market opportunities through carefully selected, professionally managed equity funds. Our approach combines rigorous analysis of macro and microeconomic indicators, sector dynamics, corporate fundamentals, quantitative analysis, and valuation metrics with a robust due-diligence framework. Partnering with leading asset-management companies in Pakistan, we maintain disciplined oversight through regular reviews of fund performance, portfolio composition, risk metrics, Fund Manager Reports (FMRs), and strategy.',
+      },
+      {
+        id: 'am-etfs',
+        title: 'Shariah ETFs',
+        body: 'We help clients access carefully selected exchange-traded funds that provide exposure to high-quality equities screened in accordance with Islamic investment principles. Our solutions combine the diversification benefits of funds with the liquidity and transparency of traded securities — an efficient pathway to participate in long-term market growth while adhering to faith-based investing values.',
+      },
+      {
+        id: 'am-multi-asset',
+        title: 'Shariah Multi-Asset',
+        body: 'Leveraging our market expertise and meticulous due-diligence framework, we help clients access carefully selected multi-asset and hybrid funds such as Fund of Funds, Balanced Funds, and Asset Allocation Funds. By strategically blending equities and fixed income, these solutions aim to balance growth and stability across market cycles.',
+      },
+      {
+        id: 'am-pensions',
+        title: 'Shariah Pensions',
+        body: 'Shariah-compliant retirement solutions designed for long-term, tax-efficient wealth accumulation. Our pension solutions are currently being developed — contact our Client Care team to register your interest and be notified upon launch.',
+      },
+    ]}
+  />
+
+  <!-- Private Wealth Management -->
+  <ServiceSection
+    pillar="Private Wealth Management"
+    headline="Your Wealth. Your Legacy. Your Terms."
+    intro="We draw customised solutions for your tax-efficient wealth and inheritance planning, taking a highly personalised approach to understanding your wealth aspirations, financial commitments, life dreams, and non-negotiables."
+    bgClass="bg-mist"
+    services={[
+      {
+        id: 'wealth-planning',
+        title: 'Wealth Planning — À la Carte Approach',
+        body: 'We draw customised solutions for tax-efficient wealth and inheritance planning. We take a highly personalized approach to understanding your wealth aspirations, financial commitments, life dreams, and non-negotiables — enabling us to design and implement bespoke, à la carte solutions that preserve and grow wealth while aligning with your lifestyle, legacy, and intergenerational succession objectives. Black Stone Islamic Global engages with you and your trusted advisors to develop tailored strategies that broaden your portfolio, expand your business universe, and multiply your wealth.',
+      },
+      {
+        id: 'dedicated-investments',
+        title: 'Dedicated Investments',
+        body: 'Our investment-management capabilities extend far beyond off-the-shelf equities, mutual funds, and bank deposits. Through our extensive network, strategic partnerships, and proven execution, we provide access to bespoke wealth solutions across multiple asset classes and geographies. From dedicated investment vehicles and private structures to client-exclusive opportunities, we empower you to play a leading role in creating and preserving wealth — with institutional-grade expertise, governance, and strategic oversight.',
+      },
+      {
+        id: 'private-equity',
+        title: 'Private Equity',
+        body: 'Our core investing approach is supported by expertise across sectors, markets, business models, and stages of the corporate lifecycle. Partnering with global private-equity investors, we help small and mid-sized businesses raise growth capital through equity investments ranging from minority to strategic stakes. Whether you are an investor seeking high-growth private-market opportunities or a business owner looking to unlock value, we connect capital with opportunity.',
+      },
+      {
+        id: 'real-estate',
+        title: 'Real Estate',
+        body: 'From identifying off-market opportunities and conducting thorough due diligence to structuring transactions and securing favourable terms, we deliver superior outcomes for our clients. Through relationships with REIT sponsors, housing-society developers, ultra-high-net-worth investors, family offices, and government stakeholders, we facilitate landmark real-estate transactions with the highest standards of professionalism.',
+      },
+      {
+        id: 'pakistan-energy',
+        title: 'Pakistan Energy',
+        body: 'For ultra-high-net-worth individuals and corporates seeking entry into Pakistan\'s OMC sector — whether acquiring an existing downstream business or pursuing greenfield development — we offer structured advisory across deal origination, due diligence, transaction execution, and post-acquisition operational support. Combining sector expertise, strategic relationships, and hands-on execution, we provide end-to-end advisory support that remains rare in Pakistan\'s energy landscape.',
+      },
+      {
+        id: 'philanthropy-zakat',
+        title: 'Philanthropy & Zakat Strategy',
+        body: 'We believe wealth is not only a reflection of prosperity but a powerful instrument for positive socio-economic change. Our philanthropic and Zakat strategies help clients structure their giving purposefully and systematically — supporting virtuous causes while fulfilling religious, social, and moral responsibilities. We assist in establishing family trusts and foundations, Waqfs, CSR initiatives, and impact projects including cancer research, educational institutions, and flood relief. We charge the least fee for Philanthropy and Zakat-related advisory.',
+      },
+      {
+        id: 'professional-services',
+        title: 'Professional Services',
+        body: 'As part of our holistic offering, clients benefit from a distinguished network of A-rated and QCR-rated chartered-accountant firms in Pakistan, the United Kingdom, and the United States. Through these trusted relationships we provide access to premier accountancy, audit, legal, tax, regulatory, and governance advisory — ensuring complex financial and compliance matters are managed with precision, discretion, and uncompromising integrity.',
+      },
+    ]}
+  />
+
+  <!-- Specialized Services -->
+  <ServiceSection
+    pillar="Specialized Services"
+    headline="Distinctive Solutions for Complex Needs"
+    intro="Our specialized advisory capabilities address the full breadth of sophisticated client requirements — from multi-generational family wealth to cross-border M&A and capital markets."
+    bgClass="bg-paper"
+    services={[
+      {
+        id: 'family-office',
+        title: 'BIG Family Office',
+        body: 'A single, coordinated point of oversight for complex family wealth — from advisory through to implementation. Our family office practice provides holistic governance, investment oversight, succession planning, and administrative coordination for ultra-high-net-worth families.',
+      },
+      {
+        id: 'alternatives',
+        title: 'Alternative Investments',
+        body: 'Access to differentiated, Shariah-compliant alternative strategies beyond public markets. Our alternative investments platform provides exposure to private credit, infrastructure, commodities, and other asset classes that offer diversification, inflation protection, and return enhancement for sophisticated investors.',
+      },
+      {
+        id: 'mergers-acquisitions',
+        title: 'M&A and Carve-Out',
+        body: 'Advisory across mergers, acquisitions, and corporate carve-outs — origination to execution. BIG provides end-to-end M&A advisory services for buyers, sellers, and corporates undertaking strategic transactions. Our team brings deep sector knowledge, cross-border execution capability, and Shariah-compliant structuring expertise to every mandate.',
+      },
+      {
+        id: 'ipos',
+        title: 'IPOs (Pakistan & US)',
+        body: 'Equity capital-markets advisory for issuers listing on the PSX and US exchanges. From pre-IPO readiness and structuring to roadshow support and post-listing compliance, BIG guides companies through the full lifecycle of a public offering — in Pakistan and internationally.',
+      },
+    ]}
+  />
+
+  <!-- Insights Preview -->
+  <section class="py-section bg-paper border-t border-line">
+    <div class="container-big">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+        <h2 class="font-serif font-normal text-ink" style="font-size: clamp(28px, 4vw, 52px); line-height: 1.1;">
+          Insights on Islamic Finance<br/>and Global Markets
+        </h2>
+        <Button variant="outline" href="/insights">Explore All Insights</Button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        {insights.filter(i => i.featured).slice(0, 1).map(item => (
+          <div class="lg:col-span-7">
+            <a href={`/insights/${item.slug}`} class="block group">
+              <div class="overflow-hidden mb-6 bg-mist aspect-video">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <p class="label mb-3">{item.category}</p>
+              <h3 class="font-serif font-normal text-ink mb-3 group-hover:underline" style="font-size: clamp(20px, 2.5vw, 28px); line-height: 1.2;">
+                {item.title}
+              </h3>
+              <p class="font-sans text-meta text-stone">{item.type} | {item.date}</p>
+            </a>
+          </div>
+        ))}
+
+        <div class="lg:col-span-5">
+          {insights.filter(i => !i.featured).map(item => (
+            <a href={`/insights/${item.slug}`} class="flex gap-4 py-6 border-t border-line group hover:bg-mist -mx-4 px-4 transition-colors">
+              <div class="w-24 h-20 flex-shrink-0 overflow-hidden bg-mist">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="label mb-2">{item.category}</p>
+                <h4 class="font-serif font-normal text-ink leading-snug mb-2 group-hover:underline" style="font-size: 16px;">
+                  {item.title}
+                </h4>
+                <p class="font-sans text-xs text-stone">{item.type} | {item.date}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Firm in Action -->
+  <section class="py-section bg-mist border-t border-line">
+    <div class="container-big">
+      <p class="label mb-4">Stay Informed</p>
+      <h2 class="font-serif font-normal text-ink mb-12" style="font-size: clamp(28px, 4vw, 48px); line-height: 1.1;">
+        The Firm in Action
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {firmInAction.map(item => (
+          <div>
+            <div class="overflow-hidden mb-5 bg-stone/10 aspect-[4/3]">
+              <img
+                src={item.image}
+                alt={item.title}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <p class="label mb-3">{item.category}</p>
+            <h3 class="font-serif font-normal text-ink mb-3 leading-snug" style="font-size: clamp(18px, 1.8vw, 22px);">
+              {item.title}
+            </h3>
+            <p class="font-sans text-sm text-stone leading-relaxed">{item.excerpt}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <NewsletterBand />
+</BaseLayout>
