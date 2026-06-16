@@ -11,7 +11,7 @@ import Button from '../../components/Button.astro';
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h));">
+  <section class="relative flex items-start bg-ink" style="min-height: calc(100vh - var(--header-h));">
     <!-- Background layer — overflow-hidden here, never on the section -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
@@ -25,8 +25,8 @@ import Button from '../../components/Button.astro';
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <!-- Content — never clipped -->
-    <div class="relative z-10 container-big w-full pt-12 pb-20 md:pb-28">
+    <!-- Content anchored to top — never overflows the viewport -->
+    <div class="relative z-10 container-big w-full pt-16 md:pt-20 pb-16">
       <div class="max-w-2xl">
         <p class="label text-acid mb-6">Asset Management</p>
         <h1
