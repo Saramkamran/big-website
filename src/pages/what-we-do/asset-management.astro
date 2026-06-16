@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceSection from '../../components/ServiceSection.astro';
+import AboutBIG from '../../components/AboutBIG.astro';
+import Button from '../../components/Button.astro';
+---
+
+<BaseLayout
+  title="Asset Management | Black Stone Islamic Global"
+  description="Shariah-screened fixed income, equity, ETF, multi-asset, and pension solutions — rigorously managed by BIG's investment team."
+>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
+  <section class="relative flex items-end overflow-hidden bg-ink" style="min-height: 88vh;">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/images/hero-asset-management.jpg');"
+      aria-hidden="true"
+    ></div>
+    <!-- Gradient: deep forest-toned dark -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(105deg, rgba(5,20,10,0.93) 0%, rgba(11,11,11,0.68) 50%, rgba(11,11,11,0.15) 100%);"
+      aria-hidden="true"
+    ></div>
+    <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid" aria-hidden="true"></div>
+
+    <div class="relative z-10 container-big py-24 md:py-32">
+      <div class="max-w-2xl">
+        <p class="label text-acid mb-5">Asset Management</p>
+        <h1
+          class="font-serif font-normal text-white mb-6 leading-[1.05]"
+          style="font-size: clamp(40px, 6vw, 76px);"
+        >
+          Shariah-Screened.<br/>Professionally Managed.<br/>Built for Growth.
+        </h1>
+        <p class="font-sans text-white/75 text-lg leading-relaxed mb-10 max-w-lg">
+          Our comprehensive suite of asset-management solutions — across fixed income, equity, ETFs, multi-asset, and pensions — is designed to navigate market challenges and deliver returns aligned with your expectations, within the bounds of Islamic finance.
+        </p>
+        <div class="flex items-center gap-6 flex-wrap">
+          <Button variant="acid" href="#am-fixed-income">Explore Solutions</Button>
+          <a href="/contact" class="font-sans text-sm font-semibold text-white/80 hover:text-white transition-colors flex items-center gap-2">
+            Speak to our team →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 right-16 hidden lg:flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
+      <span class="font-sans text-xs text-white tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-12 bg-white/60"></div>
+    </div>
+  </section>
+
+  <!-- ── Pillar intro strip ─────────────────────────────────────────────── -->
+  <section class="bg-acid py-10">
+    <div class="container-big">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+        {[
+          ['01', 'Fixed Income'],
+          ['02', 'Equity Funds'],
+          ['03', 'ETFs'],
+          ['04', 'Multi-Asset'],
+          ['05', 'Pensions'],
+        ].map(([num, label], i) => {
+          const anchors = ['#am-fixed-income','#am-equity','#am-etfs','#am-multi-asset','#am-pensions'];
+          return (
+            <a href={anchors[i]} class="group flex items-start gap-3">
+              <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">{num}</span>
+              <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">{label}</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ──────────────────────────────────────────────────────── -->
+  <ServiceSection
+    pillar="Asset Management — Public Investing"
+    headline="Rigorous Screening. Disciplined Execution."
+    intro="Our comprehensive suite of asset-management solutions across fixed income, equity, and multi-asset proprietary strategies is designed to navigate market challenges and deliver returns aligned with clients' expectations."
+    bgClass="bg-paper"
+    services={[
+      {
+        id: 'am-fixed-income',
+        title: 'Shariah Fixed Income',
+        body: 'We help clients navigate fixed-income markets with confidence, identify high-quality opportunities focused on capital preservation and stable returns, and pursue their financial goals through a curated selection of Pakistan\'s leading mutual funds.',
+      },
+      {
+        id: 'am-equity',
+        title: 'Shariah Equity',
+        body: 'Drawing on over two decades of experience in PSX, FTSE, and NYSE equities, we help investors capitalize on market opportunities through carefully selected, professionally managed equity funds. Our approach combines rigorous analysis of macro and microeconomic indicators, sector dynamics, corporate fundamentals, quantitative analysis, and valuation metrics with a robust due-diligence framework. Partnering with leading asset-management companies in Pakistan, we maintain disciplined oversight through regular reviews of fund performance, portfolio composition, risk metrics, Fund Manager Reports (FMRs), and strategy — whether the objective is capital appreciation, long-term wealth creation, or diversification.',
+      },
+      {
+        id: 'am-etfs',
+        title: 'Shariah ETFs',
+        body: 'We help clients access carefully selected exchange-traded funds that provide exposure to high-quality equities screened in accordance with Islamic investment principles. Our solutions combine the diversification benefits of funds with the liquidity and transparency of traded securities — an efficient pathway to participate in long-term market growth while adhering to faith-based investing values.',
+      },
+      {
+        id: 'am-multi-asset',
+        title: 'Shariah Multi-Asset',
+        body: 'Leveraging our market expertise and meticulous due-diligence framework, we help clients access carefully selected multi-asset and hybrid funds such as Fund of Funds, Balanced Funds, and Asset Allocation Funds. By strategically blending equities and fixed income, these solutions aim to balance growth and stability across market cycles.',
+      },
+      {
+        id: 'am-pensions',
+        title: 'Shariah Pensions',
+        body: 'Shariah-compliant retirement solutions designed for long-term, tax-efficient wealth accumulation. Our pension solutions are currently being developed in partnership with leading fund managers — contact our Client Care team to register your interest and be notified upon launch.',
+      },
+    ]}
+  />
+
+  <!-- ── About BIG ──────────────────────────────────────────────────────── -->
+  <AboutBIG bgClass="bg-mist" />
+
+  <!-- ── CTA band ───────────────────────────────────────────────────────── -->
+  <section class="bg-ink py-20">
+    <div class="container-big flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <h2 class="font-serif font-normal text-white mb-2" style="font-size: clamp(22px, 2.5vw, 32px);">
+          Ready to build a Shariah-compliant portfolio?
+        </h2>
+        <p class="font-sans text-sm text-white/60">Our investment team will guide you to the right fund solutions for your goals.</p>
+      </div>
+      <Button variant="acid" href="/contact">Contact Us →</Button>
+    </div>
+  </section>
+
+</BaseLayout>

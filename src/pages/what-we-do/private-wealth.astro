@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceSection from '../../components/ServiceSection.astro';
+import AboutBIG from '../../components/AboutBIG.astro';
+import Button from '../../components/Button.astro';
+---
+
+<BaseLayout
+  title="Private Wealth Management | Black Stone Islamic Global"
+  description="Bespoke à la carte wealth planning, dedicated investments, private equity, real estate, and philanthropy — tailored to your legacy."
+>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
+  <section class="relative flex items-end overflow-hidden bg-ink" style="min-height: 88vh;">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/images/hero-private-wealth.jpg');"
+      aria-hidden="true"
+    ></div>
+    <!-- Warm deep-charcoal gradient -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(110deg, rgba(18,10,5,0.93) 0%, rgba(11,11,11,0.70) 50%, rgba(11,11,11,0.10) 100%);"
+      aria-hidden="true"
+    ></div>
+    <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid" aria-hidden="true"></div>
+
+    <div class="relative z-10 container-big py-24 md:py-32">
+      <div class="max-w-2xl">
+        <p class="label text-acid mb-5">Private Wealth Management</p>
+        <h1
+          class="font-serif font-normal text-white mb-6 leading-[1.05]"
+          style="font-size: clamp(40px, 6vw, 76px);"
+        >
+          Your Wealth.<br/>Your Legacy.<br/>Your Terms.
+        </h1>
+        <p class="font-sans text-white/75 text-lg leading-relaxed mb-10 max-w-lg">
+          We take a highly personalised à la carte approach to understanding your wealth aspirations, financial commitments, life dreams, and non-negotiables — designing bespoke solutions that preserve and grow wealth across generations.
+        </p>
+        <div class="flex items-center gap-6 flex-wrap">
+          <Button variant="acid" href="#wealth-planning">Explore Services</Button>
+          <a href="/contact" class="font-sans text-sm font-semibold text-white/80 hover:text-white transition-colors flex items-center gap-2">
+            Speak to our team →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 right-16 hidden lg:flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
+      <span class="font-sans text-xs text-white tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-12 bg-white/60"></div>
+    </div>
+  </section>
+
+  <!-- ── Pillar intro strip ─────────────────────────────────────────────── -->
+  <section class="bg-acid py-10">
+    <div class="container-big">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4">
+        {[
+          ['01', 'Wealth Planning', '#wealth-planning'],
+          ['02', 'Dedicated Investments', '#dedicated-investments'],
+          ['03', 'Private Equity', '#private-equity'],
+          ['04', 'Real Estate', '#real-estate'],
+          ['05', 'Pakistan Energy', '#pakistan-energy'],
+          ['06', 'Philanthropy & Zakat', '#philanthropy-zakat'],
+          ['07', 'Professional Services', '#professional-services'],
+        ].map(([num, label, href]) => (
+          <a href={href} class="group flex items-start gap-3">
+            <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">{num}</span>
+            <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">{label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ──────────────────────────────────────────────────────── -->
+  <ServiceSection
+    pillar="Private Wealth Management"
+    headline="An À la Carte Approach to Wealth"
+    intro="Black Stone Islamic Global engages with you and your trusted advisors to develop and implement tailored wealth strategies that broaden your portfolio, expand your business universe, and multiply your wealth — always within the bounds of Islamic principles."
+    bgClass="bg-paper"
+    services={[
+      {
+        id: 'wealth-planning',
+        title: 'Wealth Planning — À la Carte Approach',
+        body: 'We draw customised solutions for tax-efficient wealth and inheritance planning. We take a highly personalized approach to understanding your wealth aspirations, financial commitments, life dreams, and non-negotiables — enabling us to design and implement bespoke, à la carte solutions that preserve and grow wealth while aligning with your lifestyle, legacy, and intergenerational succession objectives. Black Stone Islamic Global engages with you and your trusted advisors to develop tailored strategies that broaden your portfolio, expand your business universe, and multiply your wealth.',
+      },
+      {
+        id: 'dedicated-investments',
+        title: 'Dedicated Investments',
+        body: 'Our investment-management capabilities extend far beyond off-the-shelf equities, mutual funds, and bank deposits. Through our extensive network, strategic partnerships, and proven execution, we provide access to bespoke wealth solutions across multiple asset classes and geographies. From dedicated investment vehicles and private structures to client-exclusive opportunities, we empower you to play a leading role in creating and preserving wealth — with institutional-grade expertise, governance, and strategic oversight to help build enduring value and an enduring legacy.',
+      },
+      {
+        id: 'private-equity',
+        title: 'Private Equity',
+        body: 'Our core investing approach is supported by expertise across sectors, markets, business models, and stages of the corporate lifecycle. Partnering with global private-equity investors, we help small and mid-sized businesses raise growth capital through equity investments ranging from minority to strategic stakes. Whether you are an investor seeking high-growth private-market opportunities or a business owner looking to unlock value, we connect capital with opportunity.',
+      },
+      {
+        id: 'real-estate',
+        title: 'Real Estate',
+        body: 'From identifying off-market opportunities and conducting thorough due diligence to structuring transactions and securing favourable terms, we deliver superior outcomes for our clients. Through relationships with REIT sponsors, housing-society developers, ultra-high-net-worth investors, family offices, and government stakeholders, we facilitate landmark real-estate transactions with the highest standards of professionalism — connecting exceptional opportunities with strategic capital.',
+      },
+      {
+        id: 'pakistan-energy',
+        title: 'Pakistan Energy',
+        body: 'For ultra-high-net-worth individuals and corporates seeking entry into Pakistan\'s OMC sector — whether acquiring an existing downstream business or pursuing greenfield development — we offer structured advisory across deal origination, due diligence, transaction execution, and post-acquisition operational support. Combining sector expertise, strategic relationships, and hands-on execution, we provide end-to-end advisory support that remains rare in Pakistan\'s energy landscape.',
+      },
+      {
+        id: 'philanthropy-zakat',
+        title: 'Philanthropy & Zakat Strategy',
+        body: 'We believe wealth is not only a reflection of prosperity but a powerful instrument for positive socio-economic change. Our philanthropic and Zakat strategies help clients structure their giving purposefully and systematically — supporting virtuous causes while fulfilling religious, social, and moral responsibilities. We assist in establishing family trusts and foundations, Waqfs, CSR initiatives, and impact projects including cancer research, educational institutions, and flood relief. We develop frameworks that maximize social impact and ensure charitable capital is deployed effectively, and we charge the least fee for Philanthropy and Zakat-related advisory.',
+      },
+      {
+        id: 'professional-services',
+        title: 'Professional Services',
+        body: 'As part of our holistic offering, clients benefit from a distinguished network of A-rated and QCR-rated chartered-accountant firms in Pakistan, the United Kingdom, and the United States. Through these trusted relationships we provide access to premier accountancy, audit, legal, tax, regulatory, and governance advisory — ensuring complex financial and compliance matters are managed with precision, discretion, and uncompromising integrity.',
+      },
+    ]}
+  />
+
+  <!-- ── About BIG ──────────────────────────────────────────────────────── -->
+  <AboutBIG bgClass="bg-mist" />
+
+  <!-- ── CTA band ───────────────────────────────────────────────────────── -->
+  <section class="bg-ink py-20">
+    <div class="container-big flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <h2 class="font-serif font-normal text-white mb-2" style="font-size: clamp(22px, 2.5vw, 32px);">
+          Let's build your Shariah-compliant wealth strategy.
+        </h2>
+        <p class="font-sans text-sm text-white/60">Our private wealth team is ready to understand your goals and design your plan.</p>
+      </div>
+      <Button variant="acid" href="/contact">Contact Us →</Button>
+    </div>
+  </section>
+
+</BaseLayout>

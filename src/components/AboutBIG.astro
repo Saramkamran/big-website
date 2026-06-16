@@ -1,0 +1,54 @@
+---
+interface Props {
+  bgClass?: string;
+}
+const { bgClass = 'bg-mist' } = Astro.props;
+---
+
+<section class={`${bgClass} py-section border-t border-line`}>
+  <div class="container-big">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+      <!-- Left: label + headline -->
+      <div class="lg:col-span-4">
+        <p class="label mb-4">About BIG</p>
+        <h2 class="font-serif font-normal text-ink" style="font-size: clamp(24px, 2.5vw, 36px); line-height: 1.15;">
+          Principled. Research-Driven. Shariah-First.
+        </h2>
+      </div>
+
+      <!-- Right: copy + accreditations -->
+      <div class="lg:col-span-8">
+        <p class="font-sans text-base text-stone leading-relaxed mb-5">
+          Black Stone Islamic Global (BIG) is a Shariah-compliant boutique brokerage, asset management, and private wealth firm serving institutional and individual clients across Pakistan and globally. Licensed by SECP and holding a PSX TREC, we deliver disciplined, faith-aligned investment solutions built on rigorous Islamic screening, deep market research, and an uncompromising commitment to client outcomes.
+        </p>
+        <p class="font-sans text-base text-stone leading-relaxed mb-8">
+          At BIG, Shariah compliance and investment excellence are not competing objectives — they are mutually reinforcing. We believe capital deployed in accordance with Islamic principles can, and should, outperform. Every strategy, product, and recommendation reflects that conviction.
+        </p>
+
+        <!-- Accreditations strip -->
+        <div class="flex flex-wrap items-center gap-3 mb-8">
+          {['ACCA', 'ICAP', 'ISO/UKSAS', 'MUFAP', 'SECP', 'TREC', 'PSX'].map(name => (
+            <span class="font-sans font-bold text-xs text-ink border border-line px-3 py-1.5 tracking-wide">
+              {name}
+            </span>
+          ))}
+        </div>
+
+        <!-- CTA row -->
+        <div class="flex items-center gap-8 flex-wrap">
+          <a
+            href="/about"
+            class="inline-flex items-center border border-ink px-6 py-3 font-sans text-sm font-semibold text-ink hover:bg-ink hover:text-white transition-colors"
+          >
+            Our Firm
+          </a>
+          <a href="/contact" class="font-sans text-sm font-semibold text-ink hover:text-stone transition-colors flex items-center gap-2">
+            Get in touch <span>→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

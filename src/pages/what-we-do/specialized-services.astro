@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceSection from '../../components/ServiceSection.astro';
+import AboutBIG from '../../components/AboutBIG.astro';
+import Button from '../../components/Button.astro';
+---
+
+<BaseLayout
+  title="Specialized Services | Black Stone Islamic Global"
+  description="BIG Family Office, Alternative Investments, M&A and Carve-Out advisory, and IPO services for Pakistan and US markets."
+>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
+  <section class="relative flex items-end overflow-hidden bg-ink" style="min-height: 88vh;">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/images/hero-specialized.jpg');"
+      aria-hidden="true"
+    ></div>
+    <!-- Cool slate gradient for corporate/advisory feel -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(108deg, rgba(8,12,20,0.93) 0%, rgba(11,11,11,0.68) 52%, rgba(11,11,11,0.12) 100%);"
+      aria-hidden="true"
+    ></div>
+    <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid" aria-hidden="true"></div>
+
+    <div class="relative z-10 container-big py-24 md:py-32">
+      <div class="max-w-2xl">
+        <p class="label text-acid mb-5">Specialized Services</p>
+        <h1
+          class="font-serif font-normal text-white mb-6 leading-[1.05]"
+          style="font-size: clamp(40px, 6vw, 76px);"
+        >
+          Distinctive Solutions<br/>for Complex Needs.
+        </h1>
+        <p class="font-sans text-white/75 text-lg leading-relaxed mb-10 max-w-lg">
+          Our specialized advisory capabilities address the full breadth of sophisticated client requirements — from coordinated family office oversight and alternative investments to cross-border M&A mandates and equity capital markets transactions.
+        </p>
+        <div class="flex items-center gap-6 flex-wrap">
+          <Button variant="acid" href="#family-office">Explore Services</Button>
+          <a href="/contact" class="font-sans text-sm font-semibold text-white/80 hover:text-white transition-colors flex items-center gap-2">
+            Speak to our team →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 right-16 hidden lg:flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
+      <span class="font-sans text-xs text-white tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-12 bg-white/60"></div>
+    </div>
+  </section>
+
+  <!-- ── Pillar intro strip ─────────────────────────────────────────────── -->
+  <section class="bg-acid py-10">
+    <div class="container-big">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          ['01', 'BIG Family Office', '#family-office'],
+          ['02', 'Alternative Investments', '#alternatives'],
+          ['03', 'M&A and Carve-Out', '#mergers-acquisitions'],
+          ['04', 'IPOs (Pakistan & US)', '#ipos'],
+        ].map(([num, label, href]) => (
+          <a href={href} class="group flex items-start gap-3">
+            <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">{num}</span>
+            <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">{label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ──────────────────────────────────────────────────────── -->
+  <ServiceSection
+    pillar="Specialized Services"
+    headline="Transformation Through Expertise"
+    intro="BIG's specialized advisory practice brings together deep sector knowledge, cross-border execution capability, and Shariah-compliant structuring expertise — delivering distinctive outcomes for the most complex mandates."
+    bgClass="bg-paper"
+    services={[
+      {
+        id: 'family-office',
+        title: 'BIG Family Office',
+        body: 'A single, coordinated point of oversight for complex family wealth — from advisory through to implementation. Our family office practice provides holistic governance, investment oversight, succession planning, and administrative coordination for ultra-high-net-worth families. We bring together BIG\'s full range of capabilities — wealth planning, private equity, real estate, philanthropy, and professional services — under a unified mandate, ensuring every dimension of your family\'s financial life is managed with the highest standards of precision, discretion, and long-term thinking.',
+      },
+      {
+        id: 'alternatives',
+        title: 'Alternative Investments',
+        body: 'Access to differentiated, Shariah-compliant alternative strategies beyond public markets. Our alternative investments platform provides exposure to private credit, infrastructure, commodities, hedge strategies, and other asset classes that offer diversification, inflation protection, and return enhancement for sophisticated investors. We conduct rigorous due diligence on every alternative opportunity to ensure both investment quality and Shariah compliance before presenting to clients.',
+      },
+      {
+        id: 'mergers-acquisitions',
+        title: 'M&A and Carve-Out',
+        body: 'Advisory across mergers, acquisitions, and corporate carve-outs — origination to execution. BIG provides end-to-end M&A advisory services for buyers, sellers, and corporates undertaking strategic transactions. Our team brings deep sector knowledge across Pakistan\'s key industries, cross-border execution capability, and Shariah-compliant deal structuring expertise to every mandate. Whether you are acquiring a business, divesting a division, or undertaking a transformative corporate restructuring, BIG has the relationships and experience to deliver superior outcomes.',
+      },
+      {
+        id: 'ipos',
+        title: 'IPOs (Pakistan & US)',
+        body: 'Equity capital-markets advisory for issuers listing on the PSX and US exchanges. From pre-IPO readiness and governance structuring to prospectus preparation, roadshow support, and post-listing compliance, BIG guides companies through the full lifecycle of a public offering — in Pakistan and internationally. Our cross-border capital markets expertise is particularly suited to Pakistani companies seeking dual-listings or US-market access, and international companies targeting PSX\'s growing investor base.',
+      },
+    ]}
+  />
+
+  <!-- ── About BIG ──────────────────────────────────────────────────────── -->
+  <AboutBIG bgClass="bg-mist" />
+
+  <!-- ── CTA band ───────────────────────────────────────────────────────── -->
+  <section class="bg-ink py-20">
+    <div class="container-big flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <h2 class="font-serif font-normal text-white mb-2" style="font-size: clamp(22px, 2.5vw, 32px);">
+          Let's explore how we can make the difference.
+        </h2>
+        <p class="font-sans text-sm text-white/60">Our specialized advisory team is ready to discuss your mandate in confidence.</p>
+      </div>
+      <Button variant="acid" href="/contact">Contact Us →</Button>
+    </div>
+  </section>
+
+</BaseLayout>

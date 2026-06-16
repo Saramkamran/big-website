@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceSection from '../../components/ServiceSection.astro';
+import AboutBIG from '../../components/AboutBIG.astro';
+import Button from '../../components/Button.astro';
+---
+
+<BaseLayout
+  title="PSX & Global Markets | Black Stone Islamic Global"
+  description="Shariah-compliant equities, green sukuks, and transaction services across the Pakistan Stock Exchange and global markets."
+>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
+  <section class="relative flex items-end overflow-hidden bg-ink" style="min-height: 88vh;">
+    <!-- Background: trading floor / market data imagery -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/images/hero-psx-markets.jpg');"
+      aria-hidden="true"
+    ></div>
+    <!-- Gradient: deep navy left, transparent right -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(105deg, rgba(11,11,11,0.92) 0%, rgba(11,11,11,0.65) 55%, rgba(11,11,11,0.2) 100%);"
+      aria-hidden="true"
+    ></div>
+    <!-- Subtle accent bar left edge -->
+    <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 container-big py-24 md:py-32">
+      <div class="max-w-2xl">
+        <p class="label text-acid mb-5">PSX &amp; Global Markets</p>
+        <h1
+          class="font-serif font-normal text-white mb-6 leading-[1.05]"
+          style="font-size: clamp(40px, 6vw, 76px);"
+        >
+          Halal Capital.<br/>Disciplined Research.<br/>Global Markets.
+        </h1>
+        <p class="font-sans text-white/75 text-lg leading-relaxed mb-10 max-w-lg">
+          Our Shariah-compliant boutique equities business delivers tailored halal investment solutions — from bespoke PSX portfolio strategies and Green Sukuk to seamless transaction services for domestic and overseas investors.
+        </p>
+        <div class="flex items-center gap-6 flex-wrap">
+          <Button variant="acid" href="#shariah-equities">Explore Services</Button>
+          <a href="/contact" class="font-sans text-sm font-semibold text-white/80 hover:text-white transition-colors flex items-center gap-2">
+            Speak to our team →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 right-16 hidden lg:flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
+      <span class="font-sans text-xs text-white tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-12 bg-white/60"></div>
+    </div>
+  </section>
+
+  <!-- ── Pillar intro strip ─────────────────────────────────────────────── -->
+  <section class="bg-acid py-10">
+    <div class="container-big">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <a href="#shariah-equities" class="group flex items-start gap-3">
+          <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">01</span>
+          <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">Shariah Equities</span>
+        </a>
+        <a href="#green-sukuks" class="group flex items-start gap-3">
+          <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">02</span>
+          <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">Green Sukuks</span>
+        </a>
+        <a href="#transaction-services" class="group flex items-start gap-3">
+          <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">03</span>
+          <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">Transaction Services</span>
+        </a>
+        <a href="#blackstone-intel" class="group flex items-start gap-3">
+          <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">04</span>
+          <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">Blackstone Intel &amp; Investments</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ──────────────────────────────────────────────────────── -->
+  <ServiceSection
+    pillar="PSX & Global Markets"
+    headline="How We Make Things Happen for You"
+    intro="Our boutique combines disciplined investment research, rigorous Islamic screening, and deep PSX and global market expertise to deliver tailored halal investment solutions for institutional and individual investors."
+    bgClass="bg-paper"
+    services={[
+      {
+        id: 'shariah-equities',
+        title: 'Shariah Equities',
+        body: 'Our Shariah-compliant boutique equities business combines disciplined investment research, rigorous Islamic screening, and deep expertise to deliver tailored halal investment solutions for institutional and individual investors. We work closely with our clients to understand their investment objectives and provide a high-touch, bespoke advisory experience designed to align capital deployment with their financial goals and risk profile. Across Swing, Positional, and Long-Term proprietary strategies, we identify opportunities in Shariah-compliant businesses supported by strong fundamentals, favourable technical trends, and constructive market sentiment. Through disciplined portfolio construction, proactive risk management, and a focus on wealth creation, we seek to deliver maximum returns and sustainable value for our global clientele.',
+        subServices: [
+          {
+            title: 'Portfolio Advisory',
+            body: 'Our Portfolio Advisory services provide tailored investment solutions focused on opportunities within the Pakistan Stock Exchange (PSX). Leveraging bespoke analysis combined with market insights and structured portfolio construction, we help investors capitalize on market opportunities and achieve their tactical capital-growth objectives. Designed for self-directed investors who execute transactions independently, our advisory approach provides timely market intelligence, actionable recommendations, and strategic guidance to navigate market volatility with confidence.',
+          },
+          {
+            title: 'Portfolio Management',
+            body: 'Our Portfolio Management services provide a fully managed, end-to-end investment experience for clients who prefer to delegate investment decisions and execution to our portfolio and wealth managers. Through a discretionary mandate, we oversee portfolio strategy, instrument selection, trade execution, and risk management, ensuring capital is actively managed in line with each client\'s objectives and risk profile. Access to this white-glove service is subject to a minimum portfolio size requirement; contact our Client Care team for eligibility details.',
+          },
+        ],
+      },
+      {
+        id: 'green-sukuks',
+        title: 'Green Sukuks',
+        body: 'Whether our clients seek capital preservation, regular income, or long-term growth, our curated Sukuk offerings provide access to high-quality sovereign and corporate issuers. Combining Shariah compliance with competitive returns, our primary and secondary Sukuk desk serves as an effective platform for building wealth through ethically structured fixed-income alternatives. We are proud to be among the pioneers championing Green Sukuk as a sustainable financing solution for Pakistan. By connecting investors with ESG-aligned opportunities, we facilitate capital deployment into renewable energy, sustainable infrastructure, and climate-resilient projects — delivering attractive outcomes while supporting Pakistan\'s transition to a more sustainable, resilient economy.',
+      },
+      {
+        id: 'transaction-services',
+        title: 'Transaction Services',
+        body: 'Our Transaction Services platform provides seamless market access through RAAST ID integration, Special Convertible Rupee Accounts (SCRA), and Roshan Digital Account (RDA)-linked Roshan Equity Investment Accounts (REIA). Designed for both domestic and overseas investors, we offer efficient trade execution, swift settlement, and comprehensive post-trade support across equities, Sukuk, and other products. Combining secure, encrypted infrastructure with dedicated client care, we facilitate transactions for retail, corporate, and institutional clients with speed, transparency, and operational excellence. Supported by strong relationships across Pakistan\'s leading financial institutions, we deliver a secure and reliable cash-management and settlement experience.',
+      },
+      {
+        id: 'blackstone-intel',
+        title: 'Blackstone Intel',
+        body: 'We operate our dedicated WhatsApp channel, Blackstone Intel, to promote financial literacy and awareness of investment opportunities within the PSX. Through educational content, market insights, and investor-awareness initiatives, we help aspiring investors better understand capital markets and make informed decisions. Join free of charge for regular market updates and investor coaching.',
+      },
+      {
+        id: 'blackstone-investments',
+        title: 'Blackstone Investments',
+        body: 'For clients and premium members seeking exclusive research, proprietary insights, and market-leading advisory, we invite you to join our dedicated WhatsApp group, Blackstone Investments. Contact our Client Care team to learn about membership benefits and enrolment.',
+      },
+    ]}
+  />
+
+  <!-- ── About BIG ──────────────────────────────────────────────────────── -->
+  <AboutBIG bgClass="bg-mist" />
+
+  <!-- ── CTA band ───────────────────────────────────────────────────────── -->
+  <section class="bg-ink py-20">
+    <div class="container-big flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <h2 class="font-serif font-normal text-white mb-2" style="font-size: clamp(22px, 2.5vw, 32px);">
+          Ready to invest in halal Pakistani and global equities?
+        </h2>
+        <p class="font-sans text-sm text-white/60">Our team is ready to build a bespoke portfolio aligned with your goals.</p>
+      </div>
+      <Button variant="acid" href="/contact">Contact Us →</Button>
+    </div>
+  </section>
+
+</BaseLayout>
