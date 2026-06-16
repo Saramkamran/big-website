@@ -3,15 +3,19 @@ import Button from './Button.astro';
 ---
 
 <section class="relative min-h-[90vh] flex items-end overflow-hidden bg-ink">
-  <!-- Background image placeholder (client to swap) -->
+  <!-- Background: Karachi aerial cityscape at night -->
   <div
     class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style="background-image: url('/images/hero.jpg');"
+    style="background-image: url('https://images.unsplash.com/photo-1759210720487-c74d9764da79?auto=format&fit=crop&w=2400&q=80');"
     aria-hidden="true"
   ></div>
 
-  <!-- Dark gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/30" aria-hidden="true"></div>
+  <!-- Light gradient overlay — image stays visible -->
+  <div
+    class="absolute inset-0"
+    style="background: linear-gradient(110deg, rgba(11,11,11,0.62) 0%, rgba(11,11,11,0.25) 55%, rgba(11,11,11,0.04) 100%);"
+    aria-hidden="true"
+  ></div>
 
   <!-- Decorative oversized BIG watermark -->
   <div
