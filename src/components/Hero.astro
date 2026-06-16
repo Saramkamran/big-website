@@ -3,37 +3,34 @@ import Button from './Button.astro';
 ---
 
 <section
-  class="relative flex items-center overflow-hidden bg-ink"
+  class="relative flex items-end bg-ink"
   style="min-height: calc(100vh - var(--header-h));"
 >
-  <!-- Background: Karachi aerial cityscape at night -->
-  <div
-    class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style="background-image: url('https://images.unsplash.com/photo-1759210720487-c74d9764da79?auto=format&fit=crop&w=2400&q=80');"
-    aria-hidden="true"
-  ></div>
-
-  <!-- Light gradient overlay — image stays visible -->
-  <div
-    class="absolute inset-0"
-    style="background: linear-gradient(110deg, rgba(11,11,11,0.62) 0%, rgba(11,11,11,0.25) 55%, rgba(11,11,11,0.04) 100%);"
-    aria-hidden="true"
-  ></div>
-
-  <!-- Decorative oversized BIG watermark -->
-  <div
-    class="absolute top-0 right-0 font-sans font-extrabold text-white/5 select-none pointer-events-none leading-none"
-    style="font-size: clamp(120px, 20vw, 280px); letter-spacing: -0.04em; transform: translate(5%, -5%);"
-    aria-hidden="true"
-  >
-    BIG
+  <!-- Background layer — overflow-hidden stays HERE, never on the section -->
+  <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.unsplash.com/photo-1759210720487-c74d9764da79?auto=format&fit=crop&w=2400&q=80');"
+    ></div>
+    <!-- Light gradient overlay — image stays visible -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(110deg, rgba(11,11,11,0.62) 0%, rgba(11,11,11,0.25) 55%, rgba(11,11,11,0.04) 100%);"
+    ></div>
+    <!-- Decorative oversized BIG watermark -->
+    <div
+      class="absolute top-0 right-0 font-sans font-extrabold text-white/5 select-none pointer-events-none leading-none"
+      style="font-size: clamp(120px, 20vw, 280px); letter-spacing: -0.04em; transform: translate(5%, -5%);"
+    >
+      BIG
+    </div>
   </div>
 
-  <!-- Content: container spans full width; inner div constrains text to left -->
-  <div class="relative z-10 container-big w-full py-16">
+  <!-- Content: always visible — no overflow-hidden above this div -->
+  <div class="relative z-10 container-big w-full pt-12 pb-20 md:pb-28">
     <div class="max-w-2xl">
       <p class="label text-acid mb-6">Shariah-Compliant Investing</p>
-      <h1 class="font-serif text-white font-normal leading-[1.05] mb-8" style="font-size: clamp(44px, 7vw, 80px);">
+      <h1 class="font-serif text-white font-normal leading-[1.05] mb-8" style="font-size: clamp(40px, 6vw, 78px);">
         Principled capital.<br/>Halal growth.<br/>Global reach.
       </h1>
       <p class="font-sans text-white/80 text-lg leading-relaxed mb-10 max-w-xl">
