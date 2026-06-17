@@ -3,7 +3,7 @@ title: "Green Sukuk: Pakistan's Gateway to ESG Capital Markets"
 category: "SUSTAINABLE FINANCE"
 type: "Article"
 date: "Jun 5, 2026"
-image: "/images/insight-2.jpg"
+image: "https://images.unsplash.com/photo-1595437193398-f24279553f4f?auto=format&fit=crop&w=900&q=80"
 featured: false
 excerpt: "Pakistan's green sukuk market is growing rapidly, offering investors a way to align their portfolios with environmental and Islamic principles simultaneously."
 ---

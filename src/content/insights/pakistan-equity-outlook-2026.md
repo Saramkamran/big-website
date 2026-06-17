@@ -3,7 +3,7 @@ title: "Pakistan Equity Outlook 2026: Navigating Reform and Recovery"
 category: "MARKETS"
 type: "Article"
 date: "Jun 12, 2026"
-image: "/images/insight-1.jpg"
+image: "https://images.unsplash.com/photo-1637679149566-6af21b6e933a?auto=format&fit=crop&w=900&q=80"
 featured: true
 excerpt: "As Pakistan's macroeconomic reforms gain traction and the PSX hits new highs, we explore the opportunities and risks for Shariah-compliant equity investors in 2026."
 ---

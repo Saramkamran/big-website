@@ -3,7 +3,7 @@ title: "How Our Shariah Screening Methodology Works"
 category: "SHARIAH COMPLIANCE"
 type: "Video"
 date: "May 28, 2026"
-image: "/images/insight-3.jpg"
+image: "https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?auto=format&fit=crop&w=900&q=80"
 featured: false
 excerpt: "A deep dive into our independent Shariah screening process — from initial eligibility assessment to ongoing monitoring and portfolio maintenance."
 ---

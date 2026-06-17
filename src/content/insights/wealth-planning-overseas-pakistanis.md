@@ -3,7 +3,7 @@ title: "Wealth Planning for Overseas Pakistanis: Key Considerations"
 category: "PRIVATE WEALTH"
 type: "Podcast"
 date: "May 20, 2026"
-image: "/images/insight-4.jpg"
+image: "https://images.unsplash.com/photo-1699621106755-4fe40ce95d64?auto=format&fit=crop&w=900&q=80"
 featured: false
 excerpt: "Overseas Pakistanis face unique challenges in building and preserving wealth across jurisdictions. Our private wealth team explores the key considerations."
 ---
