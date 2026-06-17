@@ -49,24 +49,6 @@ import ContactCTA from '../../components/ContactCTA.astro';
     </div>
   </section>
 
-  <!-- ── Pillar intro strip ─────────────────────────────────────────────── -->
-  <section class="bg-acid py-10">
-    <div class="container-big">
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-5">
-        {[
-          ['Fixed Income', '#am-fixed-income'],
-          ['Equity Funds', '#am-equity'],
-          ['ETFs', '#am-etfs'],
-          ['Multi-Asset', '#am-multi-asset'],
-          ['Pensions', '#am-pensions'],
-        ].map(([label, href]) => (
-          <a href={href} class="group">
-            <span class="font-sans font-bold text-xl md:text-2xl text-ink group-hover:opacity-60 transition-opacity block">{label}</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
   <ServiceSection
