@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import ArrowLink from '../components/ArrowLink.astro';
+import ContactCTA from '../components/ContactCTA.astro';
 
 const accreditations = [
   { name: 'ACCA', label: 'ACCA Employer Accreditation' },
@@ -14,10 +15,10 @@ const accreditations = [
 ];
 
 const leadership = [
-  { name: '[Name Placeholder]', title: 'Chief Executive Officer', image: '/images/leader-1.jpg' },
-  { name: '[Name Placeholder]', title: 'Chief Investment Officer', image: '/images/leader-2.jpg' },
-  { name: '[Name Placeholder]', title: 'Head of Private Wealth', image: '/images/leader-3.jpg' },
-  { name: '[Name Placeholder]', title: 'Head of Asset Management', image: '/images/leader-4.jpg' },
+  { name: '[Name Placeholder]', title: 'Chief Executive Officer', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80' },
+  { name: '[Name Placeholder]', title: 'Chief Investment Officer', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80' },
+  { name: '[Name Placeholder]', title: 'Head of Private Wealth', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80' },
+  { name: '[Name Placeholder]', title: 'Head of Asset Management', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80' },
 ];
 ---
 
@@ -36,13 +37,13 @@ const leadership = [
       <!-- Three photo row -->
       <div class="grid grid-cols-3 gap-4 mb-16">
         <div class="aspect-[4/3] bg-mist overflow-hidden">
-          <img src="/images/firm-about-1.jpg" alt="BIG team at work" class="w-full h-full object-cover" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1573164574511-73c773193279?auto=format&fit=crop&w=800&q=80" alt="BIG team at work" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <div class="aspect-[4/3] bg-mist overflow-hidden">
-          <img src="/images/firm-about-2.jpg" alt="Investment advisory meeting" class="w-full h-full object-cover" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=800&q=80" alt="Investment advisory meeting" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <div class="aspect-[4/3] bg-mist overflow-hidden">
-          <img src="/images/firm-about-3.jpg" alt="BIG community event" class="w-full h-full object-cover" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="BIG investment research in action" class="w-full h-full object-cover" loading="lazy" />
         </div>
       </div>
 
@@ -147,16 +148,10 @@ const leadership = [
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-section bg-ink">
-    <div class="container-big text-center">
-      <h2 class="font-serif font-normal text-white mb-6" style="font-size: clamp(28px, 3.5vw, 48px); line-height: 1.1;">
-        Ready to build your Shariah-compliant portfolio?
-      </h2>
-      <p class="font-sans text-white/70 text-base mb-10 max-w-xl mx-auto leading-relaxed">
-        Speak with our team to explore tailored investment solutions aligned with your goals and principles.
-      </p>
-      <Button variant="acid" href="/contact">Contact Us</Button>
-    </div>
-  </section>
+  <ContactCTA
+    headline="Speak with Our Team"
+    subtext="We would welcome the opportunity to discuss how BIG can serve your investment and advisory needs."
+    image="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
+    imageAlt="BIG wealth advisor in client consultation"
+  />
 </BaseLayout>

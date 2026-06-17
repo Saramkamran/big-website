@@ -7,6 +7,7 @@ import NewsletterBand from '../components/NewsletterBand.astro';
 import Card from '../components/Card.astro';
 import ArrowLink from '../components/ArrowLink.astro';
 import Button from '../components/Button.astro';
+import ContactCTA from '../components/ContactCTA.astro';
 
 const insights = [
   {
@@ -15,7 +16,7 @@ const insights = [
     title: 'Pakistan Equity Outlook 2026: Navigating Reform and Recovery',
     type: 'Article',
     date: 'Jun 12, 2026',
-    image: '/images/insight-1.jpg',
+    image: 'https://images.unsplash.com/photo-1637679149566-6af21b6e933a?auto=format&fit=crop&w=900&q=80',
     featured: true,
   },
   {
@@ -24,7 +25,7 @@ const insights = [
     title: 'Green Sukuk: Pakistan\'s Gateway to ESG Capital Markets',
     type: 'Article',
     date: 'Jun 5, 2026',
-    image: '/images/insight-2.jpg',
+    image: 'https://images.unsplash.com/photo-1595437193398-f24279553f4f?auto=format&fit=crop&w=900&q=80',
     featured: false,
   },
   {
@@ -33,7 +34,7 @@ const insights = [
     title: 'How Our Shariah Screening Methodology Works',
     type: 'Video',
     date: 'May 28, 2026',
-    image: '/images/insight-3.jpg',
+    image: 'https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?auto=format&fit=crop&w=900&q=80',
     featured: false,
   },
   {
@@ -42,7 +43,7 @@ const insights = [
     title: 'Wealth Planning for Overseas Pakistanis: Key Considerations',
     type: 'Podcast',
     date: 'May 20, 2026',
-    image: '/images/insight-4.jpg',
+    image: 'https://images.unsplash.com/photo-1699621106755-4fe40ce95d64?auto=format&fit=crop&w=900&q=80',
     featured: false,
   },
 ];
@@ -51,19 +52,19 @@ const firmInAction = [
   {
     category: 'AWARDS & RECOGNITION',
     title: 'BIG Recognised as Top Shariah-Compliant Brokerage in Pakistan',
-    image: '/images/firm-1.jpg',
+    image: 'https://images.unsplash.com/photo-1573164574511-73c773193279?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Black Stone Islamic Global has been honoured for its commitment to Shariah-compliant investing and client excellence.',
   },
   {
     category: 'DEAL SPOTLIGHT',
     title: 'Advising on Pakistan\'s First Sovereign Green Sukuk Issuance',
-    image: '/images/firm-2.jpg',
+    image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=800&q=80',
     excerpt: 'BIG advised on a landmark Rs 25B sovereign green sukuk transaction, channelling capital into renewable energy.',
   },
   {
     category: 'AWARDS & RECOGNITION',
     title: 'ACCA & ICAP Employer Accreditation Renewed for 2026',
-    image: '/images/firm-3.jpg',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
     excerpt: 'BIG maintains its prestigious ACCA and ICAP employer accreditations, reflecting our investment in professional talent.',
   },
 ];
@@ -83,32 +84,32 @@ const firmInAction = [
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <Card
-          image="/images/pillar-markets.jpg"
-          imageAlt="Trading screens showing market data"
+          image="https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?auto=format&fit=crop&w=800&q=80"
+          imageAlt="Trading screens showing live market data"
           label="PSX & GLOBAL MARKETS"
           title="Shariah-Compliant Equities & Sukuks"
           excerpt="Bespoke halal equity strategies, green sukuk access, and seamless transaction services for domestic and overseas investors."
           href="/#shariah-equities"
         />
         <Card
-          image="/images/pillar-am.jpg"
-          imageAlt="Asset management professionals"
+          image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+          imageAlt="Asset management analyst reviewing portfolio data"
           label="ASSET MANAGEMENT"
           title="Shariah-Screened Funds & ETFs"
           excerpt="Fixed income, equity, multi-asset, and ETF solutions — rigorously screened and professionally managed."
           href="/#am-fixed-income"
         />
         <Card
-          image="/images/pillar-wealth.jpg"
-          imageAlt="Private wealth advisory"
+          image="https://images.unsplash.com/photo-1587783456120-fa80c81a6c4c?auto=format&fit=crop&w=800&q=80"
+          imageAlt="Private wealth advisory office"
           label="PRIVATE WEALTH"
           title="Bespoke Wealth & Legacy Planning"
           excerpt="Personalised à la carte strategies across wealth planning, real estate, private equity, and philanthropy."
           href="/#wealth-planning"
         />
         <Card
-          image="/images/pillar-specialized.jpg"
-          imageAlt="Corporate advisors"
+          image="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?auto=format&fit=crop&w=800&q=80"
+          imageAlt="Corporate boardroom for specialized advisory"
           label="SPECIALIZED SERVICES"
           title="Family Office, M&A & IPO Advisory"
           excerpt="Coordinated family office oversight, alternative investments, M&A advisory, and equity capital markets."
@@ -357,6 +358,8 @@ const firmInAction = [
       </div>
     </div>
   </section>
+
+  <ContactCTA />
 
   <NewsletterBand />
 </BaseLayout>

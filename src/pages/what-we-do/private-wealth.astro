@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ServiceSection from '../../components/ServiceSection.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
 ---
 
 <BaseLayout
@@ -118,17 +119,11 @@ import Button from '../../components/Button.astro';
   <!-- ── About BIG ──────────────────────────────────────────────────────── -->
   <AboutBIG bgClass="bg-mist" />
 
-  <!-- ── CTA band ───────────────────────────────────────────────────────── -->
-  <section class="bg-ink py-20">
-    <div class="container-big flex flex-col md:flex-row items-center justify-between gap-8">
-      <div>
-        <h2 class="font-serif font-normal text-white mb-2" style="font-size: clamp(22px, 2.5vw, 32px);">
-          Let's build your Shariah-compliant wealth strategy.
-        </h2>
-        <p class="font-sans text-sm text-white/60">Our private wealth team is ready to understand your goals and design your plan.</p>
-      </div>
-      <Button variant="acid" href="/contact">Contact Us →</Button>
-    </div>
-  </section>
+  <ContactCTA
+    headline="Begin Your Wealth Journey"
+    subtext="Our private wealth advisors will take time to understand your aspirations and design a bespoke plan aligned with your legacy."
+    image="https://images.unsplash.com/photo-1587783456120-fa80c81a6c4c?auto=format&fit=crop&w=1200&q=80"
+    imageAlt="Luxury private wealth advisory office"
+  />
 
 </BaseLayout>

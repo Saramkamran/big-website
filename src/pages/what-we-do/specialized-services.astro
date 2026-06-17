@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ServiceSection from '../../components/ServiceSection.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
 ---
 
 <BaseLayout
@@ -100,17 +101,11 @@ import Button from '../../components/Button.astro';
   <!-- ── About BIG ──────────────────────────────────────────────────────── -->
   <AboutBIG bgClass="bg-mist" />
 
-  <!-- ── CTA band ───────────────────────────────────────────────────────── -->
-  <section class="bg-ink py-20">
-    <div class="container-big flex flex-col md:flex-row items-center justify-between gap-8">
-      <div>
-        <h2 class="font-serif font-normal text-white mb-2" style="font-size: clamp(22px, 2.5vw, 32px);">
-          Let's explore how we can make the difference.
-        </h2>
-        <p class="font-sans text-sm text-white/60">Our specialized advisory team is ready to discuss your mandate in confidence.</p>
-      </div>
-      <Button variant="acid" href="/contact">Contact Us →</Button>
-    </div>
-  </section>
+  <ContactCTA
+    headline="Let's Discuss Your Mandate"
+    subtext="Our specialized advisory team is ready to explore how BIG can make the difference — in confidence and at the highest standard."
+    image="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?auto=format&fit=crop&w=1200&q=80"
+    imageAlt="Executive boardroom — specialized advisory and M&A"
+  />
 
 </BaseLayout>

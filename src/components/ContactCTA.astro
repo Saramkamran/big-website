@@ -1,0 +1,52 @@
+---
+interface Props {
+  headline?: string;
+  subtext?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const {
+  headline = 'Start the Conversation',
+  subtext = 'Contact Black Stone Islamic Global for a detailed discussion of your needs.',
+  image = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
+  imageAlt = 'BIG financial advisor in client consultation',
+} = Astro.props;
+---
+
+<section class="border-t border-line">
+  <div class="grid grid-cols-1 lg:grid-cols-2" style="min-height: 420px;">
+
+    <!-- Left: mist panel -->
+    <div class="bg-mist flex items-center px-8 py-16 lg:px-16 xl:px-24 order-2 lg:order-1">
+      <div class="max-w-md">
+        <h2
+          class="font-serif font-normal text-ink mb-5"
+          style="font-size: clamp(26px, 3vw, 40px); line-height: 1.15;"
+        >
+          {headline}
+        </h2>
+        <p class="font-sans text-base text-stone leading-relaxed mb-8">
+          {subtext}
+        </p>
+        <a
+          href="/contact"
+          class="inline-block bg-ink text-white font-sans text-sm font-semibold px-7 py-3 hover:bg-stone transition-colors"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: photo -->
+    <div class="overflow-hidden bg-stone/10 min-h-[280px] lg:min-h-0 order-1 lg:order-2">
+      <img
+        src={image}
+        alt={imageAlt}
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>
