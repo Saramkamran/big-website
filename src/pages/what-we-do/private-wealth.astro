@@ -39,7 +39,7 @@ import ContactCTA from '../../components/ContactCTA.astro';
         <p class="font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
           We take a highly personalised à la carte approach to understanding your wealth aspirations, financial commitments, life dreams, and non-negotiables — designing bespoke solutions that preserve and grow wealth across generations.
         </p>
-        <Button variant="acid" href="#wealth-planning">Explore Services</Button>
+        <Button variant="acid" href="#wealth-planning">Explore What We Do</Button>
       </div>
     </div>
 
@@ -52,19 +52,18 @@ import ContactCTA from '../../components/ContactCTA.astro';
   <!-- ── Pillar intro strip ─────────────────────────────────────────────── -->
   <section class="bg-acid py-10">
     <div class="container-big">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-5">
         {[
-          ['01', 'Wealth Planning', '#wealth-planning'],
-          ['02', 'Dedicated Investments', '#dedicated-investments'],
-          ['03', 'Private Equity', '#private-equity'],
-          ['04', 'Real Estate', '#real-estate'],
-          ['05', 'Pakistan Energy', '#pakistan-energy'],
-          ['06', 'Philanthropy & Zakat', '#philanthropy-zakat'],
-          ['07', 'Professional Services', '#professional-services'],
-        ].map(([num, label, href]) => (
-          <a href={href} class="group flex items-start gap-3">
-            <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">{num}</span>
-            <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">{label}</span>
+          ['Wealth Planning', '#wealth-planning'],
+          ['Dedicated Investments', '#dedicated-investments'],
+          ['Private Equity', '#private-equity'],
+          ['Real Estate', '#real-estate'],
+          ['Pakistan Energy', '#pakistan-energy'],
+          ['Philanthropy & Zakat', '#philanthropy-zakat'],
+          ['Professional Services', '#professional-services'],
+        ].map(([label, href]) => (
+          <a href={href} class="group">
+            <span class="font-sans font-bold text-xl md:text-2xl text-ink group-hover:opacity-60 transition-opacity block">{label}</span>
           </a>
         ))}
       </div>

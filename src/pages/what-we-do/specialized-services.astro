@@ -39,7 +39,7 @@ import ContactCTA from '../../components/ContactCTA.astro';
         <p class="font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
           Our specialized advisory capabilities address the full breadth of sophisticated client requirements — from coordinated family office oversight and alternative investments to cross-border M&A mandates and equity capital markets transactions.
         </p>
-        <Button variant="acid" href="#family-office">Explore Services</Button>
+        <Button variant="acid" href="#family-office">Explore What We Do</Button>
       </div>
     </div>
 
@@ -52,16 +52,15 @@ import ContactCTA from '../../components/ContactCTA.astro';
   <!-- ── Pillar intro strip ─────────────────────────────────────────────── -->
   <section class="bg-acid py-10">
     <div class="container-big">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-5">
         {[
-          ['01', 'BIG Family Office', '#family-office'],
-          ['02', 'Alternative Investments', '#alternatives'],
-          ['03', 'M&A and Carve-Out', '#mergers-acquisitions'],
-          ['04', 'IPOs (Pakistan & US)', '#ipos'],
-        ].map(([num, label, href]) => (
-          <a href={href} class="group flex items-start gap-3">
-            <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">{num}</span>
-            <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">{label}</span>
+          ['BIG Family Office', '#family-office'],
+          ['Alternative Investments', '#alternatives'],
+          ['M&A and Carve-Out', '#mergers-acquisitions'],
+          ['IPOs (Pakistan & US)', '#ipos'],
+        ].map(([label, href]) => (
+          <a href={href} class="group">
+            <span class="font-sans font-bold text-xl md:text-2xl text-ink group-hover:opacity-60 transition-opacity block">{label}</span>
           </a>
         ))}
       </div>

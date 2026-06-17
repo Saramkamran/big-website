@@ -39,7 +39,7 @@ import ContactCTA from '../../components/ContactCTA.astro';
         <p class="font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
           Our comprehensive suite of asset-management solutions — across fixed income, equity, ETFs, multi-asset, and pensions — is designed to navigate market challenges and deliver returns aligned with your expectations, within the bounds of Islamic finance.
         </p>
-        <Button variant="acid" href="#am-fixed-income">Explore Solutions</Button>
+        <Button variant="acid" href="#am-fixed-income">Explore What We Do</Button>
       </div>
     </div>
 
@@ -52,22 +52,18 @@ import ContactCTA from '../../components/ContactCTA.astro';
   <!-- ── Pillar intro strip ─────────────────────────────────────────────── -->
   <section class="bg-acid py-10">
     <div class="container-big">
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-5">
         {[
-          ['01', 'Fixed Income'],
-          ['02', 'Equity Funds'],
-          ['03', 'ETFs'],
-          ['04', 'Multi-Asset'],
-          ['05', 'Pensions'],
-        ].map(([num, label], i) => {
-          const anchors = ['#am-fixed-income','#am-equity','#am-etfs','#am-multi-asset','#am-pensions'];
-          return (
-            <a href={anchors[i]} class="group flex items-start gap-3">
-              <span class="font-sans font-bold text-2xl text-ink/20 group-hover:text-ink/40 transition-colors">{num}</span>
-              <span class="font-sans font-semibold text-sm text-ink group-hover:underline decoration-ink underline-offset-2">{label}</span>
-            </a>
-          );
-        })}
+          ['Fixed Income', '#am-fixed-income'],
+          ['Equity Funds', '#am-equity'],
+          ['ETFs', '#am-etfs'],
+          ['Multi-Asset', '#am-multi-asset'],
+          ['Pensions', '#am-pensions'],
+        ].map(([label, href]) => (
+          <a href={href} class="group">
+            <span class="font-sans font-bold text-xl md:text-2xl text-ink group-hover:opacity-60 transition-opacity block">{label}</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
