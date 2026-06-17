@@ -13,8 +13,9 @@ export default {
         line:   '#E5E7EB',
       },
       fontFamily: {
-        serif: ['Newsreader', 'Source Serif 4', 'Georgia', 'serif'],
-        sans:  ['Inter', 'system-ui', 'sans-serif'],
+        serif:   ['Newsreader', 'Source Serif 4', 'Georgia', 'serif'],
+        sans:    ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'Newsreader', 'Georgia', 'serif'],
       },
       fontSize: {
         'display-xl': ['80px', { lineHeight: '1.05' }],
