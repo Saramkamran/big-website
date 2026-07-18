@@ -3,6 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 
 const sent = Astro.url.searchParams.get('sent') === 'true';
+const errorType = Astro.url.searchParams.get('error');
+const errorMessage = errorType === 'validation'
+  ? 'Please check the required fields and enter a valid email address, then try again.'
+  : errorType
+    ? 'Sorry — we could not send your message just now. Please try again, or email us directly.'
+    : '';
 
 const services = [
   'Shariah Equities — Portfolio Advisory',
@@ -85,9 +91,21 @@ const services = [
           ) : (
             <form
               method="POST"
-              action="https://formspree.io/f/REPLACE_WITH_CONTACT_FORM_ID"
+              action="/form/contact.php"
               class="space-y-6"
             >
+              {errorMessage && (
+                <div class="bg-red-50 border-l-4 border-red-500 px-5 py-4">
+                  <p class="font-sans text-sm text-red-800">{errorMessage}</p>
+                </div>
+              )}
+
+              <!-- Honeypot: hidden from users; bots that fill it are silently rejected -->
+              <div class="hidden" aria-hidden="true">
+                <label>Company
+                  <input type="text" name="company" tabindex="-1" autocomplete="off" />
+                </label>
+              </div>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>

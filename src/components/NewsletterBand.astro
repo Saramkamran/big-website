@@ -1,8 +1,10 @@
 ---
-const sent = Astro.url.searchParams.get('newsletter') === 'sent';
+const newsletterStatus = Astro.url.searchParams.get('newsletter');
+const sent = newsletterStatus === 'sent';
+const failed = newsletterStatus === 'error';
 ---
 
-<section class="bg-acid py-section">
+<section id="newsletter" class="bg-acid py-section">
   <div class="container-big max-w-2xl">
     <h2 class="font-serif font-normal text-ink mb-4" style="font-size: clamp(32px, 4vw, 52px); line-height: 1.1;">
       Subscribe to BIG Briefings
@@ -11,6 +13,12 @@ const sent = Astro.url.searchParams.get('newsletter') === 'sent';
       Our weekly briefings deliver the latest insights on PSX, global Islamic markets, and Shariah-compliant investing — from BIG analysts and economists.
     </p>
 
+    {failed && (
+      <div class="bg-ink/90 text-white px-6 py-4 font-sans text-sm font-medium mb-6">
+        Sorry — we couldn't complete your subscription. Please check your email address and try again.
+      </div>
+    )}
+
     {sent ? (
       <div class="bg-ink text-white px-6 py-4 font-sans text-sm font-medium">
         Thank you for subscribing! You'll receive our next briefing shortly.
@@ -18,9 +26,15 @@ const sent = Astro.url.searchParams.get('newsletter') === 'sent';
     ) : (
       <form
         method="POST"
-        action="https://formspree.io/f/REPLACE_WITH_NEWSLETTER_FORM_ID"
+        action="/form/newsletter.php"
         class="flex flex-col sm:flex-row gap-0 max-w-lg"
       >
+        <!-- Honeypot: hidden from users; bots that fill it are silently rejected -->
+        <div class="hidden" aria-hidden="true">
+          <label>Company
+            <input type="text" name="company" tabindex="-1" autocomplete="off" />
+          </label>
+        </div>
         <input
           type="email"
           name="email"
