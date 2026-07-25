@@ -4,11 +4,6 @@ import ServiceShowcase from '../../components/ServiceShowcase.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
-import PsxShariahEquities from '../../components/illustrations/PsxShariahEquities.astro';
-import PsxGreenSukuks from '../../components/illustrations/PsxGreenSukuks.astro';
-import PsxTransactionServices from '../../components/illustrations/PsxTransactionServices.astro';
-import PsxBlackstoneIntel from '../../components/illustrations/PsxBlackstoneIntel.astro';
-import PsxBlackstoneInvestments from '../../components/illustrations/PsxBlackstoneInvestments.astro';
 ---
 
 <BaseLayout
@@ -60,14 +55,12 @@ import PsxBlackstoneInvestments from '../../components/illustrations/PsxBlacksto
     pillar="PSX & Global Markets"
     headline="How We Make Things Happen for You"
     intro="Our boutique combines disciplined investment research, rigorous Islamic screening, and deep PSX and global market expertise to deliver tailored halal investment solutions for institutional and individual investors."
-    separator="double-rule"
     services={[
       {
         id: 'shariah-equities',
         title: 'Shariah Equities',
-        layout: 'mosaic',
-        tone: 'paper',
-        Art: PsxShariahEquities,
+        image: 'https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?auto=format&fit=crop&w=1200&q=80',
+        imageAlt: 'Analyst reviewing equity research and market charts',
         body: 'Our Shariah-compliant boutique equities business combines disciplined investment research, rigorous Islamic screening, and deep expertise to deliver tailored halal investment solutions for institutional and individual investors. We work closely with our clients to understand their investment objectives and provide a high-touch, bespoke advisory experience designed to align capital deployment with their financial goals and risk profile. Across Swing, Positional, and Long-Term proprietary strategies, we identify opportunities in Shariah-compliant businesses supported by strong fundamentals, favourable technical trends, and constructive market sentiment. Through disciplined portfolio construction, proactive risk management, and a focus on wealth creation, we seek to deliver maximum returns and sustainable value for our global clientele.',
         subServices: [
           {
@@ -83,33 +76,29 @@ import PsxBlackstoneInvestments from '../../components/illustrations/PsxBlacksto
       {
         id: 'green-sukuks',
         title: 'Green Sukuks',
-        layout: 'split-right',
-        tone: 'paper',
-        Art: PsxGreenSukuks,
+        image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80',
+        imageAlt: 'Solar panels under a clear sky — sustainable green infrastructure',
         body: 'Whether our clients seek capital preservation, regular income, or long-term growth, our curated Sukuk offerings provide access to high-quality sovereign and corporate issuers. Combining Shariah compliance with competitive returns, our primary and secondary Sukuk desk serves as an effective platform for building wealth through ethically structured fixed-income alternatives. We are proud to be among the pioneers championing Green Sukuk as a sustainable financing solution for Pakistan. By connecting investors with ESG-aligned opportunities, we facilitate capital deployment into renewable energy, sustainable infrastructure, and climate-resilient projects — delivering attractive outcomes while supporting Pakistan\'s transition to a more sustainable, resilient economy.',
       },
       {
         id: 'transaction-services',
         title: 'Transaction Services',
-        layout: 'band',
-        tone: 'mist',
-        Art: PsxTransactionServices,
+        image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
+        imageAlt: 'Secure digital banking and mobile transaction technology',
         body: 'Our Transaction Services platform provides seamless market access through RAAST ID integration, Special Convertible Rupee Accounts (SCRA), and Roshan Digital Account (RDA)-linked Roshan Equity Investment Accounts (REIA). Designed for both domestic and overseas investors, we offer efficient trade execution, swift settlement, and comprehensive post-trade support across equities, Sukuk, and other products. Combining secure, encrypted infrastructure with dedicated client care, we facilitate transactions for retail, corporate, and institutional clients with speed, transparency, and operational excellence. Supported by strong relationships across Pakistan\'s leading financial institutions, we deliver a secure and reliable cash-management and settlement experience.',
       },
       {
         id: 'blackstone-intel',
         title: 'Blackstone Intel',
-        layout: 'ledger',
-        tone: 'ink',
-        Art: PsxBlackstoneIntel,
+        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+        imageAlt: 'Reviewing market updates and financial news on a mobile device',
         body: 'We operate our dedicated WhatsApp channel, Blackstone Intel, to promote financial literacy and awareness of investment opportunities within the PSX. Through educational content, market insights, and investor-awareness initiatives, we help aspiring investors better understand capital markets and make informed decisions. Join free of charge for regular market updates and investor coaching.',
       },
       {
         id: 'blackstone-investments',
         title: 'Blackstone Investments',
-        layout: 'ledger',
-        tone: 'ink',
-        Art: PsxBlackstoneInvestments,
+        image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80',
+        imageAlt: 'Private advisory meeting for premium members',
         body: 'For clients and premium members seeking exclusive research, proprietary insights, and market-leading advisory, we invite you to join our dedicated WhatsApp group, Blackstone Investments. Contact our Client Care team to learn about membership benefits and enrolment.',
       },
     ]}

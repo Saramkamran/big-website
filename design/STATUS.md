@@ -1,38 +1,40 @@
-# Visual-Enrichment — As-Built Status
+# What-We-Do & Login — As-Built Status (photographic sections)
 
-Islamic-geometric illustrated sections across all non-home pages. Delivered.
+The what-we-do service sections and the login page are **photo-based**, in the Goldman-Sachs
+editorial style (the same alternating image/text pattern the Home page uses).
 
 ## What shipped
-- **`ServiceShowcase.astro`** (7 layout variants + 5 separator styles) replaced the flat
-  `ServiceSection.astro` (deleted). The 4 what-we-do pages now render each service as its own
-  illustrated `<section id>` — anchors preserved, §11 copy byte-identical.
-- **26 illustration components** in `src/components/illustrations/` (25 artworks + `GeometricPattern`
-  tiling utility). Every piece is inline SVG, `currentColor` + token classes only (zero raw hex/rgb),
-  decorative `aria-hidden`, Islamic-geometric, and depicts its service per `ILLUSTRATION-SPEC.md`.
-- **4 bespoke page treatments**: About (compass-construction backdrop, star accreditation bullets,
-  arch-clipped leadership photos, emblem "Our Approach" header), Contact (mihrab portal + girih map
-  tile — form left byte-identical), Login (ink "private gate" + jali pattern + card emblem), Insights
-  (crescent-star tile field behind the header).
+- **`ServiceShowcase.astro`** renders each service as its own `<section id={service.id}>`: a tailored
+  photo on one side, heading + copy on the other, **alternating sides down the page** with alternating
+  `bg-paper` / `bg-mist` backgrounds. `subServices` render as `border-l-2 border-acid` blocks; an
+  optional acid `note` pill is supported (Pensions "In Development").
+- **21 curated photos** — one per service across the 4 pillar pages, theme-matched (markets, solar,
+  fintech, refinery, real estate, port/commodities, handshake, Manhattan skyline, etc.). Currently
+  remote Unsplash URLs (all verified to resolve **and** content-checked via headless-Chrome QA); each
+  is a one-line swap for the client's own photo (URL → `/images/<id>.jpg`).
+- **Login** is a clean, minimal typographic card — no photo, no SVG.
 
-## Verified invariants
+## Removed (superseded)
+- The Islamic-geometric **SVG illustration system** was removed at the user's request: 22 components
+  deleted (21 service illustrations + `LoginJali`), and the SVG design docs
+  (`ILLUSTRATION-SPEC.md`, `LAYOUT-VARIANTS.md`, `manifest/`) pruned.
+- **Kept** (still used by out-of-scope pages): `GeometricPattern.astro`, `AboutConstruction.astro`
+  (about), `ContactPortal.astro` (contact), `InsightsTileField.astro` (insights).
+
+## Scope boundary
+Changed: the 4 `what-we-do/*` pages + `login.astro`. **Untouched:** Home, About, Contact, Insights —
+so About/Contact/Insights **retain their SVG accents** (per the user's instruction). Heroes,
+`AboutBIG`, `ContactCTA`, and the contact form are unchanged.
+
+## Verified
 - `npm run build` passes — 13 pages.
-- All 21 mega-menu anchor ids present exactly once each in `dist/`.
-- Service copy (title/body/subServices) diffs clean against `design/baseline/`.
-- Contact `<form>` subtree md5-identical to baseline.
-- Zero raw hex/rgb in illustrations; acid used only as fills/nodes/hairlines.
-- Layout reuse cap held: band ×4, emblem ×4 (incl. About header), all others ≤3.
-- Per-page distinctness: each page has a unique separator + tone-rhythm + art-style triple.
+- All 21 mega-menu anchor ids present exactly once in `dist/`.
+- Service copy (title/body/subServices) byte-identical to `design/baseline/*`.
+- Zero illustration imports remain in the 5 reworked pages.
+- Layout + every photo confirmed via headless-Chrome screenshots (4 initial mismatches swapped:
+  am-equity, pakistan-energy, alternatives, ipos).
 
-## Process note
-Execution used the planned multi-agent workflow (build → review → improve ×3 per track + cross-page
-audit). The run was **interrupted mid-way by a Fable-5 usage-credit exhaustion** (22 of 31 agents
-completed; 9 failed purely on credits, not on merit). Work already lands on disk as agents edit files
-directly, so the completed tracks were fully built and reviewed. The remainder was finished **inline
-on Opus**: the 3 Specialized-Services illustrations left with builder-only art had their stale
-`STUB` headers corrected, `SsMergersAcquisitions` was rebuilt (interlocking chain-links + acid
-carve-out) after a visual QA pass (headless-Chrome contact sheet of all 25 pieces), and the
-cross-page audit (anchors / copy / tokens / reuse-cap / distinctness) was run by hand.
-
-The per-track manifests in `design/manifest/*.json` reflect the round each track reached before the
-interruption (some at round 1–2) — they are a working record, not the final gate. This file is the
-authoritative as-built summary.
+## Notes / easy tweaks
+- `family-office` and `ipos` both use dusk city skylines (different cities, opposite sides, separated) —
+  fine as-is, trivially swappable if more contrast is wanted.
+- Client photos: replace any `image:` URL in the 4 `what-we-do/*.astro` service arrays.
