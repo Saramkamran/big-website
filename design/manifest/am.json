@@ -1,0 +1,50 @@
+{
+  "page": "asset-management",
+  "file": "src/pages/what-we-do/asset-management.astro",
+  "feel": "layered duotone planes",
+  "separator": "none",
+  "round": 1,
+  "escalations": [],
+  "sections": [
+    {
+      "sectionId": "am-fixed-income",
+      "layout": "split-left",
+      "tone": "paper",
+      "artFile": "AmFixedIncome.astro",
+      "status": "built",
+      "issues": []
+    },
+    {
+      "sectionId": "am-equity",
+      "layout": "band",
+      "tone": "ink",
+      "artFile": "AmEquity.astro",
+      "status": "built",
+      "issues": []
+    },
+    {
+      "sectionId": "am-etfs",
+      "layout": "offset-card",
+      "tone": "mist",
+      "artFile": "AmEtfs.astro",
+      "status": "built",
+      "issues": []
+    },
+    {
+      "sectionId": "am-multi-asset",
+      "layout": "mosaic",
+      "tone": "paper",
+      "artFile": "AmMultiAsset.astro",
+      "status": "built",
+      "issues": []
+    },
+    {
+      "sectionId": "am-pensions",
+      "layout": "emblem",
+      "tone": "mist",
+      "artFile": "AmPensions.astro",
+      "status": "built",
+      "issues": []
+    }
+  ]
+}

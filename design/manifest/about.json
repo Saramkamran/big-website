@@ -1,0 +1,70 @@
+{
+  "page": "about",
+  "file": "src/pages/about.astro",
+  "feel": "drafting-table geometry",
+  "separator": null,
+  "round": 2,
+  "status": "improved",
+  "escalations": [],
+  "sections": [
+    {
+      "sectionId": "statement-construction",
+      "layout": "bespoke",
+      "tone": "paper",
+      "artFile": "AboutConstruction.astro",
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "AboutConstruction watermark rendered at opacity-[0.08] ink-on-paper — the 0.75-width construction rules, prick points, and meeting compass arcs sat at the edge of perception; the drafting-table story read as faint noise rather than a discoverable construction.",
+          "resolution": "Raised the wrapper to opacity-[0.12] (within the reviewer's 0.10-0.14 range). Behind the 88px display h1 the 12% ink hairlines stay text-safe while the arcs and prick points now register. pointer-events-none/select-none and section overflow-hidden kept as-is; SVG untouched."
+        },
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Watermark div was hidden md:block, so the page's only illustration component never appeared on mobile — the drafting-table feel on small screens rested solely on the 64px emblem and 12px chip glyphs.",
+          "resolution": "Replaced hidden md:block with a reduced mobile presence: w-48 top-right crop at -top-8 -right-12 (same 0.12 opacity), scaling to the original md:-top-10 md:-right-16 md:w-[26rem] lg:w-[32rem] xl:w-[36rem] on desktop. Section overflow-hidden already contains the bleed, so no overlap or x-scroll hazard."
+        }
+      ]
+    },
+    {
+      "sectionId": "approach-emblem-header",
+      "layout": "emblem",
+      "tone": "mist",
+      "artFile": null,
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Emblem was w-16 (64px) with 0.75-width construction rules at 50-70% opacity — at 1x DPR the hairlines aliased toward invisibility, collapsing the 'construction resolved' concept into a plain star outline in a circle.",
+          "resolution": "Scaled the emblem w-16 -> w-24 (96px; guides now render ~1.1px effective) and lifted the opacity-50 guides one step to opacity-60 (inscribed squares stay at opacity-70, preserving the guide hierarchy). Result star kept dominant at stroke-width 2. Tone, centering, byte-identical 'Our Approach' h2, and heading order unchanged."
+        }
+      ]
+    },
+    {
+      "sectionId": "accreditation-star-bullets",
+      "layout": "bespoke",
+      "tone": "paper",
+      "artFile": null,
+      "status": "built",
+      "issues": []
+    },
+    {
+      "sectionId": "leadership-arch-frames",
+      "layout": "bespoke",
+      "tone": "mist",
+      "artFile": null,
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Mihrab clip was applied to the img while its wrapper kept aspect-[3/4] bg-stone/10, so the clipped-away top corners exposed a gray rectangle behind every arch — each portrait read as an arch inside a visible box.",
+          "resolution": "Moved the clip-path (same url(#about-arch-frame) + -webkit- fallback) onto the wrapper div, so the stone/10 placeholder tint is itself arch-shaped and the corners show section mist. Shared objectBoundingBox clipPath, unique prefixed id, and graceful unclipped rectangle fallback all preserved."
+        }
+      ]
+    }
+  ]
+}

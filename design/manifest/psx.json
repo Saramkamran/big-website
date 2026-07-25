@@ -1,0 +1,112 @@
+{
+  "page": "psx-global-markets",
+  "file": "src/pages/what-we-do/psx-global-markets.astro",
+  "feel": "precision observatory",
+  "separator": "double-rule",
+  "round": 2,
+  "status": "improved",
+  "escalations": [
+    "ILLUSTRATION-SPEC amendment proposal (design/ILLUSTRATION-SPEC.md is shared — not edited): the Psx pillar stroke range 1.5-2.5 assumes split/mosaic/band render sizes (~384-560px). The two ledger-rail emblems (PsxBlackstoneIntel, PsxBlackstoneInvestments) render at only 80-96px, so they deliberately use strokes 5-6 in the 480 viewBox (~1.0-1.2px on screen — optically equivalent to the pillar's fine-line weight). Suggest the spec add a note permitting ledger-scale optical compensation so a later round doesn't 'correct' the weights and make the emblems invisible. The compensation is documented in both files' header comments."
+  ],
+  "sections": [
+    {
+      "sectionId": "shariah-equities",
+      "layout": "mosaic",
+      "tone": "paper",
+      "artFile": "PsxShariahEquities.astro",
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Stale '// STUB (round 0)' header comment survived the rebuild; auditors grepping for stub markers would false-positive it as a surviving stub (auto-critical in this workflow).",
+          "resolution": "Replaced with a descriptive header: girih octagon-and-diamond lattice, three ascending strategy paths (Swing / Positional / Long-Term), acid nodes = screened opportunities, stroke-only 1.5-2.5 round caps, plus a lattice-registration note."
+        },
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Zigzag strategy-path vertices floated free of the girih lattice, and both zigzags started at x=60/75, grazing the 30-62 corner registration-tick zone.",
+          "resolution": "Every zigzag vertex now sits on lattice geometry — octagon vertices (centers +-48/+-20 and +-20/+-48) and diamond vertices (centers 165/315 +-27). Positional: M70 342 L138 220 L192 260 L288 165 L342 220 L420 150. Swing: M110 438 L138 370 L192 410 L220 342 L288 370 L315 288 L342 315 L420 240. Starts moved to x=70 and x=110 (both >=62, ticks clear); start heights fan with the Long-Term diagonal's x=90 origin. Mid acid nodes moved with their vertices to remain on-path (195,285 -> 192,260; 300,360 -> 288,370; 255,255 on the untouched Long-Term diagonal unchanged); the x=420 acid endpoint column preserved exactly."
+        }
+      ]
+    },
+    {
+      "sectionId": "green-sukuks",
+      "layout": "split-right",
+      "tone": "paper",
+      "artFile": "PsxGreenSukuks.astro",
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Stale '// STUB (round 0)' header comment survived the rebuild; stub-audit false-positive hazard.",
+          "resolution": "Replaced with a descriptive header: crescent cradling an 8-leaf turbine rosette above four ruled coupon rows; acid = rosette core + four paid-coupon nodes stepping down the rows on a diagonal; stroke-only 1.5-2.5, round caps."
+        }
+      ]
+    },
+    {
+      "sectionId": "transaction-services",
+      "layout": "band",
+      "tone": "mist",
+      "artFile": "PsxTransactionServices.astro",
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Stale '// STUB (round 0)' header comment survived the rebuild; stub-audit false-positive hazard.",
+          "resolution": "Replaced with a descriptive header: two facing double-outlined mihrab arches joined by three interlaced RAAST/SCRA/RDA rails with stacked Rub-el-Hizb checkpoints; six acid settlement ports at the arch mouths; wide 960x360 band artwork, strokes 1.5-2 scaled for the wide box."
+        }
+      ]
+    },
+    {
+      "sectionId": "blackstone-intel",
+      "layout": "ledger",
+      "tone": "ink",
+      "artFile": "PsxBlackstoneIntel.astro",
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Motif fidelity: spec requires 'concentric broadcast arcs of tiny crescents'; the artwork rendered four plain arcs with no crescent glyphs, skewing generic-wifi.",
+          "resolution": "Outermost plain arc pair replaced by a broken outer ring of four tiny crescent lunes (26 viewBox units wide, prefixed def psx-bi-cres + <use>, same lune construction as the beacon crescent) sitting on a common r~72 circle around the acid signal, each concave toward it; the upper pair exits through the seal opening (y=23 < 52). Inner arc pair kept as plain arcs for structure. The spec row is now literal, and the glyphs survive the 80-96px rail (~4.3-5.2px each)."
+        },
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Stroke widths 5-6 in a 480 viewBox exceed the Psx spec range 1.5-2.5; defensible optical compensation for the 80-96px ledger rail but undocumented, so a later round could thin them and erase the emblem.",
+          "resolution": "Strokes NOT thinned. Header comment now documents strokes 5-6 as deliberate optical compensation (~1.0-1.2px rendered, equivalent to the pillar's fine-line weight) with an explicit do-not-correct warning; a matching manifest escalation proposes a spec note for ledger-scale emblems."
+        },
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Stale '// STUB (round 0)' header comment survived the rebuild; stub-audit false-positive hazard.",
+          "resolution": "Replaced with a descriptive header: minaret beacon with crescent-held signal and broadcast rings escaping the open seal — the open channel, counterpart to PsxBlackstoneInvestments' closed seal — including the stroke-compensation note."
+        }
+      ]
+    },
+    {
+      "sectionId": "blackstone-investments",
+      "layout": "ledger",
+      "tone": "ink",
+      "artFile": "PsxBlackstoneInvestments.astro",
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Stroke width 6 in a 480 viewBox exceeds the Psx spec range 1.5-2.5; same undocumented ledger-rail optical compensation as PsxBlackstoneIntel.",
+          "resolution": "Stroke NOT thinned. Header comment documents the compensation in wording mirrored from PsxBlackstoneIntel (~1.0-1.2px rendered at the 80-96px rail, do-not-correct warning) so the pair stays consistent; covered by the same manifest escalation proposing a spec note."
+        },
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "Stale '// STUB (round 0)' header comment survived the rebuild; stub-audit false-positive hazard.",
+          "resolution": "Replaced with a descriptive header: closed octagonal Rub-el-Hizb seal (both squares share circumradius ~160) with keyhole negative space and acid spark — exclusive membership; closed counterpart to PsxBlackstoneIntel's open seal; stroke-6 ledger compensation noted."
+        }
+      ]
+    }
+  ]
+}

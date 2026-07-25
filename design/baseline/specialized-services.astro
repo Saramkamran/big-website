@@ -1,13 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ServiceShowcase from '../../components/ServiceShowcase.astro';
+import ServiceSection from '../../components/ServiceSection.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
-import SsFamilyOffice from '../../components/illustrations/SsFamilyOffice.astro';
-import SsAlternatives from '../../components/illustrations/SsAlternatives.astro';
-import SsMergersAcquisitions from '../../components/illustrations/SsMergersAcquisitions.astro';
-import SsIpos from '../../components/illustrations/SsIpos.astro';
 ---
 
 <BaseLayout
@@ -55,43 +51,30 @@ import SsIpos from '../../components/illustrations/SsIpos.astro';
 
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
-  <ServiceShowcase
+  <ServiceSection
     pillar="Specialized Services"
     headline="Transformation Through Expertise"
     intro="BIG's specialized advisory practice brings together deep sector knowledge, cross-border execution capability, and Shariah-compliant structuring expertise — delivering distinctive outcomes for the most complex mandates."
-    separator="heavy"
+    bgClass="bg-paper"
     services={[
       {
         id: 'family-office',
         title: 'BIG Family Office',
-        layout: 'band',
-        tone: 'ink',
-        Art: SsFamilyOffice,
         body: 'A single, coordinated point of oversight for complex family wealth — from advisory through to implementation. Our family office practice provides holistic governance, investment oversight, succession planning, and administrative coordination for ultra-high-net-worth families. We bring together BIG\'s full range of capabilities — wealth planning, private equity, real estate, philanthropy, and professional services — under a unified mandate, ensuring every dimension of your family\'s financial life is managed with the highest standards of precision, discretion, and long-term thinking.',
       },
       {
         id: 'alternatives',
         title: 'Alternative Investments',
-        layout: 'split-left',
-        tone: 'paper',
-        Art: SsAlternatives,
         body: 'Access to differentiated, Shariah-compliant alternative strategies beyond public markets. Our alternative investments platform provides exposure to private credit, infrastructure, commodities, hedge strategies, and other asset classes that offer diversification, inflation protection, and return enhancement for sophisticated investors. We conduct rigorous due diligence on every alternative opportunity to ensure both investment quality and Shariah compliance before presenting to clients.',
       },
       {
         id: 'mergers-acquisitions',
         title: 'M&A and Carve-Out',
-        layout: 'offset-card',
-        tone: 'paper',
-        motif: 'girih',
-        Art: SsMergersAcquisitions,
         body: 'Advisory across mergers, acquisitions, and corporate carve-outs — origination to execution. BIG provides end-to-end M&A advisory services for buyers, sellers, and corporates undertaking strategic transactions. Our team brings deep sector knowledge across Pakistan\'s key industries, cross-border execution capability, and Shariah-compliant deal structuring expertise to every mandate. Whether you are acquiring a business, divesting a division, or undertaking a transformative corporate restructuring, BIG has the relationships and experience to deliver superior outcomes.',
       },
       {
         id: 'ipos',
         title: 'IPOs (Pakistan & US)',
-        layout: 'split-right',
-        tone: 'paper',
-        Art: SsIpos,
         body: 'Equity capital-markets advisory for issuers listing on the PSX and US exchanges. From pre-IPO readiness and governance structuring to prospectus preparation, roadshow support, and post-listing compliance, BIG guides companies through the full lifecycle of a public offering — in Pakistan and internationally. Our cross-border capital markets expertise is particularly suited to Pakistani companies seeking dual-listings or US-market access, and international companies targeting PSX\'s growing investor base.',
       },
     ]}

@@ -1,0 +1,42 @@
+{
+  "page": "specialized-services",
+  "file": "src/pages/what-we-do/specialized-services.astro",
+  "feel": "bold monolith gallery",
+  "separator": "heavy",
+  "round": 1,
+  "escalations": [],
+  "sections": [
+    {
+      "sectionId": "family-office",
+      "layout": "band",
+      "tone": "ink",
+      "artFile": "SsFamilyOffice.astro",
+      "status": "built",
+      "issues": []
+    },
+    {
+      "sectionId": "alternatives",
+      "layout": "split-left",
+      "tone": "paper",
+      "artFile": "SsAlternatives.astro",
+      "status": "built",
+      "issues": []
+    },
+    {
+      "sectionId": "mergers-acquisitions",
+      "layout": "offset-card",
+      "tone": "paper",
+      "artFile": "SsMergersAcquisitions.astro",
+      "status": "built",
+      "issues": []
+    },
+    {
+      "sectionId": "ipos",
+      "layout": "split-right",
+      "tone": "paper",
+      "artFile": "SsIpos.astro",
+      "status": "built",
+      "issues": []
+    }
+  ]
+}

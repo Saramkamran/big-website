@@ -1,0 +1,41 @@
+---
+// PsxBlackstoneInvestments — Blackstone Investments: closed octagonal seal enclosing a true Rub el
+// Hizb (both squares share circumradius ≈160) with keyhole negative space at the heart — exclusive,
+// members-only access; acid spark = the opportunity behind the keyhole. Closed counterpart to
+// PsxBlackstoneIntel's open seal (the two ink ledger rows read as a channel/seal pair).
+// Stroke 6 = deliberate optical compensation for the 80–96px ledger rail this renders in
+// (≈1.0–1.2px on screen, equivalent to the pillar's 1.5–2.5 fine-line weight at full size) —
+// do NOT "correct" it down to 1.5–2.5 or the emblem disappears at rail scale.
+interface Props { class?: string; title?: string }
+const { class: className, title } = Astro.props;
+---
+<svg
+  viewBox="0 0 480 480"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  focusable="false"
+>
+  {title && <title>{title}</title>}
+  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <!-- closed seal frame -->
+    <path d="M162 52 L318 52 L428 162 L428 318 L318 428 L162 428 L52 318 L52 162 Z" stroke-width="6" />
+
+    <!-- Rub el Hizb: two squares, one circumcircle -->
+    <g stroke-width="6">
+      <path d="M127 127 H353 V353 H127 Z" />
+      <path d="M240 80 L400 240 L240 400 L80 240 Z" />
+    </g>
+
+    <!-- keyhole in the star's open heart -->
+    <g stroke-width="6">
+      <circle cx="240" cy="212" r="38" />
+      <path d="M227 244 L210 318 H270 L253 244" />
+    </g>
+  </g>
+
+  <!-- acid: the opportunity behind the keyhole -->
+  <circle cx="240" cy="212" r="6" class="fill-acid" />
+</svg>

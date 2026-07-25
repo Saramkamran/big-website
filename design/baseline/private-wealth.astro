@@ -1,16 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ServiceShowcase from '../../components/ServiceShowcase.astro';
+import ServiceSection from '../../components/ServiceSection.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
-import PwWealthPlanning from '../../components/illustrations/PwWealthPlanning.astro';
-import PwDedicatedInvestments from '../../components/illustrations/PwDedicatedInvestments.astro';
-import PwPrivateEquity from '../../components/illustrations/PwPrivateEquity.astro';
-import PwRealEstate from '../../components/illustrations/PwRealEstate.astro';
-import PwPakistanEnergy from '../../components/illustrations/PwPakistanEnergy.astro';
-import PwPhilanthropyZakat from '../../components/illustrations/PwPhilanthropyZakat.astro';
-import PwProfessionalServices from '../../components/illustrations/PwProfessionalServices.astro';
 ---
 
 <BaseLayout
@@ -58,67 +51,45 @@ import PwProfessionalServices from '../../components/illustrations/PwProfessiona
 
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
-  <ServiceShowcase
+  <ServiceSection
     pillar="Private Wealth Management"
     headline="An À la Carte Approach to Wealth"
     intro="Black Stone Islamic Global engages with you and your trusted advisors to develop and implement tailored wealth strategies that broaden your portfolio, expand your business universe, and multiply your wealth — always within the bounds of Islamic principles."
-    separator="ornament"
+    bgClass="bg-paper"
     services={[
       {
         id: 'wealth-planning',
         title: 'Wealth Planning — À la Carte Approach',
-        layout: 'emblem',
-        tone: 'paper',
-        Art: PwWealthPlanning,
         body: 'We draw customised solutions for tax-efficient wealth and inheritance planning. We take a highly personalized approach to understanding your wealth aspirations, financial commitments, life dreams, and non-negotiables — enabling us to design and implement bespoke, à la carte solutions that preserve and grow wealth while aligning with your lifestyle, legacy, and intergenerational succession objectives. Black Stone Islamic Global engages with you and your trusted advisors to develop tailored strategies that broaden your portfolio, expand your business universe, and multiply your wealth.',
       },
       {
         id: 'dedicated-investments',
         title: 'Dedicated Investments',
-        layout: 'split-right',
-        tone: 'paper',
-        Art: PwDedicatedInvestments,
         body: 'Our investment-management capabilities extend far beyond off-the-shelf equities, mutual funds, and bank deposits. Through our extensive network, strategic partnerships, and proven execution, we provide access to bespoke wealth solutions across multiple asset classes and geographies. From dedicated investment vehicles and private structures to client-exclusive opportunities, we empower you to play a leading role in creating and preserving wealth — with institutional-grade expertise, governance, and strategic oversight to help build enduring value and an enduring legacy.',
       },
       {
         id: 'private-equity',
         title: 'Private Equity',
-        layout: 'split-left',
-        tone: 'paper',
-        Art: PwPrivateEquity,
         body: 'Our core investing approach is supported by expertise across sectors, markets, business models, and stages of the corporate lifecycle. Partnering with global private-equity investors, we help small and mid-sized businesses raise growth capital through equity investments ranging from minority to strategic stakes. Whether you are an investor seeking high-growth private-market opportunities or a business owner looking to unlock value, we connect capital with opportunity.',
       },
       {
         id: 'real-estate',
         title: 'Real Estate',
-        layout: 'offset-card',
-        tone: 'paper',
-        motif: 'star8',
-        Art: PwRealEstate,
         body: 'From identifying off-market opportunities and conducting thorough due diligence to structuring transactions and securing favourable terms, we deliver superior outcomes for our clients. Through relationships with REIT sponsors, housing-society developers, ultra-high-net-worth investors, family offices, and government stakeholders, we facilitate landmark real-estate transactions with the highest standards of professionalism — connecting exceptional opportunities with strategic capital.',
       },
       {
         id: 'pakistan-energy',
         title: 'Pakistan Energy',
-        layout: 'band',
-        tone: 'mist',
-        Art: PwPakistanEnergy,
         body: 'For ultra-high-net-worth individuals and corporates seeking entry into Pakistan\'s OMC sector — whether acquiring an existing downstream business or pursuing greenfield development — we offer structured advisory across deal origination, due diligence, transaction execution, and post-acquisition operational support. Combining sector expertise, strategic relationships, and hands-on execution, we provide end-to-end advisory support that remains rare in Pakistan\'s energy landscape.',
       },
       {
         id: 'philanthropy-zakat',
         title: 'Philanthropy & Zakat Strategy',
-        layout: 'emblem',
-        tone: 'paper',
-        Art: PwPhilanthropyZakat,
         body: 'We believe wealth is not only a reflection of prosperity but a powerful instrument for positive socio-economic change. Our philanthropic and Zakat strategies help clients structure their giving purposefully and systematically — supporting virtuous causes while fulfilling religious, social, and moral responsibilities. We assist in establishing family trusts and foundations, Waqfs, CSR initiatives, and impact projects including cancer research, educational institutions, and flood relief. We develop frameworks that maximize social impact and ensure charitable capital is deployed effectively. Where permitted by law, we also advise on tax-efficient giving; however, our primary focus remains on strategizing selfless charity for the Sake of Allah and Rasool Allah ﷺ (صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ). We charge the least fee for Philanthropy and Zakat-related advisory to clients.',
       },
       {
         id: 'professional-services',
         title: 'Professional Services',
-        layout: 'ledger',
-        tone: 'paper',
-        Art: PwProfessionalServices,
         body: 'As part of our holistic offering, clients benefit from a distinguished network of A-rated and QCR-rated chartered-accountant firms in Pakistan, the United Kingdom, and the United States. Through these trusted relationships we provide access to premier accountancy, audit, legal, tax, regulatory, and governance advisory — ensuring complex financial and compliance matters are managed with precision, discretion, and uncompromising integrity.',
       },
     ]}

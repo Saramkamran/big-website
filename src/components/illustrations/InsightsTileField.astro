@@ -1,0 +1,54 @@
+---
+// InsightsTileField — "the signal in the field". A quiet field of crescent-and-star
+// tiles (hilal cradling a khatam 8-point star) woven on a quincunx grid: 120px
+// pitch, with the outer rows (y 60/300) offset x+60 so the field reads as an
+// interlocking weave rather than aligned dots. The left edge dissolves toward the
+// headline; edge tiles at x=960 half-bleed off the right frame; exactly ONE tile
+// is acid-filled — the signal — ringed by its offset neighbours.
+// Per design/ILLUSTRATION-SPEC.md: flat fills at ~10% opacity, one acid tile.
+interface Props { class?: string; title?: string }
+const { class: className, title } = Astro.props;
+---
+<svg
+  viewBox="0 0 960 360"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  focusable="false"
+>
+  {title && <title>{title}</title>}
+  <defs>
+    <!-- one tile: crescent opening to the upper right, khatam star nestled in its embrace -->
+    <g id="insights-tf-tile">
+      <path d="M30.9 8.3 A32 32 0 1 1 -8.3 -30.9 A28 28 0 1 0 30.9 8.3 Z" />
+      <path transform="translate(14.8 -14.8)" d="M11 0 L7.8 3.2 L7.8 7.8 L3.2 7.8 L0 11 L-3.2 7.8 L-7.8 7.8 L-7.8 3.2 L-11 0 L-7.8 -3.2 L-7.8 -7.8 L-3.2 -7.8 L0 -11 L3.2 -7.8 L7.8 -7.8 L7.8 -3.2 Z" />
+    </g>
+  </defs>
+
+  <!-- the quiet field — quincunx: outer rows offset half a pitch against the signal row -->
+  <g class="fill-current opacity-10">
+    <use href="#insights-tf-tile" x="720" y="60" />
+    <use href="#insights-tf-tile" x="840" y="60" />
+    <use href="#insights-tf-tile" x="960" y="60" />
+    <use href="#insights-tf-tile" x="420" y="180" />
+    <use href="#insights-tf-tile" x="540" y="180" />
+    <use href="#insights-tf-tile" x="780" y="180" />
+    <use href="#insights-tf-tile" x="900" y="180" />
+    <use href="#insights-tf-tile" x="600" y="300" />
+    <use href="#insights-tf-tile" x="720" y="300" />
+    <use href="#insights-tf-tile" x="840" y="300" />
+    <use href="#insights-tf-tile" x="960" y="300" />
+  </g>
+
+  <!-- left edge dissolves toward the headline -->
+  <g class="fill-current opacity-5">
+    <use href="#insights-tf-tile" x="600" y="60" />
+    <use href="#insights-tf-tile" x="300" y="180" />
+    <use href="#insights-tf-tile" x="480" y="300" />
+  </g>
+
+  <!-- the signal: the one tile that lights up, ringed by its offset neighbours -->
+  <use href="#insights-tf-tile" x="660" y="180" class="fill-acid" />
+</svg>

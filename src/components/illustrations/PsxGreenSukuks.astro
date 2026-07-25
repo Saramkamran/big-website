@@ -1,0 +1,61 @@
+---
+// PsxGreenSukuks — Green Sukuks: crescent cradling an 8-leaf turbine rosette (renewable energy)
+// above four ruled coupon rows (fixed income); acid = rosette core + four paid-coupon nodes
+// stepping down the rows on a diagonal. Psx fine line-art per design/ILLUSTRATION-SPEC.md:
+// stroke-only, widths 1.5–2.5, round caps.
+interface Props { class?: string; title?: string }
+const { class: className, title } = Astro.props;
+---
+<svg
+  viewBox="0 0 480 480"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  focusable="false"
+>
+  {title && <title>{title}</title>}
+  <defs>
+    <path id="psx-gs-leaf" d="M240 134 C253 119 253 95 240 80 C227 95 227 119 240 134 Z" />
+    <g id="psx-gs-row">
+      <path d="M80 0 H400" />
+      <path d="M80 -5 V5 M144 -5 V5 M208 -5 V5 M272 -5 V5 M336 -5 V5 M400 -5 V5" />
+    </g>
+  </defs>
+
+  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <!-- crescent cradle -->
+    <path d="M120 160 A120 120 0 0 0 360 160 A125 125 0 0 1 120 160 Z" stroke-width="2.5" />
+
+    <!-- geometric leaf-turbine rosette -->
+    <g stroke-width="2">
+      <circle cx="240" cy="150" r="12" />
+      <use href="#psx-gs-leaf" />
+      <use href="#psx-gs-leaf" transform="rotate(45 240 150)" />
+      <use href="#psx-gs-leaf" transform="rotate(90 240 150)" />
+      <use href="#psx-gs-leaf" transform="rotate(135 240 150)" />
+      <use href="#psx-gs-leaf" transform="rotate(180 240 150)" />
+      <use href="#psx-gs-leaf" transform="rotate(225 240 150)" />
+      <use href="#psx-gs-leaf" transform="rotate(270 240 150)" />
+      <use href="#psx-gs-leaf" transform="rotate(315 240 150)" />
+    </g>
+
+    <!-- ruled coupon rows -->
+    <g stroke-width="1.5">
+      <use href="#psx-gs-row" y="332" />
+      <use href="#psx-gs-row" y="364" />
+      <use href="#psx-gs-row" y="396" />
+      <use href="#psx-gs-row" y="428" />
+    </g>
+  </g>
+
+  <!-- acid: rosette core + paid coupons -->
+  <g class="fill-acid">
+    <circle cx="240" cy="150" r="6" />
+    <circle cx="144" cy="332" r="4" />
+    <circle cx="208" cy="364" r="4" />
+    <circle cx="272" cy="396" r="4" />
+    <circle cx="336" cy="428" r="4" />
+  </g>
+</svg>

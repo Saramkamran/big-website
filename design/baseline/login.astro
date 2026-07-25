@@ -1,22 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
-import GeometricPattern from '../components/illustrations/GeometricPattern.astro';
-import LoginJali from '../components/illustrations/LoginJali.astro';
 ---
 
 <BaseLayout
   title="Account Login | Black Stone Islamic Global"
   description="Access your Black Stone Islamic Global client portal."
 >
-  <section class="relative overflow-hidden min-h-[calc(100vh-72px)] flex items-center bg-ink">
-    <GeometricPattern
-      motif="jali"
-      class="absolute inset-0 w-full h-full text-paper opacity-[0.06] pointer-events-none"
-    />
-    <div class="container-big py-section relative">
-      <div class="max-w-lg mx-auto text-center bg-paper p-10 sm:p-14">
-        <LoginJali class="w-24 h-auto mx-auto mb-10 text-ink" />
+  <section class="min-h-[calc(100vh-72px)] flex items-center bg-paper">
+    <div class="container-big py-section">
+      <div class="max-w-lg mx-auto text-center">
         <p class="label mb-4">Client Portal</p>
         <h1 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(28px, 4vw, 52px); line-height: 1.1;">
           Account Login

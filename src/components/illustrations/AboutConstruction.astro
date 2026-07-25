@@ -1,0 +1,51 @@
+---
+// AboutConstruction — compass-and-straightedge construction of an 8-point star, mid-draw.
+// Style: "Compass construction" (design/ILLUSTRATION-SPEC.md): rules 0.75–1.25, ONE result
+// stroke at 2.5, currentColor only (no acid). Circles, radii and chords left visible.
+interface Props { class?: string; title?: string }
+const { class: className, title } = Astro.props;
+---
+<svg
+  viewBox="0 0 480 480"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  focusable="false"
+>
+  {title && <title>{title}</title>}
+
+  <!-- guide circles: the master circle and the transferred inner-vertex circle -->
+  <circle cx="240" cy="240" r="150" stroke="currentColor" stroke-width="1.25" />
+  <circle cx="240" cy="240" r="114.8" stroke="currentColor" stroke-width="0.75" class="opacity-50" />
+
+  <!-- ruled radii: cardinal axes and the bisecting diagonals, run out past the circle -->
+  <path d="M240 70 V410 M70 240 H410" stroke="currentColor" stroke-width="0.75" class="opacity-60" />
+  <path d="M90 90 L390 390 M390 90 L90 390" stroke="currentColor" stroke-width="0.75" class="opacity-60" />
+
+  <!-- chords: the two inscribed squares whose crossings fix the star's inner vertices -->
+  <path d="M133.9 133.9 H346.1 V346.1 H133.9 Z" stroke="currentColor" stroke-width="1.25" />
+  <path d="M240 90 L390 240 L240 390 L90 240 Z" stroke="currentColor" stroke-width="1.25" />
+
+  <!-- compass swings: two arcs meet at (390,90) locating the diagonal; a third is mid-swing below -->
+  <path d="M375.9 26.6 A150 150 0 0 1 375.9 153.4" stroke="currentColor" stroke-width="0.75" class="opacity-60" />
+  <path d="M326.6 104.1 A150 150 0 0 1 453.4 104.1" stroke="currentColor" stroke-width="0.75" class="opacity-60" />
+  <path d="M104.1 326.6 A150 150 0 0 0 104.1 453.4" stroke="currentColor" stroke-width="0.75" class="opacity-60" />
+
+  <!-- compass prick points -->
+  <circle cx="240" cy="240" r="3" fill="currentColor" />
+  <circle cx="240" cy="90" r="2" fill="currentColor" class="opacity-70" />
+  <circle cx="390" cy="240" r="2" fill="currentColor" class="opacity-70" />
+  <circle cx="240" cy="390" r="2" fill="currentColor" class="opacity-70" />
+  <circle cx="390" cy="90" r="2" fill="currentColor" />
+
+  <!-- result: the eight-point star inked over the construction, pen lifted mid-stroke -->
+  <path
+    d="M240 90 L283.9 133.9 L346.1 133.9 L346.1 196.1 L390 240 L346.1 283.9 L346.1 346.1 L283.9 346.1 L240 390 L196.1 346.1"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

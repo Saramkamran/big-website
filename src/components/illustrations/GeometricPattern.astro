@@ -1,0 +1,50 @@
+---
+// Shared tiling-pattern utility — Islamic geometric backgrounds.
+// SHARED FILE: workflow agents must not edit (see design/ILLUSTRATION-SPEC.md §5).
+// Caller controls color + opacity via class (e.g. class="text-ink opacity-[0.05] w-full h-full").
+interface Props {
+  motif?: 'star8' | 'jali' | 'scallop' | 'girih';
+  class?: string;
+}
+const { motif = 'star8', class: className } = Astro.props;
+// Unique per-instance pattern id (build-time; avoids collisions when used twice on a page)
+const uid = `gp-${motif}-${Math.random().toString(36).slice(2, 8)}`;
+
+const tiles: Record<string, { w: number; h: number; body: string }> = {
+  // Overlapping square + diamond = 8-point star lattice
+  star8: {
+    w: 96, h: 96,
+    body: `<path d="M28 28 H68 V68 H28 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M48 21 L75 48 L48 75 L21 48 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>`,
+  },
+  // Mashrabiya-style octagon lattice with corner chamfers
+  jali: {
+    w: 80, h: 80,
+    body: `<path d="M28 8 H52 L72 28 V52 L52 72 H28 L8 52 V28 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M0 12 L12 0 M68 0 L80 12 M80 68 L68 80 M12 80 L0 68" stroke="currentColor" stroke-width="1.5" fill="none"/>`,
+  },
+  // Fish-scale / scalloped arcade rows
+  scallop: {
+    w: 64, h: 64,
+    body: `<path d="M0 32 a32 32 0 0 1 64 0" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M-32 64 a32 32 0 0 1 64 0 M32 64 a32 32 0 0 1 64 0" stroke="currentColor" stroke-width="1.5" fill="none"/>`,
+  },
+  // Fine interlaced strapwork
+  girih: {
+    w: 56, h: 56,
+    body: `<path d="M28 4 L52 28 L28 52 L4 28 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+      <path d="M14 14 H42 V42 H14 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+      <path d="M0 28 H8 M48 28 H56 M28 0 V8 M28 48 V56" stroke="currentColor" stroke-width="1" fill="none"/>`,
+  },
+};
+const t = tiles[motif];
+---
+
+<svg class={className} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="none">
+  <defs>
+    <pattern id={uid} width={t.w} height={t.h} patternUnits="userSpaceOnUse">
+      <Fragment set:html={t.body} />
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill={`url(#${uid})`}></rect>
+</svg>

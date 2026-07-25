@@ -1,0 +1,32 @@
+---
+// ContactPortal — open mihrab doorway with acid threshold ("Open portal" style, design/ILLUSTRATION-SPEC.md).
+// Drawing sits flush-left in the viewBox (alfiz frame x 4–404, y 44–440; threshold y 456; spare units on the
+// right side) so the leftmost stroke edge lands at ~x=3 and reads optically flush with flush-left text at the
+// call site — no negative-margin compensation needed. Symmetry axis of the composition: x=204.
+interface Props { class?: string; title?: string }
+const { class: className, title } = Astro.props;
+---
+<svg
+  viewBox="0 0 480 480"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  focusable="false"
+>
+  {title && <title>{title}</title>}
+  <!-- Alfiz frame, open at the base -->
+  <path d="M4 440 V44 H404 V440" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  <!-- Mihrab portal: jambs flowing into a generous ogee arch (heavy stroke) -->
+  <path d="M68 440 V236 C68 188 85 154 122 130 C160 108 190 100 204 72 C218 100 248 108 286 130 C323 154 340 188 340 236 V440" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+  <!-- Inner reveal: the depth of the open niche -->
+  <path d="M92 440 V240 C92 198 107 166 139 144 C170 124 194 114 204 96 C214 114 238 124 269 144 C301 166 316 198 316 240 V440" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  <!-- Impost bands at the spring line -->
+  <path d="M48 236 H88 M320 236 H360" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  <!-- Spandrel roundels -->
+  <circle cx="42" cy="92" r="8" stroke="currentColor" stroke-width="2" />
+  <circle cx="366" cy="92" r="8" stroke="currentColor" stroke-width="2" />
+  <!-- Acid threshold: the welcome line beneath the open door -->
+  <path d="M44 456 H364" class="stroke-acid" stroke-width="5" stroke-linecap="round" />
+</svg>

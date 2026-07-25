@@ -1,0 +1,66 @@
+---
+// PsxTransactionServices — Transaction Services: two facing double-outlined mihrab arches joined
+// by three interlaced RAAST/SCRA/RDA routing rails with stacked Rub-el-Hizb checkpoints at the
+// crossing column; acid = six settlement ports at the arch mouths. Wide 960×360 band artwork
+// (renders tall at ~40% opacity behind copy on mist); Psx fine line-art strokes 1.5–2 scaled for
+// the wide box per design/ILLUSTRATION-SPEC.md.
+interface Props { class?: string; title?: string }
+const { class: className, title } = Astro.props;
+---
+<svg
+  viewBox="0 0 960 360"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  focusable="false"
+>
+  {title && <title>{title}</title>}
+  <defs>
+    <g id="psx-ts-star">
+      <path d="M-9 -9 H9 V9 H-9 Z" />
+      <path d="M0 -13 L13 0 L0 13 L-13 0 Z" />
+    </g>
+  </defs>
+
+  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ground line -->
+    <path d="M60 330 H900" stroke-width="1.5" class="opacity-60" />
+
+    <!-- two facing mihrab arches -->
+    <g stroke-width="2">
+      <path d="M135 330 V190 A150 150 0 0 1 210 60 A150 150 0 0 1 285 190 V330" />
+      <path d="M675 330 V190 A150 150 0 0 1 750 60 A150 150 0 0 1 825 190 V330" />
+    </g>
+    <g stroke-width="1.5">
+      <path d="M155 330 V195 A132 132 0 0 1 210 75 A132 132 0 0 1 265 195 V330" />
+      <path d="M695 330 V195 A132 132 0 0 1 750 75 A132 132 0 0 1 805 195 V330" />
+      <path d="M210 60 V40 M750 60 V40" />
+    </g>
+
+    <!-- three interlaced routing rails -->
+    <g stroke-width="1.5">
+      <path d="M285 200 H675" />
+      <path d="M285 150 C365 150 400 250 480 250 C560 250 595 150 675 150" />
+      <path d="M285 250 C365 250 400 150 480 150 C560 150 595 250 675 250" />
+    </g>
+
+    <!-- star checkpoints on the rails -->
+    <g stroke-width="1.5">
+      <use href="#psx-ts-star" x="480" y="150" />
+      <use href="#psx-ts-star" x="480" y="200" />
+      <use href="#psx-ts-star" x="480" y="250" />
+    </g>
+  </g>
+
+  <!-- acid settlement ports at the arch mouths -->
+  <g class="fill-acid">
+    <circle cx="285" cy="150" r="5" />
+    <circle cx="285" cy="200" r="5" />
+    <circle cx="285" cy="250" r="5" />
+    <circle cx="675" cy="150" r="5" />
+    <circle cx="675" cy="200" r="5" />
+    <circle cx="675" cy="250" r="5" />
+  </g>
+</svg>

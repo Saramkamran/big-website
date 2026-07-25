@@ -1,0 +1,25 @@
+{
+  "page": "login",
+  "file": "src/pages/login.astro",
+  "feel": "private gate",
+  "separator": null,
+  "round": 2,
+  "escalations": [],
+  "sections": [
+    {
+      "sectionId": "gate",
+      "layout": "bespoke",
+      "tone": "ink",
+      "artFile": "LoginJali.astro",
+      "status": "improved",
+      "issues": [
+        {
+          "round": 1,
+          "severity": "minor",
+          "description": "LoginJali is displayed at w-20 (80px) from a 480-unit viewBox, so the stroke-width-4 lattice renders at ~0.67 CSS px and the interstitial diamonds at ~5px; on standard-DPI screens the emblem anti-aliases to a pale gray mark instead of a crisp carved-ink jali, weakening the one bespoke art moment on the page.",
+          "resolution": "Fixed with both halves of the hint combined (either alone stays sub-pixel or lands exactly at 1px with muddier negative space): rendered size raised w-20 -> w-24 (96px, scale 0.2) with mb-8 -> mb-10 rebalance in login.astro, and SVG weights raised in LoginJali.astro — lattice/diamonds/medallion strokes 4 -> 5.5, carved frame 6 -> 8, center dot r 6 -> 8 (keeps the fill proportional). Strokes now render at ~1.1 CSS px (lattice) and ~1.6 CSS px (frame), preserving the ~1.45x frame-to-lattice hierarchy, the exact composition, and currentColor-only palette. A comment in the SVG records the tuned weights so they are not thinned later."
+        }
+      ]
+    }
+  ]
+}

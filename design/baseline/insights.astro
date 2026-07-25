@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import Button from '../components/Button.astro';
 import ContactCTA from '../components/ContactCTA.astro';
-import InsightsTileField from '../components/illustrations/InsightsTileField.astro';
 
 const allInsights = await getCollection('insights');
 const sorted = allInsights.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
@@ -15,12 +14,9 @@ const categories = ['All', ...new Set(sorted.map(i => i.data.category))];
   title="Insights | Black Stone Islamic Global"
   description="Research, analysis, and market insights on Shariah-compliant investing, PSX equities, Islamic finance, and global markets from BIG."
 >
-  <!-- Header — "signal in the field": quiet crescent-star tile field, one acid tile -->
-  <section class="relative overflow-hidden py-section bg-paper border-b border-line">
-    <div class="hidden lg:block absolute inset-y-0 right-0 w-[45%] text-ink pointer-events-none" aria-hidden="true">
-      <InsightsTileField class="absolute right-0 top-1/2 -translate-y-1/2 w-full h-auto" />
-    </div>
-    <div class="container-big relative">
+  <!-- Header -->
+  <section class="py-section bg-paper border-b border-line">
+    <div class="container-big">
       <p class="label mb-4">Insights</p>
       <h1 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(32px, 5vw, 64px); line-height: 1.05; max-width: 700px;">
         Insights on Islamic Finance and Global Markets
@@ -28,22 +24,6 @@ const categories = ['All', ...new Set(sorted.map(i => i.data.category))];
       <p class="font-sans text-base text-stone leading-relaxed max-w-xl">
         Research, analysis, and perspectives on Shariah-compliant investing, the Pakistan Stock Exchange, and global Islamic capital markets — from the BIG investment team.
       </p>
-      <!-- Below lg the field yields to a slim signal strip (same tile def) so the motif survives on phones/tablets -->
-      <svg
-        viewBox="0 0 480 72"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="lg:hidden mt-10 w-full max-w-sm h-auto text-ink pointer-events-none"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <g class="fill-current opacity-10">
-          <use href="#insights-tf-tile" x="60" y="36" />
-          <use href="#insights-tf-tile" x="180" y="36" />
-          <use href="#insights-tf-tile" x="420" y="36" />
-        </g>
-        <use href="#insights-tf-tile" x="300" y="36" class="fill-acid" />
-      </svg>
     </div>
   </section>
 
