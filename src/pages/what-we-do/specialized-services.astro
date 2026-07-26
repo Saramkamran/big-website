@@ -1,9 +1,42 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ServiceShowcase from '../../components/ServiceShowcase.astro';
+import PillarIntro from '../../components/PillarIntro.astro';
+import ServiceSections from '../../components/ServiceSections.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
+
+const services = [
+  {
+    layout: 'banner', id: 'family-office', index: '01', eyebrow: 'Coordinated Oversight',
+    title: 'BIG Family Office',
+    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1600&q=80',
+    imageAlt: '',
+    body: `A single, coordinated point of oversight for complex family wealth — from advisory through to implementation. Our family office practice provides holistic governance, investment oversight, succession planning, and administrative coordination for ultra-high-net-worth families. We bring together BIG's full range of capabilities — wealth planning, private equity, real estate, philanthropy, and professional services — under a unified mandate, ensuring every dimension of your family's financial life is managed with the highest standards of precision, discretion, and long-term thinking.`,
+  },
+  {
+    layout: 'feature', id: 'alternatives', index: '02', tag: 'Beyond Public Markets',
+    title: 'Alternative Investments', imageSide: 'left', bg: 'paper',
+    image: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Port terminal and container yard — infrastructure and commodities',
+    body: `Access to differentiated, Shariah-compliant alternative strategies beyond public markets. Our alternative investments platform provides exposure to private credit, infrastructure, commodities, hedge strategies, and other asset classes that offer diversification, inflation protection, and return enhancement for sophisticated investors. We conduct rigorous due diligence on every alternative opportunity to ensure both investment quality and Shariah compliance before presenting to clients.`,
+  },
+  {
+    layout: 'overlap', id: 'mergers-acquisitions', eyebrow: '03', tag: 'Origination to Execution',
+    title: 'M&A and Carve-Out', imageSide: 'right', bg: 'mist',
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Corporate handshake — mergers, acquisitions, and carve-outs',
+    body: `Advisory across mergers, acquisitions, and corporate carve-outs — origination to execution. BIG provides end-to-end M&A advisory services for buyers, sellers, and corporates undertaking strategic transactions. Our team brings deep sector knowledge across Pakistan's key industries, cross-border execution capability, and Shariah-compliant deal structuring expertise to every mandate. Whether you are acquiring a business, divesting a division, or undertaking a transformative corporate restructuring, BIG has the relationships and experience to deliver superior outcomes.`,
+  },
+  {
+    layout: 'bordered', id: 'ipos', index: '04', eyebrow: 'PSX & US',
+    title: 'IPOs (Pakistan & US)', imageSide: 'right', bg: 'paper',
+    ctaLabel: 'Discuss a Listing', ctaHref: '/contact',
+    image: 'https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Manhattan financial district skyline — public listings on US exchanges',
+    body: `Equity capital-markets advisory for issuers listing on the PSX and US exchanges. From pre-IPO readiness and governance structuring to prospectus preparation, roadshow support, and post-listing compliance, BIG guides companies through the full lifecycle of a public offering — in Pakistan and internationally. Our cross-border capital markets expertise is particularly suited to Pakistani companies seeking dual-listings or US-market access, and international companies targeting PSX's growing investor base.`,
+  },
+];
 ---
 
 <BaseLayout
@@ -13,7 +46,6 @@ import ContactCTA from '../../components/ContactCTA.astro';
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
   <section class="relative flex items-start bg-ink" style="min-height: calc(100vh - var(--header-h));">
-    <!-- Background layer — overflow-hidden here, never on the section -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -26,7 +58,6 @@ import ContactCTA from '../../components/ContactCTA.astro';
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <!-- Content anchored to top — never overflows the viewport -->
     <div class="relative z-10 container-big w-full pt-12 pb-12">
       <div class="max-w-3xl">
         <p class="label text-acid mb-6">Specialized Services</p>
@@ -51,41 +82,12 @@ import ContactCTA from '../../components/ContactCTA.astro';
 
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
-  <ServiceShowcase
-    pillar="Specialized Services"
-    headline="Transformation Through Expertise"
-    intro="BIG's specialized advisory practice brings together deep sector knowledge, cross-border execution capability, and Shariah-compliant structuring expertise — delivering distinctive outcomes for the most complex mandates."
-    services={[
-      {
-        id: 'family-office',
-        title: 'BIG Family Office',
-        image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'City skyline — coordinated oversight of family wealth',
-        body: 'A single, coordinated point of oversight for complex family wealth — from advisory through to implementation. Our family office practice provides holistic governance, investment oversight, succession planning, and administrative coordination for ultra-high-net-worth families. We bring together BIG\'s full range of capabilities — wealth planning, private equity, real estate, philanthropy, and professional services — under a unified mandate, ensuring every dimension of your family\'s financial life is managed with the highest standards of precision, discretion, and long-term thinking.',
-      },
-      {
-        id: 'alternatives',
-        title: 'Alternative Investments',
-        image: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Port terminal and container yard — infrastructure and commodities',
-        body: 'Access to differentiated, Shariah-compliant alternative strategies beyond public markets. Our alternative investments platform provides exposure to private credit, infrastructure, commodities, hedge strategies, and other asset classes that offer diversification, inflation protection, and return enhancement for sophisticated investors. We conduct rigorous due diligence on every alternative opportunity to ensure both investment quality and Shariah compliance before presenting to clients.',
-      },
-      {
-        id: 'mergers-acquisitions',
-        title: 'M&A and Carve-Out',
-        image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Corporate handshake — mergers, acquisitions, and carve-outs',
-        body: 'Advisory across mergers, acquisitions, and corporate carve-outs — origination to execution. BIG provides end-to-end M&A advisory services for buyers, sellers, and corporates undertaking strategic transactions. Our team brings deep sector knowledge across Pakistan\'s key industries, cross-border execution capability, and Shariah-compliant deal structuring expertise to every mandate. Whether you are acquiring a business, divesting a division, or undertaking a transformative corporate restructuring, BIG has the relationships and experience to deliver superior outcomes.',
-      },
-      {
-        id: 'ipos',
-        title: 'IPOs (Pakistan & US)',
-        image: 'https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Manhattan financial district skyline — public listings on US exchanges',
-        body: 'Equity capital-markets advisory for issuers listing on the PSX and US exchanges. From pre-IPO readiness and governance structuring to prospectus preparation, roadshow support, and post-listing compliance, BIG guides companies through the full lifecycle of a public offering — in Pakistan and internationally. Our cross-border capital markets expertise is particularly suited to Pakistani companies seeking dual-listings or US-market access, and international companies targeting PSX\'s growing investor base.',
-      },
-    ]}
+  <PillarIntro
+    id="specialized-services"
+    title="Transformation Through Expertise"
+    summary="BIG's specialized advisory practice brings together deep sector knowledge, cross-border execution capability, and Shariah-compliant structuring expertise — delivering distinctive outcomes for the most complex mandates."
   />
+  <ServiceSections services={services} />
 
   <!-- ── About BIG ──────────────────────────────────────────────────────── -->
   <AboutBIG bgClass="bg-mist" />

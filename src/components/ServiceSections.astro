@@ -1,0 +1,28 @@
+---
+// ServiceSections — dispatcher. Renders each service through its assigned bespoke section
+// component (feature / banner / ctaband / bordered / overlap / curtain), so a page can present
+// a varied, editorial sequence while keeping all copy in one array. Anchor ids are on each
+// section (mega-menu targets) — never change them.
+import ServiceFeature from './ServiceFeature.astro';
+import ServiceBanner from './ServiceBanner.astro';
+import ServiceCtaBand from './ServiceCtaBand.astro';
+import ServiceBordered from './ServiceBordered.astro';
+import ServiceOverlap from './ServiceOverlap.astro';
+import ServiceCurtain from './ServiceCurtain.astro';
+
+interface Props { services: any[] }
+const { services } = Astro.props;
+
+const MAP: Record<string, any> = {
+  feature: ServiceFeature,
+  banner: ServiceBanner,
+  ctaband: ServiceCtaBand,
+  bordered: ServiceBordered,
+  overlap: ServiceOverlap,
+  curtain: ServiceCurtain,
+};
+---
+{services.map((svc) => {
+  const Cmp = MAP[svc.layout] ?? ServiceFeature;
+  return <Cmp {...svc} />;
+})}

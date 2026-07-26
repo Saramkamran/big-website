@@ -1,0 +1,36 @@
+---
+// ServiceBordered — a bordered card: image on one side, copy + optional outline CTA on the other.
+// Uses flexbox (row / row-reverse) rather than grid+order so the two panels never overlap.
+import Button from './Button.astro';
+interface Props {
+  id: string; index?: string; eyebrow?: string; title: string; body: string;
+  image: string; imageAlt: string; imageSide?: 'left' | 'right'; bg?: 'paper' | 'mist';
+  ctaLabel?: string; ctaHref?: string;
+}
+const { id, index, eyebrow, title, body, image, imageAlt, imageSide = 'left', bg = 'paper', ctaLabel, ctaHref = '/contact' } = Astro.props;
+const bgClass = bg === 'mist' ? 'bg-mist' : 'bg-paper';
+const rowDir = imageSide === 'right' ? 'lg:flex-row-reverse' : 'lg:flex-row';
+---
+<section id={id} class={`${bgClass} py-20 lg:py-28`}>
+  <div class="container-big">
+    <div class={`border border-line bg-paper flex flex-col ${rowDir}`}>
+      <div class="lg:w-5/12 lg:flex-shrink-0">
+        <div class="w-full aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[420px] overflow-hidden bg-line">
+          <img src={image} alt={imageAlt} class="w-full h-full object-cover" loading="lazy" />
+        </div>
+      </div>
+      <div class="lg:w-7/12 p-8 lg:p-14 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-5">
+          {index && <span class="font-sans text-xs font-bold tracking-[0.2em] text-ink">{index}</span>}
+          <span class="h-px w-10 bg-acid"></span>
+          {eyebrow && <span class="font-sans text-xs font-semibold uppercase tracking-widest text-stone">{eyebrow}</span>}
+        </div>
+        <h3 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(26px, 2.8vw, 38px); line-height: 1.2;">
+          {title}
+        </h3>
+        <p class="font-sans text-base text-stone leading-relaxed">{body}</p>
+        {ctaLabel && <div class="mt-8"><Button variant="outline" href={ctaHref}>{ctaLabel} →</Button></div>}
+      </div>
+    </div>
+  </div>
+</section>

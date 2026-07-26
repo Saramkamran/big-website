@@ -1,0 +1,18 @@
+---
+// PillarIntro — the "What We Do" section header (title left, summary right, hairline).
+interface Props { id?: string; eyebrow?: string; title: string; summary: string }
+const { id, eyebrow = 'What We Do', title, summary } = Astro.props;
+---
+<section class="bg-paper pt-section pb-8" id={id}>
+  <div class="container-big">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 border-b border-line pb-10">
+      <div>
+        <p class="label mb-4">{eyebrow}</p>
+        <h2 class="font-serif font-normal text-ink" style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1; max-width: 720px;">
+          {title}
+        </h2>
+      </div>
+      <p class="font-sans text-base text-stone leading-relaxed max-w-md lg:text-right">{summary}</p>
+    </div>
+  </div>
+</section>

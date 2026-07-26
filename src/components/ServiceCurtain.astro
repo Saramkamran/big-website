@@ -1,0 +1,31 @@
+---
+// ServiceCurtain — wraps CurtainRevealCard in a titled section (hover-reveal feature).
+import CurtainRevealCard from './CurtainRevealCard.astro';
+interface Props {
+  id: string; eyebrow?: string; tag?: string; cardEyebrow?: string; title: string; body: string;
+  image: string; imageAlt: string; ctaLabel?: string; ctaHref?: string; bg?: 'paper' | 'mist';
+}
+const { id, eyebrow, tag, cardEyebrow, title, body, image, imageAlt, ctaLabel = 'Get in Touch', ctaHref = '/contact', bg = 'mist' } = Astro.props;
+const bgClass = bg === 'mist' ? 'bg-mist' : 'bg-paper';
+---
+<section id={id} class={`${bgClass} py-20 lg:py-28`}>
+  <div class="container-big">
+    {(eyebrow || tag) && (
+      <div class="flex items-center gap-3 mb-10">
+        {eyebrow && <span class="font-sans text-xs font-bold tracking-[0.2em] text-ink">{eyebrow}</span>}
+        <span class="h-px w-10 bg-acid"></span>
+        {tag && <span class="font-sans text-xs font-semibold uppercase tracking-widest text-stone">{tag}</span>}
+      </div>
+    )}
+    <CurtainRevealCard
+      eyebrow={cardEyebrow}
+      title={title}
+      description={body}
+      image={image}
+      imageAlt={imageAlt}
+      href={ctaHref}
+      ctaLabel={ctaLabel}
+    />
+    <p class="hidden lg:block font-sans text-xs text-stone mt-4">Hover to reveal the details.</p>
+  </div>
+</section>

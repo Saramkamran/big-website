@@ -1,9 +1,62 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ServiceShowcase from '../../components/ServiceShowcase.astro';
+import PillarIntro from '../../components/PillarIntro.astro';
+import ServiceSections from '../../components/ServiceSections.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
+
+const services = [
+  {
+    layout: 'feature', id: 'wealth-planning', index: '01', tag: 'À la Carte',
+    title: 'Wealth Planning — À la Carte Approach', imageSide: 'left', bg: 'paper',
+    image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Bespoke wealth-planning consultation with an advisor',
+    body: `We draw customised solutions for tax-efficient wealth and inheritance planning. We take a highly personalized approach to understanding your wealth aspirations, financial commitments, life dreams, and non-negotiables — enabling us to design and implement bespoke, à la carte solutions that preserve and grow wealth while aligning with your lifestyle, legacy, and intergenerational succession objectives. Black Stone Islamic Global engages with you and your trusted advisors to develop tailored strategies that broaden your portfolio, expand your business universe, and multiply your wealth.`,
+  },
+  {
+    layout: 'curtain', id: 'dedicated-investments', eyebrow: '02', tag: 'Client-Exclusive',
+    cardEyebrow: 'Bespoke & Private', title: 'Dedicated Investments', bg: 'mist',
+    ctaLabel: 'Speak to an Advisor', ctaHref: '/contact',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80',
+    imageAlt: 'Bespoke investment structures and private opportunities',
+    body: `Our investment-management capabilities extend far beyond off-the-shelf equities, mutual funds, and bank deposits. Through our extensive network, strategic partnerships, and proven execution, we provide access to bespoke wealth solutions across multiple asset classes and geographies. From dedicated investment vehicles and private structures to client-exclusive opportunities, we empower you to play a leading role in creating and preserving wealth — with institutional-grade expertise, governance, and strategic oversight to help build enduring value and an enduring legacy.`,
+  },
+  {
+    layout: 'overlap', id: 'private-equity', eyebrow: '03', tag: 'Growth Capital',
+    title: 'Private Equity', imageSide: 'right', bg: 'paper',
+    image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Business growth discussion — private equity partnership',
+    body: `Our core investing approach is supported by expertise across sectors, markets, business models, and stages of the corporate lifecycle. Partnering with global private-equity investors, we help small and mid-sized businesses raise growth capital through equity investments ranging from minority to strategic stakes. Whether you are an investor seeking high-growth private-market opportunities or a business owner looking to unlock value, we connect capital with opportunity.`,
+  },
+  {
+    layout: 'banner', id: 'real-estate', index: '04', eyebrow: 'Landmark Transactions',
+    title: 'Real Estate',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+    imageAlt: '',
+    body: `From identifying off-market opportunities and conducting thorough due diligence to structuring transactions and securing favourable terms, we deliver superior outcomes for our clients. Through relationships with REIT sponsors, housing-society developers, ultra-high-net-worth investors, family offices, and government stakeholders, we facilitate landmark real-estate transactions with the highest standards of professionalism — connecting exceptional opportunities with strategic capital.`,
+  },
+  {
+    layout: 'feature', id: 'pakistan-energy', index: '05', tag: 'OMC Sector',
+    title: 'Pakistan Energy', imageSide: 'right', bg: 'mist',
+    image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Refinery and downstream plant — Pakistan OMC energy sector',
+    body: `For ultra-high-net-worth individuals and corporates seeking entry into Pakistan's OMC sector — whether acquiring an existing downstream business or pursuing greenfield development — we offer structured advisory across deal origination, due diligence, transaction execution, and post-acquisition operational support. Combining sector expertise, strategic relationships, and hands-on execution, we provide end-to-end advisory support that remains rare in Pakistan's energy landscape.`,
+  },
+  {
+    layout: 'bordered', id: 'philanthropy-zakat', index: '06', eyebrow: 'Purposeful Giving',
+    title: 'Philanthropy & Zakat Strategy', imageSide: 'left', bg: 'paper',
+    image: 'https://images.unsplash.com/photo-1593113630400-ea4288922497?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Community and charitable giving — structured philanthropy',
+    body: `We believe wealth is not only a reflection of prosperity but a powerful instrument for positive socio-economic change. Our philanthropic and Zakat strategies help clients structure their giving purposefully and systematically — supporting virtuous causes while fulfilling religious, social, and moral responsibilities. We assist in establishing family trusts and foundations, Waqfs, CSR initiatives, and impact projects including cancer research, educational institutions, and flood relief. We develop frameworks that maximize social impact and ensure charitable capital is deployed effectively. Where permitted by law, we also advise on tax-efficient giving; however, our primary focus remains on strategizing selfless charity for the Sake of Allah and Rasool Allah ﷺ (صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ). We charge the least fee for Philanthropy and Zakat-related advisory to clients.`,
+  },
+  {
+    layout: 'ctaband', id: 'professional-services', index: '07', eyebrow: 'A-Rated Network',
+    title: 'Professional Services', ctaLabel: 'Get in Touch', ctaHref: '/contact',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80',
+    body: `As part of our holistic offering, clients benefit from a distinguished network of A-rated and QCR-rated chartered-accountant firms in Pakistan, the United Kingdom, and the United States. Through these trusted relationships we provide access to premier accountancy, audit, legal, tax, regulatory, and governance advisory — ensuring complex financial and compliance matters are managed with precision, discretion, and uncompromising integrity.`,
+  },
+];
 ---
 
 <BaseLayout
@@ -13,7 +66,6 @@ import ContactCTA from '../../components/ContactCTA.astro';
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
   <section class="relative flex items-start bg-ink" style="min-height: calc(100vh - var(--header-h));">
-    <!-- Background layer — overflow-hidden here, never on the section -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -26,7 +78,6 @@ import ContactCTA from '../../components/ContactCTA.astro';
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <!-- Content anchored to top — never overflows the viewport -->
     <div class="relative z-10 container-big w-full pt-12 pb-12">
       <div class="max-w-3xl">
         <p class="label text-acid mb-6">Private Wealth Management</p>
@@ -51,62 +102,12 @@ import ContactCTA from '../../components/ContactCTA.astro';
 
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
-  <ServiceShowcase
-    pillar="Private Wealth Management"
-    headline="An À la Carte Approach to Wealth"
-    intro="Black Stone Islamic Global engages with you and your trusted advisors to develop and implement tailored wealth strategies that broaden your portfolio, expand your business universe, and multiply your wealth — always within the bounds of Islamic principles."
-    services={[
-      {
-        id: 'wealth-planning',
-        title: 'Wealth Planning — À la Carte Approach',
-        image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Bespoke wealth-planning consultation with an advisor',
-        body: 'We draw customised solutions for tax-efficient wealth and inheritance planning. We take a highly personalized approach to understanding your wealth aspirations, financial commitments, life dreams, and non-negotiables — enabling us to design and implement bespoke, à la carte solutions that preserve and grow wealth while aligning with your lifestyle, legacy, and intergenerational succession objectives. Black Stone Islamic Global engages with you and your trusted advisors to develop tailored strategies that broaden your portfolio, expand your business universe, and multiply your wealth.',
-      },
-      {
-        id: 'dedicated-investments',
-        title: 'Dedicated Investments',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Bespoke investment structures and private opportunities',
-        body: 'Our investment-management capabilities extend far beyond off-the-shelf equities, mutual funds, and bank deposits. Through our extensive network, strategic partnerships, and proven execution, we provide access to bespoke wealth solutions across multiple asset classes and geographies. From dedicated investment vehicles and private structures to client-exclusive opportunities, we empower you to play a leading role in creating and preserving wealth — with institutional-grade expertise, governance, and strategic oversight to help build enduring value and an enduring legacy.',
-      },
-      {
-        id: 'private-equity',
-        title: 'Private Equity',
-        image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Business growth discussion — private equity partnership',
-        body: 'Our core investing approach is supported by expertise across sectors, markets, business models, and stages of the corporate lifecycle. Partnering with global private-equity investors, we help small and mid-sized businesses raise growth capital through equity investments ranging from minority to strategic stakes. Whether you are an investor seeking high-growth private-market opportunities or a business owner looking to unlock value, we connect capital with opportunity.',
-      },
-      {
-        id: 'real-estate',
-        title: 'Real Estate',
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Modern architecture and skyline — real estate transactions',
-        body: 'From identifying off-market opportunities and conducting thorough due diligence to structuring transactions and securing favourable terms, we deliver superior outcomes for our clients. Through relationships with REIT sponsors, housing-society developers, ultra-high-net-worth investors, family offices, and government stakeholders, we facilitate landmark real-estate transactions with the highest standards of professionalism — connecting exceptional opportunities with strategic capital.',
-      },
-      {
-        id: 'pakistan-energy',
-        title: 'Pakistan Energy',
-        image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Refinery and downstream plant — Pakistan OMC energy sector',
-        body: 'For ultra-high-net-worth individuals and corporates seeking entry into Pakistan\'s OMC sector — whether acquiring an existing downstream business or pursuing greenfield development — we offer structured advisory across deal origination, due diligence, transaction execution, and post-acquisition operational support. Combining sector expertise, strategic relationships, and hands-on execution, we provide end-to-end advisory support that remains rare in Pakistan\'s energy landscape.',
-      },
-      {
-        id: 'philanthropy-zakat',
-        title: 'Philanthropy & Zakat Strategy',
-        image: 'https://images.unsplash.com/photo-1593113630400-ea4288922497?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Community and charitable giving — structured philanthropy',
-        body: 'We believe wealth is not only a reflection of prosperity but a powerful instrument for positive socio-economic change. Our philanthropic and Zakat strategies help clients structure their giving purposefully and systematically — supporting virtuous causes while fulfilling religious, social, and moral responsibilities. We assist in establishing family trusts and foundations, Waqfs, CSR initiatives, and impact projects including cancer research, educational institutions, and flood relief. We develop frameworks that maximize social impact and ensure charitable capital is deployed effectively. Where permitted by law, we also advise on tax-efficient giving; however, our primary focus remains on strategizing selfless charity for the Sake of Allah and Rasool Allah ﷺ (صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ). We charge the least fee for Philanthropy and Zakat-related advisory to clients.',
-      },
-      {
-        id: 'professional-services',
-        title: 'Professional Services',
-        image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Accountancy, audit, and governance documentation',
-        body: 'As part of our holistic offering, clients benefit from a distinguished network of A-rated and QCR-rated chartered-accountant firms in Pakistan, the United Kingdom, and the United States. Through these trusted relationships we provide access to premier accountancy, audit, legal, tax, regulatory, and governance advisory — ensuring complex financial and compliance matters are managed with precision, discretion, and uncompromising integrity.',
-      },
-    ]}
+  <PillarIntro
+    id="private-wealth"
+    title="An À la Carte Approach to Wealth"
+    summary="Black Stone Islamic Global engages with you and your trusted advisors to develop and implement tailored wealth strategies that broaden your portfolio, expand your business universe, and multiply your wealth — always within the bounds of Islamic principles."
   />
+  <ServiceSections services={services} />
 
   <!-- ── About BIG ──────────────────────────────────────────────────────── -->
   <AboutBIG bgClass="bg-mist" />

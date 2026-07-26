@@ -1,9 +1,52 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ServiceShowcase from '../../components/ServiceShowcase.astro';
+import PillarIntro from '../../components/PillarIntro.astro';
+import ServiceSections from '../../components/ServiceSections.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
+
+const services = [
+  {
+    layout: 'feature', id: 'am-fixed-income', index: '01', tag: 'Capital Preservation',
+    title: 'Shariah Fixed Income', imageSide: 'left', bg: 'paper',
+    image: 'https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Classical columns — stability and capital preservation',
+    body: `We help clients navigate fixed-income markets with confidence, identify high-quality opportunities focused on capital preservation and stable returns, and pursue their financial goals through a curated selection of Pakistan's leading mutual funds.`,
+  },
+  {
+    layout: 'banner', id: 'am-equity', index: '02', eyebrow: 'PSX · FTSE · NYSE',
+    title: 'Shariah Equity',
+    image: 'https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1600&q=80',
+    imageAlt: '',
+    body: `Drawing on over two decades of experience in PSX, FTSE, and NYSE equities, we help investors capitalize on market opportunities through carefully selected, professionally managed equity funds. Our approach combines rigorous analysis of macro and microeconomic indicators, sector dynamics, corporate fundamentals, quantitative analysis, and valuation metrics with a robust due-diligence framework. Partnering with leading asset-management companies in Pakistan, we maintain disciplined oversight through regular reviews of fund performance, portfolio composition, risk metrics, Fund Manager Reports (FMRs), and strategy. Whether the objective is capital appreciation, long-term wealth creation, or portfolio diversification, our equity fund solutions provide clients with a professionally managed pathway to participate in the growth potential of capital markets.`,
+  },
+  {
+    layout: 'overlap', id: 'am-etfs', eyebrow: '03', tag: 'Diversification',
+    title: 'Shariah ETFs', imageSide: 'right', bg: 'paper',
+    image: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Market data and diversified index performance on screen',
+    body: `We help clients access carefully selected exchange-traded funds that provide exposure to high-quality equities screened in accordance with Islamic investment principles. Our solutions combine the diversification benefits of funds with the liquidity and transparency of traded securities — an efficient pathway to participate in long-term market growth while adhering to faith-based investing values.`,
+  },
+  {
+    layout: 'feature', id: 'am-multi-asset', index: '04', tag: 'Balanced',
+    title: 'Shariah Multi-Asset', imageSide: 'right', bg: 'mist',
+    image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Balanced portfolio planning across asset classes',
+    body: `Leveraging our market expertise and meticulous due-diligence framework, we help clients access carefully selected multi-asset and hybrid funds such as Fund of Funds, Balanced Funds, and Asset Allocation Funds. By strategically blending equities and fixed income, these solutions aim to balance growth and stability across market cycles.`,
+    rails: [
+      { name: 'Fund of Funds', desc: 'Diversified across funds' },
+      { name: 'Balanced Funds', desc: 'Growth and stability' },
+      { name: 'Asset Allocation', desc: 'A strategic blend' },
+    ],
+  },
+  {
+    layout: 'ctaband', id: 'am-pensions', index: '05', eyebrow: 'In Development',
+    title: 'Shariah Pensions', ctaLabel: 'Register Your Interest', ctaHref: '/contact',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80',
+    body: `Shariah-compliant retirement solutions designed for long-term, tax-efficient wealth accumulation. Our pension solutions are currently being developed in partnership with leading fund managers — contact our Client Care team to register your interest and be notified upon launch.`,
+  },
+];
 ---
 
 <BaseLayout
@@ -13,7 +56,6 @@ import ContactCTA from '../../components/ContactCTA.astro';
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
   <section class="relative flex items-start bg-ink" style="min-height: calc(100vh - var(--header-h));">
-    <!-- Background layer — overflow-hidden here, never on the section -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -26,7 +68,6 @@ import ContactCTA from '../../components/ContactCTA.astro';
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <!-- Content anchored to top — never overflows the viewport -->
     <div class="relative z-10 container-big w-full pt-12 pb-12">
       <div class="max-w-3xl">
         <p class="label text-acid mb-6">Asset Management</p>
@@ -51,49 +92,12 @@ import ContactCTA from '../../components/ContactCTA.astro';
 
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
-  <ServiceShowcase
-    pillar="Asset Management — Public Investing"
-    headline="Rigorous Screening. Disciplined Execution."
-    intro="Our comprehensive suite of asset-management solutions across fixed income, equity, and multi-asset proprietary strategies is designed to navigate market challenges and deliver returns aligned with clients' expectations."
-    services={[
-      {
-        id: 'am-fixed-income',
-        title: 'Shariah Fixed Income',
-        image: 'https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Classical columns — stability and capital preservation',
-        body: 'We help clients navigate fixed-income markets with confidence, identify high-quality opportunities focused on capital preservation and stable returns, and pursue their financial goals through a curated selection of Pakistan\'s leading mutual funds.',
-      },
-      {
-        id: 'am-equity',
-        title: 'Shariah Equity',
-        image: 'https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Global financial city skyline — international equity markets',
-        body: 'Drawing on over two decades of experience in PSX, FTSE, and NYSE equities, we help investors capitalize on market opportunities through carefully selected, professionally managed equity funds. Our approach combines rigorous analysis of macro and microeconomic indicators, sector dynamics, corporate fundamentals, quantitative analysis, and valuation metrics with a robust due-diligence framework. Partnering with leading asset-management companies in Pakistan, we maintain disciplined oversight through regular reviews of fund performance, portfolio composition, risk metrics, Fund Manager Reports (FMRs), and strategy. Whether the objective is capital appreciation, long-term wealth creation, or portfolio diversification, our equity fund solutions provide clients with a professionally managed pathway to participate in the growth potential of capital markets.',
-      },
-      {
-        id: 'am-etfs',
-        title: 'Shariah ETFs',
-        image: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Market data and diversified index performance on screen',
-        body: 'We help clients access carefully selected exchange-traded funds that provide exposure to high-quality equities screened in accordance with Islamic investment principles. Our solutions combine the diversification benefits of funds with the liquidity and transparency of traded securities — an efficient pathway to participate in long-term market growth while adhering to faith-based investing values.',
-      },
-      {
-        id: 'am-multi-asset',
-        title: 'Shariah Multi-Asset',
-        image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Balanced portfolio planning across asset classes',
-        body: 'Leveraging our market expertise and meticulous due-diligence framework, we help clients access carefully selected multi-asset and hybrid funds such as Fund of Funds, Balanced Funds, and Asset Allocation Funds. By strategically blending equities and fixed income, these solutions aim to balance growth and stability across market cycles.',
-      },
-      {
-        id: 'am-pensions',
-        title: 'Shariah Pensions',
-        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Long-term retirement and pension planning',
-        note: 'In Development — Register Your Interest',
-        body: 'Shariah-compliant retirement solutions designed for long-term, tax-efficient wealth accumulation. Our pension solutions are currently being developed in partnership with leading fund managers — contact our Client Care team to register your interest and be notified upon launch.',
-      },
-    ]}
+  <PillarIntro
+    id="asset-management"
+    title="Rigorous Screening. Disciplined Execution."
+    summary="Our comprehensive suite of asset-management solutions across fixed income, equity, and multi-asset proprietary strategies is designed to navigate market challenges and deliver returns aligned with clients' expectations."
   />
+  <ServiceSections services={services} />
 
   <!-- ── About BIG ──────────────────────────────────────────────────────── -->
   <AboutBIG bgClass="bg-mist" />
