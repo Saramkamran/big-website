@@ -33,52 +33,70 @@ const { eyebrow, title, description, image, imageAlt, href = '/contact', ctaLabe
       {title}
     </h3>
     <div class="crc-reveal">
-      <p class="font-sans text-white/85 text-sm lg:text-base leading-relaxed mt-5 mb-7 max-w-xl">{description}</p>
-      <a
-        href={href}
-        class="inline-flex items-center gap-2 border border-paper/40 text-white px-5 py-2.5 font-sans text-sm font-semibold hover:bg-acid hover:text-ink hover:border-acid transition-colors"
-      >
-        {ctaLabel} <span aria-hidden="true">→</span>
-      </a>
+      <div class="crc-reveal-inner">
+        <p class="font-sans text-white/85 text-sm lg:text-base leading-relaxed pt-5 mb-7 max-w-xl">{description}</p>
+        <a
+          href={href}
+          class="inline-flex items-center gap-2 border border-paper/40 text-white px-5 py-2.5 font-sans text-sm font-semibold hover:bg-acid hover:text-ink hover:border-acid transition-colors"
+        >
+          {ctaLabel} <span aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   </div>
 </article>
 
 <style>
-  .crc-img { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
-  .crc:hover .crc-img { transform: scale(1.06); }
+  /* One shared easing + duration so image, curtain and copy move as one gesture */
+  .crc {
+    --crc-ease: cubic-bezier(0.33, 1, 0.68, 1);
+    --crc-dur: 0.6s;
+  }
+  .crc-img,
+  .crc-veil,
+  .crc-reveal,
+  .crc-edge {
+    will-change: transform, clip-path, grid-template-rows, opacity;
+  }
+
+  .crc-img { transition: transform 0.75s var(--crc-ease); }
+  .crc:hover .crc-img { transform: scale(1.05); }
 
   /* The curtain: a dark veil clipped to a centre line, opening full on hover */
   .crc-veil {
     clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
-    transition: clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: clip-path var(--crc-dur) var(--crc-ease);
   }
   .crc:hover .crc-veil,
   .crc:focus-within .crc-veil {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  .crc-edge { transition: opacity 0.25s ease; }
+  .crc-edge { transition: opacity 0.3s ease; }
   .crc:hover .crc-edge,
   .crc:focus-within .crc-edge { opacity: 0; }
 
-  /* The details reveal upward as the curtain opens */
+  /* Details reveal by animating the real content height (grid-rows 0fr → 1fr),
+     which stays smooth end-to-end — unlike a guessed max-height. The title glides
+     up in perfect sync because the growing row reflows the bottom-anchored column. */
   .crc-reveal {
-    max-height: 0;
+    display: grid;
+    grid-template-rows: 0fr;
     opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease 0.1s;
+    transition: grid-template-rows var(--crc-dur) var(--crc-ease),
+                opacity calc(var(--crc-dur) * 0.8) ease;
   }
   .crc:hover .crc-reveal,
   .crc:focus-within .crc-reveal {
-    max-height: 26rem;
+    grid-template-rows: 1fr;
     opacity: 1;
   }
+  .crc-reveal-inner { overflow: hidden; min-height: 0; }
 
   /* Touch devices have no hover — show everything by default */
   @media (hover: none) {
     .crc-veil { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-    .crc-reveal { max-height: 26rem; opacity: 1; }
+    .crc-reveal { grid-template-rows: 1fr; opacity: 1; }
     .crc-edge { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
