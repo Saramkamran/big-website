@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
+import CurtainRevealCard from '../../components/CurtainRevealCard.astro';
 
 // §11 service copy — verbatim. Kept as constants so the prose stays byte-identical
 // while each section below gets its own bespoke layout.
@@ -108,18 +109,57 @@ const rails = [
           <p class="font-sans text-base text-stone leading-relaxed">{shariahEquitiesBody}</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Sub-service cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mt-14 lg:mt-16">
-        <div class="border border-line p-8 lg:p-10 hover:border-ink transition-colors">
-          <p class="label mb-4">Portfolio Advisory</p>
-          <p class="font-sans text-sm text-stone leading-relaxed">{portfolioAdvisoryBody}</p>
+
+  <!-- ── Portfolio Advisory — big image + overlapping editorial card ────────── -->
+  <section id="portfolio-advisory" class="bg-paper pb-20 lg:pb-28">
+    <div class="container-big">
+      <div class="flex items-center gap-3 mb-10">
+        <span class="font-sans text-xs font-bold tracking-[0.2em] text-ink">Shariah Equities</span>
+        <span class="h-px w-10 bg-acid"></span>
+        <span class="font-sans text-xs font-semibold uppercase tracking-widest text-stone">Self-Directed</span>
+      </div>
+      <div class="relative">
+        <div class="lg:w-[62%] aspect-[16/10] overflow-hidden bg-line">
+          <img
+            src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1400&q=80"
+            alt="Self-directed investor tracking market data on phone and laptop"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
-        <div class="border border-line bg-mist p-8 lg:p-10">
-          <p class="label mb-4">Portfolio Management</p>
-          <p class="font-sans text-sm text-stone leading-relaxed">{portfolioManagementBody}</p>
+        <div class="relative lg:absolute lg:top-1/2 lg:right-0 lg:-translate-y-1/2 lg:w-[46%] bg-paper border border-line p-8 lg:p-12 -mt-12 mx-4 lg:mx-0 lg:mt-0">
+          <h3 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(26px, 2.8vw, 38px); line-height: 1.2;">
+            Portfolio Advisory
+          </h3>
+          <p class="font-sans text-sm lg:text-base text-stone leading-relaxed">{portfolioAdvisoryBody}</p>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ── Portfolio Management — curtain-reveal card ────────────────────────── -->
+  <section id="portfolio-management" class="bg-mist py-20 lg:py-28">
+    <div class="container-big">
+      <div class="flex items-center gap-3 mb-10">
+        <span class="font-sans text-xs font-bold tracking-[0.2em] text-ink">Shariah Equities</span>
+        <span class="h-px w-10 bg-acid"></span>
+        <span class="font-sans text-xs font-semibold uppercase tracking-widest text-stone">Discretionary Mandate</span>
+      </div>
+      <CurtainRevealCard
+        eyebrow="White-Glove Service"
+        title="Portfolio Management"
+        description={portfolioManagementBody}
+        image="https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=1600&q=80"
+        imageAlt="Portfolio manager in a private advisory consultation"
+        href="/contact"
+        ctaLabel="Speak to Client Care"
+      />
+      <p class="font-sans text-xs text-stone mt-4 lg:hidden">Full details shown below.</p>
+      <p class="hidden lg:block font-sans text-xs text-stone mt-4">Hover to reveal the full mandate.</p>
     </div>
   </section>
 
