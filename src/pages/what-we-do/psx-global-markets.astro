@@ -1,32 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
-import ContactCTA from '../../components/ContactCTA.astro';
 import CurtainRevealCard from '../../components/CurtainRevealCard.astro';
 
-// §11 service copy — verbatim. Kept as constants so the prose stays byte-identical
+// Client copy deck — verbatim. Kept as constants so the prose stays byte-identical
 // while each section below gets its own bespoke layout.
-const shariahEquitiesBody = `Our Shariah-compliant boutique equities business combines disciplined investment research, rigorous Islamic screening, and deep expertise to deliver tailored halal investment solutions for institutional and individual investors. We work closely with our clients to understand their investment objectives and provide a high-touch, bespoke advisory experience designed to align capital deployment with their financial goals and risk profile. Across Swing, Positional, and Long-Term proprietary strategies, we identify opportunities in Shariah-compliant businesses supported by strong fundamentals, favourable technical trends, and constructive market sentiment. Through disciplined portfolio construction, proactive risk management, and a focus on wealth creation, we seek to deliver maximum returns and sustainable value for our global clientele.`;
-const portfolioAdvisoryBody = `Our Portfolio Advisory services provide tailored investment solutions focused on opportunities within the Pakistan Stock Exchange (PSX). Leveraging bespoke analysis combined with market insights and structured portfolio construction, we help investors capitalize on market opportunities and achieve their tactical capital-growth objectives. Our investment philosophy is founded on a strong alignment of interests with our clients. Designed for self-directed investors who execute transactions independently, our advisory approach provides timely market intelligence, actionable recommendations, and strategic guidance to navigate market volatility with confidence.`;
-const portfolioManagementBody = `Our Portfolio Management services provide a fully managed, end-to-end investment experience for clients who prefer to delegate investment decisions and execution to our portfolio and wealth managers. Through a discretionary mandate, we oversee portfolio strategy, instrument selection, trade execution, and risk management, ensuring capital is actively managed in line with each client's objectives and risk profile. Access to this white-glove service is subject to a minimum portfolio size requirement; contact our Client Care team for eligibility details.`;
-const greenSukuksBody = `Whether our clients seek capital preservation, regular income, or long-term growth, our curated Sukuk offerings provide access to high-quality sovereign and corporate issuers. Combining Shariah compliance with competitive returns, our primary and secondary Sukuk desk serves as an effective platform for building wealth through ethically structured fixed-income alternatives. We are proud to be among the pioneers championing Green Sukuk as a sustainable financing solution for Pakistan. By connecting investors with ESG-aligned opportunities, we facilitate capital deployment into renewable energy, sustainable infrastructure, and climate-resilient projects — delivering attractive outcomes while supporting Pakistan's transition to a more sustainable, resilient economy.`;
-const transactionServicesBody = `Our Transaction Services platform provides seamless market access through RAAST ID integration, Special Convertible Rupee Accounts (SCRA), and Roshan Digital Account (RDA)-linked Roshan Equity Investment Accounts (REIA). Designed for both domestic and overseas investors, we offer efficient trade execution, swift settlement, and comprehensive post-trade support across equities, Sukuk, and other products. Combining secure, encrypted infrastructure with dedicated client care, we facilitate transactions for retail, corporate, and institutional clients with speed, transparency, and operational excellence. Supported by strong relationships across Pakistan's leading financial institutions, we deliver a secure and reliable cash-management and settlement experience.`;
-const blackstoneIntelBody = `We operate our dedicated WhatsApp channel, Blackstone Intel, to promote financial literacy and awareness of investment opportunities within the PSX. Through educational content, market insights, and investor-awareness initiatives, we help aspiring investors better understand capital markets and make informed decisions. Join free of charge for regular market updates and investor coaching.`;
-const blackstoneInvestmentsBody = `For clients and premium members seeking exclusive research, proprietary insights, and market-leading advisory, we invite you to join our dedicated WhatsApp group, Blackstone Investments. Contact our Client Care team to learn about membership benefits and enrolment.`;
+const shariahEquitiesBody = `Our equities business provides bespoke and Shariah enabled investment solutions for clients seeking sophisticated access to PSX and global capital markets. Combining proprietary strategies, deep-dive research, and market psychology, we identify high-conviction, high-return opportunities.
 
-// Factual capability rails — every label + descriptor is drawn from the Transaction Services copy above.
+Through disciplined capital allocation, dynamic portfolio construction, and proactive risk management, our approach is designed to compound wealth, preserve capital, and pursue superior returns, creating sustainable wealth for our growing clientele.`;
+const portfolioConsultancyBody = `Our portfolio consultancy services are designed for self-directed investors, providing timely trading and investment calls, and regular follow-ups. Combining market intelligence with actionable insights, we help clients navigate volatility, deploy capital decisively, and pursue growth.`;
+const portfolioSupervisionBody = `Our portfolio supervision is designed for trusted clients who prefer professional delegation. We provide bespoke strategies aligned with each client's risk and return objectives.
+
+Our specialists actively monitor and optimise portfolios to preserve and grow capital. This white-glove service is subject to minimum portfolio requirements and eligibility criteria.`;
+const greenSukuksBody = `Through primary and secondary markets, our Sukuk desk provides access to high-quality sovereign and corporate issuers, offering faith based fixed income solutions to our respected clients.
+
+We also connect minimum A-rated Green Sukuks with ESG conscious investors, providing direct access to sustainable instruments in energy, and flood control infrastructure of Pakistan.`;
+const transactionServicesBody = `Our bank enabled transaction services platform provides seamless and secure market access through RAAST ID, SCRA, IPS and RDA-linked REIA solutions for domestic and overseas investors. We facilitate efficient execution, settlement, and post-trade support across all service lines.`;
+const blackstoneIntelBody = `We operate our dedicated WhatsApp channel, Blackstone Intel, to promote financial literacy and intelligent investing in capital markets. We coach and mentor aspiring investors better understand risk and rewards, and make informed decisions.
+
+Join it for free and learn before earn`;
+
+// Factual capability rails — every label is drawn from the Transaction Services copy above.
 const rails = [
   { name: 'RAAST ID', desc: 'Seamless market access' },
-  { name: 'SCRA', desc: 'Special Convertible Rupee Accounts' },
-  { name: 'RDA', desc: 'Roshan Digital Account' },
-  { name: 'REIA', desc: 'Roshan Equity Investment Accounts' },
+  { name: 'SCRA', desc: 'Special Convertible Rupee Account' },
+  { name: 'IPS', desc: 'Investor Portfolio Securities' },
+  { name: 'REIA', desc: 'RDA-linked Roshan Equity Investment Account' },
 ];
 ---
 
 <BaseLayout
-  title="PSX & Global Markets | Black Stone Islamic Global"
+  title="PSX & Global Markets | Blackstone Islamic Global"
   description="Shariah-compliant equities, green sukuks, and transaction services across the Pakistan Stock Exchange and global markets."
+  theme="teal"
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
@@ -50,10 +56,10 @@ const rails = [
           class="font-serif font-normal text-white mb-6 leading-[1.05]"
           style="font-size: clamp(34px, 5.5vw, 60px);"
         >
-          Halal Capital.<br/>Disciplined Research.<br/>Global Markets.
+          Tailored Strategy | Smart Execution | Timely Exist
         </h1>
         <p class="font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
-          Our Shariah-compliant boutique equities business delivers tailored halal investment solutions — from bespoke PSX portfolio strategies and Green Sukuk to seamless transaction services for domestic and overseas investors.
+          Our equities business combines niche research, rigorous analysis, and deep market expertise to deliver tailored, timely and independent investment solutions for our distinguished investors.
         </p>
         <Button variant="acid" href="#shariah-equities">Explore What We Do</Button>
       </div>
@@ -77,7 +83,7 @@ const rails = [
           </h2>
         </div>
         <p class="font-sans text-base text-stone leading-relaxed max-w-md lg:text-right">
-          A boutique built on disciplined research, rigorous Islamic screening, and deep PSX and global market expertise — delivering tailored halal solutions for institutional and individual investors.
+          Our equities business combines niche research, rigorous analysis, and deep market expertise to deliver tailored, timely and independent investment solutions for our distinguished investors.
         </p>
       </div>
     </div>
@@ -91,8 +97,8 @@ const rails = [
         <div class="lg:col-span-7">
           <div class="aspect-[16/10] overflow-hidden bg-line">
             <img
-              src="https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?auto=format&fit=crop&w=1400&q=80"
-              alt="Analyst reviewing equity research and market charts"
+              src="/images/psx-shariah-equities.jpg"
+              alt="Advisors reviewing equity research and market charts together"
               class="w-full h-full object-cover"
               loading="lazy"
             />
@@ -113,8 +119,8 @@ const rails = [
   </section>
 
 
-  <!-- ── Portfolio Advisory — big image + overlapping editorial card ────────── -->
-  <section id="portfolio-advisory" class="bg-paper pb-20 lg:pb-28">
+  <!-- ── Portfolio Consultancy — big image + overlapping editorial card ────────── -->
+  <section id="portfolio-consultancy" class="bg-paper pb-20 lg:pb-28">
     <div class="container-big">
       <div class="flex items-center gap-3 mb-10">
         <span class="font-sans text-xs font-bold tracking-[0.2em] text-ink">Shariah Equities</span>
@@ -122,27 +128,27 @@ const rails = [
         <span class="font-sans text-xs font-semibold uppercase tracking-widest text-stone">Self-Directed</span>
       </div>
       <div class="relative">
-        <div class="lg:w-[62%] aspect-[16/10] overflow-hidden bg-line">
+        <div class="lg:w-[62%] lg:ml-auto aspect-[16/10] overflow-hidden bg-line">
           <img
-            src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1400&q=80"
-            alt="Self-directed investor tracking market data on phone and laptop"
+            src="/images/psx-portfolio-consultancy.jpg"
+            alt="Investor reviewing live market charts on a tablet during an advisory meeting"
             class="w-full h-full object-cover"
             loading="lazy"
           />
         </div>
-        <div class="relative lg:absolute lg:top-1/2 lg:right-0 lg:-translate-y-1/2 lg:w-[46%] bg-paper border border-line p-8 lg:p-12 -mt-12 mx-4 lg:mx-0 lg:mt-0">
+        <div class="relative lg:absolute lg:top-1/2 lg:left-0 lg:-translate-y-1/2 lg:w-[46%] bg-paper border border-line p-8 lg:p-12 -mt-12 mx-4 lg:mx-0 lg:mt-0">
           <h3 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(26px, 2.8vw, 38px); line-height: 1.2;">
-            Portfolio Advisory
+            Portfolio Consultancy
           </h3>
-          <p class="font-sans text-sm lg:text-base text-stone leading-relaxed">{portfolioAdvisoryBody}</p>
+          <p class="font-sans text-sm lg:text-base text-stone leading-relaxed">{portfolioConsultancyBody}</p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ── Portfolio Management — curtain-reveal card ────────────────────────── -->
-  <section id="portfolio-management" class="bg-mist py-20 lg:py-28">
+  <!-- ── Portfolio Supervision — curtain-reveal card ────────────────────────── -->
+  <section id="portfolio-supervision" class="bg-mist py-20 lg:py-28">
     <div class="container-big">
       <div class="flex items-center gap-3 mb-10">
         <span class="font-sans text-xs font-bold tracking-[0.2em] text-ink">Shariah Equities</span>
@@ -151,12 +157,13 @@ const rails = [
       </div>
       <CurtainRevealCard
         eyebrow="White-Glove Service"
-        title="Portfolio Management"
-        description={portfolioManagementBody}
-        image="https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=1600&q=80"
-        imageAlt="Portfolio manager in a private advisory consultation"
+        title="Portfolio Supervision"
+        description={portfolioSupervisionBody}
+        image="/images/psx-portfolio-supervision.jpg"
+        imageAlt="Portfolio manager discussing performance charts with a client"
+        imagePosition="top"
         href="/contact"
-        ctaLabel="Speak to Client Care"
+        ctaLabel="Enquire"
       />
       <p class="font-sans text-xs text-stone mt-4 lg:hidden">Full details shown below.</p>
       <p class="hidden lg:block font-sans text-xs text-stone mt-4">Hover to reveal the full mandate.</p>
@@ -164,7 +171,7 @@ const rails = [
   </section>
 
 
-  <!-- ── 02 · Green Sukuks — full-bleed photographic feature ───────────────── -->
+  <!-- ── 02 · Sukuks and Green Sukuks — full-bleed photographic feature ───────────────── -->
   <section id="green-sukuks" class="relative bg-ink overflow-hidden">
     <div class="absolute inset-0" aria-hidden="true">
       <img
@@ -183,7 +190,7 @@ const rails = [
           <span class="h-px w-10 bg-acid"></span>
         </div>
         <h3 class="font-serif font-normal text-white mb-6" style="font-size: clamp(28px, 3.4vw, 44px); line-height: 1.1;">
-          Green Sukuks
+          Sukuks and Green Sukuks
         </h3>
         <p class="font-sans text-white/85 text-base lg:text-lg leading-relaxed">{greenSukuksBody}</p>
       </div>
@@ -195,17 +202,17 @@ const rails = [
   <section id="transaction-services" class="bg-mist py-20 lg:py-28">
     <div class="container-big">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-        <div class="lg:col-span-6 lg:order-2">
+        <div class="lg:col-span-6 lg:order-1">
           <div class="aspect-[4/3] overflow-hidden bg-line">
             <img
-              src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80"
-              alt="Secure digital banking and mobile transaction technology"
+              src="/images/psx-transaction-services.jpg"
+              alt="Interwoven strands of coloured thread — connected settlement and transaction rails"
               class="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
         </div>
-        <div class="lg:col-span-6 lg:order-1">
+        <div class="lg:col-span-6 lg:order-2">
           <div class="flex items-center gap-3 mb-5">
             <span class="font-sans text-xs font-bold tracking-[0.2em] text-ink">03</span>
             <span class="h-px w-10 bg-acid"></span>
@@ -262,48 +269,5 @@ const rails = [
     </div>
   </section>
 
-
-  <!-- ── 05 · Blackstone Investments — bordered membership card ─────────────── -->
-  <section id="blackstone-investments" class="bg-paper py-20 lg:py-28">
-    <div class="container-big">
-      <div class="border border-line grid grid-cols-1 lg:grid-cols-12">
-        <div class="lg:col-span-5 order-1">
-          <div class="aspect-[4/3] lg:h-full lg:min-h-[420px] overflow-hidden bg-line">
-            <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80"
-              alt="Private advisory meeting for premium members"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div class="lg:col-span-7 order-2 p-8 lg:p-14 flex flex-col justify-center">
-          <div class="flex items-center gap-3 mb-5">
-            <span class="font-sans text-xs font-bold tracking-[0.2em] text-ink">05</span>
-            <span class="h-px w-10 bg-acid"></span>
-          </div>
-          <p class="label mb-4">Premium Membership · WhatsApp Group</p>
-          <h3 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(26px, 2.8vw, 38px); line-height: 1.2;">
-            Blackstone Investments
-          </h3>
-          <p class="font-sans text-base text-stone leading-relaxed mb-8">{blackstoneInvestmentsBody}</p>
-          <div>
-            <Button variant="outline" href="/contact">Enquire About Membership →</Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── About BIG ──────────────────────────────────────────────────────── -->
-  <AboutBIG bgClass="bg-mist" />
-
-  <ContactCTA
-    headline="Ready to Invest in Halal Markets?"
-    subtext="Our PSX and global markets team will design a bespoke Shariah-compliant portfolio strategy aligned with your goals."
-    image="https://images.unsplash.com/photo-1651341050677-24dba59ce0fd?auto=format&fit=crop&w=1200&q=80"
-    imageAlt="Live trading screens — PSX and global markets"
-  />
 
 </BaseLayout>

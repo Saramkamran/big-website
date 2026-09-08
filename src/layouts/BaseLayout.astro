@@ -7,17 +7,21 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  /* Optional accent theme. Overrides --acid/--acid-600 for this page only,
+     re-colouring the navbar, page accents and footer together. */
+  theme?: 'teal' | 'bw';
 }
 
 const {
-  title = 'Black Stone Islamic Global | Shariah-Compliant Brokerage',
-  description = 'Black Stone Islamic Global delivers disciplined, Shariah-compliant brokerage, asset management, and private wealth solutions across PSX, FTSE, and NYSE.',
+  title = 'Blackstone Islamic Global | Shariah-Compliant Brokerage',
+  description = 'Blackstone Islamic Global delivers disciplined, Shariah-compliant brokerage, asset management, and private wealth solutions across PSX, FTSE, and NYSE.',
   image = '/images/og-image.jpg',
+  theme,
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class={theme ? `theme-${theme}` : undefined}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +35,7 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>

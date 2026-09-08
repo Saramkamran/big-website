@@ -10,8 +10,51 @@
   --mist:     #F3F5EE;
   --stone:    #6B7280;
   --line:     #E5E7EB;
-  --header-h: 72px;
+  --header-h: 64px;
 }
+
+/* Per-page accent override. Applied to <html> via BaseLayout's `theme` prop, so
+   the navbar, page content and footer all re-theme together. */
+:root.theme-teal {
+  --acid:     #15D8B3;
+  --acid-600: #11AD8F;
+}
+
+/* ── Black & white theme ─────────────────────────────────────────────────
+   Black navbar with white text, and body sections that alternate
+   white -> black by remapping the `mist` section background to ink. */
+:root.theme-bw #site-header {
+  background-color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+/* Navbar text/marks are ink by default — invert them on the black bar. */
+:root.theme-bw #site-header .text-ink,
+:root.theme-bw #site-header .nav-link,
+:root.theme-bw #site-header button[aria-label="Search"],
+:root.theme-bw #site-header svg { color: #FFFFFF; }
+:root.theme-bw #site-header a[href="/login"] {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  background-color: transparent;
+}
+:root.theme-bw #site-header a[href="/login"]:hover {
+  background-color: #FFFFFF;
+  color: var(--ink);
+}
+/* Dropdown panels stay light, so restore ink text inside them. */
+:root.theme-bw #site-header #mega-menu .text-ink,
+:root.theme-bw #site-header #mega-menu svg,
+:root.theme-bw #site-header #search-panel svg,
+:root.theme-bw #site-header #mobile-menu .text-ink,
+:root.theme-bw #site-header #mobile-menu svg { color: var(--ink); }
+
+/* Alternating body sections: `mist` becomes a full black band.
+   Inversion is scoped so it does NOT reach inside nested white panels
+   (e.g. ServiceBordered/ServiceOverlap cards keep their own bg-paper). */
+:root.theme-bw main .bg-mist { background-color: var(--ink); }
+:root.theme-bw main .bg-mist :is(.text-ink, h2, h3):not(.bg-paper *) { color: #FFFFFF; }
+:root.theme-bw main .bg-mist .text-stone:not(.bg-paper *) { color: rgb(255 255 255 / 0.75); }
+:root.theme-bw main .bg-mist .border-line:not(.bg-paper *) { border-color: rgb(255 255 255 / 0.2); }
 
 @layer base {
   html {

@@ -3,9 +3,10 @@
 import CurtainRevealCard from './CurtainRevealCard.astro';
 interface Props {
   id: string; eyebrow?: string; tag?: string; cardEyebrow?: string; title: string; body: string;
-  image: string; imageAlt: string; ctaLabel?: string; ctaHref?: string; bg?: 'paper' | 'mist';
+  image: string; imageAlt: string; imagePosition?: 'top' | 'center' | 'bottom';
+  ctaLabel?: string; ctaHref?: string; bg?: 'paper' | 'mist';
 }
-const { id, eyebrow, tag, cardEyebrow, title, body, image, imageAlt, ctaLabel = 'Get in Touch', ctaHref = '/contact', bg = 'mist' } = Astro.props;
+const { id, eyebrow, tag, cardEyebrow, title, body, image, imageAlt, imagePosition = 'center', ctaLabel = 'Get in Touch', ctaHref = '/contact', bg = 'mist' } = Astro.props;
 const bgClass = bg === 'mist' ? 'bg-mist' : 'bg-paper';
 ---
 <section id={id} class={`${bgClass} py-20 lg:py-28`}>
@@ -23,6 +24,7 @@ const bgClass = bg === 'mist' ? 'bg-mist' : 'bg-paper';
       description={body}
       image={image}
       imageAlt={imageAlt}
+      imagePosition={imagePosition}
       href={ctaHref}
       ctaLabel={ctaLabel}
     />

@@ -2,25 +2,40 @@
 ---
 
 <header id="site-header" class="sticky top-0 z-50 bg-acid border-b-2 border-acid" style="height: var(--header-h);">
-  <div class="w-full h-full flex items-center justify-between px-6 lg:px-16">
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 no-underline" aria-label="Black Stone Islamic Global — Home">
-      <span class="font-sans font-extrabold text-2xl tracking-[-0.04em] text-ink leading-none">BIG</span>
-      <span class="hidden sm:block h-5 w-px bg-ink/30"></span>
-      <span class="hidden sm:block font-sans text-xs font-medium text-ink/70 tracking-wide leading-tight max-w-[120px]">
-        Black Stone<br/>Islamic Global
-      </span>
+  <!--
+    Row layout: [logo] [primary links] ——— flexible gap ——— [secondary links][search][CTA]
+    The right cluster carries `ml-auto`, which both pushes it flush right on desktop
+    and keeps the hamburger flush right on mobile (where the link groups are hidden).
+  -->
+  <div class="w-full h-full flex items-center px-6 min-[900px]:pl-10 min-[900px]:pr-10">
+    <!-- Logo — 63×26 wordmark in a 99×64 container, 40px inset from the bar edge -->
+    <a
+      href="/"
+      class="flex flex-shrink-0 items-center h-full no-underline min-[900px]:w-[99px]"
+      aria-label="Blackstone Islamic Global — Home"
+    >
+      <!-- 63×26 wordmark box. Cap height fills the 26px; width is left free so the
+           brand's -0.04em tracking survives (forcing 63 would stretch the letterforms). -->
+      <svg width="63" height="26" viewBox="0 0 63 26" fill="none" role="img" class="block text-ink">
+        <title>BIG — Blackstone Islamic Global</title>
+        <text
+          x="0" y="26"
+          fill="currentColor"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="35.75" font-weight="800" letter-spacing="-1.43"
+        >BIG</text>
+      </svg>
     </a>
 
-    <!-- Desktop nav -->
-    <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+    <!-- Primary nav — sits immediately right of the logo, left-aligned -->
+    <nav class="hidden min-[900px]:flex items-center h-full" aria-label="Main navigation">
       <div class="relative group" id="services-menu-container">
         <button
           id="services-btn"
           aria-haspopup="true"
           aria-expanded="false"
           aria-controls="mega-menu"
-          class="flex items-center gap-1 font-sans text-sm font-semibold text-ink hover:text-ink/70 transition-colors py-2"
+          class="nav-link flex items-center gap-1"
         >
           What We Do
           <svg class="w-3 h-3 transition-transform duration-200" id="services-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -28,17 +43,95 @@
           </svg>
         </button>
       </div>
-      <a href="/insights" class="font-sans text-sm font-semibold text-ink hover:text-ink/70 transition-colors py-2">Insights</a>
-      <a href="/about" class="font-sans text-sm font-semibold text-ink hover:text-ink/70 transition-colors py-2">About</a>
-      <a href="/contact" class="font-sans text-sm font-semibold text-ink hover:text-ink/70 transition-colors py-2">Contact</a>
+      <a href="/insights" class="nav-link">Insights</a>
+      <a href="/about" class="nav-link">Our Firm</a>
+      <a href="/contact" class="nav-link">Contact</a>
     </nav>
 
-    <!-- Right actions -->
-    <div class="flex items-center gap-4">
-      <a href="/login" class="hidden lg:inline-flex items-center px-5 py-2 bg-ink text-white font-sans text-sm font-semibold transition-colors hover:bg-stone">
-        Account Login
+    <!-- Right cluster — secondary links, search, CTA (and the mobile hamburger) -->
+    <!-- gap-2 = the spec's 8px between utility nav → search → CTA -->
+    <div class="ml-auto flex items-center gap-2 h-full">
+      <nav class="hidden min-[900px]:flex items-center h-full" aria-label="Utility navigation">
+        <div class="relative group" id="coaching-menu-container">
+          <button
+            id="coaching-btn"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="coaching-menu"
+            class="nav-link flex items-center gap-1"
+          >
+            Investor Coaching
+            <svg class="w-3 h-3 transition-transform duration-200" id="coaching-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+        <div class="relative group" id="newsroom-menu-container">
+          <button
+            id="newsroom-btn"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="newsroom-menu"
+            class="nav-link flex items-center gap-1"
+          >
+            Newsroom
+            <svg class="w-3 h-3 transition-transform duration-200" id="newsroom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+        <div class="relative group" id="pressroom-menu-container">
+          <button
+            id="pressroom-btn"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="pressroom-menu"
+            class="nav-link flex items-center gap-1"
+          >
+            Pressroom
+            <svg class="w-3 h-3 transition-transform duration-200" id="pressroom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+        <div class="relative group" id="careers-menu-container">
+          <button
+            id="careers-btn"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="careers-menu"
+            class="nav-link flex items-center gap-1"
+          >
+            Careers
+            <svg class="w-3 h-3 transition-transform duration-200" id="careers-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- 18×18 icon centred in a 32×32 hit area -->
+      <button
+        id="search-btn"
+        class="hidden min-[900px]:inline-flex items-center justify-center w-8 h-8 flex-shrink-0 text-ink hover:text-ink/70 transition-colors"
+        aria-label="Search"
+        aria-expanded="false"
+        aria-controls="search-panel"
+      >
+        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+        </svg>
+      </button>
+
+      <!-- 91×32, 6px/7px padding, 0.8px square border, transparent fill -->
+      <a
+        href="/login"
+        class="hidden min-[900px]:inline-flex items-center justify-center flex-shrink-0 w-[91px] h-8 px-[7px] py-[6px] rounded-none border-[0.8px] border-ink bg-transparent text-ink font-sans text-sm font-medium leading-none whitespace-nowrap transition-colors hover:bg-ink hover:text-white"
+      >
+        Client Login
       </a>
-      <button id="mobile-menu-btn" class="lg:hidden p-2 text-ink" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+
+      <button id="mobile-menu-btn" class="min-[900px]:hidden p-2 text-ink" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" id="hamburger-icon">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -46,6 +139,36 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
+    </div>
+  </div>
+
+  <!-- ── Search panel (desktop) ──────────────────────────────────────────── -->
+  <!-- TODO: no search results page exists yet — submit is inert until one is built. -->
+  <div
+    id="search-panel"
+    role="region"
+    aria-label="Search"
+    class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-2xl z-40"
+  >
+    <div class="container-big py-6">
+      <form id="search-form" role="search" class="flex items-center gap-4">
+        <svg class="w-5 h-5 flex-shrink-0 text-stone" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+        </svg>
+        <label for="search-input" class="sr-only">Search</label>
+        <input
+          id="search-input"
+          name="q"
+          type="search"
+          placeholder="Search BIG"
+          class="flex-1 bg-transparent font-sans text-base text-ink placeholder:text-stone focus:outline-none py-1"
+        />
+        <button type="button" id="search-close" class="p-2 text-ink hover:text-stone transition-colors" aria-label="Close search">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </form>
     </div>
   </div>
 
@@ -74,9 +197,6 @@
             </a>
           </div>
           <div class="mt-8 pt-6 border-t border-line">
-            <p class="font-sans text-xs text-stone leading-relaxed mb-2">
-              We harness every resource, insight, and Shariah-compliant advantage to drive principled results for our clients.
-            </p>
             <a href="/about" class="font-sans text-xs font-semibold text-ink hover:text-stone transition-colors flex items-center gap-1">
               About BIG <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
@@ -92,10 +212,11 @@
             </a>
             <ul class="space-y-3">
               <li><a href="/what-we-do/psx-global-markets#shariah-equities" class="mega-link">Shariah Equities</a></li>
-              <li><a href="/what-we-do/psx-global-markets#green-sukuks" class="mega-link">Green Sukuks</a></li>
+              <li><a href="/what-we-do/psx-global-markets#green-sukuks" class="mega-link">Sukuks and Green Sukuks</a></li>
               <li><a href="/what-we-do/psx-global-markets#transaction-services" class="mega-link">Transaction Services</a></li>
               <li><a href="/what-we-do/psx-global-markets#blackstone-intel" class="mega-link">Blackstone Intel</a></li>
-              <li><a href="/what-we-do/psx-global-markets#blackstone-investments" class="mega-link">Blackstone Investments</a></li>
+              <li><a href="/what-we-do/psx-global-markets#portfolio-consultancy" class="mega-link">Portfolio Consultancy</a></li>
+              <li><a href="/what-we-do/psx-global-markets#portfolio-supervision" class="mega-link">Portfolio Supervision</a></li>
             </ul>
           </div>
           <!-- Asset Management -->
@@ -104,10 +225,10 @@
               Asset Management
             </a>
             <ul class="space-y-3">
-              <li><a href="/what-we-do/asset-management#am-fixed-income" class="mega-link">Shariah Fixed Income</a></li>
-              <li><a href="/what-we-do/asset-management#am-equity" class="mega-link">Shariah Equity</a></li>
-              <li><a href="/what-we-do/asset-management#am-etfs" class="mega-link">Shariah ETFs</a></li>
-              <li><a href="/what-we-do/asset-management#am-multi-asset" class="mega-link">Shariah Multi-Asset</a></li>
+              <li><a href="/what-we-do/asset-management#am-fixed-income" class="mega-link">Shariah Fixed Income Funds</a></li>
+              <li><a href="/what-we-do/asset-management#am-equity" class="mega-link">Shariah Equity Funds</a></li>
+              <li><a href="/what-we-do/asset-management#am-etfs" class="mega-link">Shariah ETF</a></li>
+              <li><a href="/what-we-do/asset-management#am-multi-asset" class="mega-link">Shariah Multi-Asset Funds</a></li>
               <li><a href="/what-we-do/asset-management#am-pensions" class="mega-link">Shariah Pensions</a></li>
             </ul>
           </div>
@@ -118,13 +239,10 @@
             </a>
             <ul class="space-y-3">
               <li><a href="/what-we-do/private-wealth#wealth-planning" class="mega-link">Wealth Planning</a></li>
-              <li><a href="/what-we-do/private-wealth#dedicated-investments" class="mega-link">Dedicated Investments</a></li>
               <li><a href="/what-we-do/private-wealth#private-equity" class="mega-link">Private Equity</a></li>
               <li><a href="/what-we-do/private-wealth#real-estate" class="mega-link">Real Estate</a></li>
               <li><a href="/what-we-do/private-wealth#pakistan-energy" class="mega-link">Pakistan Energy</a></li>
-              <li><a href="/what-we-do/private-wealth#philanthropy-zakat" class="mega-link">Philanthropy &amp; Zakat</a></li>
-              <li><a href="/what-we-do/private-wealth#professional-services" class="mega-link">Professional Services</a></li>
-            </ul>
+              </ul>
           </div>
           <!-- Specialized Services -->
           <div>
@@ -132,10 +250,13 @@
               Specialized Services
             </a>
             <ul class="space-y-3">
-              <li><a href="/what-we-do/specialized-services#family-office" class="mega-link">BIG Family Office</a></li>
-              <li><a href="/what-we-do/specialized-services#alternatives" class="mega-link">Alternative Investments</a></li>
-              <li><a href="/what-we-do/specialized-services#mergers-acquisitions" class="mega-link">M&amp;A and Carve-Out</a></li>
-              <li><a href="/what-we-do/specialized-services#ipos" class="mega-link">IPOs (Pakistan &amp; US)</a></li>
+              <li><a href="/what-we-do/specialized-services#family-office" class="mega-link">Basirah Family Office</a></li>
+              <li><a href="/what-we-do/specialized-services#lifestyle-management" class="mega-link">Lifestyle Management</a></li>
+              <li><a href="/what-we-do/specialized-services#pr-campaign" class="mega-link">PR Campaign</a></li>
+              <li><a href="/what-we-do/specialized-services#philanthropy-zakat" class="mega-link">Philanthropy and Zakat</a></li>
+              <li><a href="/what-we-do/specialized-services#mergers-acquisitions" class="mega-link">M&amp;A and Carve Out</a></li>
+              <li><a href="/what-we-do/specialized-services#professional-services" class="mega-link">Professional Services</a></li>
+              <li><a href="/what-we-do/specialized-services#ipos" class="mega-link">Initial Public Offer</a></li>
             </ul>
           </div>
         </div>
@@ -144,17 +265,164 @@
     </div>
   </div>
 
+  <!-- ── Investor Coaching menu (desktop) ─────────────────────────────────── -->
+  <div
+    id="coaching-menu"
+    role="region"
+    aria-label="Investor Coaching menu"
+    class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-2xl z-40"
+  >
+    <div class="container-big py-10">
+      <div class="flex gap-0">
+
+        <!-- Left intro panel -->
+        <div class="w-56 flex-shrink-0 pr-8 border-r border-line mr-8 flex flex-col justify-between">
+          <div>
+            <h2 class="font-serif font-normal text-ink text-2xl leading-tight mb-4">Investor Coaching</h2>
+          </div>
+        </div>
+
+        <!-- 3 columns -->
+        <div class="flex-1 grid grid-cols-3 gap-8">
+          <!-- Guidance Documents -->
+          <div>
+            <p class="block label mb-5 text-ink">Guidance Documents</p>
+            <ul class="space-y-3">
+              <!-- TODO: confirm final PDF path -->
+              <li><a href="/pdfs/psx-investor-guidance-en.pdf" class="mega-link">PSX Investor Guidance (English)</a></li>
+              <!-- TODO: confirm final PDF path -->
+              <li><a href="/pdfs/psx-investor-guidance-ur.pdf" class="mega-link">PSX Investor Guidance (Urdu)</a></li>
+              <!-- TODO: confirm final PDF path -->
+              <li><a href="/pdfs/secp-investor-guidance-en.pdf" class="mega-link">SECP Investor Guidance (English)</a></li>
+              <!-- TODO: confirm final PDF path -->
+              <li><a href="/pdfs/secp-investor-guidance-ur.pdf" class="mega-link">SECP Investor Guidance (Urdu)</a></li>
+              <!-- TODO: confirm exact title and PDF -->
+              <li><a href="/pdfs/risk-of-equity-trading.pdf" class="mega-link">Risk of Equity Trading</a></li>
+            </ul>
+          </div>
+          <!-- PSX Resources -->
+          <div>
+            <p class="block label mb-5 text-ink">PSX Resources</p>
+            <ul class="space-y-3">
+              <li><a href="https://www.psx.com.pk/psx/resources-and-tools/investors" target="_blank" rel="noopener noreferrer" class="mega-link">Investor Guidance</a></li>
+              <li><a href="https://www.psx.com.pk/psx/resources-and-tools/shariah-compliant-investment" target="_blank" rel="noopener noreferrer" class="mega-link">Shariah Compliant Stocks</a></li>
+              <li><a href="https://www.psx.com.pk/psx/resources-and-tools/investors/investor-dos-and-donts" target="_blank" rel="noopener noreferrer" class="mega-link">Investor Dos and Don'ts</a></li>
+            </ul>
+          </div>
+          <!-- Market Tools & Regulators -->
+          <div>
+            <p class="block label mb-5 text-ink">Market Tools &amp; Regulators</p>
+            <ul class="space-y-3">
+              <li><a href="https://www.cdcaccess.com.pk/#/login" target="_blank" rel="noopener noreferrer" class="mega-link">CDC</a></li>
+              <li><a href="https://uis.nccpl.com.pk/" target="_blank" rel="noopener noreferrer" class="mega-link">NCCPL</a></li>
+              <li><a href="https://www.sbp.org.pk/" target="_blank" rel="noopener noreferrer" class="mega-link">SBP</a></li>
+              <li><a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="mega-link">TradingView</a></li>
+              <li><a href="https://www.investing.com/markets/" target="_blank" rel="noopener noreferrer" class="mega-link">Investing.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Newsroom menu (desktop) ──────────────────────────────────────────── -->
+  <div
+    id="newsroom-menu"
+    role="region"
+    aria-label="Newsroom menu"
+    class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-2xl z-40"
+  >
+    <div class="container-big py-10">
+      <div class="flex gap-0">
+        <div class="flex-1 grid grid-cols-1 gap-8 max-w-xs">
+          <div>
+            <ul class="space-y-3">
+              <li><a href="https://www.bloomberg.com" target="_blank" rel="noopener noreferrer" class="mega-link">Bloomberg</a></li>
+              <li><a href="https://www.reuters.com/" target="_blank" rel="noopener noreferrer" class="mega-link">Reuters</a></li>
+              <li><a href="https://www.wsj.com/" target="_blank" rel="noopener noreferrer" class="mega-link">Wall Street Journal</a></li>
+              <li><a href="https://www.economist.com/" target="_blank" rel="noopener noreferrer" class="mega-link">The Economist</a></li>
+              <li><a href="https://www.brecorder.com/" target="_blank" rel="noopener noreferrer" class="mega-link">Business Recorder</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Pressroom menu (desktop) ─────────────────────────────────────────── -->
+  <div
+    id="pressroom-menu"
+    role="region"
+    aria-label="Pressroom menu"
+    class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-2xl z-40"
+  >
+    <div class="container-big py-10">
+      <div class="flex gap-0">
+        <div class="flex-1 grid grid-cols-1 gap-8 max-w-xs">
+          <div>
+            <ul class="space-y-3">
+              <li><span class="mega-link">Coming soon</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Careers menu (desktop) ───────────────────────────────────────────── -->
+  <div
+    id="careers-menu"
+    role="region"
+    aria-label="Careers menu"
+    class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-2xl z-40"
+  >
+    <div class="container-big py-10">
+      <div class="flex gap-0">
+        <div class="flex-1 grid grid-cols-1 gap-8 max-w-xs">
+          <div>
+            <ul class="space-y-3">
+              <li><span class="mega-link">Coming soon</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── Mobile menu drawer ─────────────────────────────────────────────── -->
-  <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-[72px] bg-white z-30 overflow-y-auto">
-    <div class="container-big py-8 space-y-1">
+  <div
+    id="mobile-menu"
+    class="hidden min-[900px]:hidden fixed inset-x-0 bottom-0 bg-white z-30 overflow-y-auto"
+    style="top: var(--header-h);"
+  >
+    <div id="mobile-menu-inner" class="container-big py-8 space-y-1">
+      <!-- Search — icon + input row -->
+      <!-- TODO: no search results page exists yet — submit is inert until one is built. -->
+      <form role="search" class="mobile-search-form flex items-center gap-3 border border-line px-4 py-3 mb-6">
+        <svg class="w-5 h-5 flex-shrink-0 text-stone" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+        </svg>
+        <label for="mobile-search-input" class="sr-only">Search</label>
+        <input
+          id="mobile-search-input"
+          name="q"
+          type="search"
+          placeholder="Search BIG"
+          class="flex-1 bg-transparent font-sans text-base text-ink placeholder:text-stone focus:outline-none"
+        />
+      </form>
+
+      <!-- Primary links (desktop order) -->
       <div>
         <button
           id="mobile-services-btn"
           class="w-full flex items-center justify-between py-4 font-sans text-base font-semibold text-ink border-b border-line"
           aria-expanded="false"
+          aria-controls="mobile-services-panel"
         >
           What We Do
-          <svg class="w-4 h-4 transition-transform duration-200" id="mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 transition-transform duration-200" id="mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
@@ -167,19 +435,20 @@
             <a href="/what-we-do/psx-global-markets" class="label mb-3 block hover:text-ink transition-colors">PSX &amp; Global Markets</a>
             <ul class="space-y-2 pl-2">
               <li><a href="/what-we-do/psx-global-markets#shariah-equities" class="mobile-sub-link">Shariah Equities</a></li>
-              <li><a href="/what-we-do/psx-global-markets#green-sukuks" class="mobile-sub-link">Green Sukuks</a></li>
+              <li><a href="/what-we-do/psx-global-markets#green-sukuks" class="mobile-sub-link">Sukuks and Green Sukuks</a></li>
               <li><a href="/what-we-do/psx-global-markets#transaction-services" class="mobile-sub-link">Transaction Services</a></li>
               <li><a href="/what-we-do/psx-global-markets#blackstone-intel" class="mobile-sub-link">Blackstone Intel</a></li>
-              <li><a href="/what-we-do/psx-global-markets#blackstone-investments" class="mobile-sub-link">Blackstone Investments</a></li>
+              <li><a href="/what-we-do/psx-global-markets#portfolio-consultancy" class="mobile-sub-link">Portfolio Consultancy</a></li>
+              <li><a href="/what-we-do/psx-global-markets#portfolio-supervision" class="mobile-sub-link">Portfolio Supervision</a></li>
             </ul>
           </div>
           <div>
             <a href="/what-we-do/asset-management" class="label mb-3 block hover:text-ink transition-colors">Asset Management</a>
             <ul class="space-y-2 pl-2">
-              <li><a href="/what-we-do/asset-management#am-fixed-income" class="mobile-sub-link">Shariah Fixed Income</a></li>
-              <li><a href="/what-we-do/asset-management#am-equity" class="mobile-sub-link">Shariah Equity</a></li>
-              <li><a href="/what-we-do/asset-management#am-etfs" class="mobile-sub-link">Shariah ETFs</a></li>
-              <li><a href="/what-we-do/asset-management#am-multi-asset" class="mobile-sub-link">Shariah Multi-Asset</a></li>
+              <li><a href="/what-we-do/asset-management#am-fixed-income" class="mobile-sub-link">Shariah Fixed Income Funds</a></li>
+              <li><a href="/what-we-do/asset-management#am-equity" class="mobile-sub-link">Shariah Equity Funds</a></li>
+              <li><a href="/what-we-do/asset-management#am-etfs" class="mobile-sub-link">Shariah ETF</a></li>
+              <li><a href="/what-we-do/asset-management#am-multi-asset" class="mobile-sub-link">Shariah Multi-Asset Funds</a></li>
               <li><a href="/what-we-do/asset-management#am-pensions" class="mobile-sub-link">Shariah Pensions</a></li>
             </ul>
           </div>
@@ -187,31 +456,147 @@
             <a href="/what-we-do/private-wealth" class="label mb-3 block hover:text-ink transition-colors">Private Wealth Mgmt</a>
             <ul class="space-y-2 pl-2">
               <li><a href="/what-we-do/private-wealth#wealth-planning" class="mobile-sub-link">Wealth Planning</a></li>
-              <li><a href="/what-we-do/private-wealth#dedicated-investments" class="mobile-sub-link">Dedicated Investments</a></li>
               <li><a href="/what-we-do/private-wealth#private-equity" class="mobile-sub-link">Private Equity</a></li>
               <li><a href="/what-we-do/private-wealth#real-estate" class="mobile-sub-link">Real Estate</a></li>
               <li><a href="/what-we-do/private-wealth#pakistan-energy" class="mobile-sub-link">Pakistan Energy</a></li>
-              <li><a href="/what-we-do/private-wealth#philanthropy-zakat" class="mobile-sub-link">Philanthropy &amp; Zakat</a></li>
-              <li><a href="/what-we-do/private-wealth#professional-services" class="mobile-sub-link">Professional Services</a></li>
-            </ul>
+              </ul>
           </div>
           <div>
             <a href="/what-we-do/specialized-services" class="label mb-3 block hover:text-ink transition-colors">Specialized Services</a>
             <ul class="space-y-2 pl-2">
-              <li><a href="/what-we-do/specialized-services#family-office" class="mobile-sub-link">BIG Family Office</a></li>
-              <li><a href="/what-we-do/specialized-services#alternatives" class="mobile-sub-link">Alternative Investments</a></li>
-              <li><a href="/what-we-do/specialized-services#mergers-acquisitions" class="mobile-sub-link">M&amp;A and Carve-Out</a></li>
-              <li><a href="/what-we-do/specialized-services#ipos" class="mobile-sub-link">IPOs (Pakistan &amp; US)</a></li>
+              <li><a href="/what-we-do/specialized-services#family-office" class="mobile-sub-link">Basirah Family Office</a></li>
+              <li><a href="/what-we-do/specialized-services#lifestyle-management" class="mobile-sub-link">Lifestyle Management</a></li>
+              <li><a href="/what-we-do/specialized-services#pr-campaign" class="mobile-sub-link">PR Campaign</a></li>
+              <li><a href="/what-we-do/specialized-services#philanthropy-zakat" class="mobile-sub-link">Philanthropy and Zakat</a></li>
+              <li><a href="/what-we-do/specialized-services#mergers-acquisitions" class="mobile-sub-link">M&amp;A and Carve Out</a></li>
+              <li><a href="/what-we-do/specialized-services#professional-services" class="mobile-sub-link">Professional Services</a></li>
+              <li><a href="/what-we-do/specialized-services#ipos" class="mobile-sub-link">Initial Public Offer</a></li>
             </ul>
           </div>
         </div>
       </div>
       <a href="/insights" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Insights</a>
-      <a href="/about" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">About</a>
+      <a href="/about" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Our Firm</a>
       <a href="/contact" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Contact</a>
+
+      <!-- Secondary / utility links (same order as the desktop right cluster) -->
+      <div>
+        <button
+          id="mobile-coaching-btn"
+          class="w-full flex items-center justify-between py-4 font-sans text-base font-semibold text-ink border-b border-line"
+          aria-expanded="false"
+          aria-controls="mobile-coaching-panel"
+        >
+          Investor Coaching
+          <svg class="w-4 h-4 transition-transform duration-200" id="mobile-coaching-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-coaching-panel" class="hidden bg-mist px-4 py-4 space-y-6">
+          <div>
+            <p class="label mb-3 block">Guidance Documents</p>
+            <ul class="space-y-2 pl-2">
+              <!-- TODO: confirm final PDF path -->
+              <li><a href="/pdfs/psx-investor-guidance-en.pdf" class="mobile-sub-link">PSX Investor Guidance (English)</a></li>
+              <!-- TODO: confirm final PDF path -->
+              <li><a href="/pdfs/psx-investor-guidance-ur.pdf" class="mobile-sub-link">PSX Investor Guidance (Urdu)</a></li>
+              <!-- TODO: confirm final PDF path -->
+              <li><a href="/pdfs/secp-investor-guidance-en.pdf" class="mobile-sub-link">SECP Investor Guidance (English)</a></li>
+              <!-- TODO: confirm final PDF path -->
+              <li><a href="/pdfs/secp-investor-guidance-ur.pdf" class="mobile-sub-link">SECP Investor Guidance (Urdu)</a></li>
+              <!-- TODO: confirm exact title and PDF -->
+              <li><a href="/pdfs/risk-of-equity-trading.pdf" class="mobile-sub-link">Risk of Equity Trading</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="label mb-3 block">PSX Resources</p>
+            <ul class="space-y-2 pl-2">
+              <li><a href="https://www.psx.com.pk/psx/resources-and-tools/investors" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Investor Guidance</a></li>
+              <li><a href="https://www.psx.com.pk/psx/resources-and-tools/shariah-compliant-investment" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Shariah Compliant Stocks</a></li>
+              <li><a href="https://www.psx.com.pk/psx/resources-and-tools/investors/investor-dos-and-donts" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Investor Dos and Don'ts</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="label mb-3 block">Market Tools &amp; Regulators</p>
+            <ul class="space-y-2 pl-2">
+              <li><a href="https://www.cdcaccess.com.pk/#/login" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">CDC</a></li>
+              <li><a href="https://uis.nccpl.com.pk/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">NCCPL</a></li>
+              <li><a href="https://www.sbp.org.pk/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">SBP</a></li>
+              <li><a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">TradingView</a></li>
+              <li><a href="https://www.investing.com/markets/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Investing.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          id="mobile-newsroom-btn"
+          class="w-full flex items-center justify-between py-4 font-sans text-base font-semibold text-ink border-b border-line"
+          aria-expanded="false"
+          aria-controls="mobile-newsroom-panel"
+        >
+          Newsroom
+          <svg class="w-4 h-4 transition-transform duration-200" id="mobile-newsroom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-newsroom-panel" class="hidden bg-mist px-4 py-4 space-y-6">
+          <div>
+            <ul class="space-y-2 pl-2">
+              <li><a href="https://www.bloomberg.com" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Bloomberg</a></li>
+              <li><a href="https://www.reuters.com/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Reuters</a></li>
+              <li><a href="https://www.wsj.com/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Wall Street Journal</a></li>
+              <li><a href="https://www.economist.com/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">The Economist</a></li>
+              <li><a href="https://www.brecorder.com/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Business Recorder</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          id="mobile-pressroom-btn"
+          class="w-full flex items-center justify-between py-4 font-sans text-base font-semibold text-ink border-b border-line"
+          aria-expanded="false"
+          aria-controls="mobile-pressroom-panel"
+        >
+          Pressroom
+          <svg class="w-4 h-4 transition-transform duration-200" id="mobile-pressroom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-pressroom-panel" class="hidden bg-mist px-4 py-4 space-y-6">
+          <div>
+            <ul class="space-y-2 pl-2">
+              <li><span class="mobile-sub-link">Coming soon</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          id="mobile-careers-btn"
+          class="w-full flex items-center justify-between py-4 font-sans text-base font-semibold text-ink border-b border-line"
+          aria-expanded="false"
+          aria-controls="mobile-careers-panel"
+        >
+          Careers
+          <svg class="w-4 h-4 transition-transform duration-200" id="mobile-careers-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-careers-panel" class="hidden bg-mist px-4 py-4 space-y-6">
+          <div>
+            <ul class="space-y-2 pl-2">
+              <li><span class="mobile-sub-link">Coming soon</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
       <div class="pt-4">
         <a href="/login" class="inline-flex items-center px-6 py-3 bg-ink text-white font-sans text-sm font-semibold w-full justify-center">
-          Account Login
+          Client Login
         </a>
       </div>
     </div>
@@ -219,6 +604,12 @@
 </header>
 
 <style>
+  /* 14px / 400 / normal tracking, 8px padding each side → 16px between adjacent
+     links, full navbar height so the label is vertically centred. */
+  .nav-link {
+    @apply inline-flex items-center h-full px-2 font-sans text-sm font-normal tracking-normal
+           text-ink hover:text-ink/70 transition-colors whitespace-nowrap;
+  }
   .mega-link {
     @apply font-sans text-sm text-ink/70 hover:text-ink transition-colors;
   }
@@ -228,50 +619,113 @@
 </style>
 
 <script>
-  const servicesBtn = document.getElementById('services-btn');
-  const megaMenu = document.getElementById('mega-menu');
-  const servicesChevron = document.getElementById('services-chevron');
+  const searchBtn = document.getElementById('search-btn');
+  const searchPanel = document.getElementById('search-panel');
+  const searchClose = document.getElementById('search-close');
+  const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuInner = document.getElementById('mobile-menu-inner');
   const hamburgerIcon = document.getElementById('hamburger-icon');
   const closeIcon = document.getElementById('close-icon');
-  const mobileServicesBtn = document.getElementById('mobile-services-btn');
-  const mobileServicesPanel = document.getElementById('mobile-services-panel');
-  const mobileChevron = document.getElementById('mobile-chevron');
+  // [trigger id, panel id, chevron id] — same accordion pattern for every mobile drawer section
+  const mobileAccordions = [
+    ['mobile-services-btn', 'mobile-services-panel', 'mobile-chevron'],
+    ['mobile-coaching-btn', 'mobile-coaching-panel', 'mobile-coaching-chevron'],
+    ['mobile-newsroom-btn', 'mobile-newsroom-panel', 'mobile-newsroom-chevron'],
+    ['mobile-pressroom-btn', 'mobile-pressroom-panel', 'mobile-pressroom-chevron'],
+    ['mobile-careers-btn', 'mobile-careers-panel', 'mobile-careers-chevron'],
+  ] as const;
 
-  servicesBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    megaMenu?.classList.contains('hidden') ? openMegaMenu() : closeMegaMenu();
+  /* ── Mega menu + utility dropdowns (same trigger/panel pattern) ───────── */
+  // [trigger id, panel id, chevron id, container id]
+  const desktopMenus = [
+    ['services-btn', 'mega-menu', 'services-chevron', 'services-menu-container'],
+    ['coaching-btn', 'coaching-menu', 'coaching-chevron', 'coaching-menu-container'],
+    ['newsroom-btn', 'newsroom-menu', 'newsroom-chevron', 'newsroom-menu-container'],
+    ['pressroom-btn', 'pressroom-menu', 'pressroom-chevron', 'pressroom-menu-container'],
+    ['careers-btn', 'careers-menu', 'careers-chevron', 'careers-menu-container'],
+  ] as const;
+
+  function closeAllDesktopMenus(except?: string) {
+    desktopMenus.forEach(([btnId, panelId, chevronId]) => {
+      if (btnId === except) return;
+      document.getElementById(panelId)?.classList.add('hidden');
+      document.getElementById(btnId)?.setAttribute('aria-expanded', 'false');
+      document.getElementById(chevronId)?.classList.remove('rotate-180');
+    });
+  }
+
+  desktopMenus.forEach(([btnId, panelId, chevronId, containerId]) => {
+    const btn = document.getElementById(btnId);
+    const panel = document.getElementById(panelId);
+    const chevron = document.getElementById(chevronId);
+    const container = document.getElementById(containerId);
+
+    btn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !panel?.classList.contains('hidden');
+      closeSearch();
+      closeAllDesktopMenus(isOpen ? undefined : btnId);
+      panel?.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      chevron?.classList.toggle('rotate-180', !isOpen);
+    });
+
+    panel?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeAllDesktopMenus()));
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node;
+      if (container && !container.contains(target) && panel && !panel.contains(target)) {
+        panel.classList.add('hidden');
+        btn?.setAttribute('aria-expanded', 'false');
+        chevron?.classList.remove('rotate-180');
+      }
+    });
   });
 
-  function openMegaMenu() {
-    megaMenu?.classList.remove('hidden');
-    servicesBtn?.setAttribute('aria-expanded', 'true');
-    servicesChevron?.classList.add('rotate-180');
+  /* ── Search panel ───────────────────────────────────────────────────── */
+  searchBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    searchPanel?.classList.contains('hidden') ? openSearch() : closeSearch();
+  });
+  searchClose?.addEventListener('click', closeSearch);
+
+  function openSearch() {
+    closeAllDesktopMenus();
+    searchPanel?.classList.remove('hidden');
+    searchBtn?.setAttribute('aria-expanded', 'true');
+    searchInput?.focus();
   }
-  function closeMegaMenu() {
-    megaMenu?.classList.add('hidden');
-    servicesBtn?.setAttribute('aria-expanded', 'false');
-    servicesChevron?.classList.remove('rotate-180');
+  function closeSearch() {
+    searchPanel?.classList.add('hidden');
+    searchBtn?.setAttribute('aria-expanded', 'false');
   }
 
+  // No search results page exists yet — keep submit inert so it can't navigate nowhere.
+  document.querySelectorAll('#search-form, .mobile-search-form').forEach((form) =>
+    form.addEventListener('submit', (e) => e.preventDefault())
+  );
+
+  /* ── Global dismiss ─────────────────────────────────────────────────── */
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { closeMegaMenu(); closeMobileMenu(); }
+    if (e.key === 'Escape') { closeAllDesktopMenus(); closeSearch(); closeMobileMenu(); }
   });
   document.addEventListener('click', (e) => {
-    const container = document.getElementById('services-menu-container');
-    if (container && !container.contains(e.target as Node) && megaMenu && !megaMenu.contains(e.target as Node)) {
-      closeMegaMenu();
+    const target = e.target as Node;
+    if (searchPanel && !searchPanel.contains(target) && searchBtn && !searchBtn.contains(target)) {
+      closeSearch();
     }
   });
-  megaMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMegaMenu));
 
+  /* ── Mobile menu ────────────────────────────────────────────────────── */
   mobileMenuBtn?.addEventListener('click', () => {
     mobileMenu?.classList.contains('hidden') ? openMobileMenu() : closeMobileMenu();
   });
   function openMobileMenu() {
     mobileMenu?.classList.remove('hidden');
     mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+    mobileMenuBtn?.setAttribute('aria-label', 'Close menu');
     hamburgerIcon?.classList.add('hidden');
     closeIcon?.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
@@ -279,16 +733,32 @@
   function closeMobileMenu() {
     mobileMenu?.classList.add('hidden');
     mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    mobileMenuBtn?.setAttribute('aria-label', 'Open menu');
     hamburgerIcon?.classList.remove('hidden');
     closeIcon?.classList.add('hidden');
     document.body.style.overflow = '';
   }
 
-  mobileServicesBtn?.addEventListener('click', () => {
-    const isOpen = !mobileServicesPanel?.classList.contains('hidden');
-    mobileServicesPanel?.classList.toggle('hidden', isOpen);
-    mobileServicesBtn?.setAttribute('aria-expanded', String(!isOpen));
-    mobileChevron?.classList.toggle('rotate-180', !isOpen);
+  // Click outside the menu content (the empty overlay area) closes the drawer.
+  mobileMenu?.addEventListener('click', (e) => {
+    if (mobileMenuInner && !mobileMenuInner.contains(e.target as Node)) closeMobileMenu();
+  });
+
+  mobileAccordions.forEach(([btnId, panelId, chevronId]) => {
+    const btn = document.getElementById(btnId);
+    const panel = document.getElementById(panelId);
+    const chevron = document.getElementById(chevronId);
+    btn?.addEventListener('click', () => {
+      const isOpen = !panel?.classList.contains('hidden');
+      panel?.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      chevron?.classList.toggle('rotate-180', !isOpen);
+    });
   });
   mobileMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
+
+  // Crossing the desktop breakpoint with the drawer open would leave body scroll locked.
+  window.matchMedia('(min-width: 900px)').addEventListener('change', (e) => {
+    if (e.matches) closeMobileMenu();
+  });
 </script>

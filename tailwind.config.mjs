@@ -4,8 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        acid:   '#CCFF00',
-        'acid-600': '#A6D400',
+        // Resolved from CSS vars so a page can re-theme the accent by
+        // overriding --acid / --acid-600 on a wrapper (see .theme-teal).
+        acid:   'var(--acid)',
+        'acid-600': 'var(--acid-600)',
         ink:    '#0B0B0B',
         paper:  '#FFFFFF',
         mist:   '#F3F5EE',
@@ -13,9 +15,12 @@ export default {
         line:   '#E5E7EB',
       },
       fontFamily: {
-        serif:   ['Newsreader', 'Source Serif 4', 'Georgia', 'serif'],
-        sans:    ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Cormorant Garamond"', 'Newsreader', 'Georgia', 'serif'],
+        // Multi-word family names MUST stay quoted in the emitted CSS. Tailwind strips
+        // quotes from plain string entries, which produces `font-family:Microsoft YaHei UI,…`
+        // — invalid CSS that breaks parsing of the following rule. The [value, {}] tuple
+        // form preserves the quotes.
+        serif:   [['"Newsreader"', '"Source Serif 4"', 'Georgia', 'serif'].join(', '), {}],
+        sans:    [['"Microsoft YaHei UI"', '"Microsoft YaHei"', '"Inter"', 'system-ui', 'sans-serif'].join(', '), {}],
       },
       fontSize: {
         'display-xl': ['80px', { lineHeight: '1.05' }],

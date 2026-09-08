@@ -1,15 +1,29 @@
 ---
 // ServiceBanner — full-bleed photographic feature with a dark overlay and overlaid copy.
-interface Props { id: string; index?: string; eyebrow?: string; title: string; body: string; image: string; imageAlt?: string }
-const { id, index, eyebrow, title, body, image, imageAlt = '' } = Astro.props;
+interface Props {
+  id: string; index?: string; eyebrow?: string; title: string; body: string;
+  image: string; imageAlt?: string;
+  /* CSS object-position for the background image. The banner is ~2.4:1, so a 3:2
+     photo loses ~39% of its height — use this to keep the subject in frame. */
+  imagePosition?: string;
+  /* Scales the image beyond the box (e.g. '160%'). A photo narrower than the
+     banner fills it exactly on width, leaving NO horizontal slack, so
+     imagePosition's X value is inert. Zooming creates that slack so the subject
+     can be shifted left/right. */
+  imageZoom?: string;
+  /* Optional minimum band height (e.g. '760px'). Taller bands need less zoom to
+     fill, so the subject is cropped less. */
+  minH?: string;
+}
+const { id, index, eyebrow, title, body, image, imageAlt = '', imagePosition, imageZoom, minH } = Astro.props;
 ---
-<section id={id} class="relative bg-ink overflow-hidden">
+<section id={id} class="relative bg-ink overflow-hidden" style={minH ? `min-height:${minH};` : undefined}>
   <div class="absolute inset-0" aria-hidden="true">
-    <img src={image} alt={imageAlt} class="w-full h-full object-cover opacity-55" loading="lazy" />
+    <img src={image} alt={imageAlt} class="w-full h-full object-cover opacity-55" style={[imagePosition && `object-position:${imagePosition}`, imageZoom && `width:${imageZoom};max-width:none`].filter(Boolean).join(';') || undefined} loading="lazy" />
     <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(11,11,11,0.88) 0%, rgba(11,11,11,0.60) 52%, rgba(11,11,11,0.25) 100%);"></div>
     <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
   </div>
-  <div class="container-big relative py-24 lg:py-32">
+  <div class="container-big relative py-24 lg:py-32 flex items-center" style={minH ? `min-height:${minH};` : undefined}>
     <div class="max-w-2xl">
       <div class="flex items-center gap-3 mb-5">
         {index && <span class="font-sans text-xs font-bold tracking-[0.2em] text-white">{index}</span>}

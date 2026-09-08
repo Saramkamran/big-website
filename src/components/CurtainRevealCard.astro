@@ -10,15 +10,19 @@ interface Props {
   description: string;
   image: string;
   imageAlt: string;
+  /* Where to anchor the crop. The card is ~2:1, so a 3:2 photo loses ~27% of its
+     height — use 'top' when the subject sits high in the frame. */
+  imagePosition?: 'top' | 'center' | 'bottom';
   href?: string;
   ctaLabel?: string;
 }
-const { eyebrow, title, description, image, imageAlt, href = '/contact', ctaLabel = 'Get in Touch' } = Astro.props;
+const { eyebrow, title, description, image, imageAlt, imagePosition = 'center', href = '/contact', ctaLabel = 'Get in Touch' } = Astro.props;
+const objectPos = { top: 'object-top', center: 'object-center', bottom: 'object-bottom' }[imagePosition];
 ---
 
 <article class="crc group relative overflow-hidden bg-ink min-h-[440px] lg:min-h-[560px]">
   <!-- Image -->
-  <img src={image} alt={imageAlt} class="crc-img absolute inset-0 w-full h-full object-cover" loading="lazy" />
+  <img src={image} alt={imageAlt} class={`crc-img absolute inset-0 w-full h-full object-cover ${objectPos}`} loading="lazy" />
   <!-- Permanent bottom gradient for the resting-state title -->
   <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent pointer-events-none"></div>
   <!-- Curtain veil — wipes open from the centre on hover -->

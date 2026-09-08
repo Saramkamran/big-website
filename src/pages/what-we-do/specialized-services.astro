@@ -1,47 +1,75 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PillarIntro from '../../components/PillarIntro.astro';
 import ServiceSections from '../../components/ServiceSections.astro';
-import AboutBIG from '../../components/AboutBIG.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 
 const services = [
   {
-    layout: 'banner', id: 'family-office', index: '01', eyebrow: 'Coordinated Oversight',
-    title: 'BIG Family Office',
-    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1600&q=80',
-    imageAlt: '',
-    body: `A single, coordinated point of oversight for complex family wealth — from advisory through to implementation. Our family office practice provides holistic governance, investment oversight, succession planning, and administrative coordination for ultra-high-net-worth families. We bring together BIG's full range of capabilities — wealth planning, private equity, real estate, philanthropy, and professional services — under a unified mandate, ensuring every dimension of your family's financial life is managed with the highest standards of precision, discretion, and long-term thinking.`,
+    layout: 'feature', id: 'family-office', index: '01', tag: 'Coordinated Oversight',
+    title: 'Basirah Family Office', imageSide: 'left', bg: 'paper',
+    image: '/images/ss-basirah-family-office.jpg',
+    imageAlt: 'An artist painting a landscape — bespoke, one-of-a-kind holdings',
+    body: `Through Basirah family office, we offer you monopolised business opportunities and prized collectibles including one-of-a-kind - art, watches, and jewellery.`,
   },
   {
-    layout: 'feature', id: 'alternatives', index: '02', tag: 'Beyond Public Markets',
-    title: 'Alternative Investments', imageSide: 'left', bg: 'paper',
+    layout: 'overlap', id: 'lifestyle-management', eyebrow: '02', tag: 'Confidential',
+    title: 'Lifestyle Management', imageSide: 'right', bg: 'mist',
     image: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Port terminal and container yard — infrastructure and commodities',
-    body: `Access to differentiated, Shariah-compliant alternative strategies beyond public markets. Our alternative investments platform provides exposure to private credit, infrastructure, commodities, hedge strategies, and other asset classes that offer diversification, inflation protection, and return enhancement for sophisticated investors. We conduct rigorous due diligence on every alternative opportunity to ensure both investment quality and Shariah compliance before presenting to clients.`,
+    imageAlt: 'Private aviation and lifestyle management services',
+    body: `With confidentiality, we manage your family and business needs including private aviation, bill payments; and licensed security and chauffeur services anywhere in the world.`,
   },
   {
-    layout: 'overlap', id: 'mergers-acquisitions', eyebrow: '03', tag: 'Origination to Execution',
-    title: 'M&A and Carve-Out', imageSide: 'right', bg: 'mist',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Corporate handshake — mergers, acquisitions, and carve-outs',
-    body: `Advisory across mergers, acquisitions, and corporate carve-outs — origination to execution. BIG provides end-to-end M&A advisory services for buyers, sellers, and corporates undertaking strategic transactions. Our team brings deep sector knowledge across Pakistan's key industries, cross-border execution capability, and Shariah-compliant deal structuring expertise to every mandate. Whether you are acquiring a business, divesting a division, or undertaking a transformative corporate restructuring, BIG has the relationships and experience to deliver superior outcomes.`,
+    layout: 'feature', id: 'pr-campaign', index: '03', tag: 'Global Outreach',
+    title: 'PR Campaign', imageSide: 'left', bg: 'paper',
+    image: '/images/ss-pr-campaign.jpg',
+    imageAlt: 'An illuminated ON AIR studio sign — visibility and public profile',
+    body: `An inspiring feature of our personalised offering is our ability to manage your business social media presence and curate bespoke PR campaigns, enhancing your executive profile, visibility, and global outreach.`,
   },
   {
-    layout: 'bordered', id: 'ipos', index: '04', eyebrow: 'PSX & US',
-    title: 'IPOs (Pakistan & US)', imageSide: 'right', bg: 'paper',
-    ctaLabel: 'Discuss a Listing', ctaHref: '/contact',
-    image: 'https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Manhattan financial district skyline — public listings on US exchanges',
-    body: `Equity capital-markets advisory for issuers listing on the PSX and US exchanges. From pre-IPO readiness and governance structuring to prospectus preparation, roadshow support, and post-listing compliance, BIG guides companies through the full lifecycle of a public offering — in Pakistan and internationally. Our cross-border capital markets expertise is particularly suited to Pakistani companies seeking dual-listings or US-market access, and international companies targeting PSX's growing investor base.`,
+    layout: 'banner', id: 'philanthropy-zakat', index: '04', eyebrow: 'Purposeful Giving',
+    title: 'Philanthropy and Zakat Strategy',
+    image: '/images/ss-philanthropy-zakat.jpg',
+    imageAlt: 'Children together outdoors — purposeful giving and community impact',
+    imagePosition: '72% 18%',
+    imageZoom: '135%',
+    minH: '760px',
+    body: `We believe wealth is not all about financial prosperity but also a powerful force for positive socio-economic change. Our philanthropy and Zakat strategy helps you plan your giving through family trusts, foundations, waqfs, CSR initiatives, and other impact creating projects spanning healthcare, education, disaster relief, and community development.
+
+We help families create a lasting legacy with purposeful giving, while advising on tax efficient charitable offerings. Our Philanthropy and Zakat advisory is offered at reduced fee.`,
+  },
+  {
+    layout: 'feature', id: 'mergers-acquisitions', index: '05', tag: 'Origination to Execution',
+    title: 'M&A and Carve Out', imageSide: 'right', bg: 'paper',
+    image: '/images/ss-mergers-acquisitions.jpg',
+    imageAlt: 'Precise hand-carving of a squash — separating value with craft and care',
+    body: `Our M&A and carve out specialists bring extensive experience across Pakistan's energy, sugar and chemicals space, British and American aviation, and the European FMCG sectors, delivering value-focused outcomes.
+
+For your next strategic transaction, our specialists are ready to help you.`,
+  },
+  {
+    layout: 'overlap', id: 'ipos', eyebrow: '06', tag: 'PSX & US',
+    title: 'Initial Public Offer', imageSide: 'left', bg: 'mist',
+    image: '/images/ss-initial-public-offer.jpg',
+    imageAlt: 'A neon PUBLIC MARKET sign against open sky — going public',
+    body: `As Pakistan enters a new phase of economic upside, IPO interest is accelerating. Our specialists provide an end-to-end IPO consultancy, helping businesses prepare, execute, and grow through public listing at PSX.
+
+We also offer US IPO consultancy to bridge Pakistani businesses with global investors.`,
+  },
+  {
+    layout: 'bordered', id: 'professional-services', index: '07', eyebrow: 'A-Rated Network',
+    title: 'Professional Services', imageSide: 'right', bg: 'paper', wideImage: true,
+    image: '/images/ss-professional-services.jpg',
+    imageAlt: 'Cricket balls lined up on a sunlit pitch — a trusted professional network',
+    body: `We are associated with a network of A-rated chartered accountants across Pakistan, the UK, and the US, providing accounting, audit, tax, legal, AML, ESG, and governance services with discretion, and integrity.`,
   },
 ];
+
 ---
 
 <BaseLayout
-  title="Specialized Services | Black Stone Islamic Global"
-  description="BIG Family Office, Alternative Investments, M&A and Carve-Out advisory, and IPO services for Pakistan and US markets."
+  title="Specialized Services | Blackstone Islamic Global"
+  description="Basirah Family Office, Lifestyle Management, PR Campaign, Philanthropy and Zakat, M&A and Carve Out, and IPO consultancy for Pakistan and US markets."
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
@@ -62,14 +90,11 @@ const services = [
       <div class="max-w-3xl">
         <p class="label text-acid mb-6">Specialized Services</p>
         <h1
-          class="font-serif font-normal text-white mb-6 leading-[1.05]"
+          class="font-serif font-normal text-white mb-10 leading-[1.05]"
           style="font-size: clamp(34px, 5.5vw, 60px);"
         >
-          Distinctive Solutions<br/>for Complex Needs.
+          Personalised Investments<br/>Personalised Oversight<br/>Exceptional Returns
         </h1>
-        <p class="font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
-          Our specialized advisory capabilities address the full breadth of sophisticated client requirements — from coordinated family office oversight and alternative investments to cross-border M&A mandates and equity capital markets transactions.
-        </p>
         <Button variant="acid" href="#family-office">Explore What We Do</Button>
       </div>
     </div>
@@ -82,15 +107,7 @@ const services = [
 
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
-  <PillarIntro
-    id="specialized-services"
-    title="Transformation Through Expertise"
-    summary="BIG's specialized advisory practice brings together deep sector knowledge, cross-border execution capability, and Shariah-compliant structuring expertise — delivering distinctive outcomes for the most complex mandates."
-  />
   <ServiceSections services={services} />
-
-  <!-- ── About BIG ──────────────────────────────────────────────────────── -->
-  <AboutBIG bgClass="bg-mist" />
 
   <ContactCTA
     headline="Let's Discuss Your Mandate"
