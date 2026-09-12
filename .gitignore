@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Source media superseded by web-optimised versions (kept locally, not committed)
+# flags.mp4 is a fragmented MP4 that browsers cannot play; flags-web.mp4 replaces it.
+public/images/flags.mp4
+# Stray duplicate of public/images/W-M.jpg at the repo root
+/W-M.jpg

@@ -8,27 +8,33 @@ import Button from './Button.astro';
 >
   <!-- Background layer — overflow-hidden stays HERE, never on the section -->
   <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+    <!-- Static fallback sits underneath the video so the hero is never empty:
+         it shows while the video loads and if the video fails to play. -->
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style="background-image: url('https://images.unsplash.com/photo-1759210720487-c74d9764da79?auto=format&fit=crop&w=2400&q=80');"
+      style="background-image: url('/images/flags-poster.jpg');"
     ></div>
-    <!-- Light gradient overlay — image stays visible -->
-    <div
-      class="absolute inset-0"
-      style="background: linear-gradient(110deg, rgba(11,11,11,0.62) 0%, rgba(11,11,11,0.25) 55%, rgba(11,11,11,0.04) 100%);"
-    ></div>
-    <!-- Decorative oversized BIG watermark -->
-    <div
-      class="absolute top-0 right-0 font-sans font-extrabold text-white/5 select-none pointer-events-none leading-none"
-      style="font-size: clamp(120px, 20vw, 280px); letter-spacing: -0.04em; transform: translate(5%, -5%);"
+    <!-- Background video. Muted + playsinline so mobile browsers allow autoplay. -->
+    <video
+      class="hero-video absolute inset-0 w-full h-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/images/flags-poster.jpg"
+      aria-hidden="true"
+      tabindex="-1"
     >
-      BIG
-    </div>
+      <source src="/images/flags-web.mp4" type="video/mp4" />
+    </video>
   </div>
 
-  <!-- Content: always visible — no overflow-hidden above this div -->
+  <!-- Content: always visible — no overflow-hidden above this div.
+       With the overlay removed the copy sits directly on the footage, so the
+       text carries its own soft shadow to stay legible over the bright sky. -->
   <div class="relative z-10 container-big w-full pt-12 pb-20 md:pb-28">
-    <div class="max-w-2xl">
+    <div class="max-w-2xl hero-copy">
       <h1 class="font-serif text-white font-normal leading-[1.05] mb-6" style="font-size: clamp(40px, 6vw, 78px);">
         Integrity<br/>Intelligence<br/>Impact
       </h1>
@@ -39,3 +45,46 @@ import Button from './Button.astro';
     </div>
   </div>
 </section>
+
+<style>
+  /* The hero video is always visible and always playing. Deliberately no
+     `prefers-reduced-motion` rule here: Windows' "show animations off" setting
+     reports that preference, and hiding/pausing the loop on that basis froze
+     the hero on ordinary desktops. */
+  .hero-video { opacity: 1; }
+
+  /* No dark overlay sits over the video any more, so give the headline and
+     subhead a soft shadow — enough to hold contrast against the bright sky
+     without dimming the footage. */
+  .hero-copy h1,
+  .hero-copy h2 {
+    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
+  }
+</style>
+
+<script>
+  // The hero loop is the page's main visual, so it always plays — we do NOT
+  // gate it on `prefers-reduced-motion`. (Windows' "show animations off"
+  // setting reports that preference, which would otherwise freeze the video on
+  // a very common desktop configuration.)
+  //
+  // The only thing managed here is decode cost: pause while the hero is
+  // scrolled out of view or the tab is hidden, and resume on return.
+  const video = document.querySelector<HTMLVideoElement>('.hero-video');
+
+  if (video) {
+    const play = () => video.play().catch(() => {});
+    play();
+
+    const io = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? play() : video.pause()),
+      { threshold: 0 }
+    );
+    io.observe(video);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) video.pause();
+      else if (video.getBoundingClientRect().bottom > 0) play();
+    });
+  }
+</script>
