@@ -1,22 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ServiceSections from '../../components/ServiceSections.astro';
+import ServiceAlternating from '../../components/ServiceAlternating.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 
 const services = [
   {
-    layout: 'feature', id: 'wealth-planning', index: '01', tag: 'A la Carte',
-    title: 'Wealth Planning — À la Carte Approach', imageSide: 'left', bg: 'paper',
+    id: 'wealth-planning',
+    eyebrow: '01 · A la Carte',
+    headingLines: ['Wealth Planning — À la Carte Approach'],
     image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Bespoke wealth-planning consultation with an advisor',
     body: `We take a highly customised approach to understanding your wealth aspirations, commitments, and non-negotiables enabling us to design and implement personalised, À la carte approach that preserve and grow wealth that align with your marvellous lifestyle, legacy, and succession planning.
 
 Our specialists engage with you and your team to develop and implement wealth strategies that broaden your portfolio, expand your universe, and multiply your wealth on your terms.`,
+    cta: { label: 'Explore Wealth Planning', href: '/contact' },
   },
   {
-    layout: 'overlap', id: 'private-equity', eyebrow: '02', tag: 'Growth Capital',
-    title: 'Private Equity', imageSide: 'right', bg: 'mist',
+    id: 'private-equity',
+    eyebrow: '02 · Growth Capital',
+    headingLines: ['Private Equity'],
     image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Business growth discussion — private equity partnership',
     body: `Our Private Equity specialists bring 50+ years of collective advisory experience with oversight of $7+ billion in transnational portfolios. Through this international network and strategic partnerships, we provide direct access to select private investment opportunities across oil & gas exploration in Pakistan's Southern belt, Gilgit-Baltistan gemstones, USA rare minerals, Ghana gold mining, New Zealand meat, Pakistani textile, sports and sugar, and hospitality JVs near the Holy Sites of Makkah and Madinah.
@@ -24,24 +27,30 @@ Our specialists engage with you and your team to develop and implement wealth st
 We can also position you as an exclusive underwriter for IPOs and Sukuks; and as a corporate financier to our prestigious clients in Türkiye, Pakistan and Saudi Arabia.
 
 Whether an investor seeking a strategic partnership or a business owner looking to accelerate growth, we connect capital with opportunity, and flip the asset within 5 to 7 years for you.`,
+    cta: { label: 'Explore Private Equity', href: '/contact' },
   },
   {
-    layout: 'feature', id: 'pakistan-energy', index: '03', tag: 'OMC Sector',
-    title: 'Pakistan Energy', imageSide: 'left', bg: 'paper',
+    id: 'pakistan-energy',
+    eyebrow: '03 · OMC Sector',
+    headingLines: ['Pakistan Energy'],
     image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Refinery and downstream plant — Pakistan OMC energy sector',
     body: `For ultra-high-net-worth individuals and corporates seeking entry into Pakistan's OMC sector, we provide end-to-end advisory across deal origination, due diligence, transaction execution, and post-acquisition support.
 
 Combining deep sector expertise, strong industry relationships, and a track record of successful execution, we help you build value-accretive energy businesses while navigating Pakistan's downstream market.`,
+    cta: { label: 'Explore Pakistan Energy', href: '/contact' },
   },
   {
-    layout: 'bordered', id: 'real-estate', index: '04', eyebrow: 'Landmark Transactions',
-    title: 'Real Estate', imageSide: 'right', bg: 'mist',
+    id: 'real-estate',
+    eyebrow: '04 · Landmark Transactions',
+    headingLines: ['Real Estate'],
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Landmark real-estate transactions and development',
     body: `From identifying high-value, off-market opportunities to structuring transactions and negotiating favourable terms, we deliver superior real estate solutions. Through great relationships with sponsors, developers, and other stakeholders, we facilitate landmark deals with excellence.`,
+    cta: { label: 'Explore Real Estate', href: '/contact' },
   },
 ];
+
 
 ---
 
@@ -85,7 +94,7 @@ Combining deep sector expertise, strong industry relationships, and a track reco
 
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
-  <ServiceSections services={services} />
+  <ServiceAlternating services={services} />
 
   <ContactCTA
     headline="Begin Your Wealth Journey"

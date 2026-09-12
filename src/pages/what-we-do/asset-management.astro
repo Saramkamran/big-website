@@ -1,57 +1,68 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ServiceSections from '../../components/ServiceSections.astro';
+import ServiceAlternating from '../../components/ServiceAlternating.astro';
 import Button from '../../components/Button.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 
 const services = [
   {
-    layout: 'feature', id: 'am-fixed-income', index: '01', tag: 'Capital Preservation',
-    title: 'Shariah Fixed Income Funds', imageSide: 'left', bg: 'paper',
+    id: 'am-fixed-income',
+    eyebrow: '01 · Capital Preservation',
+    headingLines: ['Shariah Fixed Income Funds'],
     image: '/images/am-fixed-income.jpg',
     imageAlt: 'Worshippers gathered in congregation — faith-aligned, community-scale investing',
     body: `We help clients navigate safe funds with confidence, identifying instruments focused on capital preservation and stable returns through a curated selection of high-quality income and money market mutual funds.
 
 For distinguished corporates and ultra-high-net-worth clients, we also facilitate the creation of dedicated mutual funds through our trusted network of leading global asset management companies. These customised funds may offer greater NAV returns and preferential fee arrangements.`,
+    cta: { label: 'Explore Shariah Fixed Income', href: '/contact' },
   },
   {
-    layout: 'bordered', id: 'am-equity', index: '02', eyebrow: 'PSX · FTSE · NYSE',
-    title: 'Shariah Equity Funds', imageSide: 'right', bg: 'mist', imageMaxH: '460px',
+    id: 'am-equity',
+    eyebrow: '02 · PSX · FTSE · NYSE',
+    headingLines: ['Shariah Equity Funds'],
     image: '/images/am-equity.jpg',
     imageAlt: 'Abraj Al Bait clock tower rising above Makkah',
     body: `With 20+ years of experience across PSX and global markets, we professionally manage investments through discretionary mandated mutual funds. Our institutional grade research and insight evaluate geoeconomics, geopolitics, corporate valuations, and investment psychology to identify pre-optimistic opportunities across equity and equity fund-of-funds.
 
 We intelligently crystallise gains during pre-pessimistic phases, preserve capital, and remain tactically cash ready to seize the next winning opportunity for our clients.`,
+    cta: { label: 'Explore Shariah Equity', href: '/contact' },
   },
   {
-    layout: 'overlap', id: 'am-etfs', eyebrow: '03', tag: 'Diversification',
-    title: 'Shariah ETF', imageSide: 'left', bg: 'paper',
+    id: 'am-etfs',
+    eyebrow: '03 · Diversification',
+    headingLines: ['Shariah ETF'],
     image: '/images/am-etf.jpg',
     imageAlt: 'Tiled mosque domes in graduated colour — diversified exposure within faith principles',
     body: `We help clients access carefully selected ETFs that provide diversified exposure to high performing clubbed equities. Our objective remains offering a clear pathway to participate in long term corporate and market growth while synced with faith and investment principles.`,
+    cta: { label: 'Explore Shariah ETFs', href: '/contact' },
   },
   {
-    layout: 'feature', id: 'am-multi-asset', index: '04', tag: 'Balanced',
-    title: 'Shariah Multi-Asset Funds', imageSide: 'right', bg: 'mist',
+    id: 'am-multi-asset',
+    eyebrow: '04 · Balanced',
+    headingLines: ['Shariah Multi-Asset Funds'],
     image: '/images/am-multi-asset.jpg',
     imageAlt: 'Multi-coloured mosque domes and minarets — a blend of complementary elements',
     body: `Leveraging our market expertise and meticulous scrutiny, we help clients position in multi-asset and hybrid funds, including asset allocation, gold and balance funds. By strategically blending equities and fixed income instruments, these solutions seek to balance growth and stability, helping clients pursue their financial objectives across different asset classes.`,
-    rails: [
-      { name: 'Asset Allocation', desc: 'A strategic blend' },
-      { name: 'Gold Funds', desc: 'Diversification anchor' },
-      { name: 'Balance Funds', desc: 'Growth and stability' },
+    bullets: [
+      'Asset Allocation',
+      'Gold Funds',
+      'Balance Funds',
     ],
+    cta: { label: 'Explore Multi-Asset Funds', href: '/contact' },
   },
   {
-    layout: 'feature', id: 'am-pensions', index: '05', tag: 'Retirement',
-    title: 'Shariah Pensions', imageSide: 'left', bg: 'paper',
+    id: 'am-pensions',
+    eyebrow: '05 · Retirement',
+    headingLines: ['Shariah Pensions'],
     image: '/images/am-pensions.jpg',
     imageAlt: 'Placing a golf ball on the tee — the unhurried years after a working life',
     body: `Personal freedom, financial prosperity, and tax efficient retirement is what you deserve after a lifetime of hard work. To preserve your lifestyle and pursue the aspirations that you may have postponed during your working years, our retirement planning begins well before your superannuation.
 
 We do not offer a random, one-size-fits-all pension solution. We understand your lifestyle, customise a retirement strategy, and structure a plan around your aspirations to ensure low tax and high returns pay your happiness. We partner with top rated pension providers and do all the needful for you.`,
+    cta: { label: 'Explore Shariah Pensions', href: '/contact' },
   },
 ];
+
 ---
 
 <BaseLayout
@@ -98,7 +109,7 @@ We do not offer a random, one-size-fits-all pension solution. We understand your
 
 
   <!-- ── Services ──────────────────────────────────────────────────────── -->
-  <ServiceSections services={services} />
+  <ServiceAlternating services={services} />
 
   <ContactCTA
     headline="Ready to Build Your Portfolio?"
