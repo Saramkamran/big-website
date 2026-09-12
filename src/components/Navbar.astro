@@ -8,23 +8,22 @@
     and keeps the hamburger flush right on mobile (where the link groups are hidden).
   -->
   <div class="w-full h-full flex items-center px-6 min-[900px]:pl-10 min-[900px]:pr-10">
-    <!-- Logo — 63×26 wordmark in a 99×64 container, 40px inset from the bar edge -->
+    <!-- Logo — the metallic BLACKSTONE ISLAMIC GLOBAL wordmark (3:1). The mark is
+         silver with dark outlines, so on the light acid/teal bars it sits on a
+         subtle white plate that gives the chrome something to separate from; on
+         the black theme-bw bar the plate is dropped (see global.css). -->
     <a
       href="/"
-      class="flex flex-shrink-0 items-center h-full no-underline min-[900px]:w-[99px]"
+      class="site-logo flex flex-shrink-0 items-center h-full no-underline"
       aria-label="Blackstone Islamic Global — Home"
     >
-      <!-- 63×26 wordmark box. Cap height fills the 26px; width is left free so the
-           brand's -0.04em tracking survives (forcing 63 would stretch the letterforms). -->
-      <svg width="63" height="26" viewBox="0 0 63 26" fill="none" role="img" class="block text-ink">
-        <title>BIG — Blackstone Islamic Global</title>
-        <text
-          x="0" y="26"
-          fill="currentColor"
-          font-family="Inter, system-ui, sans-serif"
-          font-size="35.75" font-weight="800" letter-spacing="-1.43"
-        >BIG</text>
-      </svg>
+      <img
+        src="/images/big-logo-opt.png"
+        alt="Blackstone Islamic Global"
+        width="640"
+        height="213"
+        class="site-logo-img block w-auto"
+      />
     </a>
 
     <!-- Primary nav — sits immediately right of the logo, left-aligned -->
@@ -615,6 +614,19 @@
   }
   .mobile-sub-link {
     @apply block font-sans text-sm text-ink/70 hover:text-ink py-1 transition-colors;
+  }
+
+  /* ── Brand logo ─────────────────────────────────────────────────────────
+     The supplied mark is a 3:1 metallic wordmark. Inside a 64px bar the usable
+     height is ~34px, which keeps "BLACKSTONE" crisp; the smaller "ISLAMIC
+     GLOBAL" line is necessarily small, so the <a> carries the accessible name.  */
+  .site-logo-img {
+    height: 34px;
+    /* Lift the chrome slightly so it reads against a saturated bar. */
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+  }
+  @media (max-width: 899px) {
+    .site-logo-img { height: 28px; }
   }
 </style>
 

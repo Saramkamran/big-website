@@ -41,6 +41,14 @@
   background-color: #FFFFFF;
   color: var(--ink);
 }
+/* The brand mark is a metallic/silver wordmark with dark outlines. On the black
+   theme-bw bar those outlines have nothing to sit against, so lift the mark a
+   touch and drop the light plate used on the acid/teal bars. */
+:root.theme-bw #site-header .site-logo { background: transparent; padding: 0; }
+:root.theme-bw #site-header .site-logo-img {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.55));
+}
+
 /* Dropdown panels stay light, so restore ink text inside them. */
 :root.theme-bw #site-header #mega-menu .text-ink,
 :root.theme-bw #site-header #mega-menu svg,
