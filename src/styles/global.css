@@ -3,58 +3,131 @@
 @tailwind utilities;
 
 :root {
-  --acid:     #CCFF00;
-  --acid-600: #A6D400;
+  /* Monochrome accent. `--acid` is kept as the token NAME so the ~70 existing
+     bg-acid / border-acid / fill-acid usages keep working, but it now resolves
+     to ink; --acid-600 is the darker hover step. Anywhere the accent sits ON a
+     dark background it is overridden to white further down (see "accent on
+     dark"), because ink-on-ink would be invisible. */
+  --acid:     #0B0B0B;
+  --acid-600: #3A3A3A;
   --ink:      #0B0B0B;
   --paper:    #FFFFFF;
   --mist:     #F3F5EE;
   --stone:    #6B7280;
   --line:     #E5E7EB;
-  --header-h: 64px;
+  /* 80px gives the metallic wordmark room to read clearly — at the old 64px the
+     logo was capped at ~34px and the "ISLAMIC GLOBAL" line was barely legible.
+     Anchors and hero heights derive from this, so they follow automatically. */
+  --header-h: 80px;
 }
 
-/* Per-page accent override. Applied to <html> via BaseLayout's `theme` prop, so
-   the navbar, page content and footer all re-theme together. */
-:root.theme-teal {
-  --acid:     #15D8B3;
-  --acid-600: #11AD8F;
-}
-
-/* ── Black & white theme ─────────────────────────────────────────────────
-   Black navbar with white text, and body sections that alternate
-   white -> black by remapping the `mist` section background to ink. */
-:root.theme-bw #site-header {
-  background-color: var(--ink);
-  border-bottom-color: var(--ink);
-}
-/* Navbar text/marks are ink by default — invert them on the black bar. */
-:root.theme-bw #site-header .text-ink,
-:root.theme-bw #site-header .nav-link,
-:root.theme-bw #site-header button[aria-label="Search"],
-:root.theme-bw #site-header svg { color: #FFFFFF; }
-:root.theme-bw #site-header a[href="/login"] {
+/* ── Navbar: black bar, white marks (site-wide) ───────────────────────────
+   The bar itself is `bg-ink` on the element. Everything sitting ON it is
+   authored ink-coloured for a light bar, so invert it here. Scoped to
+   #site-header only — the dropdown panels and mobile drawer stay light and
+   are restored further down. Applies on every page, not per-theme. */
+#site-header .text-ink,
+#site-header .nav-link,
+#site-header button[aria-label="Search"],
+#site-header svg { color: #FFFFFF; }
+#site-header .nav-link:hover { color: rgb(255 255 255 / 0.7); }
+#site-header a[href="/login"] {
   color: #FFFFFF;
   border-color: #FFFFFF;
   background-color: transparent;
 }
-:root.theme-bw #site-header a[href="/login"]:hover {
+#site-header a[href="/login"]:hover {
   background-color: #FFFFFF;
   color: var(--ink);
 }
-/* The brand mark is a metallic/silver wordmark with dark outlines. On the black
-   theme-bw bar those outlines have nothing to sit against, so lift the mark a
-   touch and drop the light plate used on the acid/teal bars. */
-:root.theme-bw #site-header .site-logo { background: transparent; padding: 0; }
-:root.theme-bw #site-header .site-logo-img {
-  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.55));
+/* The brand mark is a JPEG with an opaque black background, so it would show as
+   a visible rectangle against --ink (#0B0B0B). `screen` blending drops pure
+   black to nothing while leaving the silver lettering untouched, so the mark
+   reads as if it were transparent. */
+#site-header .site-logo { background: transparent; padding: 0; }
+#site-header .site-logo-img {
+  mix-blend-mode: screen;
 }
 
-/* Dropdown panels stay light, so restore ink text inside them. */
-:root.theme-bw #site-header #mega-menu .text-ink,
-:root.theme-bw #site-header #mega-menu svg,
-:root.theme-bw #site-header #search-panel svg,
-:root.theme-bw #site-header #mobile-menu .text-ink,
-:root.theme-bw #site-header #mobile-menu svg { color: var(--ink); }
+/* Dropdown panels and the mobile drawer stay light, so restore ink text and
+   marks inside them (this must come after the inversion above). */
+/* `:not(.text-white)` matters: the drawer's Client Login is a solid bg-ink
+   button whose label must stay white — forcing ink on it would render black
+   text on a black button. */
+#site-header #mega-menu .text-ink,
+#site-header #mega-menu .label,
+#site-header #mega-menu svg,
+#site-header #mega-menu a:not(.text-white),
+#site-header #mega-menu h2,
+#site-header #search-panel .text-ink,
+#site-header #search-panel svg,
+#site-header #mobile-menu .text-ink,
+#site-header #mobile-menu .label,
+#site-header #mobile-menu a:not(.text-white),
+#site-header #mobile-menu button,
+#site-header #mobile-menu svg { color: var(--ink); }
+#site-header #mega-menu a.border-ink {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+#site-header #mega-menu a.border-ink:hover {
+  background-color: var(--ink);
+  color: #FFFFFF;
+}
+
+/* ── Accent on dark backgrounds ───────────────────────────────────────────
+   --acid now resolves to ink, so any accent sitting ON a dark surface would be
+   black-on-black. These rules flip it to white in exactly those places. Each
+   selector below corresponds to an audited usage, not a blanket override. */
+
+/* Eyebrow labels + link hovers that sit on ink/photographic backgrounds. */
+.bg-ink .text-acid,
+.crc .text-acid,
+footer .hover\:text-acid:hover,
+footer .footer-link:hover,
+footer .social-icon:hover { color: #FFFFFF; }
+
+/* Thin accent marks (hero vertical bars, eyebrow rules, dots) on dark sections. */
+.bg-ink .bg-acid,
+.crc .bg-acid,
+section.bg-ink > .bg-acid,
+.bg-ink [class*="bg-acid"] { background-color: #FFFFFF; }
+
+/* Primary CTA on a dark section: an ink button on ink is invisible, so flip it
+   to a white button with ink text (and a light-gray hover). */
+.bg-ink a.bg-ink,
+.bg-ink button.bg-ink,
+section.bg-ink a.bg-ink,
+section.bg-ink button.bg-ink {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: var(--ink);
+}
+.bg-ink a.bg-ink:hover,
+.bg-ink button.bg-ink:hover,
+section.bg-ink a.bg-ink:hover,
+section.bg-ink button.bg-ink:hover {
+  background-color: #E5E7EB;
+  border-color: #E5E7EB;
+  color: var(--ink);
+}
+
+/* `bg-acid text-ink` note chips + the skip-link: the fill is now ink, so the
+   ink label must go white. */
+.bg-acid.text-ink,
+[class*="bg-acid"].text-ink,
+a.focus\:bg-acid:focus { color: #FFFFFF !important; }
+
+/* Hero left-edge accent bars sit over photos inside an ink section. */
+section.bg-ink .absolute.bg-acid { background-color: #FFFFFF; }
+
+/* CurtainRevealCard hover swap: the card is dark, so the accent fill is white
+   and its label flips to ink for contrast. */
+.crc a:hover { background-color: #FFFFFF !important; color: var(--ink) !important; border-color: #FFFFFF !important; }
+
+/* ── Black & white page theme ─────────────────────────────────────────────
+   Body sections alternate white -> black by remapping `mist` to ink. The
+   navbar is black site-wide now, so this only affects page content. */
 
 /* Alternating body sections: `mist` becomes a full black band.
    Inversion is scoped so it does NOT reach inside nested white panels

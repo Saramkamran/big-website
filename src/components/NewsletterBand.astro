@@ -4,23 +4,23 @@ const sent = newsletterStatus === 'sent';
 const failed = newsletterStatus === 'error';
 ---
 
-<section id="newsletter" class="bg-acid py-section">
+<section id="newsletter" class="bg-ink py-section">
   <div class="container-big max-w-2xl">
-    <h2 class="font-serif font-normal text-ink mb-4" style="font-size: clamp(32px, 4vw, 52px); line-height: 1.1;">
+    <h2 class="font-serif font-normal text-white mb-4" style="font-size: clamp(32px, 4vw, 52px); line-height: 1.1;">
       Subscribe to BIG Briefings
     </h2>
-    <p class="font-sans text-base text-ink/70 mb-8 leading-relaxed">
-      Our weekly briefings deliver the latest insights on PSX, global Islamic markets, and Shariah-compliant investing — from BIG analysts and economists.
+    <p class="font-sans text-base text-white/70 mb-8 leading-relaxed">
+      Our weekly briefings deliver the latest insights on PSX, global Islamic markets, and Shariah-compliant investing, written by BIG analysts and economists.
     </p>
 
     {failed && (
-      <div class="bg-ink/90 text-white px-6 py-4 font-sans text-sm font-medium mb-6">
-        Sorry — we couldn't complete your subscription. Please check your email address and try again.
+      <div class="bg-white/10 text-white px-6 py-4 font-sans text-sm font-medium mb-6">
+        Sorry, we couldn't complete your subscription. Please check your email address and try again.
       </div>
     )}
 
     {sent ? (
-      <div class="bg-ink text-white px-6 py-4 font-sans text-sm font-medium">
+      <div class="bg-white text-ink px-6 py-4 font-sans text-sm font-medium">
         Thank you for subscribing! You'll receive our next briefing shortly.
       </div>
     ) : (
@@ -44,14 +44,14 @@ const failed = newsletterStatus === 'error';
         />
         <button
           type="submit"
-          class="px-6 py-3 bg-ink text-white font-sans text-sm font-semibold hover:bg-stone transition-colors whitespace-nowrap"
+          class="px-6 py-3 bg-white text-ink font-sans text-sm font-semibold hover:bg-line transition-colors whitespace-nowrap"
         >
           Subscribe
         </button>
       </form>
     )}
 
-    <p class="font-sans text-xs text-ink/50 mt-4">
+    <p class="font-sans text-xs text-white/50 mt-4">
       You may unsubscribe at any time. Submissions are subject to our <a href="#" class="underline hover:text-ink">Privacy Policy</a>.
     </p>
   </div>

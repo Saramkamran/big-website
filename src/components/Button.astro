@@ -12,7 +12,9 @@ const base = 'inline-flex items-center justify-center px-6 py-3 font-sans text-s
 
 const variants = {
   ink:     'bg-ink text-white border-ink hover:bg-stone',
-  acid:    'bg-acid text-ink border-acid hover:bg-acid-600',
+  /* Primary CTA: solid ink, white text. Kept under the `acid` key so every
+     existing <Button variant="acid"> call site keeps working unchanged. */
+  acid:    'bg-ink text-white border-ink hover:bg-acid-600 hover:border-acid-600',
   outline: 'bg-transparent text-ink border-ink hover:bg-ink hover:text-white',
 };
 
