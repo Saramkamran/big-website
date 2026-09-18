@@ -9,13 +9,15 @@
       <!-- Brand -->
       <div class="lg:col-span-1">
         <a href="/" class="inline-flex items-center gap-2 mb-6" aria-label="Blackstone Islamic Global — Home">
-          <!-- The metallic wordmark sits naturally on the dark footer. -->
+          <!-- The wordmark is a JPEG with an opaque black background; `screen`
+               blending drops that black into the ink footer so no rectangle
+               edge shows, while the silver lettering stays intact. -->
           <img
-            src="/images/big-logo-opt.png"
+            src="/images/big-logo.jpg"
             alt="Blackstone Islamic Global"
-            width="640"
-            height="213"
-            class="block w-auto h-12 max-w-full"
+            width="1600"
+            height="533"
+            class="footer-logo block w-auto h-12 max-w-full"
             loading="lazy"
           />
         </a>
@@ -42,7 +44,6 @@
         <p class="label text-white/50 mb-5">Resources</p>
         <ul class="space-y-3">
           <li><a href="/login" class="footer-link">Client Login</a></li>
-          <li><a href="/insights" class="footer-link">Insights</a></li>
           <li><a href="#" class="footer-link">Pressroom</a></li>
           <li><a href="#" class="footer-link">Onboarding</a></li>
           <li><a href="/contact" class="footer-link">Contact</a></li>
@@ -89,7 +90,7 @@
             </svg>
           </a>
         </div>
-        <a href="/contact" class="font-sans text-sm text-white/70 hover:text-acid transition-colors">Get in touch →</a>
+        <a href="/contact" class="font-sans text-sm text-white/70 hover:text-white transition-colors">Get in touch →</a>
       </div>
     </div>
   </div>
@@ -110,11 +111,16 @@
 </footer>
 
 <style>
+  /* Opaque-black JPEG on an ink background — screen blending removes the
+     black so no rectangle edge shows behind the wordmark. */
+  .footer-logo {
+    mix-blend-mode: screen;
+  }
   .footer-link {
-    @apply font-sans text-sm text-white/70 hover:text-acid transition-colors;
+    @apply font-sans text-sm text-white/70 hover:text-white transition-colors;
   }
   .social-icon {
-    @apply text-white/60 hover:text-acid transition-colors;
+    @apply text-white/60 hover:text-white transition-colors;
   }
   .footer-legal-link {
     @apply font-sans text-xs text-white/40 hover:text-white/70 transition-colors;

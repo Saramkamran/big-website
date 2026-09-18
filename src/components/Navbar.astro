@@ -1,27 +1,26 @@
 ---
 ---
 
-<header id="site-header" class="sticky top-0 z-50 bg-acid border-b-2 border-acid" style="height: var(--header-h);">
+<header id="site-header" class="sticky top-0 z-50 bg-ink border-b-2 border-ink" style="height: var(--header-h);">
   <!--
-    Row layout: [logo] [primary links] ——— flexible gap ——— [secondary links][search][CTA]
+    Row layout: [logo] [primary links] ——— flexible gap ——— [secondary links][menu]
     The right cluster carries `ml-auto`, which both pushes it flush right on desktop
     and keeps the hamburger flush right on mobile (where the link groups are hidden).
   -->
   <div class="w-full h-full flex items-center px-6 min-[900px]:pl-10 min-[900px]:pr-10">
-    <!-- Logo — the metallic BLACKSTONE ISLAMIC GLOBAL wordmark (3:1). The mark is
-         silver with dark outlines, so on the light acid/teal bars it sits on a
-         subtle white plate that gives the chrome something to separate from; on
-         the black theme-bw bar the plate is dropped (see global.css). -->
+    <!-- Logo — the metallic BLACKSTONE ISLAMIC GLOBAL wordmark (3:1). The file is
+         a JPEG with an opaque black background, so global.css blends it with
+         `mix-blend-mode: screen` to drop that black into the ink bar. -->
     <a
       href="/"
-      class="site-logo flex flex-shrink-0 items-center h-full no-underline"
+      class="site-logo flex flex-shrink-0 items-center h-full no-underline mr-6"
       aria-label="Blackstone Islamic Global — Home"
     >
       <img
-        src="/images/big-logo-opt.png"
+        src="/images/big-logo.jpg"
         alt="Blackstone Islamic Global"
-        width="640"
-        height="213"
+        width="1600"
+        height="533"
         class="site-logo-img block w-auto"
       />
     </a>
@@ -42,13 +41,11 @@
           </svg>
         </button>
       </div>
-      <a href="/insights" class="nav-link">Insights</a>
       <a href="/about" class="nav-link">Our Firm</a>
       <a href="/contact" class="nav-link">Contact</a>
     </nav>
 
-    <!-- Right cluster — secondary links, search, CTA (and the mobile hamburger) -->
-    <!-- gap-2 = the spec's 8px between utility nav → search → CTA -->
+    <!-- Right cluster — secondary links (and the mobile hamburger) -->
     <div class="ml-auto flex items-center gap-2 h-full">
       <nav class="hidden min-[900px]:flex items-center h-full" aria-label="Utility navigation">
         <div class="relative group" id="coaching-menu-container">
@@ -109,26 +106,7 @@
         </div>
       </nav>
 
-      <!-- 18×18 icon centred in a 32×32 hit area -->
-      <button
-        id="search-btn"
-        class="hidden min-[900px]:inline-flex items-center justify-center w-8 h-8 flex-shrink-0 text-ink hover:text-ink/70 transition-colors"
-        aria-label="Search"
-        aria-expanded="false"
-        aria-controls="search-panel"
-      >
-        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-        </svg>
-      </button>
 
-      <!-- 91×32, 6px/7px padding, 0.8px square border, transparent fill -->
-      <a
-        href="/login"
-        class="hidden min-[900px]:inline-flex items-center justify-center flex-shrink-0 w-[91px] h-8 px-[7px] py-[6px] rounded-none border-[0.8px] border-ink bg-transparent text-ink font-sans text-sm font-medium leading-none whitespace-nowrap transition-colors hover:bg-ink hover:text-white"
-      >
-        Client Login
-      </a>
 
       <button id="mobile-menu-btn" class="min-[900px]:hidden p-2 text-ink" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" id="hamburger-icon">
@@ -141,35 +119,6 @@
     </div>
   </div>
 
-  <!-- ── Search panel (desktop) ──────────────────────────────────────────── -->
-  <!-- TODO: no search results page exists yet — submit is inert until one is built. -->
-  <div
-    id="search-panel"
-    role="region"
-    aria-label="Search"
-    class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-2xl z-40"
-  >
-    <div class="container-big py-6">
-      <form id="search-form" role="search" class="flex items-center gap-4">
-        <svg class="w-5 h-5 flex-shrink-0 text-stone" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-        </svg>
-        <label for="search-input" class="sr-only">Search</label>
-        <input
-          id="search-input"
-          name="q"
-          type="search"
-          placeholder="Search BIG"
-          class="flex-1 bg-transparent font-sans text-base text-ink placeholder:text-stone focus:outline-none py-1"
-        />
-        <button type="button" id="search-close" class="p-2 text-ink hover:text-stone transition-colors" aria-label="Close search">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </form>
-    </div>
-  </div>
 
   <!-- ── Mega Menu (desktop) ─────────────────────────────────────────────── -->
   <div
@@ -186,7 +135,7 @@
           <div>
             <h2 class="font-serif font-normal text-ink text-2xl leading-tight mb-4">What We Do</h2>
             <p class="font-sans text-sm text-stone leading-relaxed mb-6">
-              Let us take the opportunity to help you understand how we make things happen for you — across Pakistani and global Shariah-compliant markets.
+              We empower our distinguished clients with intellectual capital grounded in real-world challenges, helping them unlock opportunities, and convert insight into impact.
             </p>
             <a
               href="/#what-we-do"
@@ -213,7 +162,6 @@
               <li><a href="/what-we-do/psx-global-markets#shariah-equities" class="mega-link">Shariah Equities</a></li>
               <li><a href="/what-we-do/psx-global-markets#green-sukuks" class="mega-link">Sukuks and Green Sukuks</a></li>
               <li><a href="/what-we-do/psx-global-markets#transaction-services" class="mega-link">Transaction Services</a></li>
-              <li><a href="/what-we-do/psx-global-markets#blackstone-intel" class="mega-link">Blackstone Intel</a></li>
               <li><a href="/what-we-do/psx-global-markets#portfolio-consultancy" class="mega-link">Portfolio Consultancy</a></li>
               <li><a href="/what-we-do/psx-global-markets#portfolio-supervision" class="mega-link">Portfolio Supervision</a></li>
             </ul>
@@ -396,22 +344,6 @@
     style="top: var(--header-h);"
   >
     <div id="mobile-menu-inner" class="container-big py-8 space-y-1">
-      <!-- Search — icon + input row -->
-      <!-- TODO: no search results page exists yet — submit is inert until one is built. -->
-      <form role="search" class="mobile-search-form flex items-center gap-3 border border-line px-4 py-3 mb-6">
-        <svg class="w-5 h-5 flex-shrink-0 text-stone" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-        </svg>
-        <label for="mobile-search-input" class="sr-only">Search</label>
-        <input
-          id="mobile-search-input"
-          name="q"
-          type="search"
-          placeholder="Search BIG"
-          class="flex-1 bg-transparent font-sans text-base text-ink placeholder:text-stone focus:outline-none"
-        />
-      </form>
-
       <!-- Primary links (desktop order) -->
       <div>
         <button
@@ -427,8 +359,8 @@
         </button>
         <div id="mobile-services-panel" class="hidden bg-mist px-4 py-4 space-y-6">
           <!-- Mobile intro blurb -->
-          <p class="font-sans text-sm text-stone leading-relaxed border-l-2 border-acid pl-3">
-            Let us help you understand how we make things happen for you — across Pakistani and global Shariah-compliant markets.
+          <p class="font-sans text-sm text-stone leading-relaxed border-l-2 border-ink pl-3">
+            We empower our distinguished clients with intellectual capital grounded in real-world challenges, helping them unlock opportunities, and convert insight into impact.
           </p>
           <div>
             <a href="/what-we-do/psx-global-markets" class="label mb-3 block hover:text-ink transition-colors">PSX &amp; Global Markets</a>
@@ -436,7 +368,6 @@
               <li><a href="/what-we-do/psx-global-markets#shariah-equities" class="mobile-sub-link">Shariah Equities</a></li>
               <li><a href="/what-we-do/psx-global-markets#green-sukuks" class="mobile-sub-link">Sukuks and Green Sukuks</a></li>
               <li><a href="/what-we-do/psx-global-markets#transaction-services" class="mobile-sub-link">Transaction Services</a></li>
-              <li><a href="/what-we-do/psx-global-markets#blackstone-intel" class="mobile-sub-link">Blackstone Intel</a></li>
               <li><a href="/what-we-do/psx-global-markets#portfolio-consultancy" class="mobile-sub-link">Portfolio Consultancy</a></li>
               <li><a href="/what-we-do/psx-global-markets#portfolio-supervision" class="mobile-sub-link">Portfolio Supervision</a></li>
             </ul>
@@ -474,7 +405,6 @@
           </div>
         </div>
       </div>
-      <a href="/insights" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Insights</a>
       <a href="/about" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Our Firm</a>
       <a href="/contact" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Contact</a>
 
@@ -592,12 +522,6 @@
         </div>
       </div>
 
-      <!-- CTA -->
-      <div class="pt-4">
-        <a href="/login" class="inline-flex items-center px-6 py-3 bg-ink text-white font-sans text-sm font-semibold w-full justify-center">
-          Client Login
-        </a>
-      </div>
     </div>
   </div>
 </header>
@@ -617,24 +541,22 @@
   }
 
   /* ── Brand logo ─────────────────────────────────────────────────────────
-     The supplied mark is a 3:1 metallic wordmark. Inside a 64px bar the usable
-     height is ~34px, which keeps "BLACKSTONE" crisp; the smaller "ISLAMIC
-     GLOBAL" line is necessarily small, so the <a> carries the accessible name.  */
+     A 3:1 metallic wordmark. The bar is 80px tall, so 52px fills it with a
+     comfortable margin and makes the second line ("ISLAMIC GLOBAL") genuinely
+     readable rather than a smudge. 52px tall => ~156px wide. */
   .site-logo-img {
-    height: 34px;
-    /* Lift the chrome slightly so it reads against a saturated bar. */
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+    height: 52px;
+    /* No drop-shadow here: the bar is black, and global.css applies a faint
+       white glow (#site-header .site-logo-img) so the mark's dark outlines
+       have something to separate from. Keeping a dark shadow too would just
+       fight that rule. */
   }
   @media (max-width: 899px) {
-    .site-logo-img { height: 28px; }
+    .site-logo-img { height: 40px; }
   }
 </style>
 
 <script>
-  const searchBtn = document.getElementById('search-btn');
-  const searchPanel = document.getElementById('search-panel');
-  const searchClose = document.getElementById('search-close');
-  const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileMenuInner = document.getElementById('mobile-menu-inner');
@@ -677,7 +599,6 @@
     btn?.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = !panel?.classList.contains('hidden');
-      closeSearch();
       closeAllDesktopMenus(isOpen ? undefined : btnId);
       panel?.classList.toggle('hidden', isOpen);
       btn.setAttribute('aria-expanded', String(!isOpen));
@@ -696,38 +617,14 @@
     });
   });
 
-  /* ── Search panel ───────────────────────────────────────────────────── */
-  searchBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    searchPanel?.classList.contains('hidden') ? openSearch() : closeSearch();
-  });
-  searchClose?.addEventListener('click', closeSearch);
 
-  function openSearch() {
-    closeAllDesktopMenus();
-    searchPanel?.classList.remove('hidden');
-    searchBtn?.setAttribute('aria-expanded', 'true');
-    searchInput?.focus();
-  }
-  function closeSearch() {
-    searchPanel?.classList.add('hidden');
-    searchBtn?.setAttribute('aria-expanded', 'false');
-  }
-
-  // No search results page exists yet — keep submit inert so it can't navigate nowhere.
-  document.querySelectorAll('#search-form, .mobile-search-form').forEach((form) =>
-    form.addEventListener('submit', (e) => e.preventDefault())
-  );
 
   /* ── Global dismiss ─────────────────────────────────────────────────── */
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { closeAllDesktopMenus(); closeSearch(); closeMobileMenu(); }
+    if (e.key === 'Escape') { closeAllDesktopMenus(); closeMobileMenu(); }
   });
   document.addEventListener('click', (e) => {
     const target = e.target as Node;
-    if (searchPanel && !searchPanel.contains(target) && searchBtn && !searchBtn.contains(target)) {
-      closeSearch();
-    }
   });
 
   /* ── Mobile menu ────────────────────────────────────────────────────── */
