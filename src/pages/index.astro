@@ -6,44 +6,7 @@ import NewsletterBand from '../components/NewsletterBand.astro';
 import Button from '../components/Button.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 
-const insights = [
-  {
-    slug: 'pakistan-equity-outlook-2026',
-    category: 'MARKETS',
-    title: 'Pakistan Equity Outlook 2026: Navigating Reform and Recovery',
-    type: 'Article',
-    date: 'Jun 12, 2026',
-    image: 'https://images.unsplash.com/photo-1637679149566-6af21b6e933a?auto=format&fit=crop&w=900&q=80',
-    featured: true,
-  },
-  {
-    slug: 'green-sukuk-growth-esgs',
-    category: 'SUSTAINABLE FINANCE',
-    title: 'Green Sukuk: Pakistan\'s Gateway to ESG Capital Markets',
-    type: 'Article',
-    date: 'Jun 5, 2026',
-    image: 'https://images.unsplash.com/photo-1595437193398-f24279553f4f?auto=format&fit=crop&w=900&q=80',
-    featured: false,
-  },
-  {
-    slug: 'shariah-screening-methodology',
-    category: 'SHARIAH COMPLIANCE',
-    title: 'How Our Shariah Screening Methodology Works',
-    type: 'Video',
-    date: 'May 28, 2026',
-    image: 'https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?auto=format&fit=crop&w=900&q=80',
-    featured: false,
-  },
-  {
-    slug: 'wealth-planning-overseas-pakistanis',
-    category: 'PRIVATE WEALTH',
-    title: 'Wealth Planning for Overseas Pakistanis: Key Considerations',
-    type: 'Podcast',
-    date: 'May 20, 2026',
-    image: 'https://images.unsplash.com/photo-1699621106755-4fe40ce95d64?auto=format&fit=crop&w=900&q=80',
-    featured: false,
-  },
-];
+
 
 const firmInAction = [
   {
@@ -92,7 +55,7 @@ const firmInAction = [
       <div class="overflow-hidden min-h-[280px] lg:min-h-0">
         <img
           src="https://images.unsplash.com/photo-1761233138997-44d9b002a08f?auto=format&fit=crop&w=1400&q=80"
-          alt="NYSE stock exchange — PSX and global markets"
+          alt="NYSE stock exchange, home to PSX and global markets"
           class="w-full h-full object-cover"
           loading="eager"
         />
@@ -143,7 +106,7 @@ const firmInAction = [
             Shariah-Screened.<br/>Professionally Managed.<br/>Built for Growth.
           </h2>
           <p class="font-sans text-sm text-stone leading-relaxed mb-7">
-            Our comprehensive suite of asset-management solutions across fixed income, equity, and multi-asset strategies is designed to navigate market challenges and deliver returns aligned with your expectations — within the bounds of Islamic finance.
+            Our comprehensive suite of asset-management solutions across fixed income, equity, and multi-asset strategies is designed to navigate market challenges and deliver returns aligned with your expectations, always within the bounds of Islamic finance.
           </p>
           <ul class="mb-8 space-y-2.5">
             {['Shariah Fixed Income Funds', 'Shariah Equity Funds', 'Shariah ETF', 'Shariah Multi-Asset Funds', 'Shariah Pensions'].map(s => (
@@ -165,7 +128,7 @@ const firmInAction = [
       <div class="overflow-hidden min-h-[280px] lg:min-h-0 order-1 lg:order-2">
         <img
           src="https://images.unsplash.com/photo-1773503877076-cc9caa3322ff?auto=format&fit=crop&w=1400&q=80"
-          alt="City at dusk — long-term asset management"
+          alt="City at dusk, evoking long-term asset management"
           class="w-full h-full object-cover"
           loading="lazy"
         />
@@ -180,7 +143,7 @@ const firmInAction = [
       <div class="overflow-hidden min-h-[280px] lg:min-h-0">
         <img
           src="/images/W-M-wide.png"
-          alt="Muslim family — Private Wealth Management"
+          alt="Muslim family representing Private Wealth Management"
           class="w-full h-full object-cover"
           loading="lazy"
         />
@@ -196,7 +159,7 @@ const firmInAction = [
             Your Wealth.<br/>Your Legacy.<br/>Your Terms.
           </h2>
           <p class="font-sans text-sm text-stone leading-relaxed mb-7">
-            We take a highly personalised à la carte approach to understanding your wealth aspirations, financial commitments, and life goals — designing bespoke solutions that preserve and grow wealth across generations.
+            We take a highly personalised à la carte approach to understanding your wealth aspirations, financial commitments, and life goals, then designing bespoke solutions that preserve and grow wealth across generations.
           </p>
           <ul class="mb-8 space-y-2.5">
             {['Wealth Planning', 'Private Equity', 'Pakistan Energy', 'Real Estate'].map(s => (
@@ -231,7 +194,7 @@ const firmInAction = [
             Distinctive Solutions<br/>for Complex Needs.
           </h2>
           <p class="font-sans text-sm text-stone leading-relaxed mb-7">
-            Our specialized advisory capabilities address the full breadth of sophisticated client requirements — from multi-generational family wealth oversight to cross-border M&amp;A mandates and equity capital markets transactions.
+            Our specialized advisory capabilities address the full breadth of sophisticated client requirements, from multi-generational family wealth oversight to cross-border M&amp;A mandates and equity capital markets transactions.
           </p>
           <ul class="mb-8 space-y-2.5">
             {['Basirah Family Office', 'Lifestyle Management', 'PR Campaign', 'Philanthropy and Zakat', 'M&A and Carve Out', 'Initial Public Offer', 'Professional Services'].map(s => (
@@ -253,7 +216,7 @@ const firmInAction = [
       <div class="overflow-hidden min-h-[280px] lg:min-h-0 order-1 lg:order-2">
         <img
           src="https://images.unsplash.com/photo-1780907058575-050e066f6671?auto=format&fit=crop&w=1400&q=80"
-          alt="City skyline over water — specialized corporate advisory"
+          alt="City skyline over water, suggesting specialized corporate advisory"
           class="w-full h-full object-cover"
           loading="lazy"
         />
@@ -261,73 +224,7 @@ const firmInAction = [
     </div>
   </section>
 
-  <!-- ── Insights Preview ───────────────────────────────────────────────── -->
-  <section class="py-section bg-paper border-t border-line">
-    <div class="container-big">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-        <h2
-          class="font-serif font-normal text-ink"
-          style="font-size: clamp(28px, 4vw, 52px); line-height: 1.1;"
-        >
-          Insights on Islamic Finance<br/>and Global Markets
-        </h2>
-        <Button variant="outline" href="/insights">Explore All Insights</Button>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-        {insights.filter(i => i.featured).slice(0, 1).map(item => (
-          <div class="lg:col-span-7">
-            <a href={`/insights/${item.slug}`} class="block group">
-              <div class="overflow-hidden mb-6 bg-mist aspect-video">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-              <p class="label mb-3">{item.category}</p>
-              <h3
-                class="font-serif font-normal text-ink mb-3 group-hover:underline"
-                style="font-size: clamp(20px, 2.5vw, 28px); line-height: 1.2;"
-              >
-                {item.title}
-              </h3>
-              <p class="font-sans text-meta text-stone">{item.type} | {item.date}</p>
-            </a>
-          </div>
-        ))}
-
-        <div class="lg:col-span-5">
-          {insights.filter(i => !i.featured).map(item => (
-            <a
-              href={`/insights/${item.slug}`}
-              class="flex gap-4 py-6 border-t border-line group hover:bg-mist -mx-4 px-4 transition-colors"
-            >
-              <div class="w-24 h-20 flex-shrink-0 overflow-hidden bg-mist">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-              <div class="flex-1 min-w-0">
-                <p class="label mb-2">{item.category}</p>
-                <h4
-                  class="font-serif font-normal text-ink leading-snug mb-2 group-hover:underline"
-                  style="font-size: 16px;"
-                >
-                  {item.title}
-                </h4>
-                <p class="font-sans text-xs text-stone">{item.type} | {item.date}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ── The Firm in Action ─────────────────────────────────────────────── -->
   <section class="py-section bg-mist border-t border-line">

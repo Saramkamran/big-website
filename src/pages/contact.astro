@@ -9,32 +9,32 @@ const errorType = Astro.url.searchParams.get('error');
 const errorMessage = errorType === 'validation'
   ? 'Please check the required fields and enter a valid email address, then try again.'
   : errorType
-    ? 'Sorry — we could not send your message just now. Please try again, or email us directly.'
+    ? 'Sorry, we could not send your message just now. Please try again, or email us directly.'
     : '';
 
 const services = [
   'Shariah Equities',
-  'Shariah Equities — Portfolio Consultancy',
-  'Shariah Equities — Portfolio Supervision',
+  'Shariah Equities: Portfolio Consultancy',
+  'Shariah Equities: Portfolio Supervision',
   'Sukuks and Green Sukuks',
   'Transaction Services',
   'Blackstone Intel (WhatsApp Channel)',
-  'Asset Management — Shariah Fixed Income Funds',
-  'Asset Management — Shariah Equity Funds',
-  'Asset Management — Shariah ETF',
-  'Asset Management — Shariah Multi-Asset Funds',
-  'Asset Management — Shariah Pensions',
-  'Private Wealth — Wealth Planning',
-  'Private Wealth — Private Equity',
-  'Private Wealth — Pakistan Energy',
-  'Private Wealth — Real Estate',
-  'Specialized — Basirah Family Office',
-  'Specialized — Lifestyle Management',
-  'Specialized — PR Campaign',
-  'Specialized — Philanthropy and Zakat',
-  'Specialized — M&A and Carve Out',
-  'Specialized — Initial Public Offer',
-  'Specialized — Professional Services',
+  'Asset Management: Shariah Fixed Income Funds',
+  'Asset Management: Shariah Equity Funds',
+  'Asset Management: Shariah ETF',
+  'Asset Management: Shariah Multi-Asset Funds',
+  'Asset Management: Shariah Pensions',
+  'Private Wealth: Wealth Planning',
+  'Private Wealth: Private Equity',
+  'Private Wealth: Pakistan Energy',
+  'Private Wealth: Real Estate',
+  'Specialized: Basirah Family Office',
+  'Specialized: Lifestyle Management',
+  'Specialized: PR Campaign',
+  'Specialized: Philanthropy and Zakat',
+  'Specialized: M&A and Carve Out',
+  'Specialized: Initial Public Offer',
+  'Specialized: Professional Services',
   'General Enquiry',
 ];
 
@@ -42,7 +42,7 @@ const services = [
 
 <BaseLayout
   title="Contact | Blackstone Islamic Global"
-  description="Get in touch with Blackstone Islamic Global — our team is ready to assist with your Shariah-compliant investment enquiries."
+  description="Get in touch with Blackstone Islamic Global. Our team is ready to assist with your Shariah-compliant investment enquiries."
 >
   <section class="py-section bg-paper border-b border-line">
     <div class="container-big">
@@ -67,22 +67,22 @@ const services = [
           <div class="font-sans text-sm text-stone border-t border-line divide-y divide-line">
             <div class="py-5">
               <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>Registered Office</p>
-              <p class="pl-5">[Office address — placeholder pending client confirmation]</p>
+              <p class="pl-5">[Office address: placeholder pending client confirmation]</p>
             </div>
             <div class="py-5">
               <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>Email</p>
-              <p class="pl-5">[info@blackstoneislamicglobal.com — placeholder]</p>
+              <p class="pl-5">[info@blackstoneislamicglobal.com, placeholder]</p>
             </div>
             <div class="py-5">
               <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>Phone</p>
-              <p class="pl-5">[+92 XXX XXXXXXX — placeholder]</p>
+              <p class="pl-5">[+92 XXX XXXXXXX, placeholder]</p>
             </div>
             <div class="py-5">
-              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>WhatsApp — Blackstone Intel</p>
+              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>WhatsApp: Blackstone Intel</p>
               <p class="pl-5"><a href="#" class="underline hover:text-ink">Join Channel (link placeholder)</a></p>
             </div>
             <div class="py-5">
-              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>WhatsApp — Blackstone Intel</p>
+              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>WhatsApp: Blackstone Intel</p>
               <p class="pl-5"><a href="#" class="underline hover:text-ink">Contact Client Care for access</a></p>
             </div>
           </div>
@@ -224,7 +224,7 @@ const services = [
         <circle cx="12" cy="12" r="2.5" fill="currentColor" />
       </svg>
       <p class="font-sans text-sm text-stone italic">
-        [Map placeholder — office location to be confirmed]
+        [Map placeholder: office location to be confirmed]
       </p>
     </div>
   </section>
