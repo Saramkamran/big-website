@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ServiceAlternating from '../../components/ServiceAlternating.astro';
 import Button from '../../components/Button.astro';
-import ContactCTA from '../../components/ContactCTA.astro';
 
 const services = [
   {
@@ -10,7 +9,7 @@ const services = [
     eyebrow: '01 · Coordinated Oversight',
     headingLines: ['Basirah Family Office'],
     image: '/images/ss-basirah-family-office.jpg',
-    imageAlt: 'An artist painting a landscape — bespoke, one-of-a-kind holdings',
+    imageAlt: 'An artist painting a landscape, evoking bespoke, one-of-a-kind holdings',
     body: `Through Basirah family office, we offer you monopolised business opportunities and prized collectibles including one-of-a-kind - art, watches, and jewellery.`,
     cta: { label: 'Explore Basirah Family Office', href: '/contact' },
   },
@@ -28,7 +27,7 @@ const services = [
     eyebrow: '03 · Global Outreach',
     headingLines: ['PR Campaign'],
     image: '/images/ss-pr-campaign.jpg',
-    imageAlt: 'An illuminated ON AIR studio sign — visibility and public profile',
+    imageAlt: 'An illuminated ON AIR studio sign, representing visibility and public profile',
     body: `An inspiring feature of our personalised offering is our ability to manage your business social media presence and curate bespoke PR campaigns, enhancing your executive profile, visibility, and global outreach.`,
     cta: { label: 'Explore PR Campaign', href: '/contact' },
   },
@@ -37,7 +36,7 @@ const services = [
     eyebrow: '04 · Purposeful Giving',
     headingLines: ['Philanthropy and Zakat Strategy'],
     image: '/images/ss-philanthropy-zakat.jpg',
-    imageAlt: 'Children together outdoors — purposeful giving and community impact',
+    imageAlt: 'Children together outdoors, reflecting purposeful giving and community impact',
     imagePosition: '72% 18%',
     body: `We believe wealth is not all about financial prosperity but also a powerful force for positive socio-economic change. Our philanthropy and Zakat strategy helps you plan your giving through family trusts, foundations, waqfs, CSR initiatives, and other impact creating projects spanning healthcare, education, disaster relief, and community development.
 
@@ -49,7 +48,7 @@ We help families create a lasting legacy with purposeful giving, while advising 
     eyebrow: '05 · Origination to Execution',
     headingLines: ['M&A and Carve Out'],
     image: '/images/ss-mergers-acquisitions.jpg',
-    imageAlt: 'Precise hand-carving of a squash — separating value with craft and care',
+    imageAlt: 'Precise hand-carving of a squash, separating value with craft and care',
     body: `Our M&A and carve out specialists bring extensive experience across Pakistan's energy, sugar and chemicals space, British and American aviation, and the European FMCG sectors, delivering value-focused outcomes.
 
 For your next strategic transaction, our specialists are ready to help you.`,
@@ -60,7 +59,7 @@ For your next strategic transaction, our specialists are ready to help you.`,
     eyebrow: '06 · PSX & US',
     headingLines: ['Initial Public Offer'],
     image: '/images/ss-initial-public-offer.jpg',
-    imageAlt: 'A neon PUBLIC MARKET sign against open sky — going public',
+    imageAlt: 'A neon PUBLIC MARKET sign against open sky, signalling going public',
     body: `As Pakistan enters a new phase of economic upside, IPO interest is accelerating. Our specialists provide an end-to-end IPO consultancy, helping businesses prepare, execute, and grow through public listing at PSX.
 
 We also offer US IPO consultancy to bridge Pakistani businesses with global investors.`,
@@ -71,7 +70,7 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
     eyebrow: '07 · A-Rated Network',
     headingLines: ['Professional Services'],
     image: '/images/ss-professional-services.jpg',
-    imageAlt: 'Cricket balls lined up on a sunlit pitch — a trusted professional network',
+    imageAlt: 'Cricket balls lined up on a sunlit pitch, a trusted professional network',
     body: `We are associated with a network of A-rated chartered accountants across Pakistan, the UK, and the US, providing accounting, audit, tax, legal, AML, ESG, and governance services with discretion, and integrity.`,
     cta: { label: 'Explore Professional Services', href: '/contact' },
   },
@@ -86,7 +85,7 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="relative flex items-start bg-ink" style="min-height: calc(100vh - var(--header-h));">
+  <section class="relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h));">
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -99,14 +98,16 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <div class="relative z-10 container-big w-full pt-12 pb-12">
-      <div class="max-w-3xl">
-        <p class="label text-acid mb-6">Specialized Services</p>
-        <h1
-          class="font-serif font-normal text-white mb-10 leading-[1.05]"
-          style="font-size: clamp(34px, 5.5vw, 60px);"
-        >
-          Personalised Investments<br/>Personalised Oversight<br/>Exceptional Returns
+    <div class="relative z-10 container-big hero-inner w-full pt-12 pb-12">
+      <!-- No max-w-3xl here: that 768px cap was what forced the headline down
+           to ~19px. The copy column uses the full container width so the
+           71-character headline can sit at a proper h1 scale on one line. -->
+      <div class="hero-copy">
+        <!-- ss-hero-h1 is a page-only override: at 71 characters this is the
+             longest headline on the site, so it takes the smallest clamp to
+             hold one line. The shared hero-h1 class is left untouched. -->
+        <h1 class="hero-h1 ss-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
+          Personalised Investments | Personalised Oversight | Exceptional Returns
         </h1>
         <Button variant="acid" href="#family-office">Explore What We Do</Button>
       </div>
@@ -122,11 +123,45 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
   <!-- ── Services ──────────────────────────────────────────────────────── -->
   <ServiceAlternating services={services} />
 
-  <ContactCTA
-    headline="Let's Discuss Your Mandate"
-    subtext="Our specialized advisory team is ready to explore how BIG can make the difference — in confidence and at the highest standard."
-    image="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?auto=format&fit=crop&w=1200&q=80"
-    imageAlt="Executive boardroom — specialized advisory and M&A"
-  />
-
 </BaseLayout>
+
+<style>
+  /* ── Hero, matched to the PSX & Global Markets page ─────────────────────
+     hero-h1 / hero-copy are scoped per-component in Astro, so they are
+     defined here rather than inherited. */
+  .hero-h1 {
+    margin-top: 2.1em;
+    max-width: none;
+  }
+  @media (max-width: 640px) {
+    .hero-h1 { margin-top: 0; }
+  }
+
+  /* 71 characters — the longest headline on the site. With the copy column's
+     max-w-3xl cap removed it has the full container width (~1128px), which
+     supports ~32px on a single line. The 2.5vw track keeps it filling the
+     space as the viewport narrows. */
+  .ss-hero-h1 {
+    font-size: clamp(1.125rem, 2.2vw, 1.75rem);
+    white-space: nowrap;
+  }
+  @media (max-width: 767px) {
+    .ss-hero-h1 {
+      white-space: normal;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+  }
+
+  /* Soft shadow so the copy stays legible over the photo. */
+  .hero-copy h1,
+  .hero-copy p {
+    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
+  }
+
+  /* Trim the shared container gutter for this hero only; container-big
+     (px-6 / lg:px-16) is used site-wide and is left alone. */
+  .hero-inner { padding-left: 8px; }
+  @media (min-width: 1024px) {
+    .hero-inner { padding-left: 24px; }
+  }
+</style>

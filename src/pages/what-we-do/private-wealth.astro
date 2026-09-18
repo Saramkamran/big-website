@@ -2,13 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ServiceAlternating from '../../components/ServiceAlternating.astro';
 import Button from '../../components/Button.astro';
-import ContactCTA from '../../components/ContactCTA.astro';
 
 const services = [
   {
     id: 'wealth-planning',
     eyebrow: '01 · A la Carte',
-    headingLines: ['Wealth Planning — À la Carte Approach'],
+    headingLines: ['Wealth Planning: À la Carte Approach'],
     image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Bespoke wealth-planning consultation with an advisor',
     body: `We take a highly customised approach to understanding your wealth aspirations, commitments, and non-negotiables enabling us to design and implement personalised, À la carte approach that preserve and grow wealth that align with your marvellous lifestyle, legacy, and succession planning.
@@ -21,7 +20,7 @@ Our specialists engage with you and your team to develop and implement wealth st
     eyebrow: '02 · Growth Capital',
     headingLines: ['Private Equity'],
     image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Business growth discussion — private equity partnership',
+    imageAlt: 'Business growth discussion during a private equity partnership',
     body: `Our Private Equity specialists bring 50+ years of collective advisory experience with oversight of $7+ billion in transnational portfolios. Through this international network and strategic partnerships, we provide direct access to select private investment opportunities across oil & gas exploration in Pakistan's Southern belt, Gilgit-Baltistan gemstones, USA rare minerals, Ghana gold mining, New Zealand meat, Pakistani textile, sports and sugar, and hospitality JVs near the Holy Sites of Makkah and Madinah.
 
 We can also position you as an exclusive underwriter for IPOs and Sukuks; and as a corporate financier to our prestigious clients in Türkiye, Pakistan and Saudi Arabia.
@@ -34,7 +33,7 @@ Whether an investor seeking a strategic partnership or a business owner looking 
     eyebrow: '03 · OMC Sector',
     headingLines: ['Pakistan Energy'],
     image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Refinery and downstream plant — Pakistan OMC energy sector',
+    imageAlt: 'Refinery and downstream plant in Pakistan\'s OMC energy sector',
     body: `For ultra-high-net-worth individuals and corporates seeking entry into Pakistan's OMC sector, we provide end-to-end advisory across deal origination, due diligence, transaction execution, and post-acquisition support.
 
 Combining deep sector expertise, strong industry relationships, and a track record of successful execution, we help you build value-accretive energy businesses while navigating Pakistan's downstream market.`,
@@ -56,15 +55,15 @@ Combining deep sector expertise, strong industry relationships, and a track reco
 
 <BaseLayout
   title="Private Wealth Management | Blackstone Islamic Global"
-  description="Bespoke à la carte wealth planning, dedicated investments, private equity, real estate, and philanthropy — tailored to your legacy."
+  description="Bespoke à la carte wealth planning, dedicated investments, private equity, real estate, and philanthropy, all tailored to your legacy."
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="relative flex items-start bg-ink" style="min-height: calc(100vh - var(--header-h));">
+  <section class="relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h));">
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style="background-image: url('/images/W-M-wide.png');"
+        style="background-image: url('/images/pvm-opt.png');"
       ></div>
       <div
         class="absolute inset-0"
@@ -73,14 +72,13 @@ Combining deep sector expertise, strong industry relationships, and a track reco
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <div class="relative z-10 container-big w-full pt-12 pb-12">
-      <div class="max-w-3xl">
-        <p class="label text-acid mb-6">Private Wealth Management</p>
-        <h1
-          class="font-serif font-normal text-white mb-10 leading-[1.05]"
-          style="font-size: clamp(34px, 5.5vw, 60px);"
-        >
-          Your Wealth<br/>Your Legacy<br/>Your Terms
+    <div class="relative z-10 container-big hero-inner w-full pt-12 pb-12">
+      <div class="max-w-3xl hero-copy">
+        <!-- pw-hero-h1 is a page-only override: 38 characters, so it holds one
+             line comfortably at the larger size. The shared hero-h1 class is
+             left untouched. -->
+        <h1 class="hero-h1 pw-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
+          Your Wealth | Your Legacy | Your Terms
         </h1>
         <Button variant="acid" href="#wealth-planning">Explore What We Do</Button>
       </div>
@@ -96,11 +94,42 @@ Combining deep sector expertise, strong industry relationships, and a track reco
   <!-- ── Services ──────────────────────────────────────────────────────── -->
   <ServiceAlternating services={services} />
 
-  <ContactCTA
-    headline="Begin Your Wealth Journey"
-    subtext="Our private wealth advisors will take time to understand your aspirations and design a bespoke plan aligned with your legacy."
-    image="/images/W-M-wide.png"
-    imageAlt="Muslim family — BIG Private Wealth Management"
-  />
-
 </BaseLayout>
+
+<style>
+  /* ── Hero, matched to the PSX & Global Markets page ─────────────────────
+     hero-h1 / hero-copy are scoped per-component in Astro, so they are
+     defined here rather than inherited. */
+  .hero-h1 {
+    margin-top: 2.1em;
+    max-width: none;
+  }
+  @media (max-width: 640px) {
+    .hero-h1 { margin-top: 0; }
+  }
+
+  /* 38 characters — comfortably holds one line at the full size. */
+  .pw-hero-h1 {
+    font-size: clamp(1.75rem, 3vw, 3.75rem);
+    white-space: nowrap;
+  }
+  @media (max-width: 767px) {
+    .pw-hero-h1 {
+      white-space: normal;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+  }
+
+  /* Soft shadow so the copy stays legible over the photo. */
+  .hero-copy h1,
+  .hero-copy p {
+    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
+  }
+
+  /* Trim the shared container gutter for this hero only; container-big
+     (px-6 / lg:px-16) is used site-wide and is left alone. */
+  .hero-inner { padding-left: 8px; }
+  @media (min-width: 1024px) {
+    .hero-inner { padding-left: 24px; }
+  }
+</style>

@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ServiceAlternating from '../../components/ServiceAlternating.astro';
 import Button from '../../components/Button.astro';
-import ContactCTA from '../../components/ContactCTA.astro';
 
 const services = [
   {
@@ -10,7 +9,7 @@ const services = [
     eyebrow: '01 · Capital Preservation',
     headingLines: ['Shariah Fixed Income Funds'],
     image: '/images/am-fixed-income.jpg',
-    imageAlt: 'Worshippers gathered in congregation — faith-aligned, community-scale investing',
+    imageAlt: 'Worshippers gathered in congregation, evoking faith-aligned, community-scale investing',
     body: `We help clients navigate safe funds with confidence, identifying instruments focused on capital preservation and stable returns through a curated selection of high-quality income and money market mutual funds.
 
 For distinguished corporates and ultra-high-net-worth clients, we also facilitate the creation of dedicated mutual funds through our trusted network of leading global asset management companies. These customised funds may offer greater NAV returns and preferential fee arrangements.`,
@@ -32,7 +31,7 @@ We intelligently crystallise gains during pre-pessimistic phases, preserve capit
     eyebrow: '03 · Diversification',
     headingLines: ['Shariah ETF'],
     image: '/images/am-etf.jpg',
-    imageAlt: 'Tiled mosque domes in graduated colour — diversified exposure within faith principles',
+    imageAlt: 'Tiled mosque domes in graduated colour, suggesting diversified exposure within faith principles',
     body: `We help clients access carefully selected ETFs that provide diversified exposure to high performing clubbed equities. Our objective remains offering a clear pathway to participate in long term corporate and market growth while synced with faith and investment principles.`,
     cta: { label: 'Explore Shariah ETFs', href: '/contact' },
   },
@@ -41,7 +40,7 @@ We intelligently crystallise gains during pre-pessimistic phases, preserve capit
     eyebrow: '04 · Balanced',
     headingLines: ['Shariah Multi-Asset Funds'],
     image: '/images/am-multi-asset.jpg',
-    imageAlt: 'Multi-coloured mosque domes and minarets — a blend of complementary elements',
+    imageAlt: 'Multi-coloured mosque domes and minarets, a blend of complementary elements',
     body: `Leveraging our market expertise and meticulous scrutiny, we help clients position in multi-asset and hybrid funds, including asset allocation, gold and balance funds. By strategically blending equities and fixed income instruments, these solutions seek to balance growth and stability, helping clients pursue their financial objectives across different asset classes.`,
     bullets: [
       'Asset Allocation',
@@ -55,7 +54,7 @@ We intelligently crystallise gains during pre-pessimistic phases, preserve capit
     eyebrow: '05 · Retirement',
     headingLines: ['Shariah Pensions'],
     image: '/images/am-pensions.jpg',
-    imageAlt: 'Placing a golf ball on the tee — the unhurried years after a working life',
+    imageAlt: 'Placing a golf ball on the tee during the unhurried years after a working life',
     body: `Personal freedom, financial prosperity, and tax efficient retirement is what you deserve after a lifetime of hard work. To preserve your lifestyle and pursue the aspirations that you may have postponed during your working years, our retirement planning begins well before your superannuation.
 
 We do not offer a random, one-size-fits-all pension solution. We understand your lifestyle, customise a retirement strategy, and structure a plan around your aspirations to ensure low tax and high returns pay your happiness. We partner with top rated pension providers and do all the needful for you.`,
@@ -67,12 +66,12 @@ We do not offer a random, one-size-fits-all pension solution. We understand your
 
 <BaseLayout
   title="Asset Management | Blackstone Islamic Global"
-  description="Shariah-screened fixed income, equity, ETF, multi-asset, and pension solutions — rigorously managed by BIG's investment team."
+  description="Shariah-screened fixed income, equity, ETF, multi-asset, and pension solutions, rigorously managed by BIG's investment team."
   theme="bw"
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="relative flex items-start bg-ink" style="min-height: calc(100vh - var(--header-h));">
+  <section class="relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h));">
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -85,13 +84,12 @@ We do not offer a random, one-size-fits-all pension solution. We understand your
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <div class="relative z-10 container-big w-full pt-12 pb-12">
-      <div class="max-w-3xl">
-        <p class="label text-acid mb-6">Asset Management</p>
-        <h1
-          class="font-serif font-normal text-white mb-6 leading-[1.05]"
-          style="font-size: clamp(34px, 5.5vw, 60px);"
-        >
+    <div class="relative z-10 container-big hero-inner w-full pt-12 pb-12">
+      <div class="max-w-3xl hero-copy">
+        <!-- am-hero-h1 is a page-only override: 58 characters, so it needs a
+             smaller clamp than PSX to hold one line. The shared hero-h1 class
+             is left untouched. -->
+        <h1 class="hero-h1 am-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
           Shariah Screened | Professionally Managed | Growth Focused
         </h1>
         <p class="font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
@@ -111,11 +109,42 @@ We do not offer a random, one-size-fits-all pension solution. We understand your
   <!-- ── Services ──────────────────────────────────────────────────────── -->
   <ServiceAlternating services={services} />
 
-  <ContactCTA
-    headline="Ready to Build Your Portfolio?"
-    subtext="Our asset management team will guide you to the right Shariah-screened fund solutions for your investment goals."
-    image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
-    imageAlt="Asset management analyst reviewing fund performance data"
-  />
-
 </BaseLayout>
+
+<style>
+  /* ── Hero, matched to the PSX & Global Markets page ─────────────────────
+     hero-h1 / hero-copy are scoped per-component in Astro, so they are
+     defined here rather than inherited. */
+  .hero-h1 {
+    margin-top: 2.1em;
+    max-width: none;
+  }
+  @media (max-width: 640px) {
+    .hero-h1 { margin-top: 0; }
+  }
+
+  /* 58 characters — needs a smaller cap than PSX (50 chars) to hold one line. */
+  .am-hero-h1 {
+    font-size: clamp(1.5rem, 3vw, 1.875rem);
+    white-space: nowrap;
+  }
+  @media (max-width: 767px) {
+    .am-hero-h1 {
+      white-space: normal;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+  }
+
+  /* Soft shadow so the copy stays legible over the photo. */
+  .hero-copy h1,
+  .hero-copy p {
+    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
+  }
+
+  /* Trim the shared container gutter for this hero only; container-big
+     (px-6 / lg:px-16) is used site-wide and is left alone. */
+  .hero-inner { padding-left: 8px; }
+  @media (min-width: 1024px) {
+    .hero-inner { padding-left: 24px; }
+  }
+</style>

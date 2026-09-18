@@ -35,8 +35,12 @@ import Button from './Button.astro';
        text carries its own soft shadow to stay legible over the bright sky. -->
   <div class="relative z-10 container-big w-full pt-12 pb-20 md:pb-28">
     <div class="max-w-2xl hero-copy">
-      <h1 class="font-serif text-white font-normal leading-[1.05] mb-6" style="font-size: clamp(40px, 6vw, 78px);">
-        Integrity<br/>Intelligence<br/>Impact
+      <!-- Single line. The heading opts out of the column's max-w-2xl (672px)
+           cap, which would otherwise re-wrap it; `hero-h1` carries a 2.1em top
+           offset (2 line-boxes at line-height 1.05) so the text starts exactly
+           where the old third line, "Impact", used to sit. -->
+      <h1 class="hero-h1 font-serif text-white font-normal leading-[1.05] mb-6" style="font-size: clamp(28px, 3.6vw, 52px);">
+        Integrity | Intelligence | Impact
       </h1>
       <h2 class="font-serif text-white/90 font-normal leading-[1.2] mb-10 max-w-2xl" style="font-size: clamp(20px, 2.2vw, 30px);">
         Inspire to be the world's number one Shariah-compliant financial prosperity advisors
@@ -52,6 +56,26 @@ import Button from './Button.astro';
      reports that preference, and hiding/pausing the loop on that basis froze
      the hero on ordinary desktops. */
   .hero-video { opacity: 1; }
+
+  /* The headline is one line now. It was three stacked lines, so it starts
+     2 line-boxes lower (2 x 1.05 line-height = 2.1em) to land where "Impact"
+     previously sat, filling the space the removed breaks left behind. Using em
+     keeps that offset locked to the clamped font-size at every viewport.
+     `max-width: none` opts out of the column's 672px cap so the line does not
+     re-wrap; `white-space: nowrap` guarantees it on narrow desktops. */
+  .hero-h1 {
+    margin-top: 2.1em;
+    max-width: none;
+    white-space: nowrap;
+  }
+  /* Below the container's padded width there is not room for one line, so let
+     it wrap naturally and drop the offset — the stacked look returns on phones. */
+  @media (max-width: 640px) {
+    .hero-h1 {
+      margin-top: 0;
+      white-space: normal;
+    }
+  }
 
   /* No dark overlay sits over the video any more, so give the headline and
      subhead a soft shadow — enough to hold contrast against the bright sky
