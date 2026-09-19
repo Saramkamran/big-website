@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
-import ContactPortal from '../components/illustrations/ContactPortal.astro';
 import GeometricPattern from '../components/illustrations/GeometricPattern.astro';
 
 const sent = Astro.url.searchParams.get('sent') === 'true';
@@ -54,7 +53,6 @@ const services = [
               <path id="contact-star8" d="M12 2 L13.91 7.38 L19.07 4.93 L16.62 10.09 L22 12 L16.62 13.91 L19.07 19.07 L13.91 16.62 L12 22 L10.09 16.62 L4.93 19.07 L7.38 13.91 L2 12 L7.38 10.09 L4.93 4.93 L10.09 7.38 Z" />
             </defs>
           </svg>
-          <ContactPortal class="w-44 h-auto text-ink mb-10" />
           <p class="label mb-4">Contact</p>
           <h1 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(28px, 3.5vw, 48px); line-height: 1.1;">
             How Can We Help?

@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import ArrowLink from '../components/ArrowLink.astro';
 import ContactCTA from '../components/ContactCTA.astro';
-import AboutConstruction from '../components/illustrations/AboutConstruction.astro';
 
 const accreditations = [
   { name: 'ACCA', label: 'ACCA Employer Accreditation' },
@@ -29,13 +28,6 @@ const leadership = [
 >
   <!-- Our Firm statement -->
   <section class="py-section bg-paper border-b border-line relative overflow-hidden">
-    <!-- Drafting-table construction pinned behind the statement (decorative) -->
-    <div
-      class="pointer-events-none select-none absolute -top-8 -right-12 w-48 md:-top-10 md:-right-16 md:w-[26rem] lg:w-[32rem] xl:w-[36rem] text-ink opacity-[0.12]"
-      aria-hidden="true"
-    >
-      <AboutConstruction class="w-full h-auto" />
-    </div>
     <div class="container-big relative">
       <p class="label mb-6">Our Firm</p>
       <h1 class="font-serif font-normal text-ink mb-16" style="font-size: clamp(40px, 6.5vw, 88px); line-height: 1.05; max-width: 960px;">
@@ -80,17 +72,7 @@ const leadership = [
   <!-- Our Approach -->
   <section class="py-section bg-mist">
     <div class="container-big">
-      <!-- Emblem header: the construction resolved — thin construction rules, one result stroke -->
       <div class="flex flex-col items-center text-center mb-16">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-ink mb-6" aria-hidden="true" focusable="false">
-          <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="0.75" class="opacity-60" />
-          <path d="M32 5 V59 M5 32 H59" stroke="currentColor" stroke-width="0.75" class="opacity-60" />
-          <path d="M13 13 L51 51 M51 13 L13 51" stroke="currentColor" stroke-width="0.75" class="opacity-60" />
-          <path d="M16.4 16.4 H47.6 V47.6 H16.4 Z" stroke="currentColor" stroke-width="0.75" class="opacity-70" />
-          <path d="M32 10 L54 32 L32 54 L10 32 Z" stroke="currentColor" stroke-width="0.75" class="opacity-70" />
-          <path d="M32 10 L38.4 16.4 L47.6 16.4 L47.6 25.6 L54 32 L47.6 38.4 L47.6 47.6 L38.4 47.6 L32 54 L25.6 47.6 L16.4 47.6 L16.4 38.4 L10 32 L16.4 25.6 L16.4 16.4 L25.6 16.4 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-          <circle cx="32" cy="32" r="1.5" fill="currentColor" />
-        </svg>
         <h2 class="font-serif font-normal text-ink" style="font-size: clamp(32px, 3.5vw, 48px); line-height: 1.1;">
           Our Values
         </h2>
