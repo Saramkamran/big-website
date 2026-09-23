@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<title>The BIG Journey | Blackstone Islamic Global</title>
+<style>/* FONT_CSS */</style>
+<style>
+  /* Tokens mirror src/styles/global.css exactly. No new colors. */
+  :root {
+    --ink:   #0B0B0B;
+    --paper: #FFFFFF;
+    --mist:  #F3F5EE;
+    --stone: #6B7280;
+    --line:  #E5E7EB;
+  }
+
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Masthead: ink band with the navbar's logo, screen-blended so the
+        JPEG's opaque black drops out exactly as it does on the site. ── */
+  /* Bleeds left and right only. A negative top margin equal to the page margin
+     pushed the logo off the printable area and clipped it. */
+  .masthead {
+    background: var(--ink);
+    /* 16mm left padding cancels the bleed so the logo aligns with the body
+       text below it. */
+    padding: 7mm 16mm;
+    margin: 0 -16mm 10mm;
+  }
+  /* No mix-blend-mode here. Chromium flattens the blend when printing, which
+     wiped the silver lettering out. The logo JPEG already has a black
+     background, so on the ink band it merges on its own. */
+  .masthead img {
+    height: 13mm;
+    width: auto;
+    display: block;
+  }
+
+  .eyebrow {
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin: 0 0 3mm;
+  }
+
+  h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 300;
+    font-size: 44pt;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .subtitle {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 400;
+    font-size: 20pt;
+    line-height: 1.2;
+    color: var(--stone);
+    margin: 3mm 0 0;
+  }
+
+  /* Mist panel echoing the site's band, holding the two intro paragraphs. */
+  .intro {
+    background: var(--mist);
+    padding: 7mm 8mm;
+    margin: 8mm 0 0;
+  }
+  .intro p {
+    font-size: 11pt;
+    line-height: 17pt;
+    color: rgba(11, 11, 11, 0.85);
+    margin: 0;
+  }
+  .intro p + p { margin-top: 4mm; }
+
+  .rule {
+    height: 1px;
+    background: var(--line);
+    margin: 9mm 0 8mm;
+  }
+
+  /* ── Timeline: one continuous ink rule with a dot at each heading. ── */
+  .timeline {
+    position: relative;
+    padding-left: 9mm;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2.5mm;
+    bottom: 2mm;
+    width: 1px;
+    background: var(--ink);
+  }
+
+  .entry {
+    position: relative;
+    padding-bottom: 8mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  /* Keep the final entry with the one before it so it is not orphaned alone
+     on page two. */
+  .entry:nth-last-child(2) {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .entry:last-child { padding-bottom: 0; }
+
+  .entry::before {
+    content: '';
+    position: absolute;
+    left: -9mm;
+    top: 2.5mm;
+    width: 2.6mm;
+    height: 2.6mm;
+    background: var(--ink);
+    border-radius: 50%;
+    transform: translateX(-1.3mm);
+  }
+
+  .entry h2 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 400;
+    font-size: 22pt;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0 0 2.5mm;
+  }
+  .entry p {
+    font-size: 11pt;
+    line-height: 17pt;
+    color: rgba(11, 11, 11, 0.85);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="masthead">
+    <img src="LOGO_SRC" alt="Blackstone Islamic Global" />
+  </div>
+
+  <p class="eyebrow">Our Heritage</p>
+  <h1>The BIG Journey</h1>
+  <p class="subtitle">24 Years of Excellence</p>
+
+  <div class="intro">
+    <p>HERITAGE_P1</p>
+    <p>HERITAGE_P2</p>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="timeline">
+    TIMELINE_ENTRIES
+  </div>
+</body>
+</html>

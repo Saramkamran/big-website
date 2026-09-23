@@ -30,3 +30,8 @@ public/images/flags.mp4
 public/images/pvm.png
 # Stray duplicate of public/images/W-M.jpg at the repo root
 /W-M.jpg
+
+# PDF build: raw webfont downloads. Only embedded.css (base64) is committed,
+# since that is what the PDF build actually reads.
+scripts/pdf/fonts/*.woff2
+scripts/pdf/fonts/sheet.css

@@ -79,7 +79,13 @@ const journey = [
         </button>
 
         <div class="firm-header-cta">
-          <a href="#journey" class="firm-btn font-sans" id="firm-journey-link">The BIG Journey</a>
+          <a
+            href="/the-big-journey.pdf"
+            class="firm-btn font-sans"
+            target="_blank"
+            rel="noopener noreferrer"
+            type="application/pdf"
+          >The BIG Journey<span class="sr-only"> (PDF, opens in a new tab)</span></a>
         </div>
       </div>
     </section>
@@ -225,6 +231,14 @@ const journey = [
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
+        <p class="firm-pdflink-wrap">
+          <a
+            href="/the-big-journey.pdf"
+            class="firm-pdflink font-sans"
+            download
+            type="application/pdf"
+          >Download as PDF<span class="sr-only"> (PDF)</span></a>
+        </p>
       </div>
     </section>
 
@@ -658,6 +672,23 @@ const journey = [
   .firm-nav:disabled { opacity: 0.25; cursor: default; }
   .firm-nav:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
+  .firm-pdflink-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin: 12px 0 0;
+  }
+  .firm-pdflink {
+    font-size: 16px;
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .firm-pdflink:hover { opacity: 0.7; }
+  .firm-pdflink:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
   /* 7 — vendor + accreditation list */
   .firm-vendor-body { margin-top: 28px; }
   .firm-list { list-style: none; margin: 0; padding: 0; }
@@ -765,43 +796,6 @@ const journey = [
     });
 
     sync();
-  }
-
-  /* Header button: smooth scroll to the journey band, clearing the sticky
-     navbar, and honouring a reduced-motion preference. */
-  const journeyLink = document.getElementById('firm-journey-link');
-  journeyLink?.addEventListener('click', (e) => {
-    const target = document.getElementById('journey');
-    if (!target) return;
-    e.preventDefault();
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const headerH = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue('--header-h')
-    ) || 80;
-    const top = target.getBoundingClientRect().top + window.scrollY - headerH;
-    window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
-  });
-
-  /* About Us reveal: opacity and a small rise, staggered by 80ms per element.
-     Skipped entirely when motion is reduced or IntersectionObserver is absent,
-     in which case the content is simply never hidden. */
-  const aboutGrid = document.querySelector('.firm-aboutus');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (aboutGrid && !reduceMotion && 'IntersectionObserver' in window) {
-    aboutGrid.classList.add('reveal-ready');
-    const items = Array.from(aboutGrid.querySelectorAll('[data-reveal]'));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target as HTMLElement;
-        const idx = items.indexOf(el);
-        el.style.transitionDelay = `${Math.max(0, idx % 6) * 80}ms`;
-        el.classList.add('is-in');
-        io.unobserve(el);
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
-    items.forEach((el) => io.observe(el));
   }
 
   /* Share: native share sheet where available, otherwise copy the URL. */
