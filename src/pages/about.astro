@@ -97,24 +97,62 @@ const journey = [
     </section>
 
     {/* 3 — Mission statement, then About Us */}
-    <section class="bg-paper firm-section">
+    <section class="bg-paper firm-statement-section">
       <div class="firm-container">
         <p class="firm-statement font-serif text-ink">
           Inspire to be the world's number one Shariah-compliant financial prosperity advisors
         </p>
 
-        <div class="firm-split firm-about">
-          <h2 class="firm-label-serif font-serif text-ink">About Us</h2>
-          <div class="firm-prose">
-            <p>
+      </div>
+    </section>
+
+    {/* 3b — About Us, on bg-mist so it separates from the statement above and
+        Our Values below. Sticky label column, then lead, pull quote, body and
+        the ruled list. Every word is the existing copy. */}
+    <section class="bg-mist firm-section" id="about-us">
+      <div class="firm-container">
+        <div class="firm-aboutus">
+          <div class="firm-aboutus-side">
+            <p class="firm-eyebrow-sm font-sans">About Us</p>
+            <h2 class="firm-aboutus-h2 font-serif text-ink">About Us</h2>
+            <span class="firm-rule" aria-hidden="true"></span>
+          </div>
+
+          <div class="firm-aboutus-main">
+            <p class="firm-lead font-sans text-ink" data-reveal>
               Blackstone Islamic Global 'BIG' is a Shariah-compliant brokerage, asset management, and wealth management consultancy serving institutional and individual clients globally. Our practice combines deep markets research and expertise to deliver structured and faith-aligned investment solutions.
             </p>
-            <p>
+
+            <blockquote class="firm-quote" data-reveal>
+              <p class="firm-quote-text font-serif text-ink">
+                At BIG, we believe that adherence to Shariah principles and the pursuit of superior performance are not competing objectives, they are mutually reinforcing.
+              </p>
+            </blockquote>
+            <p class="firm-quote-after font-sans" data-reveal>
+              Our approach is built on transparency, trust, and a long-term commitment to our clients' financial well-being and legacy
+            </p>
+
+            <p class="firm-body font-sans" data-reveal>
               We also provide access to Pakistan's private equity, real estate, and specialized professional services including M&amp;A, IPOs, and family office management.
             </p>
-            <p>
-              At BIG, we believe that adherence to Shariah principles and the pursuit of superior performance are not competing objectives, they are mutually reinforcing. Our approach is built on transparency, trust, and a long-term commitment to our clients' financial well-being and legacy
-            </p>
+
+            {/* Labels drawn only from the wording above. Rendered as plain rows:
+                the five entries do not map one to one onto the four What We Do
+                pages, so they are not linked. */}
+            <ol class="firm-dolist">
+              {[
+                'Shariah-compliant brokerage',
+                'Asset management',
+                'Wealth management consultancy',
+                "Access to Pakistan's private equity and real estate",
+                'M&A, IPOs and family office management',
+              ].map((item, i) => (
+                <li class="firm-dorow" data-reveal>
+                  <span class="firm-doindex font-sans">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="firm-dolabel font-serif text-ink">{item}</span>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </div>
@@ -365,15 +403,18 @@ const journey = [
   }
 
   /* 3 — mission statement + About Us */
+  /* Fills the container: no max-width, no ch cap, no balance. `pretty` only
+     improves the last-line break, it does not shorten the measure. */
   .firm-statement {
+    width: 100%;
+    max-width: none;
     font-weight: 300;
-    font-size: clamp(36px, 6.5vw, 88px);
-    line-height: 1.04;
-    letter-spacing: -0.015em;
-    max-width: 16ch;   /* wraps to 4 to 6 lines as specified */
-    margin: 0 0 clamp(56px, 7vw, 104px);
+    font-size: clamp(40px, 6.6vw, 112px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+    margin: 0;
   }
-  @media (max-width: 900px) { .firm-statement { max-width: none; } }
 
   .firm-split {
     display: grid;
@@ -382,11 +423,96 @@ const journey = [
   }
   @media (max-width: 900px) { .firm-split { grid-template-columns: 1fr; } }
 
-  .firm-label-serif {
+  /* ~100px of air above and below the statement on desktop. */
+  .firm-statement-section { padding-block: clamp(56px, 7vw, 100px); }
+
+  /* ── About Us ──────────────────────────────────────────────────────────── */
+  .firm-aboutus {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 60px;
+  }
+  .firm-aboutus-side { grid-column: 1 / span 4; position: sticky; top: calc(var(--header-h) + 40px); align-self: start; }
+  .firm-aboutus-main { grid-column: 5 / span 8; }
+
+  @media (max-width: 1023px) {
+    .firm-aboutus { grid-template-columns: 1fr; gap: 32px; }
+    .firm-aboutus-side { grid-column: auto; position: static; }
+    .firm-aboutus-main { grid-column: auto; }
+  }
+
+  .firm-aboutus-h2 {
     font-weight: 400;
-    font-size: clamp(24px, 2.6vw, 32px);
-    line-height: 1.2;
+    font-size: clamp(40px, 4.5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.01em;
     margin: 0;
+  }
+  .firm-rule {
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--ink);
+    margin-top: 24px;
+  }
+
+  .firm-lead {
+    font-size: clamp(22px, 2.3vw, 34px);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .firm-quote {
+    margin: clamp(40px, 4.5vw, 64px) 0 0;
+    padding-left: 28px;
+    border-left: 2px solid var(--ink);
+  }
+  .firm-quote-text {
+    font-weight: 300;
+    font-size: clamp(28px, 3.2vw, 48px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .firm-quote-after {
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.5;
+    color: rgb(11 11 11 / 0.8);
+    margin: 24px 0 0;
+  }
+
+  .firm-body {
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.5;
+    color: rgb(11 11 11 / 0.8);
+    margin: clamp(32px, 3.5vw, 48px) 0 0;
+  }
+
+  .firm-dolist {
+    list-style: none;
+    margin: clamp(40px, 4.5vw, 64px) 0 0;
+    padding: 0;
+    counter-reset: none;
+  }
+  .firm-dorow {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding-block: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .firm-dorow:first-child { border-top: 1px solid var(--line); }
+  .firm-doindex {
+    flex: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--stone);
+  }
+  .firm-dolabel {
+    font-weight: 400;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.21;
   }
 
   .firm-prose {
@@ -583,9 +709,27 @@ const journey = [
     line-height: 1.02 !important;
   }
 
+  /* Scroll reveal. The hidden state is applied by script (via .reveal-ready on
+     the section), so if JS never runs the content simply stays visible. */
+  .firm-aboutus.reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+  }
+  .firm-aboutus.reveal-ready [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .firm-track { scroll-behavior: auto; }
     .firm { scroll-behavior: auto; }
+    /* Never hide anything when motion is reduced. */
+    .firm-aboutus.reveal-ready [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 </style>
 
@@ -637,6 +781,28 @@ const journey = [
     const top = target.getBoundingClientRect().top + window.scrollY - headerH;
     window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
   });
+
+  /* About Us reveal: opacity and a small rise, staggered by 80ms per element.
+     Skipped entirely when motion is reduced or IntersectionObserver is absent,
+     in which case the content is simply never hidden. */
+  const aboutGrid = document.querySelector('.firm-aboutus');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (aboutGrid && !reduceMotion && 'IntersectionObserver' in window) {
+    aboutGrid.classList.add('reveal-ready');
+    const items = Array.from(aboutGrid.querySelectorAll('[data-reveal]'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const idx = items.indexOf(el);
+        el.style.transitionDelay = `${Math.max(0, idx % 6) * 80}ms`;
+        el.classList.add('is-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+    items.forEach((el) => io.observe(el));
+  }
 
   /* Share: native share sheet where available, otherwise copy the URL. */
   const share = document.getElementById('firm-share');
