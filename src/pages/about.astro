@@ -58,23 +58,34 @@ const journey = [
 >
   <div class="firm">
 
-    {/* 1 — Page header block */}
-    <section class="bg-paper firm-pad-top">
+    {/* 1 — Page header block. Stacked and left aligned: eyebrow, H1, intro,
+        Share, then the button, with the vertical rhythm from the reference. */}
+    <section class="bg-paper firm-header">
       <div class="firm-container">
-        <p class="label firm-eyebrow">Our Firm</p>
-        <h1 class="firm-h1 font-serif text-ink">Our Firm</h1>
-        <button type="button" class="firm-share" id="firm-share" aria-label="Share this page">
+        <p class="firm-eyebrow font-sans">Our Firm</p>
+
+        <h1 class="firm-h1 font-serif text-ink">24 Years of Excellence</h1>
+
+        <p class="firm-intro font-sans">
+          Since inception, our business philosophy has remained simple: unlock fundamentally strong, technically sound, and sentimentally stable investments. Yet, above all, our pursuit of excellence has always centred on exceptional service, trusted relationships, and meaningful delivery for our esteemed clients.
+        </p>
+
+        <button type="button" class="firm-share font-sans" id="firm-share" aria-label="Share this page">
+          <span>Share</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
             <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
             <path d="M8.6 10.6 15.4 6.6M8.6 13.4 15.4 17.4" />
           </svg>
-          <span>Share</span>
         </button>
+
+        <div class="firm-header-cta">
+          <a href="#journey" class="firm-btn font-sans" id="firm-journey-link">The BIG Journey</a>
+        </div>
       </div>
     </section>
 
     {/* 2 — Full-width hero image */}
-    <section class="bg-paper firm-hero-wrap">
+    <section class="bg-paper">
       <div class="firm-container">
         <img
           src={photoTeam}
@@ -135,25 +146,20 @@ const journey = [
       </div>
     </section>
 
-    {/* 6 — Heritage band with The BIG Journey carousel */}
-    <section class="bg-mist firm-section">
+    {/* 6 — The BIG Journey band */}
+    <section class="bg-mist firm-section" id="journey">
       <div class="firm-container">
         <div class="firm-split firm-heritage">
           <div>
-            <p class="label firm-eyebrow-sm">Our Heritage</p>
-            <h2 class="firm-h2 font-serif text-ink">24 Years of Excellence</h2>
+            <p class="firm-eyebrow-sm font-sans">Our Heritage</p>
+            <h2 class="firm-h2 font-serif text-ink">The BIG Journey</h2>
           </div>
           <div class="firm-prose">
-            <p>
-              Since inception, our business philosophy has remained simple: unlock fundamentally strong, technically sound, and sentimentally stable investments. Yet, above all, our pursuit of excellence has always centred on exceptional service, trusted relationships, and meaningful delivery for our esteemed clients.
-            </p>
             <p>
               This philosophy has evolved through an epic journey, shaping who we are today and continuing to guide us towards tomorrow.
             </p>
           </div>
         </div>
-
-        <p class="label firm-eyebrow-sm firm-journey-label">The BIG Journey</p>
       </div>
 
       {/* Track starts at the container gutter but bleeds right, so the last card is clipped. */}
@@ -195,7 +201,7 @@ const journey = [
             </p>
           </div>
           <div>
-            <p class="label firm-eyebrow-sm">Accreditations &amp; Memberships</p>
+            <p class="firm-eyebrow-sm font-sans">Accreditations &amp; Memberships</p>
             <ul class="firm-list">
               {accreditations.map((acc) => (
                 <li class="firm-list-row">
@@ -212,7 +218,7 @@ const journey = [
     {/* 8 — Leadership and Board */}
     <section class="bg-mist firm-section">
       <div class="firm-container">
-        <p class="label firm-eyebrow-sm">Leadership &amp; Board</p>
+        <p class="firm-eyebrow-sm font-sans">Leadership &amp; Board</p>
         <h2 class="firm-h2 font-serif text-ink firm-leader-head">Experienced. Principled. Client-Focused.</h2>
 
         <div class="firm-people">
@@ -254,50 +260,100 @@ const journey = [
      Colors come exclusively from the existing tokens: no new values.
      ──────────────────────────────────────────────────────────────────────── */
 
-  /* Wider, more fluid gutters than .container-big, per the reference rhythm. */
+  /* One shared container with equal gutters: 20px mobile, 50px from 1024px,
+     100px from 1700px. Content and images run its full width. */
   .firm-container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding-left: clamp(16px, 3.2vw, 48px);
-    padding-right: clamp(16px, 3.2vw, 48px);
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media (min-width: 1024px) {
+    .firm-container { padding-left: 50px; padding-right: 50px; }
+  }
+  @media (min-width: 1700px) {
+    .firm-container { padding-left: 100px; padding-right: 100px; }
   }
 
   .firm-section       { padding-block: clamp(64px, 8vw, 128px); }
   .firm-section-tight { padding-block: clamp(32px, 4vw, 56px); }
-  .firm-pad-top       { padding-top: clamp(48px, 6vw, 88px); }
-  .firm-hero-wrap     { padding-top: clamp(24px, 3vw, 40px); }
 
-  /* 1 — header block */
-  .firm-eyebrow    { margin-bottom: clamp(16px, 2vw, 28px); letter-spacing: 0.05em; }
-  .firm-eyebrow-sm { letter-spacing: 0.05em; margin-bottom: 20px; }
+  /* 1 — page header block. Spacing steps follow the reference: eyebrow sits
+     ~90px below the navbar, H1 ~16px under it, intro ~50px under the H1,
+     Share ~50px under the intro, button ~90px under Share, then ~80px clear
+     before the hero image. */
+  .firm-header {
+    padding-top: clamp(48px, 6.2vw, 90px);
+    padding-bottom: clamp(48px, 5.5vw, 80px);
+  }
+
+  .firm-eyebrow {
+    font-size: clamp(15px, 1.4vw, 20px);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin: 0 0 16px;
+  }
 
   .firm-h1 {
     font-weight: 300;
-    font-size: clamp(48px, 8vw, 100px);
+    font-size: clamp(48px, 7vw, 100px);
     line-height: 1;
     letter-spacing: -0.015em;
     margin: 0;
+    /* Keeps "24 Years of Excellence" on one line on desktop; wraps on mobile. */
+    white-space: nowrap;
+  }
+  @media (max-width: 767px) {
+    .firm-h1 { white-space: normal; }
+  }
+
+  .firm-intro {
+    font-size: clamp(20px, 2.3vw, 34px);
+    line-height: 1.5;
+    color: rgb(11 11 11 / 0.85);
+    margin: clamp(28px, 3.4vw, 50px) 0 0;
+    /* No max-width: it spans the container and wraps to about 3 lines wide. */
   }
 
   .firm-share {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-top: clamp(24px, 3vw, 36px);
-    padding: 10px 2px;          /* keeps the 44px tap target without a visible box */
+    margin-top: clamp(28px, 3.4vw, 50px);
+    padding: 10px 2px;          /* 44px tap target without a visible box */
     min-height: 44px;
     background: none;
     border: 0;
     cursor: pointer;
-    font-family: theme('fontFamily.sans');
-    font-size: 16px;
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 500;
     color: var(--ink);
-    text-decoration: underline;
-    text-underline-offset: 4px;
   }
-  .firm-share svg { width: 18px; height: 18px; }
-  .firm-share:hover { opacity: 0.7; }
+  .firm-share svg { width: 20px; height: 20px; }
+  .firm-share:hover span { text-decoration: underline; text-underline-offset: 4px; }
   .firm-share:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  .firm-header-cta { margin-top: clamp(40px, 6.2vw, 90px); }
+
+  .firm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 15px;
+    background: var(--ink);
+    color: var(--paper);
+    border: 0;
+    border-radius: 0;
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.18s ease;
+  }
+  .firm-btn:hover { background: var(--acid-600); }
+  .firm-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
   /* 2 — hero image */
   .firm-hero-img {
@@ -314,10 +370,9 @@ const journey = [
     font-size: clamp(36px, 6.5vw, 88px);
     line-height: 1.04;
     letter-spacing: -0.015em;
-    max-width: 16ch;
+    max-width: 16ch;   /* wraps to 4 to 6 lines as specified */
     margin: 0 0 clamp(56px, 7vw, 104px);
   }
-  /* 16ch is deliberately tight so the statement wraps to 4 to 6 lines as specified. */
   @media (max-width: 900px) { .firm-statement { max-width: none; } }
 
   .firm-split {
@@ -343,6 +398,16 @@ const journey = [
     max-width: 68ch;
   }
   .firm-prose p { margin: 0; }
+
+  .firm-eyebrow-sm {
+    font-size: clamp(13px, 1vw, 16px);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin: 0 0 20px;
+  }
 
   /* 4 — values */
   .firm-rule-title {
@@ -395,7 +460,7 @@ const journey = [
     .firm-mosaic-wide { aspect-ratio: 4 / 3 !important; }
   }
 
-  /* 6 — heritage + carousel */
+  /* 6 — journey band + carousel */
   .firm-heritage { align-items: start; }
   .firm-h2 {
     font-weight: 400;
@@ -404,7 +469,6 @@ const journey = [
     letter-spacing: -0.01em;
     margin: 0;
   }
-  .firm-journey-label { margin-top: clamp(48px, 6vw, 80px); margin-bottom: 24px; }
 
   .firm-track {
     display: flex;
@@ -412,11 +476,15 @@ const journey = [
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    /* Start at the gutter, run past the right edge so the last card is clipped. */
-    padding-inline: clamp(16px, 3.2vw, 48px);
+    /* Starts at the gutter, runs past the right edge so the last card clips. */
+    padding-left: 20px;
+    padding-right: 20px;
     padding-block: 4px;
+    margin-top: clamp(40px, 5vw, 64px);
     scrollbar-width: none;
   }
+  @media (min-width: 1024px) { .firm-track { padding-left: 50px; } }
+  @media (min-width: 1700px) { .firm-track { padding-left: 100px; } }
   .firm-track::-webkit-scrollbar { display: none; }
   .firm-track:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
@@ -517,6 +585,7 @@ const journey = [
 
   @media (prefers-reduced-motion: reduce) {
     .firm-track { scroll-behavior: auto; }
+    .firm { scroll-behavior: auto; }
   }
 </style>
 
@@ -553,6 +622,21 @@ const journey = [
 
     sync();
   }
+
+  /* Header button: smooth scroll to the journey band, clearing the sticky
+     navbar, and honouring a reduced-motion preference. */
+  const journeyLink = document.getElementById('firm-journey-link');
+  journeyLink?.addEventListener('click', (e) => {
+    const target = document.getElementById('journey');
+    if (!target) return;
+    e.preventDefault();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const headerH = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--header-h')
+    ) || 80;
+    const top = target.getBoundingClientRect().top + window.scrollY - headerH;
+    window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+  });
 
   /* Share: native share sheet where available, otherwise copy the URL. */
   const share = document.getElementById('firm-share');
