@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/Button.astro';
-import ArrowLink from '../components/ArrowLink.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 
 const accreditations = [
@@ -20,210 +18,560 @@ const leadership = [
   { name: '[Name Placeholder]', title: 'Head of Private Wealth', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80' },
   { name: '[Name Placeholder]', title: 'Head of Asset Management', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80' },
 ];
+
+const values = [
+  { title: 'Integrity',    body: 'Truthful to all stakeholders.' },
+  { title: 'Intelligence', body: 'To act smartly.' },
+  { title: 'Impact',       body: 'Targeting value and wealth.' },
+];
+
+// The three photos already on this page, reused across the hero and the mosaic.
+const photoTeam     = 'https://images.unsplash.com/photo-1573164574511-73c773193279?auto=format&fit=crop&w=1600&q=80';
+const photoAdvisory = 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80';
+const photoResearch = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80';
+
+// The BIG Journey, split one card per existing paragraph. Wording is verbatim;
+// only the card headings are new, taken from the year each paragraph opens with.
+const journey = [
+  {
+    heading: '2002',
+    body: `The BIG journey began in 2002, when our founding member, Muhammad Husnain Yasin, received PKR 25,000 in support from his mother to make his first investment in the Pakistan Stock Exchange. With little knowledge but a willingness to learn, discipline, and patience, his investment grew steadily, helping him support his family and fund his professional education.`,
+  },
+  {
+    heading: '2006',
+    body: `In 2006, Husnain moved to England, where he earned his Chartered Accountant qualification from ICAEW. Over the following 15 years, he progressed from assistant accountant to Board level leadership, gaining experience across industries and major economic cycles, including the 2008 Global Financial Crisis. These experiences and relationships shaped his belief that wealth is most meaningful when built through Shariah-compliant investments.`,
+  },
+  {
+    heading: '2021',
+    body: `An alumnus of Cambridge Judge Business School, and with academic engagement at the University of Oxford, Husnain returned to Pakistan in 2021; and founded Blackstone Islamic Global to help others approach investing with entrepreneurial acumen and foresight.`,
+  },
+  {
+    heading: 'Our ambition',
+    body: `What began with PKR 25,000 support from his mother has grown into an inspiring ambition to help individuals and institutional clients build, preserve, and steward wealth with wisdom, faith, and agility.`,
+  },
+];
 ---
 
 <BaseLayout
   title="Our Firm | Blackstone Islamic Global"
   description="Learn about Blackstone Islamic Global, our mission, accreditations, and leadership team."
 >
-  <!-- Our Firm statement -->
-  <section class="py-section bg-paper border-b border-line relative overflow-hidden">
-    <div class="container-big relative">
-      <p class="label mb-6">Our Firm</p>
-      <h1 class="font-serif font-normal text-ink mb-16" style="font-size: clamp(40px, 6.5vw, 88px); line-height: 1.05; max-width: 960px;">
-        Inspire to be the world's number one Shariah-compliant financial prosperity advisors
-      </h1>
+  <div class="firm">
 
-      <!-- Three photo row -->
-      <div class="grid grid-cols-3 gap-4 mb-16">
-        <div class="aspect-[4/3] bg-mist overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1573164574511-73c773193279?auto=format&fit=crop&w=800&q=80" alt="BIG team at work" class="w-full h-full object-cover" loading="lazy" />
-        </div>
-        <div class="aspect-[4/3] bg-mist overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=800&q=80" alt="Investment advisory meeting" class="w-full h-full object-cover" loading="lazy" />
-        </div>
-        <div class="aspect-[4/3] bg-mist overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="BIG investment research in action" class="w-full h-full object-cover" loading="lazy" />
-        </div>
+    {/* 1 — Page header block */}
+    <section class="bg-paper firm-pad-top">
+      <div class="firm-container">
+        <p class="label firm-eyebrow">Our Firm</p>
+        <h1 class="firm-h1 font-serif text-ink">Our Firm</h1>
+        <button type="button" class="firm-share" id="firm-share" aria-label="Share this page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
+            <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+            <path d="M8.6 10.6 15.4 6.6M8.6 13.4 15.4 17.4" />
+          </svg>
+          <span>Share</span>
+        </button>
       </div>
+    </section>
 
-      <!-- Narrative -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div class="lg:col-span-4">
-          <h2 class="font-serif font-normal text-ink mb-4" style="font-size: clamp(28px, 2.8vw, 38px); line-height: 1.2;">
-            About Us
-          </h2>
-        </div>
-        <div class="lg:col-span-8 space-y-5 font-sans text-base text-stone leading-relaxed">
-          <p>
-            Blackstone Islamic Global 'BIG' is a Shariah-compliant brokerage, asset management, and wealth management consultancy serving institutional and individual clients globally. Our practice combines deep markets research and expertise to deliver structured and faith-aligned investment solutions.
-          </p>
-          <p>
-            We also provide access to Pakistan's private equity, real estate, and specialized professional services including M&amp;A, IPOs, and family office management.
-          </p>
-          <p>
-            At BIG, we believe that adherence to Shariah principles and the pursuit of superior performance are not competing objectives, they are mutually reinforcing. Our approach is built on transparency, trust, and a long-term commitment to our clients' financial well-being and legacy
-          </p>
-        </div>
+    {/* 2 — Full-width hero image */}
+    <section class="bg-paper firm-hero-wrap">
+      <div class="firm-container">
+        <img
+          src={photoTeam}
+          alt="The Blackstone Islamic Global team at work"
+          class="firm-hero-img"
+          width="1600" height="900"
+        />
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Our Approach -->
-  <section class="py-section bg-mist">
-    <div class="container-big">
-      <div class="flex flex-col items-center text-center mb-16">
-        <h2 class="font-serif font-normal text-ink" style="font-size: clamp(32px, 3.5vw, 48px); line-height: 1.1;">
-          Our Values
-        </h2>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <div>
-          <div class="w-8 h-1 bg-acid mb-5"></div>
-          <h3 class="font-sans font-bold text-sm text-ink uppercase tracking-wide mb-4">Integrity</h3>
-          <p class="font-sans text-sm text-stone leading-relaxed">
-            Truthful to all stakeholders.
-          </p>
-        </div>
-        <div>
-          <div class="w-8 h-1 bg-acid mb-5"></div>
-          <h3 class="font-sans font-bold text-sm text-ink uppercase tracking-wide mb-4">Intelligence</h3>
-          <p class="font-sans text-sm text-stone leading-relaxed">
-            To act smartly.
-          </p>
-        </div>
-        <div>
-          <div class="w-8 h-1 bg-acid mb-5"></div>
-          <h3 class="font-sans font-bold text-sm text-ink uppercase tracking-wide mb-4">Impact</h3>
-          <p class="font-sans text-sm text-stone leading-relaxed">
-            Targeting value and wealth.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+    {/* 3 — Mission statement, then About Us */}
+    <section class="bg-paper firm-section">
+      <div class="firm-container">
+        <p class="firm-statement font-serif text-ink">
+          Inspire to be the world's number one Shariah-compliant financial prosperity advisors
+        </p>
 
-  <!-- 24 Years of Excellence + The BIG Journey -->
-  <section class="py-section bg-paper border-t border-line">
-    <div class="container-big">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-        <div class="lg:col-span-4">
-          <p class="label mb-4">Our Heritage</p>
-          <h2 class="font-serif font-normal text-ink" style="font-size: clamp(28px, 2.8vw, 38px); line-height: 1.2;">
-            24 Years of Excellence
-          </h2>
-        </div>
-        <div class="lg:col-span-8 space-y-5 font-sans text-base text-stone leading-relaxed">
-          <p>
-            Since inception, our business philosophy has remained simple: unlock fundamentally strong, technically sound, and sentimentally stable investments. Yet, above all, our pursuit of excellence has always centred on exceptional service, trusted relationships, and meaningful delivery for our esteemed clients.
-          </p>
-          <p>
-            This philosophy has evolved through an epic journey, shaping who we are today and continuing to guide us towards tomorrow.
-          </p>
-        </div>
-      </div>
-
-      <!-- The BIG Journey — boxed -->
-      <div class="border border-line p-8 lg:p-14">
-        <p class="label mb-4">The BIG Journey</p>
-        <div class="space-y-5 font-sans text-base text-stone leading-relaxed max-w-3xl">
-          <p>
-            The BIG journey began in 2002, when our founding member, Muhammad Husnain Yasin, received PKR 25,000 in support from his mother to make his first investment in the Pakistan Stock Exchange. With little knowledge but a willingness to learn, discipline, and patience, his investment grew steadily, helping him support his family and fund his professional education.
-          </p>
-          <p>
-            In 2006, Husnain moved to England, where he earned his Chartered Accountant qualification from ICAEW. Over the following 15 years, he progressed from assistant accountant to Board level leadership, gaining experience across industries and major economic cycles, including the 2008 Global Financial Crisis. These experiences and relationships shaped his belief that wealth is most meaningful when built through Shariah-compliant investments.
-          </p>
-          <p>
-            An alumnus of Cambridge Judge Business School, and with academic engagement at the University of Oxford, Husnain returned to Pakistan in 2021; and founded Blackstone Islamic Global to help others approach investing with entrepreneurial acumen and foresight.
-          </p>
-          <p>
-            What began with PKR 25,000 support from his mother has grown into an inspiring ambition to help individuals and institutional clients build, preserve, and steward wealth with wisdom, faith, and agility.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Vendor Selection Programme -->
-  <section class="py-section bg-mist border-t border-line">
-    <div class="container-big">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div class="lg:col-span-4">
-          <h2 class="font-serif font-normal text-ink" style="font-size: clamp(28px, 2.8vw, 38px); line-height: 1.2;">
-            Vendor Selection Programme
-          </h2>
-        </div>
-        <div class="lg:col-span-8 font-sans text-base text-stone leading-relaxed">
-          <p>
-            Our Vendor Selection Programme enables us to work with professionally vetted and reputable organisations, allowing us to deliver market leading services and solutions to our clients.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Accreditations -->
-  <section class="py-section bg-paper border-t border-line">
-    <div class="container-big">
-      <p class="label mb-8">Accreditations & Memberships</p>
-      <div class="flex flex-wrap items-center gap-6">
-        {accreditations.map(acc => (
-          <div class="border border-line px-6 py-4 flex items-center justify-center gap-2.5 min-w-[140px]">
-            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 shrink-0 text-stone" aria-hidden="true" focusable="false">
-              <path d="M4.2 4.2 H11.8 V11.8 H4.2 Z" stroke="currentColor" stroke-width="1.2" />
-              <path d="M8 2.6 L13.4 8 L8 13.4 L2.6 8 Z" stroke="currentColor" stroke-width="1.2" />
-            </svg>
-            <span class="font-sans font-bold text-sm text-ink tracking-wide">{acc.name}</span>
+        <div class="firm-split firm-about">
+          <h2 class="firm-label-serif font-serif text-ink">About Us</h2>
+          <div class="firm-prose">
+            <p>
+              Blackstone Islamic Global 'BIG' is a Shariah-compliant brokerage, asset management, and wealth management consultancy serving institutional and individual clients globally. Our practice combines deep markets research and expertise to deliver structured and faith-aligned investment solutions.
+            </p>
+            <p>
+              We also provide access to Pakistan's private equity, real estate, and specialized professional services including M&amp;A, IPOs, and family office management.
+            </p>
+            <p>
+              At BIG, we believe that adherence to Shariah principles and the pursuit of superior performance are not competing objectives, they are mutually reinforcing. Our approach is built on transparency, trust, and a long-term commitment to our clients' financial well-being and legacy
+            </p>
           </div>
-        ))}
+        </div>
       </div>
-      <p class="font-sans text-xs text-stone mt-6">
-        ACCA · ICAP · ISO/UKSAS · MUFAP · SECP · TREC · PSX
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Leadership -->
-  <section class="py-section bg-mist border-t border-line">
-    <div class="container-big">
-      <p class="label mb-6">Leadership & Board</p>
-      <h2 class="font-serif font-normal text-ink mb-12" style="font-size: clamp(32px, 3.5vw, 48px); line-height: 1.1;">
-        Experienced. Principled. Client-Focused.
-      </h2>
-      <!-- ONE shared pointed-arch (mihrab) clip for all four portraits; objectBoundingBox scales with each box -->
-      <svg width="0" height="0" class="absolute" aria-hidden="true" focusable="false">
-        <defs>
-          <clipPath id="about-arch-frame" clipPathUnits="objectBoundingBox">
-            <path d="M0.5 0 C0.68 0.05 0.97 0.14 1 0.3 L1 1 L0 1 L0 0.3 C0.03 0.14 0.32 0.05 0.5 0 Z" />
-          </clipPath>
-        </defs>
-      </svg>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {leadership.map(person => (
-          <div>
-            <div class="aspect-[3/4] bg-stone/10 mb-4 overflow-hidden" style="clip-path: url(#about-arch-frame); -webkit-clip-path: url(#about-arch-frame);">
-              <img
-                src={person.image}
-                alt={person.name}
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
+    {/* 4 — Our Values */}
+    <section class="bg-paper firm-section">
+      <div class="firm-container">
+        <h2 class="firm-rule-title font-sans text-ink">Our Values</h2>
+        <div class="firm-values">
+          {values.map((v) => (
+            <div>
+              <h3 class="firm-value-title font-sans text-ink">{v.title}</h3>
+              <p class="firm-value-body font-sans">{v.body}</p>
             </div>
-            <p class="font-sans font-semibold text-sm text-ink mb-1">{person.name}</p>
-            <p class="font-sans text-xs text-stone">{person.title}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 5 — Photo mosaic. Three unique photos, so one wide tile then two below. */}
+    <section class="bg-paper firm-section-tight">
+      <div class="firm-container">
+        <div class="firm-mosaic">
+          <img src={photoTeam} alt="Advisers reviewing market research together" class="firm-mosaic-wide" loading="lazy" width="1600" height="900" />
+          <img src={photoAdvisory} alt="An investment advisory meeting in progress" loading="lazy" width="1200" height="900" />
+          <img src={photoResearch} alt="Blackstone Islamic Global investment research in action" loading="lazy" width="1200" height="900" />
+        </div>
+      </div>
+    </section>
+
+    {/* 6 — Heritage band with The BIG Journey carousel */}
+    <section class="bg-mist firm-section">
+      <div class="firm-container">
+        <div class="firm-split firm-heritage">
+          <div>
+            <p class="label firm-eyebrow-sm">Our Heritage</p>
+            <h2 class="firm-h2 font-serif text-ink">24 Years of Excellence</h2>
           </div>
+          <div class="firm-prose">
+            <p>
+              Since inception, our business philosophy has remained simple: unlock fundamentally strong, technically sound, and sentimentally stable investments. Yet, above all, our pursuit of excellence has always centred on exceptional service, trusted relationships, and meaningful delivery for our esteemed clients.
+            </p>
+            <p>
+              This philosophy has evolved through an epic journey, shaping who we are today and continuing to guide us towards tomorrow.
+            </p>
+          </div>
+        </div>
+
+        <p class="label firm-eyebrow-sm firm-journey-label">The BIG Journey</p>
+      </div>
+
+      {/* Track starts at the container gutter but bleeds right, so the last card is clipped. */}
+      <div
+        class="firm-track"
+        id="firm-track"
+        role="group"
+        aria-label="The BIG Journey, scrollable timeline"
+        tabindex="0"
+      >
+        {journey.map((c) => (
+          <article class="firm-card bg-paper">
+            <h3 class="firm-card-title font-sans text-ink">{c.heading}</h3>
+            <p class="firm-card-body font-sans">{c.body}</p>
+          </article>
         ))}
       </div>
-      <p class="font-sans text-xs text-stone mt-8 italic">
-        Leadership profiles are placeholder pending client confirmation.
-      </p>
-    </div>
-  </section>
 
-  <ContactCTA
-    headline="Speak with Our Team"
-    subtext="We would welcome the opportunity to discuss how BIG can serve your investment and advisory needs."
-    image="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
-    imageAlt="BIG wealth advisor in client consultation"
-  />
+      <div class="firm-container">
+        <div class="firm-controls">
+          <button type="button" class="firm-nav" id="firm-prev" aria-label="Previous card" aria-controls="firm-track" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M15 5 8 12l7 7" /></svg>
+          </button>
+          <button type="button" class="firm-nav" id="firm-next" aria-label="Next card" aria-controls="firm-track">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    {/* 7 — Vendor Selection Programme + Accreditations list */}
+    <section class="bg-paper firm-section">
+      <div class="firm-container">
+        <div class="firm-split firm-vendor">
+          <div>
+            <h2 class="firm-h2 font-serif text-ink">Vendor Selection Programme</h2>
+            <p class="firm-prose firm-vendor-body">
+              Our Vendor Selection Programme enables us to work with professionally vetted and reputable organisations, allowing us to deliver market leading services and solutions to our clients.
+            </p>
+          </div>
+          <div>
+            <p class="label firm-eyebrow-sm">Accreditations &amp; Memberships</p>
+            <ul class="firm-list">
+              {accreditations.map((acc) => (
+                <li class="firm-list-row">
+                  <span class="firm-list-name font-sans text-ink">{acc.name}</span>
+                  <span class="firm-list-label font-sans">{acc.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* 8 — Leadership and Board */}
+    <section class="bg-mist firm-section">
+      <div class="firm-container">
+        <p class="label firm-eyebrow-sm">Leadership &amp; Board</p>
+        <h2 class="firm-h2 font-serif text-ink firm-leader-head">Experienced. Principled. Client-Focused.</h2>
+
+        <div class="firm-people">
+          {leadership.map((person) => (
+            <div>
+              <div class="firm-portrait">
+                <img src={person.image} alt={person.name} loading="lazy" width="600" height="750" />
+              </div>
+              <p class="firm-person-name font-sans text-ink">{person.name}</p>
+              <p class="firm-person-title font-sans">{person.title}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="firm-footnote font-sans">
+          Leadership profiles are placeholder pending client confirmation.
+        </p>
+      </div>
+    </section>
+
+    {/* 9 — Closing CTA. Copy, image and button are unchanged; only the heading
+        scale is lifted, via a page-scoped override so the shared component and
+        every other page that uses it stay exactly as they are. */}
+    <div class="firm-cta">
+      <ContactCTA
+        headline="Speak with Our Team"
+        subtext="We would welcome the opportunity to discuss how BIG can serve your investment and advisory needs."
+        image="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
+        imageAlt="BIG wealth advisor in client consultation"
+      />
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  /* ────────────────────────────────────────────────────────────────────────
+     Our Firm, editorial layout. Everything is scoped under .firm and to this
+     page only, so no other route and no shared component changes behavior.
+     Colors come exclusively from the existing tokens: no new values.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  /* Wider, more fluid gutters than .container-big, per the reference rhythm. */
+  .firm-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: clamp(16px, 3.2vw, 48px);
+    padding-right: clamp(16px, 3.2vw, 48px);
+  }
+
+  .firm-section       { padding-block: clamp(64px, 8vw, 128px); }
+  .firm-section-tight { padding-block: clamp(32px, 4vw, 56px); }
+  .firm-pad-top       { padding-top: clamp(48px, 6vw, 88px); }
+  .firm-hero-wrap     { padding-top: clamp(24px, 3vw, 40px); }
+
+  /* 1 — header block */
+  .firm-eyebrow    { margin-bottom: clamp(16px, 2vw, 28px); letter-spacing: 0.05em; }
+  .firm-eyebrow-sm { letter-spacing: 0.05em; margin-bottom: 20px; }
+
+  .firm-h1 {
+    font-weight: 300;
+    font-size: clamp(48px, 8vw, 100px);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .firm-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: clamp(24px, 3vw, 36px);
+    padding: 10px 2px;          /* keeps the 44px tap target without a visible box */
+    min-height: 44px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: theme('fontFamily.sans');
+    font-size: 16px;
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .firm-share svg { width: 18px; height: 18px; }
+  .firm-share:hover { opacity: 0.7; }
+  .firm-share:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  /* 2 — hero image */
+  .firm-hero-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  /* 3 — mission statement + About Us */
+  .firm-statement {
+    font-weight: 300;
+    font-size: clamp(36px, 6.5vw, 88px);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    max-width: 16ch;
+    margin: 0 0 clamp(56px, 7vw, 104px);
+  }
+  /* 16ch is deliberately tight so the statement wraps to 4 to 6 lines as specified. */
+  @media (max-width: 900px) { .firm-statement { max-width: none; } }
+
+  .firm-split {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: clamp(28px, 5vw, 72px);
+  }
+  @media (max-width: 900px) { .firm-split { grid-template-columns: 1fr; } }
+
+  .firm-label-serif {
+    font-weight: 400;
+    font-size: clamp(24px, 2.6vw, 32px);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .firm-prose {
+    display: grid;
+    gap: 20px;
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.5;
+    color: rgb(11 11 11 / 0.8);
+    max-width: 68ch;
+  }
+  .firm-prose p { margin: 0; }
+
+  /* 4 — values */
+  .firm-rule-title {
+    font-weight: 700;
+    font-size: clamp(22px, 2vw, 26px);
+    line-height: 1.2;
+    margin: 0 0 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .firm-values {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(32px, 5vw, 60px);
+    margin-top: clamp(36px, 5vw, 60px);
+  }
+  @media (max-width: 900px) { .firm-values { grid-template-columns: 1fr; } }
+  .firm-value-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+  }
+  .firm-value-body {
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.5;
+    color: rgb(11 11 11 / 0.8);
+    margin: 0;
+  }
+
+  /* 5 — photo mosaic: one wide tile, then two side by side. No gaps. */
+  .firm-mosaic {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+  }
+  .firm-mosaic img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0;
+  }
+  .firm-mosaic-wide {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9 !important;
+  }
+  @media (max-width: 767px) {
+    .firm-mosaic { grid-template-columns: 1fr; }
+    .firm-mosaic-wide { aspect-ratio: 4 / 3 !important; }
+  }
+
+  /* 6 — heritage + carousel */
+  .firm-heritage { align-items: start; }
+  .firm-h2 {
+    font-weight: 400;
+    font-size: clamp(32px, 5vw, 60px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .firm-journey-label { margin-top: clamp(48px, 6vw, 80px); margin-bottom: 24px; }
+
+  .firm-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Start at the gutter, run past the right edge so the last card is clipped. */
+    padding-inline: clamp(16px, 3.2vw, 48px);
+    padding-block: 4px;
+    scrollbar-width: none;
+  }
+  .firm-track::-webkit-scrollbar { display: none; }
+  .firm-track:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .firm-card {
+    flex: 0 0 326px;
+    scroll-snap-align: start;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 0;
+  }
+  @media (max-width: 480px) { .firm-card { flex-basis: 82vw; } }
+
+  .firm-card-title {
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.23;
+    margin: 0 0 12px;
+  }
+  .firm-card-body {
+    font-size: 16px;
+    line-height: 1.55;
+    color: rgb(11 11 11 / 0.8);
+    margin: 0;
+  }
+
+  .firm-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .firm-nav {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .firm-nav svg { width: 24px; height: 24px; }
+  .firm-nav:hover:not(:disabled) { opacity: 0.6; }
+  .firm-nav:disabled { opacity: 0.25; cursor: default; }
+  .firm-nav:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  /* 7 — vendor + accreditation list */
+  .firm-vendor-body { margin-top: 28px; }
+  .firm-list { list-style: none; margin: 0; padding: 0; }
+  .firm-list-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 16px;
+    padding-block: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .firm-list-row:first-child { border-top: 1px solid var(--line); }
+  .firm-list-name {
+    font-weight: 500;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.23;
+  }
+  .firm-list-label {
+    font-size: 16px;
+    color: var(--stone);
+  }
+
+  /* 8 — leadership */
+  .firm-leader-head { margin-top: 12px; margin-bottom: clamp(40px, 5vw, 64px); }
+  .firm-people {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(20px, 2.5vw, 32px);
+  }
+  @media (max-width: 1023px) { .firm-people { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 559px)  { .firm-people { grid-template-columns: 1fr; } }
+
+  /* Plain rectangles: the arch clip-path is deliberately gone. */
+  .firm-portrait {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: rgb(107 114 128 / 0.1);
+    margin-bottom: 16px;
+    border-radius: 0;
+  }
+  .firm-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .firm-person-name  { font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0 0 4px; }
+  .firm-person-title { font-size: 16px; color: var(--stone); margin: 0; }
+  .firm-footnote     { font-size: 14px; color: var(--stone); font-style: italic; margin-top: clamp(28px, 3vw, 40px); }
+
+  /* 9 — lift only the CTA heading scale, scoped to this page. */
+  .firm-cta :global(h2) {
+    font-size: clamp(32px, 5vw, 60px) !important;
+    line-height: 1.02 !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .firm-track { scroll-behavior: auto; }
+  }
+</style>
+
+<script>
+  /* Carousel: prev/next scroll by exactly one card, and the buttons disable at
+     each end. Arrow keys work when the track itself has focus. */
+  const track = document.getElementById('firm-track');
+  const prev  = document.getElementById('firm-prev') as HTMLButtonElement | null;
+  const next  = document.getElementById('firm-next') as HTMLButtonElement | null;
+
+  if (track && prev && next) {
+    const step = () => {
+      const card = track.querySelector('.firm-card') as HTMLElement | null;
+      if (!card) return 346;
+      const gap = parseFloat(getComputedStyle(track).columnGap || '20') || 20;
+      return card.offsetWidth + gap;
+    };
+
+    const sync = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= max - 1;
+    };
+
+    prev.addEventListener('click', () => track.scrollBy({ left: -step() }));
+    next.addEventListener('click', () => track.scrollBy({ left:  step() }));
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); track.scrollBy({ left:  step() }); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); track.scrollBy({ left: -step() }); }
+    });
+
+    sync();
+  }
+
+  /* Share: native share sheet where available, otherwise copy the URL. */
+  const share = document.getElementById('firm-share');
+  share?.addEventListener('click', async () => {
+    const label = share.querySelector('span');
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: document.title, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        if (label) {
+          const original = label.textContent;
+          label.textContent = 'Link copied';
+          setTimeout(() => { label.textContent = original; }, 2000);
+        }
+      }
+    } catch {
+      /* dismissed or blocked: nothing to do */
+    }
+  });
+</script>
