@@ -1,0 +1,73 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import LegalBlocks from '../components/LegalBlocks.astro';
+import type { Block } from '../types/legal';
+
+/* Contact email: info@biglobal.pk (same address as on the Contact page). */
+const blocks: Block[] = [
+  { t: 'h2', x: `Who we are` },
+  { t: 'p', x: `This policy explains how Blackstone Islamic Global ("BIG", "we", "us") collects and uses personal information when you visit this website or contact us. We operate from Lahore, London, New York and Jeddah.` },
+
+  { t: 'h2', x: `Information we collect` },
+  { t: 'ul', x: [
+    `Details you give us: your name, email, phone number, company and the contents of any message or enquiry you send.`,
+    `Information you provide when becoming a client, such as identity, address, tax and source-of-funds details we need for onboarding and regulatory checks.`,
+    `Technical data from your visit: IP address, browser and device type, pages viewed and time spent, collected through cookies and similar tools.`,
+  ] },
+
+  { t: 'h2', x: `How we use it` },
+  { t: 'ul', x: [
+    `To respond to enquiries and provide our services.`,
+    `To meet legal and regulatory duties, including identity verification and anti-money-laundering checks.`,
+    `To run, secure and improve the website.`,
+    `To send updates or research you have asked for. You can opt out at any time.`,
+  ] },
+
+  { t: 'h2', x: `Legal basis` },
+  { t: 'p', x: `Where UK or EU data protection law applies, we rely on one or more of: your consent, performance of a contract with you, compliance with a legal obligation, and our legitimate interests in running and securing our business.` },
+
+  { t: 'h2', x: `Who we share it with` },
+  { t: 'p', x: `We do not sell personal information. We share it only with PSX brokers and other service providers acting for us, professional advisers, IT and hosting providers, and regulators, exchanges or authorities where the law requires it. Providers are bound to protect your information and use it only for the purpose we give them.` },
+
+  { t: 'h2', x: `International transfers` },
+  { t: 'p', x: `Because we operate in several countries, your information may be processed outside the country where you live. Where we do this, we take steps to keep it protected in line with applicable law.` },
+
+  { t: 'h2', x: `How long we keep it` },
+  { t: 'p', x: `We keep personal information only as long as needed for the purposes above, including any period required by financial, tax or regulatory record-keeping rules. After that we delete or anonymise it.` },
+
+  { t: 'h2', x: `Security` },
+  { t: 'p', x: `We use reasonable technical and organisational measures to protect your information. No online system is completely secure, so we cannot guarantee absolute security.` },
+
+  { t: 'h2', x: `Your rights` },
+  { t: 'html', x: `Depending on where you live, you may have the right to access, correct or delete your information, restrict or object to how we use it, withdraw consent, and ask for a copy of it. You can also complain to your local data protection authority. To use any of these rights, contact us at <a href="mailto:info@biglobal.pk">info@biglobal.pk</a>.` },
+
+  { t: 'h2', x: `Cookies` },
+  { t: 'p', x: `Cookies are small files stored on your device when you visit a website. This website uses only essential cookies, and none for advertising. In practice, the site does not currently set any cookies of its own, and it does not use analytics, tag managers, advertising pixels or tracking tools. It does not store information in your browser's local storage either. Cookies that are needed purely to make the site work would be essential cookies.` },
+  { t: 'p', x: `Some content is loaded from third-party services. When your browser requests it, these services receive your IP address and browser details, and they may set their own cookies under their own policies:` },
+  { t: 'ul', x: [
+    `Google Fonts (fonts.googleapis.com, fonts.gstatic.com): delivers the website's typefaces. Not essential: the site falls back to standard system fonts if it is blocked. Not used for advertising.`,
+    `Unsplash (images.unsplash.com): hosts some of the photographs shown on the pages. Not essential: if it is blocked, those images simply do not load. Not used for advertising.`,
+  ] },
+  { t: 'p', x: `You can block or delete cookies in your browser settings. Blocking essential cookies may stop parts of the site working.` },
+
+  { t: 'h2', x: `Links to other sites` },
+  { t: 'p', x: `This website may link to sites we do not control. We are not responsible for their privacy practices.` },
+
+  { t: 'h2', x: `Children` },
+  { t: 'p', x: `This website is not meant for anyone under 18, and we do not knowingly collect their information.` },
+
+  { t: 'h2', x: `Changes to this policy` },
+  { t: 'p', x: `We may update this policy from time to time. The date at the top shows when it was last changed.` },
+
+  { t: 'h2', x: `Contact us` },
+  { t: 'html', x: `Blackstone Islamic Global, <a href="mailto:info@biglobal.pk">info@biglobal.pk</a>. Offices: Lahore, London, New York, Jeddah.` },
+];
+---
+
+<LegalLayout
+  title="Privacy & Cookies Policy | Blackstone Islamic Global"
+  description="How Blackstone Islamic Global collects, uses and protects personal information, and how this website uses cookies."
+  heading="Privacy & Cookies Policy"
+>
+  <LegalBlocks blocks={blocks} />
+</LegalLayout>

@@ -18,7 +18,7 @@ collections:
         name: "home"
         file: "src/content/pages/home.json"
         fields:
-          - { label: "Hero Eyebrow", name: "heroEyebrow", widget: "string", default: "Shariah-Compliant Investing" }
+          - { label: "Hero Eyebrow", name: "heroEyebrow", widget: "string", default: "Shariah Enabled Investing" }
           - { label: "Hero Headline", name: "heroHeadline", widget: "string" }
           - { label: "Hero Subtext", name: "heroSubtext", widget: "text" }
           - { label: "Newsletter Heading", name: "newsletterHeading", widget: "string", default: "Subscribe to BIG Briefings" }

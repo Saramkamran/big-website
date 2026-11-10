@@ -63,7 +63,6 @@ const cards = [
     eyebrow: 'Shariah Equities · Self-Directed',
     headingLines: ['Portfolio Consultancy'],
     body: `Our portfolio consultancy services are designed for self-directed investors, providing timely trading and investment calls, and regular follow-ups. Combining market intelligence with actionable insights, we help clients navigate volatility, deploy capital decisively, and pursue growth.`,
-    cta: { label: 'Explore Portfolio Consultancy', href: '/contact' },
     image: '/images/psx-portfolio-consultancy.jpg',
     imageAlt: 'Investor reviewing live market charts on a tablet during an advisory meeting',
   },
@@ -74,7 +73,6 @@ const cards = [
     body: `Our portfolio supervision is designed for trusted clients who prefer professional delegation. We provide bespoke strategies aligned with each client's risk and return objectives.
 
 Our specialists actively monitor and optimise portfolios to preserve and grow capital. This white-glove service is subject to minimum portfolio requirements and eligibility criteria.`,
-    cta: { label: 'Enquire', href: '/contact' },
     image: '/images/psx-portfolio-supervision.jpg',
     imageAlt: 'Portfolio manager discussing performance charts with a client',
     imageTop: true,
@@ -92,7 +90,7 @@ Join it for free and learn before earn`;
 
 <BaseLayout
   title="PSX & Global Markets | Blackstone Islamic Global"
-  description="Shariah-compliant equities, green sukuks, and transaction services across the Pakistan Stock Exchange and global markets."
+  description="Shariah enabled equities, green sukuks, and transaction services across the Pakistan Stock Exchange and global markets."
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
@@ -109,25 +107,20 @@ Join it for free and learn before earn`;
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <div class="relative z-10 container-big psx-hero-inner w-full pt-12 pb-12">
-      <div class="max-w-3xl hero-copy">
-        <!-- psx-hero-h1 is a page-only override: this headline is 50 characters
-             against the homepage's 33, so it needs a smaller clamp plus nowrap
-             to hold one line. The shared hero-h1 class is left untouched. -->
-        <h1 class="hero-h1 psx-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
+    <div class="relative z-10 container-big hero-gutter w-full pt-12 pb-12">
+      <!-- Typography and spacing come from the shared `.hero-content` rules in
+           global.css (these values are the reference for every hero). -->
+      <div class="hero-content">
+        <h1>
           Tailored Strategy | Smart Execution | Timely Exist
         </h1>
-        <p class="font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
+        <p>
           Our equities business combines niche research, rigorous analysis, and deep market expertise to deliver tailored, timely and independent investment solutions for our distinguished investors.
         </p>
         <Button variant="acid" href="#shariah-equities">Explore What We Do</Button>
       </div>
     </div>
 
-    <div class="absolute bottom-8 right-16 hidden lg:flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
-      <span class="font-sans text-xs text-white tracking-widest uppercase">Scroll</span>
-      <div class="w-px h-12 bg-white/60"></div>
-    </div>
   </section>
 
 
@@ -190,9 +183,6 @@ Join it for free and learn before earn`;
         <h2 class="font-serif font-normal text-ink" style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1;">
           Big Services
         </h2>
-        <p class="font-sans text-base text-stone leading-relaxed mt-5">
-          Our core portfolio services, tailored to how you want to engage with the markets.
-        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -210,10 +200,7 @@ Join it for free and learn before earn`;
             <h3 class="font-sans font-bold text-ink text-xl leading-snug mb-3">
               {c.headingLines.join(' ')}
             </h3>
-            <p class="svc-card-para font-sans text-base text-stone leading-relaxed mb-6">{c.body}</p>
-            <a class="svc-card-link font-sans text-sm font-semibold text-ink" href={c.cta.href}>
-              {c.cta.label} <span aria-hidden="true">→</span>
-            </a>
+            <p class="svc-card-para font-sans text-base text-copy leading-relaxed">{c.body}</p>
           </article>
         ))}
       </div>
@@ -347,7 +334,7 @@ Join it for free and learn before earn`;
     font-family: theme('fontFamily.sans');
     font-size: 15px;
     line-height: 1.75;
-    color: var(--bodygray);
+    color: var(--body-text);
     max-width: 90%;
     white-space: pre-line;  /* preserves the copy deck's paragraph breaks */
     margin: 0 0 28px;
@@ -366,7 +353,8 @@ Join it for free and learn before earn`;
     font-family: theme('fontFamily.sans');
     font-size: 14px;
     line-height: 1.5;
-    color: var(--bodygray);
+    color: #000;
+    opacity: 1;
     margin-bottom: 9px;
   }
   .svc-list li:last-child { margin-bottom: 0; }
@@ -413,53 +401,6 @@ Join it for free and learn before earn`;
     --lime:     #0B0B0B;
     --bodygray: #9CA0A6;
   }
-  /* ── Hero, matched to the homepage ──────────────────────────────────────
-     `hero-h1` and `hero-copy` are scoped to Hero.astro (Astro adds a
-     per-component attribute), so they are redefined here to give this hero the
-     same treatment: the 2.1em top offset and the soft text-shadow.
-
-     Deliberately WITHOUT the homepage's `white-space: nowrap`. That headline is
-     33 characters; this one is 50, and forcing a single line overflows the
-     container at 1024px, 1440px and 1920px. Letting it wrap keeps the same
-     type scale without pushing text off-screen. */
-  .hero-h1 {
-    margin-top: 2.1em;
-    max-width: none;
-  }
-  @media (max-width: 640px) {
-    .hero-h1 { margin-top: 0; }
-  }
-
-  /* Page-only override for this longer headline (50 chars vs the homepage's
-     33). A smaller clamp plus nowrap holds it on one line from 768px up. */
-  .psx-hero-h1 {
-    font-size: clamp(1.75rem, 3vw, 2.75rem);
-    white-space: nowrap;
-  }
-  /* Below 768px one line would require ~10px type to fit, which is unreadable,
-     so the headline wraps instead of shrinking past legibility. */
-  @media (max-width: 767px) {
-    .psx-hero-h1 {
-      white-space: normal;
-      font-size: clamp(1.5rem, 6vw, 2rem);
-    }
-  }
-  /* Includes `p` because the subtext is a normal paragraph here, not an h2 —
-     without it the copy would lose its shadow against the photo. */
-  .hero-copy h1,
-  .hero-copy h2,
-  .hero-copy p {
-    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
-  }
-
-  /* Pull the hero copy left of the shared container gutter. container-big
-     applies px-6 / lg:px-16 (24px / 64px) and is used site-wide, so it is left
-     alone and trimmed here for this hero only. */
-  .psx-hero-inner { padding-left: 8px; }
-  @media (min-width: 1024px) {
-    .psx-hero-inner { padding-left: 24px; }
-  }
-
   /* Wider than the site's 1280px container-big so the two cards read close to
      edge-to-edge, with a small outer margin. Scoped to this page only. */
   .svc-wide {
@@ -499,18 +440,25 @@ Join it for free and learn before earn`;
 
   .svc-card-para {
     white-space: pre-line;  /* keeps the supervision card's paragraph break */
-    color: var(--bodygray);
+    color: var(--body-text);
+  }
+  /* Portfolio Consultancy paragraph: justified. The id selector outranks the
+     global `main p.svc-card-para` opt-out, so the Supervision card is unchanged. */
+  #portfolio-consultancy .svc-card-para {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+    word-spacing: normal;
+  }
+  @media (max-width: 767px) {
+    #portfolio-consultancy .svc-card-para {
+      text-align: left;
+      hyphens: manual;
+    }
   }
 
-  .svc-card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    transition: gap 0.18s ease;
-  }
-  .svc-card-link:hover { gap: 12px; }
 
   /* Step the image height down with the viewport. These replace the old
      aspect-ratio rule, which would otherwise fight the fixed height above. */

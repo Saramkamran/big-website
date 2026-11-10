@@ -13,6 +13,7 @@ export default {
         mist:   '#F3F5EE',
         stone:  '#6B7280',
         line:   '#E5E7EB',
+        copy:   'var(--body-text)',
       },
       fontFamily: {
         // Multi-word family names MUST stay quoted in the emitted CSS. Tailwind strips

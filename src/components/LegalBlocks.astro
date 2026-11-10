@@ -1,0 +1,17 @@
+---
+/* Renders a legal page body from a simple block list, so every paragraph gets the
+   .no-justify class and the page copy stays plain data.
+   Block types: h2 | h3 | p | html (a paragraph containing links) | ul (array of strings). */
+import type { Block } from '../types/legal';
+
+interface Props { blocks: Block[] }
+const { blocks } = Astro.props;
+---
+
+{blocks.map((b) =>
+  b.t === 'h2' ? <h2>{b.x}</h2> :
+  b.t === 'h3' ? <h3>{b.x}</h3> :
+  b.t === 'p' ? <p class="no-justify">{b.x}</p> :
+  b.t === 'html' ? <p class="no-justify" set:html={b.x}></p> :
+  <ul>{b.x.map((li) => <li>{li}</li>)}</ul>
+)}

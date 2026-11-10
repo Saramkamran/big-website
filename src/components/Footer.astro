@@ -1,29 +1,33 @@
 ---
 ---
 
-<footer class="bg-ink text-white">
+<footer class="relative bg-ink text-white">
   <!-- Main footer columns -->
   <div class="container-big py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-      <!-- Brand -->
+      <!-- Brand. The grid cell keeps its column; from 1024px the block inside is
+           positioned against the page edge (see .footer-brand) so it can sit under
+           the navbar logo without moving the four link columns. -->
       <div class="lg:col-span-1">
-        <a href="/" class="inline-flex items-center gap-2 mb-6" aria-label="Blackstone Islamic Global — Home">
-          <!-- The wordmark is a JPEG with an opaque black background; `screen`
-               blending drops that black into the ink footer so no rectangle
-               edge shows, while the silver lettering stays intact. -->
-          <img
-            src="/images/big-logo.jpg"
-            alt="Blackstone Islamic Global"
-            width="1600"
-            height="533"
-            class="footer-logo block w-auto h-16 max-w-full"
-            loading="lazy"
-          />
-        </a>
-        <p class="font-sans text-sm text-white/60 leading-relaxed max-w-[180px]">
-          Blackstone Islamic Global<br/>Shariah-compliant brokerage &amp; wealth management.
-        </p>
+        <div class="footer-brand">
+          <a href="/" class="inline-flex items-center gap-2 mb-6" aria-label="Blackstone Islamic Global — Home">
+            <!-- The wordmark is a JPEG with an opaque black background; `screen`
+                 blending drops that black into the ink footer so no rectangle
+                 edge shows, while the silver lettering stays intact. -->
+            <img
+              src="/images/big-logo.jpg"
+              alt="Blackstone Islamic Global"
+              width="1600"
+              height="533"
+              class="footer-logo block"
+              loading="lazy"
+            />
+          </a>
+          <p class="footer-tagline font-sans text-sm text-white/60 leading-relaxed">
+            Blackstone Islamic Global<br/>Shariah enabled brokerage &amp; wealth management.
+          </p>
+        </div>
       </div>
 
       <!-- What We Do -->
@@ -36,17 +40,6 @@
           <li><a href="/what-we-do/asset-management" class="footer-link">Asset Management</a></li>
           <li><a href="/what-we-do/private-wealth" class="footer-link">Private Wealth</a></li>
           <li><a href="/what-we-do/specialized-services" class="footer-link">Specialized Services</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div>
-        <p class="label text-white/50 mb-5">Resources</p>
-        <ul class="space-y-3">
-          <li><a href="/login" class="footer-link">Client Login</a></li>
-          <li><a href="#" class="footer-link">Pressroom</a></li>
-          <li><a href="#" class="footer-link">Onboarding</a></li>
-          <li><a href="/contact" class="footer-link">Contact</a></li>
         </ul>
       </div>
 
@@ -102,9 +95,9 @@
         © 2026 Blackstone Islamic Global. All rights reserved.
       </p>
       <nav class="flex items-center gap-6 flex-wrap justify-center" aria-label="Legal navigation">
-        <a href="#" class="footer-legal-link">Privacy &amp; Cookies</a>
-        <a href="#" class="footer-legal-link">Terms &amp; Conditions</a>
-        <a href="#" class="footer-legal-link">Regulatory Disclosures</a>
+        <a href="/privacy-cookies" class="footer-legal-link">Privacy &amp; Cookies</a>
+        <a href="/sitemap" class="footer-legal-link">Sitemap</a>
+        <a href="/regulatory-disclosures" class="footer-legal-link">Regulatory Disclosures</a>
       </nav>
     </div>
   </div>
@@ -115,6 +108,57 @@
      black so no rectangle edge shows behind the wordmark. */
   .footer-logo {
     mix-blend-mode: screen;
+    width: var(--footer-logo-w);
+    height: auto;
+    /* Viewport-based cap (not 100%): its parent link shrink-wraps to the logo, so a
+       percentage here would be circular and shave the logo by its own inset. */
+    max-width: calc(100vw - 2 * var(--nav-pad-x));
+    /* The JPEG carries ~4.84% of black margin on each side, so its visible
+       lettering starts inside the box. Pull the box left by that inset so the
+       VISIBLE edge lands where the block's content starts. */
+    margin-left: calc(-0.0484 * var(--footer-logo-w));
+  }
+
+  /* ── Brand block alignment ────────────────────────────────────────────
+     Goal: footer logo's visible left edge === tagline's left edge === the
+     navbar logo's visible left edge. The navbar logo box starts at
+     --nav-pad-x and its own visible lettering is 4.84% of its width further in
+     (156px wide from 900px up, 120px below), so the block's content starts at
+     --nav-pad-x + 0.0484 * that width. */
+  .footer-brand {
+    --nav-logo-w: 120px;
+    --footer-logo-w: 200px;                    /* phones */
+    padding-left: calc(0.0484 * var(--nav-logo-w));
+    /* Below 1024px the block stays in the grid cell (container padding is 24px). */
+    margin-left: calc(var(--nav-pad-x) - 24px);
+  }
+  /* Tagline: 240px max, but always narrower than the logo above it. */
+  .footer-tagline {
+    max-width: min(240px, calc(var(--footer-logo-w) - 24px));
+  }
+  @media (min-width: 768px) {
+    .footer-brand { --footer-logo-w: 280px; }
+  }
+  @media (min-width: 900px) {
+    .footer-brand { --nav-logo-w: 156px; }
+  }
+  /* From 1024px the block is taken out of flow and hung from the page edge, in line
+     with the navbar logo. Its grid cell stays, so the link columns do not move.
+     `top` is left auto so it keeps its natural vertical position. */
+  @media (min-width: 1024px) {
+    .footer-brand {
+      position: absolute;
+      margin-left: 0;
+      left: var(--nav-pad-x);
+    }
+  }
+  /* The logo may not reach the "What We Do" column (starts at 0.2vw+46px below
+     1280px, 0.5vw-338px above it). 24px clear gap is kept to the visible edge. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .footer-brand { --footer-logo-w: calc(22vw - 28px); }
+  }
+  @media (min-width: 1280px) {
+    .footer-brand { --footer-logo-w: min(280px, calc(55vw - 453px)); }
   }
   .footer-link {
     @apply font-sans text-sm text-white/70 hover:text-white transition-colors;

@@ -1,0 +1,66 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import LegalBlocks from '../components/LegalBlocks.astro';
+import type { Block } from '../types/legal';
+
+const blocks: Block[] = [
+  { t: 'h2', x: `Part 1 – Risk Disclosure` },
+  { t: 'p', x: `Blackstone Islamic Global (‘BIG Pakistan’) and/or its executives act as authorised dealers and/or branch owners of one or more reputed PSX brokers (‘Brokers’).` },
+  { t: 'p', x: `Investing in securities involves risk. The value of investments may rise or fall, and investors may lose part or all of their invested capital. Past performance, historical market trends, forecasts, and projections are not reliable indicators of future results. No assurance is given that any investment will generate a profit, preserve capital, or achieve a particular return.` },
+  { t: 'p', x: `In dealership with the Brokers, BIG Pakistan facilitates securities brokerage and related services within the scope of the applicable licences and regulatory authorisations. BIG Pakistan does not provide investment advisory services, personalised investment recommendations, or discretionary portfolio management under these arrangements. Clients remain responsible for their own investment decisions and should independently assess the risks, merits, and suitability of any transaction in light of their financial circumstances, investment objectives, and risk tolerance.` },
+  { t: 'p', x: `Market prices may be affected by economic conditions, interest rates, inflation, political and geopolitical developments, regulatory changes, corporate performance, market sentiment, liquidity, and other factors. Orders may not be executed at anticipated prices and may be partially executed or delayed due to market conditions, trading suspensions, system interruptions, or other operational factors.` },
+  { t: 'p', x: `Market data, research, educational materials, news, and general market commentary made available by BIG Pakistan are provided for informational or educational purposes, as applicable. Such information should not be interpreted as a personalised investment recommendation or a guarantee of investment performance. Information may be incomplete, delayed, or subject to revision.` },
+  { t: 'p', x: `Where securities are described as Shariah-Compliant, their status may change in accordance with applicable screening criteria, changes in financial circumstances or business activities, or relevant Shariah assessments. Investors should independently consider the Shariah status of securities before making investment decisions.` },
+  { t: 'p', x: `Investors should carefully consider their financial circumstances, investment horizon, and risk tolerance and seek independent professional advice where appropriate before investing.` },
+  { t: 'p', x: `Nothing in this disclosure excludes or limits any obligation, liability, or client right that cannot lawfully be excluded or limited under applicable laws, regulations, or the rules of relevant regulatory authorities and exchanges.` },
+  { t: 'p', x: `By accessing this website or using BIG Pakistan and/or Broker services, you acknowledge that investments in securities involve risk and that investment outcomes are not guaranteed. This practice is consistence with others brokers and investment houses.` },
+
+  { t: 'h2', x: `Part 2 – Research Disclosure` },
+  { t: 'p', x: `All research reports are prepared by the Brokers, are for informational purposes only. They do not constitute, and are not intended to constitute, an offer or solicitation to purchase or sell any securities or other financial instruments. Neither the information contained in these research reports nor any subsequent information made available in relation to their subject matter shall form the basis of any contract.` },
+  { t: 'p', x: `The information and opinions contained in these reports have been compiled or derived from sources believed to be reliable and in good faith. However, no representation or warranty, express or implied, is made as to the accuracy, completeness, or correctness of such information. All information and opinions are subject to change without notice, and there is no obligation to update or maintain the currency of the information presented.` },
+  { t: 'p', x: `Although every care has been taken in preparing these research reports, no director, officer, employee, agent, or adviser accepts responsibility or liability for any direct, indirect, or consequential loss arising from the use of these reports or their contents, to the extent permitted by applicable law. Any liability that cannot lawfully be excluded remains unaffected.` },
+  { t: 'p', x: `Past performance is not indicative of future results. The investments and strategies discussed in these reports may not be suitable for all investors, and certain investors may not be eligible to purchase or participate in some or all of them. Investors should make their own investment decisions, taking into account their individual financial circumstances and investment objectives, and should seek independent professional advice where appropriate.` },
+  { t: 'p', x: `These reports are provided to specific persons as permitted by applicable law and may not be reproduced, distributed, or circulated to any other person without prior written consent from the relevant rights holder. Unauthorised use, disclosure, or distribution of these research reports is prohibited.` },
+  { t: 'p', x: `Members of BIG Pakistan and/or their respective directors, officers, and employees may, from time to time, hold positions in or conduct transactions involving the securities or financial instruments referred to in these reports. They may also act as advisers, placement agents, or lenders; make markets in such securities or financial instruments; have acted as managers or co-managers of public offerings; or provide investment banking or other services to companies mentioned in these reports.` },
+  { t: 'p', x: `Investing in Pakistan involves a high degree of risk. Certain individuals and legal entities may be restricted from participating in Pakistan's securities markets. Investors should conduct their own due diligence and ensure that they are legally eligible to invest before undertaking any transaction.` },
+
+  { t: 'h3', x: `Analyst Certification` },
+  { t: 'p', x: `The research analyst(s) principally responsible for preparing each report certify that the views expressed therein accurately reflect their independent opinions regarding the securities, issuers, or sectors discussed. They further certify that no part of their compensation has been, is, or will be directly or indirectly related to the specific recommendations or views expressed in the report.` },
+  { t: 'p', x: `Each report is prepared independently of any issuer of securities mentioned therein and is not prepared in connection with any proposed offering of securities. The information contained in each report is believed to be accurate as of its publication date but is subject to change without notice.` },
+  { t: 'p', x: `BIG Pakistan and its related parties accept no liability for any loss or damage arising from the use of these reports or their contents, to the extent permitted by applicable law.` },
+
+  { t: 'h3', x: `Valuation Methodology` },
+  { t: 'p', x: `BIG Pakistan and its business concerns use the following valuation methodologies, as appropriate, to determine target prices for the relevant reporting period:` },
+  { t: 'ul', x: [
+    `Discounted Cash Flow (DCF)`,
+    `Dividend Discount Model (DDM)`,
+    `Sum-of-the-Parts (SOTP) Valuation`,
+    `Asset-Based Valuation`,
+    `Technical Analysis`,
+  ] },
+  { t: 'p', x: `The selection of a valuation methodology depends on the company's business profile, financial structure, and industry dynamics. Valuations are based on publicly available information and reflect the independent judgment of the research analysts, subject to the assumptions, estimates, and limitations inherent in each methodology.` },
+
+  { t: 'h3', x: `Recommendation Definitions` },
+  { t: 'p', x: `Recommendations are based on the expected return relative to the applicable target price and prevailing market price, subject to the assumptions and risks outlined in the relevant research report.` },
+  { t: 'ul', x: [
+    `BUY: Expected return of 15% or more.`,
+    `HOLD: Expected return of 0% or more but less than 15%.`,
+    `SELL: Expected return below 0%.`,
+  ] },
+  { t: 'p', x: `These definitions should be read alongside the investment horizon, risk factors, and other relevant assumptions stated in each research report. Tactical Investment Calls may also be announced, which to be explained at the point in time.` },
+
+  { t: 'h2', x: `Part 3 – Research Dissemination Policy` },
+  { t: 'p', x: `In accordance with applicable industry standards and regulatory requirements, research reports are disseminated to eligible clients in a fair, timely, and equitable manner. Research may be distributed through various channels, including email, the company website, other approved digital platforms, and physical distribution where required.` },
+  { t: 'p', x: `BIG Pakistan and its business concerns strives to provide simultaneous access to research materials to all entitled clients. However, technical or logistical limitations may occasionally result in differences in the timing of delivery or receipt.` },
+  { t: 'p', x: `All research dissemination is conducted in accordance with applicable regulatory requirements and internal compliance policies, with the objective of promoting transparency, fairness, and the equitable treatment of eligible clients.` },
+  { t: 'p', x: `Should you wish to know, please do not hesitate to contact BIG Pakistan and/or its business concerns.` },
+];
+---
+
+<LegalLayout
+  title="Regulatory Disclosures | Blackstone Islamic Global"
+  description="Risk, research and research-dissemination disclosures for Blackstone Islamic Global (BIG Pakistan) and its PSX broker arrangements."
+  heading="Regulatory Disclosures"
+>
+  <LegalBlocks blocks={blocks} />
+</LegalLayout>

@@ -15,10 +15,18 @@
   --mist:     #F3F5EE;
   --stone:    #6B7280;
   --line:     #E5E7EB;
+  /* Paragraph text in page content (not header/footer/dark bands). */
+  --body-text: #000000;
+  /* Left padding of the navbar row (Navbar.astro: px-6, then pl-10 from 900px).
+     The footer brand block uses it to line up with the navbar logo. Keep in sync. */
+  --nav-pad-x: 24px;
   /* 80px gives the metallic wordmark room to read clearly — at the old 64px the
      logo was capped at ~34px and the "ISLAMIC GLOBAL" line was barely legible.
      Anchors and hero heights derive from this, so they follow automatically. */
   --header-h: 80px;
+}
+@media (min-width: 900px) {
+  :root { --nav-pad-x: 40px; }
 }
 
 /* ── Navbar: black bar, white marks (site-wide) ───────────────────────────
@@ -175,6 +183,124 @@ section.bg-ink .absolute.bg-acid { background-color: #FFFFFF; }
   /* Section container */
   .container-big {
     @apply max-w-content mx-auto px-6 lg:px-16;
+  }
+
+  /* ── Shared hero text block ─────────────────────────────────────────────
+     Single source of truth for the hero copy (heading, subheading, CTA) on the
+     home hero and the PSX & Global Markets hero. Values are the PSX hero's.
+     Markup: <div class="container-big hero-gutter ..."><div class="hero-content">
+               <h1/> <p/> <Button/> </div></div> */
+  /* Trim the shared container gutter (px-6 / lg:px-16) for the hero only. */
+  .hero-gutter {
+    padding-left: 8px;
+  }
+  @media (min-width: 1024px) {
+    .hero-gutter { padding-left: 24px; }
+  }
+
+  .hero-content {
+    max-width: 48rem;
+  }
+  .hero-content h1,
+  .hero-content p {
+    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
+  }
+
+  /* Heading: one line from 768px up (offset 2.1em keeps it low in the hero). */
+  .hero-content h1 {
+    @apply font-serif text-white font-normal;
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    line-height: 1.05;
+    margin-top: 2.1em;
+    margin-bottom: 1.5rem;
+    max-width: none;
+    white-space: nowrap;
+  }
+  /* Below 768px one line would need unreadable type, so it wraps instead. */
+  @media (max-width: 767px) {
+    .hero-content h1 {
+      white-space: normal;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+  }
+  @media (max-width: 640px) {
+    .hero-content h1 { margin-top: 0; }
+  }
+
+  .hero-content p {
+    @apply font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl;
+  }
+
+  /* Hero subheading (every hero): justified with a left-aligned last line. Colour
+     is left to the classes above (white); the page-content black rule is per-class
+     and never reaches the hero. The eyebrow and locations lines are excluded. */
+  .hero-content p:not(.hero-eyebrow):not(.hero-locations),
+  .hero-copy p:not(.hero-eyebrow) {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+  @media (max-width: 767px) {
+    .hero-content p:not(.hero-eyebrow):not(.hero-locations),
+    .hero-copy p:not(.hero-eyebrow) {
+      text-align: left;
+      hyphens: manual;
+    }
+  }
+
+  /* Optional lines around the heading. Not used by every hero. */
+  /* Eyebrow above the heading: replaces the heading's 2.1em offset with a small gap. */
+  .hero-content p.hero-eyebrow,
+  .hero-copy p.hero-eyebrow {
+    @apply font-serif text-white uppercase;
+    font-size: 1rem;
+    line-height: 1.2;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+    max-width: none;
+  }
+  .hero-content p.hero-eyebrow + h1,
+  .hero-copy p.hero-eyebrow + h1 { margin-top: 0; }
+  /* Locations line between the subheading and the button. */
+  .hero-content p.hero-locations {
+    @apply text-white;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Body paragraphs in <main>: justified, even right edge ───────────────
+     No colour here (colour is set per paragraph class). Header and footer are
+     outside <main>. Needs <html lang="en"> for hyphens (BaseLayout sets it). */
+  main p:not(.no-justify) {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+  }
+  /* Opt-outs: justify opens gaps in short lines, so these stay left-aligned.
+     Use .no-justify on any other paragraph that needs it. */
+  main p.no-justify,
+  main p.label,                                            /* eyebrows and labels */
+  main p.hero-eyebrow, main p.hero-locations,              /* hero extra lines */
+  main .text-center p,                                     /* centered blocks (login) */
+  main p.firm-eyebrow, main p.firm-eyebrow-sm,             /* About eyebrows */
+  main p.firm-statement, main p.firm-quote-text,           /* About statement + quote */
+  main p.firm-value-body,                                  /* About values grid */
+  main p.firm-card-body,                                   /* About carousel cards */
+  main p.firm-person-name, main p.firm-person-title,       /* About leadership */
+  main p.firm-pdflink-wrap,                                 /* About PDF link line */
+  main p.svc-card-para {                                   /* PSX service cards */
+    text-align: left;
+    text-align-last: auto;
+    hyphens: manual;
+  }
+  @media (max-width: 767px) {
+    main p:not(.no-justify) {
+      text-align: left;
+      hyphens: manual;
+    }
   }
 
   /* Hairline divider */

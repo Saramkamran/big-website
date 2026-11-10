@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
-import GeometricPattern from '../components/illustrations/GeometricPattern.astro';
+import ContactCTA from '../components/ContactCTA.astro';
 
 const sent = Astro.url.searchParams.get('sent') === 'true';
 const errorType = Astro.url.searchParams.get('error');
@@ -41,9 +41,9 @@ const services = [
 
 <BaseLayout
   title="Contact | Blackstone Islamic Global"
-  description="Get in touch with Blackstone Islamic Global. Our team is ready to assist with your Shariah-compliant investment enquiries."
+  description="Get in touch with Blackstone Islamic Global. Our team is ready to assist with your Shariah enabled investment enquiries."
 >
-  <section class="py-section bg-paper border-b border-line">
+  <section class="py-section bg-paper">
     <div class="container-big">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
         <!-- Left: intro -->
@@ -53,35 +53,38 @@ const services = [
               <path id="contact-star8" d="M12 2 L13.91 7.38 L19.07 4.93 L16.62 10.09 L22 12 L16.62 13.91 L19.07 19.07 L13.91 16.62 L12 22 L10.09 16.62 L4.93 19.07 L7.38 13.91 L2 12 L7.38 10.09 L4.93 4.93 L10.09 7.38 Z" />
             </defs>
           </svg>
-          <p class="label mb-4">Contact</p>
+          <p class="no-justify label text-copy mb-4">Contact</p>
           <h1 class="font-serif font-normal text-ink mb-6" style="font-size: clamp(28px, 3.5vw, 48px); line-height: 1.1;">
             How Can We Help?
           </h1>
-          <p class="font-sans text-base text-stone leading-relaxed mb-10">
-            Whether you are a first-time investor or a sophisticated institution, our team is here to understand your needs and guide you to the right Shariah-compliant solution.
+          <p class="no-justify font-sans text-base text-copy leading-relaxed mb-10">
+            Whether you are a first-time investor or a sophisticated institution, our team is here to understand your needs and guide you to the right Shariah enabled solution.
           </p>
 
-          <!-- Office / contact placeholders -->
+          <!-- Contact details -->
           <div class="font-sans text-sm text-stone border-t border-line divide-y divide-line">
             <div class="py-5">
-              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>Registered Office</p>
-              <p class="pl-5">[Office address: placeholder pending client confirmation]</p>
+              <p class="no-justify font-semibold text-copy mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>Email</p>
+              <p class="no-justify pl-5 text-copy"><a href="mailto:info@biglobal.pk" class="text-copy underline hover:text-stone">info@biglobal.pk</a></p>
             </div>
             <div class="py-5">
-              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>Email</p>
-              <p class="pl-5">[info@blackstoneislamicglobal.com, placeholder]</p>
+              <p class="no-justify font-semibold text-copy mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>Phone</p>
+              <p class="no-justify pl-5 text-copy"><a href="tel:+923157861849" class="text-copy underline hover:text-stone">+92 315 786 1849</a></p>
             </div>
             <div class="py-5">
-              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>Phone</p>
-              <p class="pl-5">[+92 XXX XXXXXXX, placeholder]</p>
-            </div>
-            <div class="py-5">
-              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>WhatsApp: Blackstone Intel</p>
-              <p class="pl-5"><a href="#" class="underline hover:text-ink">Join Channel (link placeholder)</a></p>
-            </div>
-            <div class="py-5">
-              <p class="font-semibold text-ink mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>WhatsApp: Blackstone Intel</p>
-              <p class="pl-5"><a href="#" class="underline hover:text-ink">Contact Client Care for access</a></p>
+              <p class="no-justify font-semibold text-copy mb-1 flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-3 h-3 shrink-0 fill-current" aria-hidden="true" focusable="false"><use href="#contact-star8" /></svg>WhatsApp: Blackstone Intel</p>
+              <p class="no-justify pl-5 text-copy"><a href="https://wa.me/message/XME45L4Z5SOKF1" target="_blank" rel="noopener noreferrer" class="text-copy underline hover:text-stone">Join Channel</a></p>
+              <div class="pl-5">
+                <a href="https://wa.me/message/XME45L4Z5SOKF1" target="_blank" rel="noopener noreferrer" class="block" style="width: 160px;">
+                  <img
+                    src="/images/whatsapp-qr.jpg"
+                    alt="QR code to join the Blackstone Intel WhatsApp channel"
+                    width="340" height="340"
+                    loading="lazy"
+                    style="display: block; width: 160px; height: auto; margin-top: 16px; background: #fff; border: 1px solid rgba(0,0,0,.15); border-radius: 0; box-shadow: none;"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -91,7 +94,7 @@ const services = [
           {sent ? (
             <div class="bg-mist border-l-4 border-acid px-8 py-10">
               <h2 class="font-serif font-normal text-ink text-2xl mb-3">Thank you for reaching out.</h2>
-              <p class="font-sans text-base text-stone leading-relaxed">
+              <p class="no-justify font-sans text-base text-copy leading-relaxed">
                 A member of our team will be in touch shortly. We look forward to exploring how BIG can serve your investment needs.
               </p>
             </div>
@@ -103,7 +106,7 @@ const services = [
             >
               {errorMessage && (
                 <div class="bg-red-50 border-l-4 border-red-500 px-5 py-4">
-                  <p class="font-sans text-sm text-red-800">{errorMessage}</p>
+                  <p class="no-justify font-sans text-sm text-red-800">{errorMessage}</p>
                 </div>
               )}
 
@@ -213,17 +216,21 @@ const services = [
     </div>
   </section>
 
-  <!-- Map placeholder -->
-  <section class="relative overflow-hidden h-64 bg-mist border-t border-line">
-    <GeometricPattern motif="girih" class="absolute inset-0 w-full h-full text-ink opacity-[0.06]" />
-    <div class="relative z-10 h-full flex flex-col items-center justify-center gap-4">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-ink" aria-hidden="true" focusable="false">
-        <path d="M12 2 L13.91 7.38 L19.07 4.93 L16.62 10.09 L22 12 L16.62 13.91 L19.07 19.07 L13.91 16.62 L12 22 L10.09 16.62 L4.93 19.07 L7.38 13.91 L2 12 L7.38 10.09 L4.93 4.93 L10.09 7.38 Z" class="fill-acid" />
-        <circle cx="12" cy="12" r="2.5" fill="currentColor" />
-      </svg>
-      <p class="font-sans text-sm text-stone italic">
-        [Map placeholder: office location to be confirmed]
-      </p>
-    </div>
-  </section>
+  <!-- Blackstone Intel: the same split band as "Speak with Our Team" on the About page. -->
+  <ContactCTA
+    id="blackstone-intel"
+    headline="Blackstone Intel"
+    largeHeading
+    paragraphs={[
+      { text: 'We operate our dedicated WhatsApp channel, Blackstone Intel, to promote financial literacy and intelligent investing in capital markets. We coach and mentor aspiring investors better understand risk and rewards, and make informed decisions.' },
+      { text: 'Join it for free and learn before earn', medium: true },
+    ]}
+    ctaLabel="+92 315 786 1849"
+    ctaHref="https://wa.me/message/XME45L4Z5SOKF1"
+    ctaExternal
+    ctaAriaLabel="Chat with Blackstone Intel on WhatsApp"
+    image="/images/speaker.jpg"
+    imageAlt="Blue smart speaker with a glowing light ring reflected on a glossy surface"
+    imagePosition="50% 34%"
+  />
 </BaseLayout>

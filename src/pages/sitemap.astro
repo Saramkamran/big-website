@@ -1,0 +1,68 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+
+/* HTML sitemap. Links are checked against the pages that really exist (so a removed
+   page drops out automatically). Labels follow the navbar; the grouping follows the
+   navbar's What We Do menu. */
+const files = Object.keys(import.meta.glob('/src/pages/**/*.{astro,md,mdx}'));
+const routes = new Set(
+  files.map((f) => f.replace('/src/pages', '').replace(/\.(astro|md|mdx)$/, '').replace(/\/index$/, '') || '/')
+);
+
+const groups = [
+  { title: 'Main', links: [
+    { label: 'Home', href: '/' },
+    { label: 'Our Firm', href: '/about' },
+    { label: 'Contact', href: '/contact' },
+  ] },
+  { title: 'What We Do', links: [
+    { label: 'PSX & Global Markets', href: '/what-we-do/psx-global-markets' },
+    { label: 'Asset Management', href: '/what-we-do/asset-management' },
+    { label: 'Private Wealth Management', href: '/what-we-do/private-wealth' },
+    { label: 'Specialized Services', href: '/what-we-do/specialized-services' },
+  ] },
+  { title: 'Client', links: [
+    { label: 'Client Login', href: '/login' },
+  ] },
+  { title: 'Legal', links: [
+    { label: 'Privacy & Cookies', href: '/privacy-cookies' },
+    { label: 'Regulatory Disclosures', href: '/regulatory-disclosures' },
+  ] },
+]
+  .map((g) => ({ ...g, links: g.links.filter((l) => routes.has(l.href)) }))
+  .filter((g) => g.links.length);
+---
+
+<LegalLayout
+  title="Sitemap | Blackstone Islamic Global"
+  description="A list of every page on the Blackstone Islamic Global website."
+  heading="Sitemap"
+  updated={false}
+  wide
+>
+  <div class="sitemap-grid">
+    {groups.map((g) => (
+      <section class="sitemap-group">
+        <h2>{g.title}</h2>
+        <ul>
+          {g.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </section>
+    ))}
+  </div>
+</LegalLayout>
+
+<style is:global>
+  .sitemap-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 48px;
+  }
+  @media (min-width: 768px)  { .sitemap-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) { .sitemap-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .sitemap-group { margin-bottom: 48px; }
+  .sitemap-group h2 { margin-top: 0 !important; }
+  .sitemap-group ul { list-style: none; padding-left: 0; }
+  .sitemap-group a { text-decoration: none; }
+  .sitemap-group a:hover { text-decoration: underline; }
+</style>

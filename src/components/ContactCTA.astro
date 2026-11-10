@@ -1,9 +1,28 @@
 ---
+interface Paragraph {
+  text: string;
+  /* Medium weight (500) for a closing line. */
+  medium?: boolean;
+}
+
 interface Props {
   headline?: string;
   subtext?: string;
   image?: string;
   imageAlt?: string;
+  /* Optional extras (the defaults reproduce the original band exactly): */
+  id?: string;
+  /* Several paragraphs instead of one `subtext`; they are left-aligned, never justified. */
+  paragraphs?: Paragraph[];
+  ctaLabel?: string;
+  ctaHref?: string;
+  /* Open the button in a new tab (adds target="_blank" rel="noopener noreferrer"). */
+  ctaExternal?: boolean;
+  ctaAriaLabel?: string;
+  /* object-position for the photo, e.g. "50% 45%". Default keeps the original 50% 37%. */
+  imagePosition?: string;
+  /* The larger heading scale the About page applies to this band. */
+  largeHeading?: boolean;
 }
 
 const {
@@ -11,10 +30,22 @@ const {
   subtext = 'Contact Blackstone Islamic Global for a detailed discussion of your needs.',
   image = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
   imageAlt = 'BIG financial advisor in client consultation',
+  id,
+  paragraphs,
+  ctaLabel = 'Contact Us',
+  ctaHref = '/contact',
+  ctaExternal = false,
+  ctaAriaLabel,
+  imagePosition,
+  largeHeading = false,
 } = Astro.props;
+
+const headingStyle = largeHeading
+  ? 'font-size: clamp(32px, 5vw, 60px); line-height: 1.02;'
+  : 'font-size: clamp(26px, 3vw, 40px); line-height: 1.15;';
 ---
 
-<section class="border-t border-line">
+<section id={id} class="border-t border-line">
   <div class="grid grid-cols-1 lg:grid-cols-2" style="min-height: 420px;">
 
     <!-- Left: mist panel -->
@@ -22,28 +53,48 @@ const {
       <div class="max-w-md">
         <h2
           class="font-serif font-normal text-ink mb-5"
-          style="font-size: clamp(26px, 3vw, 40px); line-height: 1.15;"
+          style={headingStyle}
         >
           {headline}
         </h2>
-        <p class="font-sans text-base text-stone leading-relaxed mb-8">
-          {subtext}
-        </p>
+        {paragraphs ? (
+          paragraphs.map((p, i) => (
+            <p
+              class:list={[
+                'no-justify font-sans text-base text-copy leading-relaxed text-left [hyphens:manual] [text-wrap:pretty]',
+                i === paragraphs.length - 1 ? 'mb-8' : 'mb-4',
+                p.medium && 'font-medium',
+              ]}
+            >
+              {p.text}
+            </p>
+          ))
+        ) : (
+          <p class="font-sans text-base text-copy leading-relaxed mb-8">
+            {subtext}
+          </p>
+        )}
         <a
-          href="/contact"
+          href={ctaHref}
+          target={ctaExternal ? '_blank' : undefined}
+          rel={ctaExternal ? 'noopener noreferrer' : undefined}
+          aria-label={ctaAriaLabel}
           class="inline-block bg-ink text-white font-sans text-sm font-semibold px-7 py-3 hover:bg-stone transition-colors"
         >
-          Contact Us
+          {ctaLabel}
         </a>
       </div>
     </div>
 
     <!-- Right: photo -->
-    <div class="overflow-hidden bg-stone/10 min-h-[280px] lg:min-h-0 order-1 lg:order-2">
+    <!-- The photo is absolutely positioned so its own aspect never sets the box height;
+         the box keeps the 3:2 shape the old landscape photo gave it (min 280px on phones). -->
+    <div class="relative overflow-hidden bg-stone/10 h-[max(280px,66.667vw)] min-h-[280px] lg:h-auto lg:min-h-[max(420px,33.333vw)] order-1 lg:order-2">
       <img
         src={image}
         alt={imageAlt}
-        class="w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-cover object-[50%_37%]"
+        style={imagePosition ? `object-position: ${imagePosition};` : undefined}
         loading="lazy"
       />
     </div>

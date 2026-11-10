@@ -2,32 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import StatBand from '../components/StatBand.astro';
-import NewsletterBand from '../components/NewsletterBand.astro';
 import Button from '../components/Button.astro';
-import ContactCTA from '../components/ContactCTA.astro';
-
-
-
-const firmInAction = [
-  {
-    category: 'AWARDS & RECOGNITION',
-    title: 'BIG Recognised as Top Shariah-Compliant Brokerage in Pakistan',
-    image: 'https://images.unsplash.com/photo-1573164574511-73c773193279?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'Blackstone Islamic Global has been honoured for its commitment to Shariah-compliant investing and client excellence.',
-  },
-  {
-    category: 'DEAL SPOTLIGHT',
-    title: 'Advising on Pakistan\'s First Sovereign Green Sukuk Issuance',
-    image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'BIG advised on a landmark Rs 25B sovereign green sukuk transaction, channelling capital into renewable energy.',
-  },
-  {
-    category: 'AWARDS & RECOGNITION',
-    title: 'ACCA & ICAP Employer Accreditation Renewed for 2026',
-    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
-    excerpt: 'BIG maintains its prestigious ACCA and ICAP employer accreditations, reflecting our investment in professional talent.',
-  },
-];
 ---
 
 <BaseLayout>
@@ -38,7 +13,7 @@ const firmInAction = [
   <!-- ── What We Do header ─────────────────────────────────────────────── -->
   <section id="what-we-do" class="py-16 lg:py-20 bg-paper border-t border-line">
     <div class="container-big">
-      <p class="label mb-4">What We Do</p>
+      <p class="label text-copy mb-4">What We Do</p>
       <h2
         class="font-serif font-normal text-ink"
         style="font-size: clamp(32px, 4vw, 52px); line-height: 1.1; max-width: 640px;"
@@ -63,15 +38,19 @@ const firmInAction = [
       <!-- Text -->
       <div class="bg-paper flex items-center px-8 py-16 lg:px-14 xl:px-20">
         <div class="max-w-xl w-full">
-          <p class="label mb-4">PSX &amp; Global Markets</p>
+          <p class="label text-copy mb-4">PSX &amp; Global Markets</p>
+          <!-- Same serif/weight/tracking as the hero h1, scaled for a half-width column.
+               Each phrase is nowrap so the heading breaks only between phrases, and the
+               &nbsp; keeps every "|" attached to the phrase before it (never starts a line).
+               40px cap: at 44px the 576px column needs three lines. -->
           <h2
-            class="font-serif font-normal text-ink mb-5"
-            style="font-size: clamp(24px, 2.8vw, 38px); line-height: 1.15;"
+            class="pillar-h2 font-serif font-normal text-copy mb-5"
+            style="line-height: 1.15;"
           >
-            Halal Capital.<br/>Disciplined Research.<br/>Global Markets.
+            <span class="whitespace-nowrap">Tailored Strategy&nbsp;|</span> <span class="whitespace-nowrap">Smart Execution&nbsp;|</span> <span class="whitespace-nowrap">Timely Exist</span>
           </h2>
-          <p class="font-sans text-sm text-stone leading-relaxed mb-7">
-            Our Shariah-compliant boutique equities business combines disciplined investment research, rigorous Islamic screening, and deep market expertise to deliver tailored halal investment solutions for institutional and individual investors.
+          <p class="font-sans text-sm text-copy leading-relaxed mb-7">
+            Our equities business combines niche research, rigorous analysis, and deep market expertise to deliver tailored, timely and independent investment solutions for our distinguished investors.
           </p>
           <ul class="mb-8 space-y-2.5">
             {['Shariah Equities', 'Portfolio Consultancy', 'Portfolio Supervision', 'Sukuks and Green Sukuks', 'Transaction Services', 'Blackstone Intel'].map(s => (
@@ -98,15 +77,19 @@ const firmInAction = [
       <!-- Text (shows below image on mobile, left on desktop) -->
       <div class="bg-mist flex items-center px-8 py-16 lg:px-14 xl:px-20 order-2 lg:order-1">
         <div class="max-w-xl w-full">
-          <p class="label mb-4">Asset Management</p>
+          <p class="label text-copy mb-4">Asset Management</p>
+          <!-- Shared .pillar-h2 (same as PSX); single line from 1200px, wraps between phrases below. -->
           <h2
-            class="font-serif font-normal text-ink mb-5"
-            style="font-size: clamp(24px, 2.8vw, 38px); line-height: 1.15;"
+            class="pillar-h2 pillar-h2--wrap-1200 pillar-h2--am font-serif font-normal text-copy mb-5"
+            style="line-height: 1.15;"
           >
-            Shariah-Screened.<br/>Professionally Managed.<br/>Built for Growth.
+            <span class="whitespace-nowrap">Shariah Screened&nbsp;|</span> <span class="whitespace-nowrap">Professionally Managed&nbsp;|</span> <span class="whitespace-nowrap">Growth Focused</span>
           </h2>
-          <p class="font-sans text-sm text-stone leading-relaxed mb-7">
-            Our comprehensive suite of asset-management solutions across fixed income, equity, and multi-asset strategies is designed to navigate market challenges and deliver returns aligned with your expectations, always within the bounds of Islamic finance.
+          <p class="font-sans text-sm text-copy leading-relaxed mb-7">
+            Our comprehensive suite of asset management solutions across fixed income, equities, and multi-asset classes is built around proprietary strategies designed to navigate market cycles and pursue realistic returns.
+          </p>
+          <p class="font-sans text-sm text-copy leading-relaxed mb-7 -mt-4">
+            Competitively, we take pride in being solution providers, not salespeople; and put clients’ interest first.
           </p>
           <ul class="mb-8 space-y-2.5">
             {['Shariah Fixed Income Funds', 'Shariah Equity Funds', 'Shariah ETF', 'Shariah Multi-Asset Funds', 'Shariah Pensions'].map(s => (
@@ -125,11 +108,13 @@ const firmInAction = [
         </div>
       </div>
       <!-- Full-bleed image -->
-      <div class="overflow-hidden min-h-[280px] lg:min-h-0 order-1 lg:order-2">
+      <!-- The photo is portrait, so it is absolutely positioned: it must not set the
+           box height (the text column on desktop; a 16:9 shape, min 280px, on mobile). -->
+      <div class="relative h-[max(280px,56.25vw)] lg:h-auto overflow-hidden min-h-[280px] lg:min-h-0 order-1 lg:order-2">
         <img
-          src="https://images.unsplash.com/photo-1773503877076-cc9caa3322ff?auto=format&fit=crop&w=1400&q=80"
-          alt="City at dusk, evoking long-term asset management"
-          class="w-full h-full object-cover"
+          src="/images/building-blue-sky.jpg"
+          alt="Modern glass skyscraper against a clear blue sky"
+          class="absolute inset-0 w-full h-full object-cover object-center"
           loading="lazy"
         />
       </div>
@@ -139,27 +124,30 @@ const firmInAction = [
   <!-- ── Pillar 3: Private Wealth — image left ─────────────────────────── -->
   <section id="private-wealth" class="border-t border-line">
     <div class="grid grid-cols-1 lg:grid-cols-2" style="min-height: 580px;">
-      <!-- Full-bleed image -->
-      <div class="overflow-hidden min-h-[280px] lg:min-h-0">
+      <!-- Full-bleed image. Absolutely positioned so the photo's own aspect never sets
+           the box height (the text column on desktop; on mobile 44.973vw = the old
+           1870x841 image's ratio, min 280px). -->
+      <div class="relative h-[max(280px,44.973vw)] lg:h-auto overflow-hidden min-h-[280px] lg:min-h-0">
         <img
-          src="/images/W-M-wide.png"
-          alt="Muslim family representing Private Wealth Management"
-          class="w-full h-full object-cover"
+          src="/images/plane.jpg"
+          alt="White private jet taxiing on an airport apron in front of a snow-covered, tree-lined mountain slope"
+          class="absolute inset-0 w-full h-full object-cover object-center"
           loading="lazy"
         />
       </div>
       <!-- Text -->
       <div class="bg-paper flex items-center px-8 py-16 lg:px-14 xl:px-20">
         <div class="max-w-xl w-full">
-          <p class="label mb-4">Private Wealth Management</p>
+          <p class="label text-copy mb-4">Private Wealth Management</p>
+          <!-- Shared .pillar-h2 (same as PSX); single line from 1200px, wraps between phrases below. -->
           <h2
-            class="font-serif font-normal text-ink mb-5"
-            style="font-size: clamp(24px, 2.8vw, 38px); line-height: 1.15;"
+            class="pillar-h2 pillar-h2--wrap-1200 font-serif font-normal text-copy mb-5"
+            style="line-height: 1.15;"
           >
-            Your Wealth.<br/>Your Legacy.<br/>Your Terms.
+            <span class="whitespace-nowrap">Your Wealth&nbsp;|</span> <span class="whitespace-nowrap">Your Legacy&nbsp;|</span> <span class="whitespace-nowrap">Your Terms</span>
           </h2>
-          <p class="font-sans text-sm text-stone leading-relaxed mb-7">
-            We take a highly personalised à la carte approach to understanding your wealth aspirations, financial commitments, and life goals, then designing bespoke solutions that preserve and grow wealth across generations.
+          <p class="font-sans text-sm text-copy leading-relaxed mb-7">
+            We steward your wealth towards lasting security and a satisfying legacy
           </p>
           <ul class="mb-8 space-y-2.5">
             {['Wealth Planning', 'Private Equity', 'Pakistan Energy', 'Real Estate'].map(s => (
@@ -186,15 +174,16 @@ const firmInAction = [
       <!-- Text -->
       <div class="bg-mist flex items-center px-8 py-16 lg:px-14 xl:px-20 order-2 lg:order-1">
         <div class="max-w-xl w-full">
-          <p class="label mb-4">Specialized Services</p>
+          <p class="label text-copy mb-4">Specialised Services</p>
+          <!-- Shared .pillar-h2 (same as PSX); single line from 1440px, wraps between phrases below. -->
           <h2
-            class="font-serif font-normal text-ink mb-5"
-            style="font-size: clamp(24px, 2.8vw, 38px); line-height: 1.15;"
+            class="pillar-h2 pillar-h2--wrap-1440 font-serif font-normal text-copy mb-5"
+            style="line-height: 1.15;"
           >
-            Distinctive Solutions<br/>for Complex Needs.
+            <span class="whitespace-nowrap">Personalised Investments&nbsp;|</span> <span class="whitespace-nowrap">Personalised Oversight&nbsp;|</span> <span class="whitespace-nowrap">Exceptional Returns</span>
           </h2>
-          <p class="font-sans text-sm text-stone leading-relaxed mb-7">
-            Our specialized advisory capabilities address the full breadth of sophisticated client requirements, from multi-generational family wealth oversight to cross-border M&amp;A mandates and equity capital markets transactions.
+          <p class="font-sans text-sm text-copy leading-relaxed mb-7">
+            Our yarning experience of specialised services is sagaciously crafted to go an extra mile in your perspicacity and stature
           </p>
           <ul class="mb-8 space-y-2.5">
             {['Basirah Family Office', 'Lifestyle Management', 'PR Campaign', 'Philanthropy and Zakat', 'M&A and Carve Out', 'Initial Public Offer', 'Professional Services'].map(s => (
@@ -212,56 +201,65 @@ const firmInAction = [
           </a>
         </div>
       </div>
-      <!-- Full-bleed image -->
-      <div class="overflow-hidden min-h-[280px] lg:min-h-0 order-1 lg:order-2">
+      <!-- Full-bleed image. Absolutely positioned so the photo's own aspect never sets
+           the box height (the text column on desktop; on mobile 66.714vw = the old
+           1400x934 image's ratio, min 280px). -->
+      <div class="relative h-[max(280px,66.714vw)] lg:h-auto overflow-hidden min-h-[280px] lg:min-h-0 order-1 lg:order-2">
         <img
-          src="https://images.unsplash.com/photo-1780907058575-050e066f6671?auto=format&fit=crop&w=1400&q=80"
-          alt="City skyline over water, suggesting specialized corporate advisory"
-          class="w-full h-full object-cover"
+          src="/images/car.jpg"
+          alt="Overhead view of a red and yellow Ferrari hypercar, number 51, in its pit box as crew in red helmets and suits service it during a race pit stop"
+          class="absolute inset-0 w-full h-full object-cover object-center"
           loading="lazy"
         />
       </div>
     </div>
   </section>
-
-  
-
-  <!-- ── The Firm in Action ─────────────────────────────────────────────── -->
-  <section class="py-section bg-mist border-t border-line">
-    <div class="container-big">
-      <p class="label mb-4">Stay Informed</p>
-      <h2
-        class="font-serif font-normal text-ink mb-12"
-        style="font-size: clamp(28px, 4vw, 48px); line-height: 1.1;"
-      >
-        The Firm in Action
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {firmInAction.map(item => (
-          <div>
-            <div class="overflow-hidden mb-5 bg-stone/10 aspect-[4/3]">
-              <img
-                src={item.image}
-                alt={item.title}
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <p class="label mb-3">{item.category}</p>
-            <h3
-              class="font-serif font-normal text-ink mb-3 leading-snug"
-              style="font-size: clamp(18px, 1.8vw, 22px);"
-            >
-              {item.title}
-            </h3>
-            <p class="font-sans text-sm text-stone leading-relaxed">{item.excerpt}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <ContactCTA />
-
-  <NewsletterBand />
 </BaseLayout>
+
+<style>
+  /* Shared heading for the pillar split sections (PSX & Global Markets, Private
+     Wealth): one line on desktop, wraps between phrases below the breakpoint
+     (each phrase is a nowrap span, "|" is tied with &nbsp;). */
+  /* The PSX line is ~20.3em wide and the text column is only 400px at 1024px and
+     576px at 1920px, so the floor/cap are 19px/28px (22px/32px overflowed). */
+  .pillar-h2 {
+    font-size: clamp(19px, 1.6vw, 28px);
+    white-space: nowrap;
+  }
+  @media (max-width: 1023px) {
+    .pillar-h2 {
+      font-size: clamp(24px, 5vw, 28px);
+      white-space: normal;
+    }
+  }
+  /* Modifier: this heading keeps its single line only from 1200px up. Must stay
+     after the base rules so it wins between 1024px and 1199px. */
+  @media (max-width: 1199px) {
+    .pillar-h2--wrap-1200 {
+      font-size: clamp(24px, 5vw, 28px);
+      white-space: normal;
+    }
+  }
+  /* Modifier for the Asset Management heading: its own size from 1200px up. The line
+     is ~24.9em wide; the column is 488px at 1200px, 560px at 1440px, 576px from ~1472px. */
+  @media (min-width: 1200px) {
+    .pillar-h2--am {
+      font-size: clamp(19px, 1.45vw, 22.5px);
+    }
+  }
+  /* Modifier for the longest heading (Specialized Services): single line only from
+     1440px up, at its own size so it fits the column; wraps between phrases below.
+     The line is ~28.9em wide and the column is 560px at 1440px / 576px from ~1472px,
+     so the cap is 19px (a 24px cap overflowed by 127px at 1920px). */
+  @media (min-width: 1440px) {
+    .pillar-h2--wrap-1440 {
+      font-size: clamp(18px, 1.25vw, 19px);
+    }
+  }
+  @media (max-width: 1439px) {
+    .pillar-h2--wrap-1440 {
+      font-size: clamp(24px, 4.5vw, 28px);
+      white-space: normal;
+    }
+  }
+</style>

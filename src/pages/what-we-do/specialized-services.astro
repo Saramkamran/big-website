@@ -17,8 +17,9 @@ const services = [
     id: 'lifestyle-management',
     eyebrow: '02 · Confidential',
     headingLines: ['Lifestyle Management'],
-    image: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Private aviation and lifestyle management services',
+    image: '/images/rolls.jpg',
+    imageAlt: 'Black and silver Rolls-Royce coupe parked on a Mayfair street in front of red-brick and stone townhouses with a red shop awning and festive floral display',
+    imagePosition: '85% 100%',
     body: `With confidentiality, we manage your family and business needs including private aviation, bill payments; and licensed security and chauffeur services anywhere in the world.`,
     cta: { label: 'Explore Lifestyle Management', href: '/contact' },
   },
@@ -40,7 +41,9 @@ const services = [
     imagePosition: '72% 18%',
     body: `We believe wealth is not all about financial prosperity but also a powerful force for positive socio-economic change. Our philanthropy and Zakat strategy helps you plan your giving through family trusts, foundations, waqfs, CSR initiatives, and other impact creating projects spanning healthcare, education, disaster relief, and community development.
 
-We help families create a lasting legacy with purposeful giving, while advising on tax efficient charitable offerings. Our Philanthropy and Zakat advisory is offered at reduced fee.`,
+We help families create a lasting legacy with purposeful giving, while advising on tax efficient charitable offerings.
+
+Our Philanthropy and Zakat advisory is offered at reduced fee.`,
     cta: { label: 'Explore Philanthropy and Zakat', href: '/contact' },
   },
   {
@@ -57,7 +60,7 @@ For your next strategic transaction, our specialists are ready to help you.`,
   {
     id: 'ipos',
     eyebrow: '06 · PSX & US',
-    headingLines: ['Initial Public Offer'],
+    headingLines: ['Pakistan and US IPO'],
     image: '/images/ss-initial-public-offer.jpg',
     imageAlt: 'A neon PUBLIC MARKET sign against open sky, signalling going public',
     body: `As Pakistan enters a new phase of economic upside, IPO interest is accelerating. Our specialists provide an end-to-end IPO consultancy, helping businesses prepare, execute, and grow through public listing at PSX.
@@ -89,11 +92,11 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style="background-image: url('https://images.unsplash.com/photo-1780907058575-050e066f6671?auto=format&fit=crop&w=2400&q=80');"
+        style="background-image: url('/images/car.jpg');"
       ></div>
       <div
         class="absolute inset-0"
-        style="background: linear-gradient(110deg, rgba(11,11,11,0.50) 0%, rgba(11,11,11,0.15) 52%, rgba(11,11,11,0.02) 100%);"
+        style="background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 65%), linear-gradient(110deg, rgba(11,11,11,0.65) 0%, rgba(11,11,11,0.30) 52%, rgba(11,11,11,0.17) 100%);"
       ></div>
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
@@ -106,17 +109,17 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
         <!-- ss-hero-h1 is a page-only override: at 71 characters this is the
              longest headline on the site, so it takes the smallest clamp to
              hold one line. The shared hero-h1 class is left untouched. -->
+        <p class="hero-eyebrow">Specialised Services</p>
         <h1 class="hero-h1 ss-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
-          Personalised Investments | Personalised Oversight | Exceptional Returns
+          Personalised Investments&nbsp;| Personalised Oversight&nbsp;| Exceptional Returns
         </h1>
+        <p class="ss-hero-p font-sans text-white/80 text-lg leading-relaxed mb-8">
+          Our yarning experience of specialised services is sagaciously crafted to go an extra mile in your perspicacity and stature
+        </p>
         <Button variant="acid" href="#family-office">Explore What We Do</Button>
       </div>
     </div>
 
-    <div class="absolute bottom-8 right-16 hidden lg:flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
-      <span class="font-sans text-xs text-white tracking-widest uppercase">Scroll</span>
-      <div class="w-px h-12 bg-white/60"></div>
-    </div>
   </section>
 
 
@@ -137,25 +140,56 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
     .hero-h1 { margin-top: 0; }
   }
 
-  /* 71 characters — the longest headline on the site. With the copy column's
-     max-w-3xl cap removed it has the full container width (~1128px), which
-     supports ~32px on a single line. The 2.5vw track keeps it filling the
-     space as the viewport narrows. */
+  /* 71 characters, the longest headline on the site. One line from 1600px; below
+     that it wraps (the "|" is tied to the phrase before it with &nbsp;). */
   .ss-hero-h1 {
-    font-size: clamp(1.125rem, 2.2vw, 1.75rem);
-    white-space: nowrap;
+    font-size: clamp(32px, 2.5vw, 48px);
+    line-height: 1.15;
+    white-space: normal;
+  }
+  @media (min-width: 1600px) {
+    .ss-hero-h1 { white-space: nowrap; }
   }
   @media (max-width: 767px) {
-    .ss-hero-h1 {
-      white-space: normal;
-      font-size: clamp(1.5rem, 6vw, 2rem);
-    }
+    .ss-hero-h1 { font-size: clamp(26px, 7vw, 32px); }
   }
+
+  /* Eyebrow for this hero only: 18px (shared size is 16px). The page-scoped
+     selector outranks the shared rule in global.css; case and tracking inherit. */
+  .hero-copy p.hero-eyebrow { font-size: 18px; }
 
   /* Soft shadow so the copy stays legible over the photo. */
   .hero-copy h1,
   .hero-copy p {
     text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
+  }
+
+  /* Hero paragraph: one line on desktop, left-aligned (not justified), same as the
+     Private Wealth hero. The extra `.hero-copy p` outranks the shared hero justify
+     rule in global.css; the page-content black rule is per-class and never applies. */
+  .hero-copy p.ss-hero-p {
+    max-width: none;
+    width: auto;
+    white-space: nowrap;
+    text-wrap: nowrap;
+    text-align: left;
+    text-align-last: auto;
+    hyphens: manual;
+    word-spacing: 0.06em;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
+    color: #fff;
+    opacity: 1;
+  }
+  /* The line is ~1070px wide, so it only stays inside the viewport from ~1120px up;
+     below that it wraps (a 768px breakpoint caused sideways scroll at 768-1093px). */
+  @media (max-width: 1119px) {
+    .hero-copy p.ss-hero-p {
+      white-space: normal;
+      text-wrap: balance;
+      max-width: 100%;
+      word-spacing: normal;
+    }
   }
 
   /* Trim the shared container gutter for this hero only; container-big

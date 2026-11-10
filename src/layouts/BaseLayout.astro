@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
 
 interface Props {
   title?: string;
@@ -13,8 +14,8 @@ interface Props {
 }
 
 const {
-  title = 'Blackstone Islamic Global | Shariah-Compliant Brokerage',
-  description = 'Blackstone Islamic Global delivers disciplined, Shariah-compliant brokerage, asset management, and private wealth solutions across PSX, FTSE, and NYSE.',
+  title = 'Blackstone Islamic Global | Shariah Enabled Brokerage',
+  description = 'Blackstone Islamic Global delivers disciplined, Shariah enabled brokerage, asset management, and private wealth solutions across PSX, FTSE, and NYSE.',
   image = '/images/og-image.jpg',
   theme,
 } = Astro.props;
@@ -32,15 +33,28 @@ const {
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Preloader: plays once per browser session. Runs before first paint so later pages
+         never flash it; without JS the overlay is hidden so the site is never blocked. -->
+    <script is:inline>
+      (function () {
+        var r = document.documentElement;
+        try {
+          if (sessionStorage.getItem('big-preloader')) { r.classList.add('preloader-skip'); return; }
+        } catch (e) {}
+        r.classList.add('preloader-active');
+      })();
+    </script>
+    <noscript><style>#preloader { display: none !important; }</style></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
   </head>
   <body class="font-sans antialiased">
+    <Preloader />
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-acid focus:text-ink">
       Skip to main content
     </a>

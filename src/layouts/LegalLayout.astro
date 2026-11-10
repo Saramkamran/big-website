@@ -1,0 +1,102 @@
+---
+/* Shared layout for the legal / utility pages (Privacy & Cookies, Regulatory
+   Disclosures, Sitemap). Wraps BaseLayout, so the navbar (solid black bar, readable
+   as-is) and footer are unchanged; the page container matches the rest of the site. */
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  /* Show the "Last updated" line (not used on the sitemap). */
+  updated?: boolean;
+  /* Let the content run the full container width (sitemap columns) instead of 760px. */
+  wide?: boolean;
+}
+
+const { title, description, heading, updated = true, wide = false } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="legal-page">
+    <div class="container-big">
+      <div class:list={['legal-col', wide && 'legal-col--wide']}>
+        <h1 class="legal-h1 font-serif font-normal">{heading}</h1>
+        {updated && <p class="legal-updated font-sans no-justify">Last updated: 9 November 2026</p>}
+        <span class="legal-bar" aria-hidden="true"></span>
+        <div class="legal-prose">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  /* Page band: the site's off-white (--mist), black text. */
+  .legal-page {
+    background: var(--mist);
+    color: #000;
+    padding-block: 96px;
+  }
+  .legal-col { max-width: 760px; margin: 0; text-align: left; }
+  .legal-col--wide { max-width: none; }
+
+  .legal-h1 {
+    font-family: theme('fontFamily.serif');
+    font-weight: 400;
+    font-size: clamp(32px, 3vw, 48px);
+    line-height: 1.15;
+    color: #000;
+    margin: 0;
+  }
+  .legal-updated {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    margin: 12px 0 0;
+    text-align: left;
+  }
+  .legal-bar { display: block; width: 40px; height: 2px; background: #000; margin: 24px 0 40px; }
+
+  .legal-prose h2 {
+    font-family: theme('fontFamily.serif');
+    font-weight: 400;
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 1.2;
+    color: #000;
+    margin: 56px 0 16px;
+  }
+  .legal-prose > h2:first-child { margin-top: 0; }
+  .legal-prose h3 {
+    font-family: theme('fontFamily.serif');
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.3;
+    color: #000;
+    margin: 32px 0 12px;
+  }
+  .legal-prose p {
+    font-family: theme('fontFamily.sans');
+    font-size: 17px;
+    line-height: 1.7;
+    color: #000;
+    text-align: left;
+    hyphens: manual;
+    margin: 0 0 1em;
+  }
+  .legal-prose ul { list-style: disc; margin: 0 0 1em; padding-left: 1.25em; }
+  .legal-prose li {
+    font-family: theme('fontFamily.sans');
+    font-size: 17px;
+    line-height: 1.7;
+    color: #000;
+    margin: 0 0 8px;
+  }
+  .legal-prose li::marker { color: #000; }
+  .legal-prose a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 767px) {
+    .legal-page { padding-block: 56px; }
+  }
+</style>

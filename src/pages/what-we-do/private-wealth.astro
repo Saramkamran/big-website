@@ -7,9 +7,9 @@ const services = [
   {
     id: 'wealth-planning',
     eyebrow: '01 · A la Carte',
-    headingLines: ['Wealth Planning: À la Carte Approach'],
-    image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Bespoke wealth-planning consultation with an advisor',
+    headingLines: ['À La Carte Approach'],
+    image: '/images/alcarte.jpg',
+    imageAlt: 'Overhead view of a person holding a small cup of coffee at a rustic wooden table, beside a plate of pancakes with berries and fruit on an ornate tray, two antique keys, and an open vintage book',
     body: `We take a highly customised approach to understanding your wealth aspirations, commitments, and non-negotiables enabling us to design and implement personalised, À la carte approach that preserve and grow wealth that align with your marvellous lifestyle, legacy, and succession planning.
 
 Our specialists engage with you and your team to develop and implement wealth strategies that broaden your portfolio, expand your universe, and multiply your wealth on your terms.`,
@@ -32,8 +32,8 @@ Whether an investor seeking a strategic partnership or a business owner looking 
     id: 'pakistan-energy',
     eyebrow: '03 · OMC Sector',
     headingLines: ['Pakistan Energy'],
-    image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Refinery and downstream plant in Pakistan\'s OMC energy sector',
+    image: '/images/pump.jpg',
+    imageAlt: 'Close-up of a row of fuel pump nozzles in white, green, orange and black hanging on a petrol station dispenser, with a blurred forecourt behind',
     body: `For ultra-high-net-worth individuals and corporates seeking entry into Pakistan's OMC sector, we provide end-to-end advisory across deal origination, due diligence, transaction execution, and post-acquisition support.
 
 Combining deep sector expertise, strong industry relationships, and a track record of successful execution, we help you build value-accretive energy businesses while navigating Pakistan's downstream market.`,
@@ -43,8 +43,8 @@ Combining deep sector expertise, strong industry relationships, and a track reco
     id: 'real-estate',
     eyebrow: '04 · Landmark Transactions',
     headingLines: ['Real Estate'],
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Landmark real-estate transactions and development',
+    image: '/images/building-blue-sky.jpg',
+    imageAlt: 'Looking straight up at modern glass and steel skyscrapers converging against a clear blue sky',
     body: `From identifying high-value, off-market opportunities to structuring transactions and negotiating favourable terms, we deliver superior real estate solutions. Through great relationships with sponsors, developers, and other stakeholders, we facilitate landmark deals with excellence.`,
     cta: { label: 'Explore Real Estate', href: '/contact' },
   },
@@ -63,11 +63,11 @@ Combining deep sector expertise, strong industry relationships, and a track reco
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style="background-image: url('/images/pvm-opt.png');"
+        style="background-image: url('/images/plane.jpg');"
       ></div>
       <div
         class="absolute inset-0"
-        style="background: linear-gradient(110deg, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.20) 50%, rgba(11,11,11,0.03) 100%);"
+        style="background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 65%), linear-gradient(110deg, rgba(11,11,11,0.70) 0%, rgba(11,11,11,0.35) 50%, rgba(11,11,11,0.18) 100%);"
       ></div>
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
@@ -77,17 +77,17 @@ Combining deep sector expertise, strong industry relationships, and a track reco
         <!-- pw-hero-h1 is a page-only override: 38 characters, so it holds one
              line comfortably at the larger size. The shared hero-h1 class is
              left untouched. -->
+        <p class="hero-eyebrow">Private Wealth Management</p>
         <h1 class="hero-h1 pw-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
           Your Wealth | Your Legacy | Your Terms
         </h1>
+        <p class="pw-hero-p font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
+          We steward your wealth towards lasting security and a satisfying legacy
+        </p>
         <Button variant="acid" href="#wealth-planning">Explore What We Do</Button>
       </div>
     </div>
 
-    <div class="absolute bottom-8 right-16 hidden lg:flex flex-col items-center gap-2 opacity-40" aria-hidden="true">
-      <span class="font-sans text-xs text-white tracking-widest uppercase">Scroll</span>
-      <div class="w-px h-12 bg-white/60"></div>
-    </div>
   </section>
 
 
@@ -124,6 +124,32 @@ Combining deep sector expertise, strong industry relationships, and a track reco
   .hero-copy h1,
   .hero-copy p {
     text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
+  }
+
+  /* Private Wealth hero paragraph: a short tagline kept on one line on desktop,
+     left-aligned instead of justified. The extra `.hero-copy p` in the selector
+     outranks the shared hero justify rule in global.css (other heroes unchanged). */
+  .hero-copy p.pw-hero-p {
+    max-width: none;
+    width: auto;
+    white-space: nowrap;
+    text-wrap: nowrap;
+    text-align: left;
+    text-align-last: auto;
+    hyphens: manual;
+    word-spacing: 0.06em;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
+    color: #fff;
+    opacity: 1;
+  }
+  @media (max-width: 767px) {
+    .hero-copy p.pw-hero-p {
+      white-space: normal;
+      text-wrap: balance;
+      max-width: 100%;
+      word-spacing: normal;
+    }
   }
 
   /* Trim the shared container gutter for this hero only; container-big

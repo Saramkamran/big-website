@@ -12,11 +12,37 @@ const accreditations = [
   { name: 'PSX', label: 'Pakistan Stock Exchange' },
 ];
 
+// Leadership cards + the shared bio dialog both read this array (it is also
+// serialised into the page for the dialog script).
 const leadership = [
-  { name: '[Name Placeholder]', title: 'Chief Executive Officer', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80' },
-  { name: '[Name Placeholder]', title: 'Chief Investment Officer', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80' },
-  { name: '[Name Placeholder]', title: 'Head of Private Wealth', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80' },
-  { name: '[Name Placeholder]', title: 'Head of Asset Management', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80' },
+  {
+    name: 'Mian Muhammad Husnain Yasin',
+    title: 'Founder and CEO',
+    image: '/images/2.1.png',
+    popupImage: '/images/2.1.png',
+    alt: 'Mian Muhammad Husnain Yasin, smiling, seated at a desk in a navy double-breasted suit with a blue pocket square',
+    bio: [
+      'Mian Muhammad Husnain Yasin is a seasoned Chartered Accountant and wealth management executive with 25 years of professional experience in corporate reporting, finance, and investment strategy for family offices, ultra-high-net-worth individuals, and corporates.',
+      'An alumnus of Cambridge Judge Business School, University of Cambridge, Husnain’s distinguished professional engagements include leading institutions and global organisations such as Army Welfare Trust (Pakistan), the Ministry of Justice (UK), Platinum Equity (USA), Novartis Pharmaceuticals (Switzerland), National Bank of Kuwait, and OneWeb (Saudi Arabia). His international exposure and understanding of Pakistan’s investment landscape have also enabled him to facilitate foreign direct investment opportunities into the country.',
+      'As the Founder & CEO of Blackstone Islamic Global, Husnain leads a boutique, Shariah-enabled investment and wealth management platform specialising in equities, Sukuk, real estate, private equity, IPOs in Pakistan and the United States, and mergers and acquisitions. His approach combines rigorous research, disciplined risk management, and structured investment-to-exit strategies to pursue above-benchmark returns aligned with clients’ financial objectives and Shariah principles. A committed mentor and trusted adviser, he helps investors navigate market complexities and make informed investment decisions with greater discipline, foresight, and confidence.',
+      'Beyond commitments, Husnain likes horse riding and adventure sports. He authored research on Islamic philosophy at the University of Oxford, reflecting his intellectual engagement with ethical thought and its relevance to sound business judgement, responsible decision-making, and the prudent stewardship of wealth.',
+      'Humbled by the trust placed in him, Husnain is driven by a deeper purpose: to revive the timeless relationship between faith, wealth, and enterprise that flourished during the time of the Prophet Muhammad ﷺ. Inspired by the entrepreneurial spirit and commercial wisdom of the Prophet’s Companions (RA), he aspires to demonstrate how sound business understanding and astute investment decisions can work together to build exceptional wealth and social standing in a manner consistent with Islamic principles, while ultimately seeking the pleasure of Allah.',
+    ],
+  },
+  {
+    name: 'Amina Asif',
+    title: 'Co-Founder and Director - Strategy & Legal',
+    image: '/images/2.2.png',
+    popupImage: '/images/2.2.png',
+    alt: 'Amina Asif, seated at a desk in a black jacket and a cream headscarf with a gold-trimmed border, looking at the camera',
+    bio: [
+      'Recognised as one of the 101 Incredible Women of Pakistan, Amina is an accomplished legal and human resource professional with extensive experience across public service, legal affairs, regulatory compliance, and institutional governance.',
+      'Following the First Position in LLM, Amina’s distinguished accolade includes project management of the United Nations Population Fund (UNFPA), the legal advisor to The Punjab Commission on the Status of Women, executive tasks to The Office of The Prime Minister of Pakistan, and organisations operating under the mandates of the Governments of Pakistan and Japan.',
+      'An orator and one of only ten UNFPA-approved trainers in Pakistan, Amina has coached and mentored prominent bureaucrats, politicians, and corporate heads such as FFC leadership team on legal, regulatory, and compliance matters, earning recognition for her professional insight and commitment to institutional excellence.',
+      'Combining her professional expertise and persona, Amina co-founded Blackstone Islamic Global alongside her husband, Mian Muhammad Husnain Yasin. As Director - Strategy & Legal, she plays a pivotal role in shaping the company’s strategic direction, strengthening its corporate governance, and overseeing its legal and compliance framework. Her commitment to sound governance and expectations management helps safeguard stakeholder interests and uphold the highest standards of professionalism.',
+      'Beside commitments, Amina captained the basketball team at the Sacred Heart Cathedral High School, Lahore and played the netball and baseball with Kinnaird College for Women Lahore, winning numerous prizes and honours in recognition of her athletic ability, team spirit, and leadership.',
+    ],
+  },
 ];
 
 const values = [
@@ -24,11 +50,6 @@ const values = [
   { title: 'Intelligence', body: 'To act smartly.' },
   { title: 'Impact',       body: 'Targeting value and wealth.' },
 ];
-
-// The three photos already on this page, reused across the hero and the mosaic.
-const photoTeam     = 'https://images.unsplash.com/photo-1573164574511-73c773193279?auto=format&fit=crop&w=1600&q=80';
-const photoAdvisory = 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80';
-const photoResearch = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80';
 
 // The BIG Journey, split one card per existing paragraph. Wording is verbatim;
 // only the card headings are new, taken from the year each paragraph opens with.
@@ -39,7 +60,7 @@ const journey = [
   },
   {
     heading: '2006',
-    body: `In 2006, Husnain moved to England, where he earned his Chartered Accountant qualification from ICAEW. Over the following 15 years, he progressed from assistant accountant to Board level leadership, gaining experience across industries and major economic cycles, including the 2008 Global Financial Crisis. These experiences and relationships shaped his belief that wealth is most meaningful when built through Shariah-compliant investments.`,
+    body: `In 2006, Husnain moved to England, where he earned his Chartered Accountant qualification from ICAEW. Over the following 15 years, he progressed from assistant accountant to Board level leadership, gaining experience across industries and major economic cycles, including the 2008 Global Financial Crisis. These experiences and relationships shaped his belief that wealth is most meaningful when built through Shariah enabled investments.`,
   },
   {
     heading: '2021',
@@ -78,35 +99,44 @@ const journey = [
           </svg>
         </button>
 
-        <div class="firm-header-cta">
-          <a
-            href="/the-big-journey.pdf"
-            class="firm-btn font-sans"
-            target="_blank"
-            rel="noopener noreferrer"
-            type="application/pdf"
-          >The BIG Journey<span class="sr-only"> (PDF, opens in a new tab)</span></a>
+      </div>
+    </section>
+
+    {/* 1b — Image gallery: four portrait tiles directly under the intro. Same
+        container as the heading above so the left edges line up. */}
+    <section class="bg-paper firm-gallery">
+      <div>
+        <div class="firm-gallery-grid">
+          <img
+            src="/images/big-1.7.jpg"
+            alt="Two men holding a glass award trophy in front of an ICAEW backdrop, one in dark traditional dress and one smiling in a navy suit"
+            width="854" height="1280" loading="lazy"
+          />
+          <img
+            src="/images/2.0.jpg"
+            alt="Magazine page from 'Incredible Women of Power', part of the 101 Incredible Women CEOs of Pakistan series, featuring a portrait of a woman in pink"
+            width="917" height="1280" loading="lazy"
+          />
+          <img
+            src="/images/2.3.jpg"
+            alt="A woman in an orange scarf presenting to seated attendees at a training workshop, with a projector screen and green-covered tables"
+            width="1280" height="789" loading="lazy"
+          />
+          <img
+            src="/images/big-1.3.jpg"
+            alt="Two men holding a framed piece of Arabic calligraphy, one in a striped shirt and purple tie, the other in a dark blazer and glasses"
+            width="979" height="1280" loading="lazy"
+          />
         </div>
       </div>
     </section>
 
-    {/* 2 — Full-width hero image */}
-    <section class="bg-paper">
-      <div class="firm-container">
-        <img
-          src={photoTeam}
-          alt="The Blackstone Islamic Global team at work"
-          class="firm-hero-img"
-          width="1600" height="900"
-        />
-      </div>
-    </section>
 
     {/* 3 — Mission statement, then About Us */}
     <section class="bg-paper firm-statement-section">
       <div class="firm-container">
-        <p class="firm-statement font-serif text-ink">
-          Inspire to be the world's number one Shariah-compliant financial prosperity advisors
+        <p class="firm-statement font-serif text-copy">
+          Inspire to be the world's number one Shariah enabled financial prosperity advisors
         </p>
 
       </div>
@@ -125,12 +155,12 @@ const journey = [
           </div>
 
           <div class="firm-aboutus-main">
-            <p class="firm-lead font-sans text-ink" data-reveal>
-              Blackstone Islamic Global 'BIG' is a Shariah-compliant brokerage, asset management, and wealth management consultancy serving institutional and individual clients globally. Our practice combines deep markets research and expertise to deliver structured and faith-aligned investment solutions.
+            <p class="firm-lead font-sans text-copy" data-reveal>
+              Blackstone Islamic Global 'BIG' is a Shariah enabled brokerage, asset management, and wealth management consultancy serving institutional and individual clients globally. Our practice combines deep markets research and expertise to deliver structured and faith-aligned investment solutions.
             </p>
 
             <blockquote class="firm-quote" data-reveal>
-              <p class="firm-quote-text font-serif text-ink">
+              <p class="firm-quote-text font-serif text-copy">
                 At BIG, we believe that adherence to Shariah principles and the pursuit of superior performance are not competing objectives, they are mutually reinforcing.
               </p>
             </blockquote>
@@ -147,7 +177,7 @@ const journey = [
                 pages, so they are not linked. */}
             <ol class="firm-dolist">
               {[
-                'Shariah-compliant brokerage',
+                'Shariah enabled brokerage',
                 'Asset management',
                 'Wealth management consultancy',
                 "Access to Pakistan's private equity and real estate",
@@ -165,27 +195,40 @@ const journey = [
     </section>
 
     {/* 4 — Our Values */}
-    <section class="bg-paper firm-section">
+    <section class="firm-values-section">
       <div class="firm-container">
-        <h2 class="firm-rule-title font-sans text-ink">Our Values</h2>
-        <div class="firm-values">
-          {values.map((v) => (
-            <div>
-              <h3 class="firm-value-title font-sans text-ink">{v.title}</h3>
-              <p class="firm-value-body font-sans">{v.body}</p>
-            </div>
+        <h2 class="firm-values-h2 font-serif font-normal">Our Values</h2>
+        <ul class="firm-values-list">
+          {values.map((v, i) => (
+            <li class="firm-value-item">
+              <span class="firm-value-num font-serif" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="firm-value-name font-serif font-normal">{v.title}</h3>
+              <p class="firm-value-body no-justify font-sans">{v.body}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
 
     {/* 5 — Photo mosaic. Three unique photos, so one wide tile then two below. */}
-    <section class="bg-paper firm-section-tight">
-      <div class="firm-container">
+    <section class="bg-paper firm-mosaic-section">
+      <div class="firm-mosaic-wrap">
         <div class="firm-mosaic">
-          <img src={photoTeam} alt="Advisers reviewing market research together" class="firm-mosaic-wide" loading="lazy" width="1600" height="900" />
-          <img src={photoAdvisory} alt="An investment advisory meeting in progress" loading="lazy" width="1200" height="900" />
-          <img src={photoResearch} alt="Blackstone Islamic Global investment research in action" loading="lazy" width="1200" height="900" />
+          <img
+            src="/images/big-1.9.jpg"
+            alt="About twenty colleagues in business attire standing in a row on a stage in front of an ICAEW backdrop"
+            class="firm-mosaic-wide" loading="lazy" width="1280" height="854"
+          />
+          <img
+            src="/images/big-1.6.jpg"
+            alt="Group photo of staff and guests in a lecture hall with a large 'CA Pakistan' logo on the wall behind them"
+            class="firm-mosaic-left" loading="lazy" width="1280" height="853"
+          />
+          <img
+            src="/images/big-1.1.jpg"
+            alt="Man in a striped shirt and purple tie speaking into a microphone at a wooden podium, with a University of Lahore School of Accountancy &amp; Finance sign behind him"
+            class="firm-mosaic-right" loading="lazy" width="1380" height="1840"
+          />
         </div>
       </div>
     </section>
@@ -274,20 +317,37 @@ const journey = [
         <h2 class="firm-h2 font-serif text-ink firm-leader-head">Experienced. Principled. Client-Focused.</h2>
 
         <div class="firm-people">
-          {leadership.map((person) => (
-            <div>
-              <div class="firm-portrait">
-                <img src={person.image} alt={person.name} loading="lazy" width="600" height="750" />
-              </div>
-              <p class="firm-person-name font-sans text-ink">{person.name}</p>
+          {leadership.map((person, i) => (
+            <article class="firm-person">
+              <button type="button" class="firm-person-btn" data-bio={i} aria-haspopup="dialog">
+                <span class="firm-portrait">
+                  <img src={person.image} alt={person.alt} loading="lazy" width="1280" height="853" />
+                </span>
+                <span class="firm-person-name font-sans text-copy">{person.name}</span>
+              </button>
               <p class="firm-person-title font-sans">{person.title}</p>
-            </div>
+              <button type="button" class="firm-person-more font-sans" data-bio={i} aria-haspopup="dialog" aria-label={`View bio of ${person.name}`}>View bio +</button>
+            </article>
           ))}
         </div>
 
-        <p class="firm-footnote font-sans">
-          Leadership profiles are placeholder pending client confirmation.
-        </p>
+        {/* One shared bio dialog, filled from the leadership data by the script below. */}
+        <dialog id="firm-bio" class="firm-bio" aria-labelledby="firm-bio-name">
+          <div class="firm-bio-panel">
+            <button type="button" class="firm-bio-close" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+            <div class="firm-bio-photo"><img id="firm-bio-img" src="" alt="" /></div>
+            <div class="firm-bio-text" id="firm-bio-text" tabindex="0">
+              <p class="firm-bio-role font-sans no-justify" id="firm-bio-role"></p>
+              <h3 class="firm-bio-name font-serif font-normal" id="firm-bio-name"></h3>
+              <span class="firm-bio-bar" aria-hidden="true"></span>
+              <div id="firm-bio-body"></div>
+            </div>
+          </div>
+        </dialog>
+        <script is:inline type="application/json" id="firm-bios" set:html={JSON.stringify(leadership.map(({ name, title, popupImage, alt, bio }) => ({ name, role: title, image: popupImage, alt, bio })))}></script>
+
       </div>
     </section>
 
@@ -298,8 +358,8 @@ const journey = [
       <ContactCTA
         headline="Speak with Our Team"
         subtext="We would welcome the opportunity to discuss how BIG can serve your investment and advisory needs."
-        image="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
-        imageAlt="BIG wealth advisor in client consultation"
+        image="/images/person.jpg"
+        imageAlt="Smiling woman in a cream hijab and white patterned blouse working on a laptop at an outdoor table, with an orange building behind her"
       />
     </div>
   </div>
@@ -344,7 +404,7 @@ const journey = [
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--stone);
+    color: var(--body-text);
     margin: 0 0 16px;
   }
 
@@ -364,7 +424,7 @@ const journey = [
   .firm-intro {
     font-size: clamp(20px, 2.3vw, 34px);
     line-height: 1.5;
-    color: rgb(11 11 11 / 0.85);
+    color: var(--body-text);
     margin: clamp(28px, 3.4vw, 50px) 0 0;
     /* No max-width: it spans the container and wraps to about 3 lines wide. */
   }
@@ -387,34 +447,39 @@ const journey = [
   .firm-share:hover span { text-decoration: underline; text-underline-offset: 4px; }
   .firm-share:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-  .firm-header-cta { margin-top: clamp(40px, 6.2vw, 90px); }
 
-  .firm-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50px;
-    padding: 0 15px;
-    background: var(--ink);
-    color: var(--paper);
-    border: 0;
-    border-radius: 0;
-    font-size: clamp(16px, 1.4vw, 20px);
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.18s ease;
+  /* 1b — image gallery: full-bleed strip (no container, no side padding, no gaps).
+     4 columns from 1024px, 2 below. Tiles are cropped with the crop anchored high so
+     faces stay in frame; white space above and below only. */
+  .firm-gallery { padding-block: 64px; padding-inline: 0; margin: 0; }
+  .firm-gallery > div { width: 100%; max-width: none; margin: 0; padding: 0; }
+  .firm-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    width: 100%;
   }
-  .firm-btn:hover { background: var(--acid-600); }
-  .firm-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-
-  /* 2 — hero image */
-  .firm-hero-img {
+  .firm-gallery-grid img {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
     border-radius: 0;
+    box-shadow: none;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 20%;
   }
+  @media (max-width: 767px) {
+    .firm-gallery { padding-block: 40px; }
+  }
+  @media (min-width: 1024px) {
+    .firm-gallery-grid { grid-template-columns: repeat(4, 1fr); }
+    .firm-gallery-grid img { aspect-ratio: 3 / 4; }
+  }
+
 
   /* 3 — mission statement + About Us */
   /* Fills the container: no max-width, no ch cap, no balance. `pretty` only
@@ -491,14 +556,14 @@ const journey = [
   .firm-quote-after {
     font-size: clamp(17px, 1.4vw, 20px);
     line-height: 1.5;
-    color: rgb(11 11 11 / 0.8);
+    color: var(--body-text);
     margin: 24px 0 0;
   }
 
   .firm-body {
     font-size: clamp(17px, 1.4vw, 20px);
     line-height: 1.5;
-    color: rgb(11 11 11 / 0.8);
+    color: var(--body-text);
     margin: clamp(32px, 3.5vw, 48px) 0 0;
   }
 
@@ -534,7 +599,7 @@ const journey = [
     gap: 20px;
     font-size: clamp(17px, 1.4vw, 20px);
     line-height: 1.5;
-    color: rgb(11 11 11 / 0.8);
+    color: var(--body-text);
     max-width: 68ch;
   }
   .firm-prose p { margin: 0; }
@@ -545,40 +610,91 @@ const journey = [
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--stone);
+    color: var(--body-text);
     margin: 0 0 20px;
   }
 
-  /* 4 — values */
-  .firm-rule-title {
-    font-weight: 700;
-    font-size: clamp(22px, 2vw, 26px);
-    line-height: 1.2;
-    margin: 0 0 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--line);
+  /* 4 — Our Values: dark editorial band. Each value is a full-width row: small
+     number, oversized serif name, short description. Hovering a row dims the rest. */
+  .firm-values-section {
+    background: var(--ink);
+    color: #fff;
+    padding-block: 112px;
   }
-  .firm-values {
+  .firm-values-h2 {
+    font-size: clamp(32px, 3vw, 48px);
+    line-height: 1.15;
+    color: #fff;
+    margin: 0 0 64px;
+  }
+  .firm-values-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .18);
+  }
+  .firm-value-item {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(32px, 5vw, 60px);
-    margin-top: clamp(36px, 5vw, 60px);
+    grid-template-columns: 88px minmax(0, 1fr) minmax(0, 340px);
+    align-items: end;
+    column-gap: 32px;
+    padding: 44px 0 48px;
+    border-top: 1px solid rgba(255, 255, 255, .18);
+    transition: opacity 0.35s ease;
   }
-  @media (max-width: 900px) { .firm-values { grid-template-columns: 1fr; } }
-  .firm-value-title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.2;
-    margin: 0 0 12px;
+  .firm-value-num {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, .5);
+    padding-bottom: 0.9em;
+  }
+  .firm-value-name {
+    font-size: clamp(48px, 8vw, 128px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0;
+    transition: transform 0.45s cubic-bezier(.2, .7, .2, 1);
   }
   .firm-value-body {
-    font-size: clamp(17px, 1.4vw, 20px);
-    line-height: 1.5;
-    color: rgb(11 11 11 / 0.8);
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .78);
+    max-width: 30ch;
+    text-align: left;
+    hyphens: manual;
     margin: 0;
+    padding-bottom: 0.6em;
+  }
+  @media (hover: hover) and (min-width: 768px) {
+    .firm-values-list:hover .firm-value-item:not(:hover):not(:focus-within) { opacity: .35; }
+    .firm-value-item:hover .firm-value-name,
+    .firm-value-item:focus-within .firm-value-name { transform: translateX(16px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .firm-value-item, .firm-value-name { transition: none; }
+  }
+  @media (max-width: 1023px) {
+    .firm-value-item { grid-template-columns: 56px minmax(0, 1fr); row-gap: 20px; }
+    .firm-value-body { grid-column: 2; padding-bottom: 0; }
+    .firm-value-num { padding-bottom: 0.6em; }
+  }
+  @media (max-width: 767px) {
+    .firm-values-section { padding-block: 64px; }
+    .firm-values-h2 { margin-bottom: 40px; }
+    .firm-value-item { grid-template-columns: 1fr; padding: 32px 0 36px; }
+    .firm-value-body { grid-column: 1; }
+    .firm-value-num { padding-bottom: 0; }
   }
 
   /* 5 — photo mosaic: one wide tile, then two side by side. No gaps. */
+  .firm-mosaic-section { padding-block: 64px; }
+  .firm-mosaic-wrap {
+    max-width: 1000px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
   .firm-mosaic {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -587,17 +703,25 @@ const journey = [
   .firm-mosaic img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 280px;
     object-fit: cover;
     border-radius: 0;
+    box-shadow: none;
   }
   .firm-mosaic-wide {
     grid-column: 1 / -1;
-    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    aspect-ratio: 3 / 1;
+    object-position: center 62%;
   }
+  .firm-mosaic-left  { object-position: center 40%; }
+  .firm-mosaic-right { object-position: center 22%; }
   @media (max-width: 767px) {
+    .firm-mosaic-section { padding-block: 40px; }
+    .firm-mosaic-wrap { padding-inline: 0; }
     .firm-mosaic { grid-template-columns: 1fr; }
-    .firm-mosaic-wide { aspect-ratio: 4 / 3 !important; }
+    .firm-mosaic img,
+    .firm-mosaic-wide { height: auto !important; aspect-ratio: 4 / 3; }
   }
 
   /* 6 — journey band + carousel */
@@ -646,7 +770,7 @@ const journey = [
   .firm-card-body {
     font-size: 16px;
     line-height: 1.55;
-    color: rgb(11 11 11 / 0.8);
+    color: var(--body-text);
     margin: 0;
   }
 
@@ -676,6 +800,7 @@ const journey = [
     display: flex;
     justify-content: flex-end;
     margin: 12px 0 0;
+    color: var(--body-text);
   }
   .firm-pdflink {
     font-size: 16px;
@@ -715,11 +840,191 @@ const journey = [
   .firm-leader-head { margin-top: 12px; margin-bottom: clamp(40px, 5vw, 64px); }
   .firm-people {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(20px, 2.5vw, 32px);
+    grid-template-columns: repeat(2, minmax(0, 414px));
+    gap: 40px;
+    justify-content: start;
   }
-  @media (max-width: 1023px) { .firm-people { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 559px)  { .firm-people { grid-template-columns: 1fr; } }
+  @media (max-width: 767px) { .firm-people { grid-template-columns: minmax(0, 414px); } }
+
+  /* Photo + name are one button with no default chrome. */
+  .firm-person-btn {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .firm-person-btn:focus-visible,
+  .firm-person-more:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .firm-person-btn .firm-portrait { display: block; }
+  .firm-person-btn .firm-person-name { display: block; }
+  .firm-person-btn .firm-portrait img { transition: transform 0.4s ease; }
+  @media (hover: hover) {
+    .firm-person-btn:hover .firm-portrait img { transform: scale(1.03); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .firm-person-btn .firm-portrait img { transition: none; }
+    .firm-person-btn:hover .firm-portrait img { transform: none; }
+  }
+  .firm-person-more {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 0;
+    border: 0;
+    background: none;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    cursor: pointer;
+  }
+  .firm-person-more:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  /* ── Bio dialog ───────────────────────────────────────────────────────────
+     Native <dialog> (showModal): Esc, inert page and top layer come for free; the
+     script adds backdrop-click, focus trap/return, scroll lock and exit animation.
+     The dialog itself is a transparent full-viewport frame so a click outside the
+     panel lands on it (= backdrop click). */
+  .firm-bio {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+    --firm-bio-shift: 16px;
+  }
+  .firm-bio[open] { display: grid; place-items: center; }
+  .firm-bio::backdrop {
+    background: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(4px);
+  }
+  /* Two columns: photo left, bio right. The cutouts are landscape, so the panel and
+     the photo column are wide (56% of a 1240px panel) to keep the figure large. */
+  .firm-bio-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56% 44%;
+    width: min(96vw, 1240px);
+    max-height: 88vh;
+    background: var(--mist);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
+    overflow: hidden;
+  }
+  /* Photo column: the whole cutout is shown (contain, never cropped), as large as the
+     column allows, standing on its bottom edge. */
+  .firm-bio-photo {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 0;
+    padding-top: 24px;
+    background: #e8e7e0;
+  }
+  .firm-bio-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+  .firm-bio-text {
+    padding: 56px 56px 48px;
+    max-height: 88vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .firm-bio-text:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+  .firm-bio-role {
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0;
+  }
+  .firm-bio-name {
+    font-size: clamp(28px, 2.6vw, 40px);
+    line-height: 1.15;
+    color: #000;
+    margin: 14px 0 0;
+  }
+  .firm-bio-bar { display: block; width: 40px; height: 2px; background: #000; margin: 24px 0; }
+  .firm-bio-text :global(.firm-bio-p) {
+    font-family: theme('fontFamily.sans');
+    font-size: 17px;
+    line-height: 1.7;
+    color: #000;
+    text-align: left;
+    hyphens: manual;
+    max-width: 62ch;
+    margin: 0 0 1em;
+  }
+  .firm-bio-text :global(.firm-bio-p:last-child) { margin-bottom: 0; }
+  .firm-bio-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: #000;
+    cursor: pointer;
+  }
+  .firm-bio-close svg { width: 22px; height: 22px; }
+  .firm-bio-close:hover { opacity: .6; }
+  .firm-bio-close:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  /* Enter 280ms, exit 200ms. */
+  @keyframes firm-bio-in  { from { opacity: 0; transform: translateY(var(--firm-bio-shift)); } to { opacity: 1; transform: none; } }
+  @keyframes firm-bio-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(var(--firm-bio-shift)); } }
+  @keyframes firm-bio-fade-in  { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes firm-bio-fade-out { from { opacity: 1; } to { opacity: 0; } }
+  .firm-bio[open] .firm-bio-panel { animation: firm-bio-in 280ms ease-out both; }
+  .firm-bio[open]::backdrop { animation: firm-bio-fade-in 280ms ease-out both; }
+  .firm-bio.is-closing .firm-bio-panel { animation: firm-bio-out 200ms ease-in both; }
+  .firm-bio.is-closing::backdrop { animation: firm-bio-fade-out 200ms ease-in both; }
+  @media (prefers-reduced-motion: reduce) {
+    .firm-bio { --firm-bio-shift: 0px; }
+    .firm-bio[open] .firm-bio-panel,
+    .firm-bio[open]::backdrop,
+    .firm-bio.is-closing .firm-bio-panel,
+    .firm-bio.is-closing::backdrop { animation-duration: 1ms; }
+  }
+
+  /* Phones: bottom sheet. Photo on top (300px), text scrolls below it, the close
+     button stays over the photo as a white circle. */
+  @media (max-width: 767px) {
+    .firm-bio { --firm-bio-shift: 100%; }
+    .firm-bio[open] { place-items: end center; }
+    .firm-bio-panel {
+      width: 100%;
+      max-height: 92vh;
+      grid-template-columns: 1fr;
+      grid-template-rows: 300px minmax(0, 1fr);
+    }
+    .firm-bio-photo { height: 300px; }
+    .firm-bio-text { padding: 28px 24px 40px; max-height: none; }
+    .firm-bio-close { top: 12px; right: 12px; background: #fff; border-radius: 50%; }
+  }
+  @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+    .firm-bio { --firm-bio-shift: 0px; }
+  }
 
   /* Plain rectangles: the arch clip-path is deliberately gone. */
   .firm-portrait {
@@ -729,10 +1034,9 @@ const journey = [
     margin-bottom: 16px;
     border-radius: 0;
   }
-  .firm-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .firm-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
   .firm-person-name  { font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0 0 4px; }
-  .firm-person-title { font-size: 16px; color: var(--stone); margin: 0; }
-  .firm-footnote     { font-size: 14px; color: var(--stone); font-style: italic; margin-top: clamp(28px, 3vw, 40px); }
+  .firm-person-title { font-size: 16px; color: var(--body-text); margin: 0; }
 
   /* 9 — lift only the CTA heading scale, scoped to this page. */
   .firm-cta :global(h2) {
@@ -818,4 +1122,114 @@ const journey = [
       /* dismissed or blocked: nothing to do */
     }
   });
+</script>
+
+<script>
+  /* Leadership bio dialog. Data comes from the JSON the page embeds. Native
+     <dialog>.showModal() gives Esc, an inert page and the top layer; this adds
+     backdrop-click, a Tab trap, focus return, scroll lock and animated close. */
+  type Bio = { name: string; role: string; image: string; alt: string; bio: string[] };
+
+  const dlg = document.getElementById('firm-bio') as HTMLDialogElement | null;
+  const dataEl = document.getElementById('firm-bios');
+
+  if (dlg && dataEl) {
+    const people: Bio[] = JSON.parse(dataEl.textContent || '[]');
+    const photo = dlg.querySelector('#firm-bio-img') as HTMLImageElement;
+    const roleEl = dlg.querySelector('#firm-bio-role') as HTMLElement;
+    const nameEl = dlg.querySelector('#firm-bio-name') as HTMLElement;
+    const bodyEl = dlg.querySelector('#firm-bio-body') as HTMLElement;
+    const textEl = dlg.querySelector('#firm-bio-text') as HTMLElement;
+    const closeBtn = dlg.querySelector('.firm-bio-close') as HTMLButtonElement;
+    const html = document.documentElement;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    let opener: HTMLElement | null = null;
+    let closing = false;
+
+    /* Lock page scroll without a layout shift: keep the scrollbar's space reserved. */
+    const lock = () => {
+      const scrollbar = window.innerWidth - html.clientWidth;
+      if (window.CSS && CSS.supports('scrollbar-gutter', 'stable')) {
+        html.style.scrollbarGutter = 'stable';
+      } else if (scrollbar > 0) {
+        html.style.paddingRight = `${scrollbar}px`;
+      }
+      html.style.overflow = 'hidden';
+    };
+    const unlock = () => {
+      html.style.overflow = '';
+      html.style.scrollbarGutter = '';
+      html.style.paddingRight = '';
+    };
+
+    const open = (index: number, trigger: HTMLElement) => {
+      const p = people[index];
+      if (!p) return;
+      opener = trigger;
+      closing = false;
+      dlg.classList.remove('is-closing');
+      photo.src = p.image;
+      photo.alt = p.alt;
+      roleEl.textContent = p.role;
+      nameEl.textContent = p.name;
+      bodyEl.replaceChildren(
+        ...p.bio.map((text) => {
+          const para = document.createElement('p');
+          para.className = 'firm-bio-p no-justify';
+          para.textContent = text;
+          return para;
+        })
+      );
+      textEl.scrollTop = 0;
+      lock();
+      dlg.showModal();
+      closeBtn.focus();
+    };
+
+    const close = () => {
+      if (!dlg.open || closing) return;
+      closing = true;
+      dlg.classList.add('is-closing');
+      window.setTimeout(() => {
+        dlg.classList.remove('is-closing');
+        dlg.close();
+      }, reduceMotion.matches ? 1 : 200);
+    };
+
+    /* Focus returns to the card that opened it; scroll unlocks whichever way it closed. */
+    dlg.addEventListener('close', () => {
+      unlock();
+      closing = false;
+      opener?.focus();
+      opener = null;
+    });
+    /* Esc: run the exit animation instead of closing instantly. */
+    dlg.addEventListener('cancel', (e) => { e.preventDefault(); close(); });
+    /* A click that lands on the dialog frame itself (outside the panel) is a backdrop click. */
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) close(); });
+    closeBtn.addEventListener('click', close);
+
+    /* Tab / Shift+Tab cycle between the close button and the scrollable text. */
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const items = Array.from(
+        dlg.querySelectorAll<HTMLElement>('button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')
+      );
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-bio]').forEach((btn) => {
+      btn.addEventListener('click', () => open(Number(btn.dataset.bio), btn));
+    });
+  }
 </script>
