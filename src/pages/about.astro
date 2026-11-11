@@ -95,6 +95,91 @@ const journey = [
       </div>
     </section>
 
+    {/* 8 — Leadership and Board */}
+    <section class="bg-mist firm-section firm-leadership">
+      <div class="firm-container">
+        <p class="firm-eyebrow-sm font-sans">Leadership &amp; Board</p>
+        <h2 class="firm-h2 font-serif text-ink firm-leader-head">Experienced&nbsp;| Principled&nbsp;| Client-Focused</h2>
+
+        <div class="firm-people">
+          {leadership.map((person, i) => (
+            <article class="firm-person">
+              <button type="button" class="firm-person-btn" data-bio={i} aria-haspopup="dialog" aria-expanded="false">
+                <span class="firm-portrait">
+                  <img src={person.image} alt={person.alt} loading="lazy" width="1280" height="853" />
+                </span>
+                <span class="firm-person-name font-sans text-copy">{person.name}</span>
+              </button>
+              <p class="firm-person-title font-sans">{person.title}</p>
+              <button type="button" class="firm-person-more font-sans" data-bio={i} aria-haspopup="dialog" aria-expanded="false" aria-label={`The Reflection: ${person.name}`}>The Reflection +</button>
+            </article>
+          ))}
+        </div>
+
+        {/* One shared bio dialog, filled from the leadership data by the script below. */}
+        <dialog id="firm-bio" class="firm-bio" aria-labelledby="firm-bio-name">
+          <div class="firm-bio-panel">
+            <button type="button" class="firm-bio-close" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+            <div class="firm-bio-photo"><img id="firm-bio-img" src="" alt="" /></div>
+            <div class="firm-bio-text" id="firm-bio-text" tabindex="0">
+              <p class="firm-bio-role font-sans no-justify" id="firm-bio-role"></p>
+              <h3 class="firm-bio-name font-serif font-normal" id="firm-bio-name"></h3>
+              <span class="firm-bio-bar" aria-hidden="true"></span>
+              <div id="firm-bio-body"></div>
+            </div>
+          </div>
+        </dialog>
+        <script is:inline type="application/json" id="firm-bios" set:html={JSON.stringify(leadership.map(({ name, title, popupImage, alt, bio }) => ({ name, role: title, image: popupImage, alt, bio })))}></script>
+
+      </div>
+    </section>
+
+    {/* 6 — The BIG Journey band */}
+    <section class="bg-mist firm-section" id="journey">
+      <div class="firm-container">
+        <div class="firm-split firm-heritage">
+          <div>
+            <p class="firm-eyebrow-sm font-sans">Our Heritage</p>
+            <h2 class="firm-h2 font-serif text-ink">The BIG Journey</h2>
+          </div>
+          <div class="firm-prose">
+            <p class="font-sans">
+              Our philosophy has evolved through an epic journey, shaping who we are today and continuing to guide us towards tomorrow.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Track starts at the container gutter but bleeds right, so the last card is clipped. */}
+      <div
+        class="firm-track"
+        id="firm-track"
+        role="group"
+        aria-label="The BIG Journey, scrollable timeline"
+        tabindex="0"
+      >
+        {journey.map((c) => (
+          <article class="firm-card bg-paper">
+            <h3 class="firm-card-title font-serif text-ink">{c.heading}</h3>
+            <p class="firm-card-body font-sans">{c.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="firm-container">
+        <div class="firm-controls">
+          <button type="button" class="firm-nav" id="firm-prev" aria-label="Previous card" aria-controls="firm-track" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M15 5 8 12l7 7" /></svg>
+          </button>
+          <button type="button" class="firm-nav" id="firm-next" aria-label="Next card" aria-controls="firm-track">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
     {/* 1b — Image gallery: four portrait tiles directly under the intro. Same
         container as the heading above so the left edges line up. */}
     <section class="bg-paper firm-gallery">
@@ -125,6 +210,28 @@ const journey = [
       </div>
     </section>
 
+    {/* 5 — Photo mosaic. Three unique photos, so one wide tile then two below. */}
+    <section class="bg-paper firm-mosaic-section">
+      <div class="firm-mosaic-wrap">
+        <div class="firm-mosaic">
+          <img
+            src="/images/big-1.6.jpg"
+            alt="Group photo at a CA Pakistan event"
+            class="firm-mosaic-wide" loading="lazy" width="1280" height="854"
+          />
+          <img
+            src="/images/big-1.5.jpg"
+            alt="Award presentation at an ICAP Northern Regional Committee event"
+            class="firm-mosaic-left" loading="lazy" width="1280" height="853"
+          />
+          <img
+            src="/images/big-1.1.jpg"
+            alt="Man in a striped shirt and purple tie speaking into a microphone at a wooden podium, with a University of Lahore School of Accountancy &amp; Finance sign behind him"
+            class="firm-mosaic-right" loading="lazy" width="1380" height="1840"
+          />
+        </div>
+      </div>
+    </section>
 
     {/* 3 — Mission statement, then About Us */}
     <section class="bg-paper firm-statement-section">
@@ -201,29 +308,6 @@ const journey = [
       </div>
     </section>
 
-    {/* 5 — Photo mosaic. Three unique photos, so one wide tile then two below. */}
-    <section class="bg-paper firm-mosaic-section">
-      <div class="firm-mosaic-wrap">
-        <div class="firm-mosaic">
-          <img
-            src="/images/big-1.6.jpg"
-            alt="Group photo at a CA Pakistan event"
-            class="firm-mosaic-wide" loading="lazy" width="1280" height="854"
-          />
-          <img
-            src="/images/big-1.5.jpg"
-            alt="Award presentation at an ICAP Northern Regional Committee event"
-            class="firm-mosaic-left" loading="lazy" width="1280" height="853"
-          />
-          <img
-            src="/images/big-1.1.jpg"
-            alt="Man in a striped shirt and purple tie speaking into a microphone at a wooden podium, with a University of Lahore School of Accountancy &amp; Finance sign behind him"
-            class="firm-mosaic-right" loading="lazy" width="1380" height="1840"
-          />
-        </div>
-      </div>
-    </section>
-
     {/* 5b — Our Lectures: white band (the mist Journey band follows). Same two-column
         split, gutters and vertical padding as the BIG Journey section. */}
     <section class="firm-section firm-lectures" id="lectures">
@@ -257,50 +341,6 @@ const journey = [
       </div>
     </section>
 
-    {/* 6 — The BIG Journey band */}
-    <section class="bg-mist firm-section" id="journey">
-      <div class="firm-container">
-        <div class="firm-split firm-heritage">
-          <div>
-            <p class="firm-eyebrow-sm font-sans">Our Heritage</p>
-            <h2 class="firm-h2 font-serif text-ink">The BIG Journey</h2>
-          </div>
-          <div class="firm-prose">
-            <p class="font-sans">
-              Our philosophy has evolved through an epic journey, shaping who we are today and continuing to guide us towards tomorrow.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Track starts at the container gutter but bleeds right, so the last card is clipped. */}
-      <div
-        class="firm-track"
-        id="firm-track"
-        role="group"
-        aria-label="The BIG Journey, scrollable timeline"
-        tabindex="0"
-      >
-        {journey.map((c) => (
-          <article class="firm-card bg-paper">
-            <h3 class="firm-card-title font-serif text-ink">{c.heading}</h3>
-            <p class="firm-card-body font-sans">{c.body}</p>
-          </article>
-        ))}
-      </div>
-
-      <div class="firm-container">
-        <div class="firm-controls">
-          <button type="button" class="firm-nav" id="firm-prev" aria-label="Previous card" aria-controls="firm-track" disabled>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M15 5 8 12l7 7" /></svg>
-          </button>
-          <button type="button" class="firm-nav" id="firm-next" aria-label="Next card" aria-controls="firm-track">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
     {/* 7 — Vendor Selection Programme + Accreditations list */}
     <section class="bg-paper firm-section firm-vendor-section">
       <div class="firm-container">
@@ -312,47 +352,6 @@ const journey = [
             </p>
           </div>
         </div>
-      </div>
-    </section>
-
-    {/* 8 — Leadership and Board */}
-    <section class="bg-mist firm-section">
-      <div class="firm-container">
-        <p class="firm-eyebrow-sm font-sans">Leadership &amp; Board</p>
-        <h2 class="firm-h2 font-serif text-ink firm-leader-head">Experienced&nbsp;| Principled&nbsp;| Client-Focused</h2>
-
-        <div class="firm-people">
-          {leadership.map((person, i) => (
-            <article class="firm-person">
-              <button type="button" class="firm-person-btn" data-bio={i} aria-haspopup="dialog" aria-expanded="false">
-                <span class="firm-portrait">
-                  <img src={person.image} alt={person.alt} loading="lazy" width="1280" height="853" />
-                </span>
-                <span class="firm-person-name font-sans text-copy">{person.name}</span>
-              </button>
-              <p class="firm-person-title font-sans">{person.title}</p>
-              <button type="button" class="firm-person-more font-sans" data-bio={i} aria-haspopup="dialog" aria-expanded="false" aria-label={`The Reflection: ${person.name}`}>The Reflection +</button>
-            </article>
-          ))}
-        </div>
-
-        {/* One shared bio dialog, filled from the leadership data by the script below. */}
-        <dialog id="firm-bio" class="firm-bio" aria-labelledby="firm-bio-name">
-          <div class="firm-bio-panel">
-            <button type="button" class="firm-bio-close" aria-label="Close">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" /></svg>
-            </button>
-            <div class="firm-bio-photo"><img id="firm-bio-img" src="" alt="" /></div>
-            <div class="firm-bio-text" id="firm-bio-text" tabindex="0">
-              <p class="firm-bio-role font-sans no-justify" id="firm-bio-role"></p>
-              <h3 class="firm-bio-name font-serif font-normal" id="firm-bio-name"></h3>
-              <span class="firm-bio-bar" aria-hidden="true"></span>
-              <div id="firm-bio-body"></div>
-            </div>
-          </div>
-        </dialog>
-        <script is:inline type="application/json" id="firm-bios" set:html={JSON.stringify(leadership.map(({ name, title, popupImage, alt, bio }) => ({ name, role: title, image: popupImage, alt, bio })))}></script>
-
       </div>
     </section>
 
@@ -703,7 +702,14 @@ const journey = [
   }
 
   /* 5 — photo mosaic: one wide tile, then two side by side. No gaps. */
-  .firm-mosaic-section { padding-block: var(--about-section-gap); }
+  /* Sits between the photo strip and the mission statement: no padding of its own, so the
+     single gap each side comes from the neighbour (strip bottom / statement top), not doubled. */
+  .firm-mosaic-section { padding-block: 0; }
+
+  /* Gap between Leadership & Board and The BIG Journey, halved (was clamp(32px, 4vw, 64px)
+     on each side). Set explicitly on these two sections only. */
+  .firm-section.firm-leadership { padding-bottom: clamp(16px, 2vw, 32px); }
+  .firm-section#journey { padding-top: clamp(16px, 2vw, 32px); }
   .firm-mosaic-wrap {
     max-width: 1000px;
     margin-inline: auto;
