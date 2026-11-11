@@ -25,7 +25,7 @@
             />
           </a>
           <p class="footer-tagline font-sans text-sm text-white/60 leading-relaxed">
-            Blackstone Islamic Global Your Shariah enabled Shariah enabled financial prosperity expert
+            Your Shariah enabled financial prosperity expert
           </p>
         </div>
       </div>
@@ -153,9 +153,10 @@
   /* Tagline: 240px max, but always narrower than the logo above it. */
   .footer-tagline {
     max-width: min(240px, calc(var(--footer-logo-w) - 24px));
-    /* The footer is outside <main>, so the global justify rule does not reach it. */
-    text-align: justify;
-    text-align-last: left;
+    /* Left-aligned: justifying a two-line tagline stretched the gaps between words. The footer
+       is outside <main>, so the global justify rule does not reach it. */
+    text-align: left;
+    text-align-last: auto;
     hyphens: manual;
     -webkit-hyphens: manual;
     word-spacing: normal;

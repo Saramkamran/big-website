@@ -12,15 +12,17 @@ interface Props {
   updated?: boolean;
   /* Let the content run the full container width (sitemap columns) instead of 760px. */
   wide?: boolean;
+  /* A4-landscape wide column (297mm) with justified text (Regulatory Disclosures). */
+  a4?: boolean;
 }
 
-const { title, description, heading, updated = true, wide = false } = Astro.props;
+const { title, description, heading, updated = true, wide = false, a4 = false } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <section class="legal-page">
     <div class="container-big">
-      <div class:list={['legal-col', wide && 'legal-col--wide']}>
+      <div class:list={['legal-col', wide && 'legal-col--wide', a4 && 'legal-col--a4']}>
         <h1 class="legal-h1 font-serif font-normal">{heading}</h1>
         {updated && <p class="legal-updated font-sans no-justify">Last updated: 9 November 2026</p>}
         <span class="legal-bar" aria-hidden="true"></span>
@@ -41,6 +43,16 @@ const { title, description, heading, updated = true, wide = false } = Astro.prop
   }
   .legal-col { max-width: 760px; margin: 0; text-align: left; }
   .legal-col--wide { max-width: none; }
+  .legal-col--a4 { max-width: 297mm; }
+  .legal-col--a4 .legal-prose p,
+  .legal-col--a4 .legal-prose li {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: manual;
+    word-spacing: normal;
+    overflow-wrap: normal;
+    text-wrap: pretty;
+  }
 
   .legal-h1 {
     font-family: var(--font-heading);
@@ -96,6 +108,8 @@ const { title, description, heading, updated = true, wide = false } = Astro.prop
   .legal-prose a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
 
   @media (max-width: 767px) {
+    .legal-col--a4 .legal-prose p,
+    .legal-col--a4 .legal-prose li { text-align: left; }
     .legal-page { padding-block: 56px; }
   }
 </style>
