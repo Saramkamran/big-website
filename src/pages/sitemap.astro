@@ -19,7 +19,7 @@ const groups = [
     { label: 'PSX & Global Markets', href: '/what-we-do/psx-global-markets' },
     { label: 'Asset Management', href: '/what-we-do/asset-management' },
     { label: 'Private Wealth Management', href: '/what-we-do/private-wealth' },
-    { label: 'Specialized Services', href: '/what-we-do/specialized-services' },
+    { label: 'Specialised Services', href: '/what-we-do/specialized-services' },
   ] },
   { title: 'Client', links: [
     { label: 'Client Login', href: '/login' },
@@ -44,7 +44,7 @@ const groups = [
     {groups.map((g) => (
       <section class="sitemap-group">
         <h2>{g.title}</h2>
-        <ul>
+        <ul class="no-star">
           {g.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
       </section>

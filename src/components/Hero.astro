@@ -36,10 +36,10 @@ import Button from './Button.astro';
   <div class="relative z-10 container-big hero-gutter w-full pt-12 pb-12">
     <!-- Typography and spacing come from the shared `.hero-content` rules in
          global.css, identical to the PSX & Global Markets hero. -->
-    <div class="hero-content">
-      <p class="hero-eyebrow">Blackstone Islamic Global</p>
-      <h1>Integrity | Intelligence | Impact</h1>
-      <p>Inspire to be the world’s number one Shariah enabled financial prosperity experts</p>
+    <div class="hero-content hero-home">
+      <p class="hero-eyebrow hero-eyebrow-lg">Blackstone Islamic Global</p>
+      <h1 class="hero-h1-md">Integrity | Intelligence | Impact</h1>
+      <p class="hero-sub hero-sub-line">Inspire to be the world’s number one Shariah enabled financial prosperity expert</p>
       <p class="hero-locations">Lahore | London | New York | Jeddah</p>
       <Button variant="acid" href="/#what-we-do">Explore What We Do</Button>
     </div>
@@ -52,6 +52,52 @@ import Button from './Button.astro';
      reports that preference, and hiding/pausing the loop on that basis froze
      the hero on ordinary desktops. */
   .hero-video { opacity: 1; }
+
+  /* The large eyebrow style now lives in global.css as `.hero-eyebrow-lg`, shared
+     with the PSX & Global Markets hero. */
+
+  /* Home hero subheading: one line, left-aligned (not justified), no width cap. The doubled
+     class outranks the shared hero paragraph rules in global.css (those stay as they are).
+     The .hero-content wrapper is only max-width: 48rem and has no overflow clipping, so the
+     longer line simply runs past its box, in view. */
+  .hero-content p.hero-sub-line.hero-sub-line {
+    max-width: none;
+    width: auto;
+    white-space: nowrap;
+    text-wrap: nowrap;
+  }
+  @media (max-width: 939px) {
+    .hero-content p.hero-sub-line.hero-sub-line {
+      white-space: normal;
+      text-wrap: balance;
+      max-width: 100%;
+    }
+  }
+
+  /* Home slide only (the hero-home modifier; the shared classes and the service heroes are
+     untouched). h1 = shared size x1.3 (it stays just under the top line at every width);
+     one line from 1280px, may wrap below. */
+  .hero-content.hero-home h1.hero-h1-md {
+    font-size: clamp(30.55px, 3.12vw, 59.8px);
+    white-space: normal;
+  }
+  @media (min-width: 1280px) {
+    .hero-content.hero-home h1.hero-h1-md { white-space: nowrap; }
+  }
+  @media (max-width: 767px) {
+    .hero-content.hero-home h1.hero-h1-md { font-size: clamp(24.7px, 6.76vw, 30.55px); }
+  }
+
+  /* The two lines under the h1: a heavier weight (600) and a solid, slightly darker white. */
+  .hero-content.hero-home p.hero-sub.hero-sub,
+  .hero-content.hero-home p.hero-locations {
+    font-weight: 600;
+    color: #E8E8E8;
+    opacity: 1;
+  }
+  /* +20%: 18px -> 21.6px and 16px -> 19.2px. */
+  .hero-content.hero-home p.hero-sub.hero-sub { font-size: 21.6px; }
+  .hero-content.hero-home p.hero-locations { font-size: 19.2px; }
 
 </style>
 

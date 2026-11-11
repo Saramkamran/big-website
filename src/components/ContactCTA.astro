@@ -23,6 +23,9 @@ interface Props {
   imagePosition?: string;
   /* The larger heading scale the About page applies to this band. */
   largeHeading?: boolean;
+  /* Optional QR image: shown instead of the button from 768px up (the button stays on phones). */
+  qrImage?: string;
+  qrAlt?: string;
 }
 
 const {
@@ -38,6 +41,8 @@ const {
   ctaAriaLabel,
   imagePosition,
   largeHeading = false,
+  qrImage,
+  qrAlt = '',
 } = Astro.props;
 
 const headingStyle = largeHeading
@@ -74,12 +79,17 @@ const headingStyle = largeHeading
             {subtext}
           </p>
         )}
+        {qrImage && (
+          <div class="intel-qr">
+            <img src={qrImage} alt={qrAlt} loading="lazy" />
+          </div>
+        )}
         <a
           href={ctaHref}
           target={ctaExternal ? '_blank' : undefined}
           rel={ctaExternal ? 'noopener noreferrer' : undefined}
           aria-label={ctaAriaLabel}
-          class="inline-block bg-ink text-white font-sans text-sm font-semibold px-7 py-3 hover:bg-stone transition-colors"
+          class:list={['inline-block bg-ink text-white font-sans text-sm font-semibold px-7 py-3 hover:bg-stone transition-colors', qrImage && 'intel-number']}
         >
           {ctaLabel}
         </a>
@@ -101,3 +111,32 @@ const headingStyle = largeHeading
 
   </div>
 </section>
+
+<style>
+  /* QR-only crop of the 720x1280 WhatsApp screenshot: the code itself (image px x 210-509,
+     y 471-770) plus a white quiet margin, i.e. a 348px square starting at (186, 447). Done in
+     CSS only. Below 768px the QR is hidden and the number button shows instead. */
+  .intel-qr {
+    display: none;
+    width: 200px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+  }
+  .intel-qr img {
+    position: absolute;
+    width: 206.9%;      /* 720 / 348 */
+    max-width: none;
+    left: -53.45%;      /* -186 / 348 */
+    top: -128.45%;      /* -447 / 348 (percent of the square's height) */
+    height: auto;
+    display: block;
+  }
+  @media (min-width: 768px) {
+    .intel-qr { display: block; }
+    .intel-number { display: none; }
+  }
+</style>

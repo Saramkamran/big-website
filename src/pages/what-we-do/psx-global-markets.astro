@@ -32,8 +32,8 @@ const restSections = [
 
 We also connect minimum A-rated Green Sukuks with ESG conscious investors, providing direct access to sustainable instruments in energy, and flood control infrastructure of Pakistan.`,
     cta: { label: 'Explore Sukuks', href: '/contact' },
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2000&q=80',
-    imageAlt: '',
+    image: '/images/sukkuks.jpg',
+    imageAlt: 'Aerial view of a canal splitting into channels at a regulating gate, surrounded by farmland',
   },
   {
     id: 'transaction-services',
@@ -43,10 +43,11 @@ We also connect minimum A-rated Green Sukuks with ESG conscious investors, provi
     // Pre-existing capability rails — these four labels were on the page before
     // the layout change, so they stay as the section's bullet list.
     bullets: [
-      'RAAST ID',
-      'SCRA',
-      'IPS',
-      'REIA',
+      'RAAST ID | Raast Instant Payment Identifier',
+      'SCRA | Special Convertible Rupee Account',
+      'IPS | Investor Portfolio Securities Account',
+      'REIA | Roshan Equity Investment Account',
+      'RDA | Roshan Digital Account',
     ],
     cta: { label: 'Explore Transaction Services', href: '/contact' },
     image: '/images/psx-transaction-services.jpg',
@@ -110,12 +111,13 @@ Join it for free and learn before earn`;
     <div class="relative z-10 container-big hero-gutter w-full pt-12 pb-12">
       <!-- Typography and spacing come from the shared `.hero-content` rules in
            global.css (these values are the reference for every hero). -->
-      <div class="hero-content">
-        <h1>
-          Tailored Strategy | Smart Execution | Timely Exist
+      <div class="hero-content service-hero service-hero--oneline">
+        <p class="hero-eyebrow hero-eyebrow-lg">PSX &amp; Global Markets</p>
+        <h1 class="hero-h1-md">
+          <span class="hero-lead">Tailored Strategy | Smart Execution |&nbsp;</span>Timely Exit
         </h1>
-        <p>
-          Our equities business combines niche research, rigorous analysis, and deep market expertise to deliver tailored, timely and independent investment solutions for our distinguished investors.
+        <p class="hero-sub hero-lead-p">
+          Our equities business combines niche research, rigorous analysis, and deep market expertise to deliver tailored, timely and independent investment solutions for our distinguished investors
         </p>
         <Button variant="acid" href="#shariah-equities">Explore What We Do</Button>
       </div>
@@ -159,7 +161,7 @@ Join it for free and learn before earn`;
             {s.bullets && s.bullets.length > 0 && (
               <ul class="svc-list">
                 {s.bullets.map((b) => (
-                  <li><span class="svc-dot" aria-hidden="true"></span><span>{b}</span></li>
+                  <li><span>{b.includes(' | ') ? <><strong>{b.split(' | ')[0]}</strong>{' '}| {b.split(' | ')[1]}</> : b}</span></li>
                 ))}
               </ul>
             )}
@@ -174,12 +176,12 @@ Join it for free and learn before earn`;
       Portfolio Consultancy and Portfolio Supervision, previously stacked
       alternating rows. Same copy, imagery and alt text, re-presented as
       cards: image, accent rule, heading, paragraph, underlined link. */}
-  <section id="big-services" class="bg-paper py-section">
+  <section id="big-services" class="bg-paper bs-section">
     <!-- Page-scoped wide container: this section runs wider than the site's
          1280px container-big so the two cards read near edge-to-edge. The
          shared .container-big class is deliberately left untouched. -->
     <div class="svc-wide">
-      <div class="max-w-2xl mb-14">
+      <div class="max-w-2xl bs-head">
         <h2 class="font-serif font-normal text-ink" style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1;">
           Big Services
         </h2>
@@ -197,10 +199,10 @@ Join it for free and learn before earn`;
               />
             </div>
             <span class="svc-card-rule" aria-hidden="true"></span>
-            <h3 class="font-sans font-bold text-ink text-xl leading-snug mb-3">
+            <h3 class="svc-card-title font-serif text-ink text-xl leading-snug mb-3">
               {c.headingLines.join(' ')}
             </h3>
-            <p class="svc-card-para font-sans text-base text-copy leading-relaxed">{c.body}</p>
+            <p class="svc-card-para font-sans text-sm text-copy leading-relaxed">{c.body}</p>
           </article>
         ))}
       </div>
@@ -215,7 +217,7 @@ Join it for free and learn before earn`;
     return (
       <section
         id={s.id}
-        class:list={['svc-row', imageRight && 'svc-row--reverse', imageRight && 'svc-row--cream']}
+        class:list={['svc-row', imageRight && 'svc-row--reverse', imageRight && 'svc-row--cream', i === 0 && 'svc-after-cards']}
       >
         <div class="svc-media">
           <img
@@ -236,7 +238,7 @@ Join it for free and learn before earn`;
             {s.bullets && s.bullets.length > 0 && (
               <ul class="svc-list">
                 {s.bullets.map((b) => (
-                  <li><span class="svc-dot" aria-hidden="true"></span><span>{b}</span></li>
+                  <li><span>{b.includes(' | ') ? <><strong>{b.split(' | ')[0]}</strong>{' '}| {b.split(' | ')[1]}</> : b}</span></li>
                 ))}
               </ul>
             )}
@@ -253,6 +255,21 @@ Join it for free and learn before earn`;
 </BaseLayout>
 
 <style>
+  /* Big Services: the gap above the heading and the gap below it share one value. */
+  .bs-section { --bs-gap: 56px; padding-top: var(--bs-gap); }
+  .bs-head { margin-bottom: var(--bs-gap); }
+
+  /* Gap between the cards block and the Sukuks row: applied once, as the Sukuks
+     row's outside top margin. The cards section has no bottom padding. */
+  :global(:root) { --section-gap-sm: 58px; }
+  @media (max-width: 767px) {
+    :global(:root) { --section-gap-sm: 38px; }
+  }
+  .svc-after-cards { margin-top: var(--section-gap-sm); }
+
+  /* Bullet abbreviations: 600 weight; the full form keeps the list's 400. */
+  .svc-list strong { font-weight: 600; color: #000; }
+
   /* ──────────────────────────────────────────────────────────────────────────
      Alternating full-bleed two-column row.
 
@@ -309,7 +326,7 @@ Join it for free and learn before earn`;
 
   /* 1 · Eyebrow — small, uppercase, wide tracking, slate gray */
   .svc-eyebrow {
-    font-family: theme('fontFamily.sans');
+    font-family: var(--font-body);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -320,7 +337,7 @@ Join it for free and learn before earn`;
 
   /* 2 · Heading — serif, charcoal, one short phrase per line */
   .svc-heading {
-    font-family: theme('fontFamily.serif');
+    font-family: var(--font-heading);
     font-weight: 400;
     color: var(--charcoal);
     font-size: clamp(30px, 3.2vw, 44px);
@@ -331,11 +348,11 @@ Join it for free and learn before earn`;
 
   /* 3 · Paragraph — gray, ~90% column width */
   .svc-para {
-    font-family: theme('fontFamily.sans');
-    font-size: 15px;
-    line-height: 1.75;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.625;
     color: var(--body-text);
-    max-width: 90%;
+    max-width: 100%;
     white-space: pre-line;  /* preserves the copy deck's paragraph breaks */
     margin: 0 0 28px;
   }
@@ -350,7 +367,7 @@ Join it for free and learn before earn`;
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    font-family: theme('fontFamily.sans');
+    font-family: var(--font-body);
     font-size: 14px;
     line-height: 1.5;
     color: #000;
@@ -358,14 +375,6 @@ Join it for free and learn before earn`;
     margin-bottom: 9px;
   }
   .svc-list li:last-child { margin-bottom: 0; }
-  .svc-dot {
-    flex: none;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--lime);
-    margin-top: 7px;
-  }
 
   /* 5 · CTA — lime fill, charcoal text, no border, trailing arrow */
   .svc-btn {
@@ -377,7 +386,7 @@ Join it for free and learn before earn`;
     border: none;
     border-radius: 2px;
     padding: 13px 24px;
-    font-family: theme('fontFamily.sans');
+    font-family: var(--font-body);
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -430,6 +439,7 @@ Join it for free and learn before earn`;
   .svc-card-img--top { object-position: top; }
 
   /* Thin accent rule directly under the image. */
+  .svc-card-title { font-weight: 600; }
   .svc-card-rule {
     display: block;
     width: 100%;
@@ -447,8 +457,10 @@ Join it for free and learn before earn`;
   #portfolio-consultancy .svc-card-para {
     text-align: justify;
     text-align-last: left;
-    hyphens: auto;
-    overflow-wrap: break-word;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    overflow-wrap: normal;
+    word-break: normal;
     text-wrap: pretty;
     word-spacing: normal;
   }

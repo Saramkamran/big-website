@@ -20,8 +20,8 @@ export default {
         // quotes from plain string entries, which produces `font-family:Microsoft YaHei UI,…`
         // — invalid CSS that breaks parsing of the following rule. The [value, {}] tuple
         // form preserves the quotes.
-        serif:   [['"Newsreader"', '"Source Serif 4"', 'Georgia', 'serif'].join(', '), {}],
-        sans:    [['"Microsoft YaHei UI"', '"Microsoft YaHei"', '"Inter"', 'system-ui', 'sans-serif'].join(', '), {}],
+        serif:   ['var(--font-heading)', {}],   /* single source: --font-heading in src/styles/global.css */
+        sans:    ['var(--font-body)', {}],   /* single source: --font-body in src/styles/global.css */
       },
       fontSize: {
         'display-xl': ['80px', { lineHeight: '1.05' }],

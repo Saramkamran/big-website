@@ -83,12 +83,12 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
 ---
 
 <BaseLayout
-  title="Specialized Services | Blackstone Islamic Global"
+  title="Specialised Services | Blackstone Islamic Global"
   description="Basirah Family Office, Lifestyle Management, PR Campaign, Philanthropy and Zakat, M&A and Carve Out, and IPO consultancy for Pakistan and US markets."
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h));">
+  <section class="service-hero--raised relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h)); --hero-block-top: min(60%, calc(100% - 180px));">
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -101,19 +101,13 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <div class="relative z-10 container-big hero-inner w-full pt-12 pb-12">
-      <!-- No max-w-3xl here: that 768px cap was what forced the headline down
-           to ~19px. The copy column uses the full container width so the
-           71-character headline can sit at a proper h1 scale on one line. -->
-      <div class="hero-copy">
-        <!-- ss-hero-h1 is a page-only override: at 71 characters this is the
-             longest headline on the site, so it takes the smallest clamp to
-             hold one line. The shared hero-h1 class is left untouched. -->
-        <p class="hero-eyebrow">Specialised Services</p>
-        <h1 class="hero-h1 ss-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
+    <div class="relative z-10 container-big hero-gutter w-full pt-12 pb-12">
+      <div class="hero-content service-hero service-hero--oneline">
+        <p class="hero-eyebrow hero-eyebrow-lg">Specialised Services</p>
+        <h1 class="hero-h1-md">
           Personalised Investments&nbsp;| Personalised Oversight&nbsp;| Exceptional Returns
         </h1>
-        <p class="ss-hero-p font-sans text-white/80 text-lg leading-relaxed mb-8">
+        <p class="hero-sub">
           Our yarning experience of specialised services is sagaciously crafted to go an extra mile in your perspicacity and stature
         </p>
         <Button variant="acid" href="#family-office">Explore What We Do</Button>
@@ -127,75 +121,3 @@ We also offer US IPO consultancy to bridge Pakistani businesses with global inve
   <ServiceAlternating services={services} />
 
 </BaseLayout>
-
-<style>
-  /* ── Hero, matched to the PSX & Global Markets page ─────────────────────
-     hero-h1 / hero-copy are scoped per-component in Astro, so they are
-     defined here rather than inherited. */
-  .hero-h1 {
-    margin-top: 2.1em;
-    max-width: none;
-  }
-  @media (max-width: 640px) {
-    .hero-h1 { margin-top: 0; }
-  }
-
-  /* 71 characters, the longest headline on the site. One line from 1600px; below
-     that it wraps (the "|" is tied to the phrase before it with &nbsp;). */
-  .ss-hero-h1 {
-    font-size: clamp(32px, 2.5vw, 48px);
-    line-height: 1.15;
-    white-space: normal;
-  }
-  @media (min-width: 1600px) {
-    .ss-hero-h1 { white-space: nowrap; }
-  }
-  @media (max-width: 767px) {
-    .ss-hero-h1 { font-size: clamp(26px, 7vw, 32px); }
-  }
-
-  /* Eyebrow for this hero only: 18px (shared size is 16px). The page-scoped
-     selector outranks the shared rule in global.css; case and tracking inherit. */
-  .hero-copy p.hero-eyebrow { font-size: 18px; }
-
-  /* Soft shadow so the copy stays legible over the photo. */
-  .hero-copy h1,
-  .hero-copy p {
-    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
-  }
-
-  /* Hero paragraph: one line on desktop, left-aligned (not justified), same as the
-     Private Wealth hero. The extra `.hero-copy p` outranks the shared hero justify
-     rule in global.css; the page-content black rule is per-class and never applies. */
-  .hero-copy p.ss-hero-p {
-    max-width: none;
-    width: auto;
-    white-space: nowrap;
-    text-wrap: nowrap;
-    text-align: left;
-    text-align-last: auto;
-    hyphens: manual;
-    word-spacing: 0.06em;
-    letter-spacing: 0.01em;
-    text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
-    color: #fff;
-    opacity: 1;
-  }
-  /* The line is ~1070px wide, so it only stays inside the viewport from ~1120px up;
-     below that it wraps (a 768px breakpoint caused sideways scroll at 768-1093px). */
-  @media (max-width: 1119px) {
-    .hero-copy p.ss-hero-p {
-      white-space: normal;
-      text-wrap: balance;
-      max-width: 100%;
-      word-spacing: normal;
-    }
-  }
-
-  /* Trim the shared container gutter for this hero only; container-big
-     (px-6 / lg:px-16) is used site-wide and is left alone. */
-  .hero-inner { padding-left: 8px; }
-  @media (min-width: 1024px) {
-    .hero-inner { padding-left: 24px; }
-  }
-</style>

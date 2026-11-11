@@ -84,20 +84,17 @@ We do not offer a random, one-size-fits-all pension solution. We understand your
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <div class="relative z-10 container-big hero-inner w-full pt-12 pb-12">
-      <div class="max-w-3xl hero-copy">
-        <!-- am-hero-h1 is a page-only override: 58 characters, so it needs a
-             smaller clamp than PSX to hold one line. The shared hero-h1 class
-             is left untouched. -->
-        <p class="hero-eyebrow">Asset Management</p>
-        <h1 class="hero-h1 am-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
+    <div class="relative z-10 container-big hero-gutter w-full pt-12 pb-12">
+      <div class="hero-content service-hero service-hero--oneline">
+        <p class="hero-eyebrow hero-eyebrow-lg">Asset Management</p>
+        <h1 class="hero-h1-md">
           Shariah Screened | Professionally Managed | Growth Focused
         </h1>
-        <p class="font-sans text-white/80 text-lg leading-relaxed mb-3 max-w-xl">
-          Our comprehensive suite of asset management solutions across fixed income, equities, and multi-asset classes is built around proprietary strategies designed to navigate market cycles and pursue realistic returns.
+        <p class="hero-sub mb-3">
+          Our comprehensive suite of asset management solutions across fixed income, equities, and multi-asset classes is built around proprietary strategies designed to navigate market cycles and pursue realistic returns
         </p>
-        <p class="font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
-          Competitively, we take pride in being solution providers, not salespeople; and put clients’ interest first.
+        <p class="hero-sub">
+          Competitively, we take pride in being solution providers, not salespeople; and put clients’ interest first
         </p>
         <Button variant="acid" href="#am-fixed-income">Explore What We Do</Button>
       </div>
@@ -110,41 +107,3 @@ We do not offer a random, one-size-fits-all pension solution. We understand your
   <ServiceAlternating services={services} />
 
 </BaseLayout>
-
-<style>
-  /* ── Hero, matched to the PSX & Global Markets page ─────────────────────
-     hero-h1 / hero-copy are scoped per-component in Astro, so they are
-     defined here rather than inherited. */
-  .hero-h1 {
-    margin-top: 2.1em;
-    max-width: none;
-  }
-  @media (max-width: 640px) {
-    .hero-h1 { margin-top: 0; }
-  }
-
-  /* 58 characters — needs a smaller cap than PSX (50 chars) to hold one line. */
-  .am-hero-h1 {
-    font-size: clamp(1.5rem, 3vw, 1.875rem);
-    white-space: nowrap;
-  }
-  @media (max-width: 767px) {
-    .am-hero-h1 {
-      white-space: normal;
-      font-size: clamp(1.5rem, 6vw, 2rem);
-    }
-  }
-
-  /* Soft shadow so the copy stays legible over the photo. */
-  .hero-copy h1,
-  .hero-copy p {
-    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
-  }
-
-  /* Trim the shared container gutter for this hero only; container-big
-     (px-6 / lg:px-16) is used site-wide and is left alone. */
-  .hero-inner { padding-left: 8px; }
-  @media (min-width: 1024px) {
-    .hero-inner { padding-left: 24px; }
-  }
-</style>

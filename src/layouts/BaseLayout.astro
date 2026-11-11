@@ -33,15 +33,15 @@ const {
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <!-- Preloader: plays once per browser session. Runs before first paint so later pages
-         never flash it; without JS the overlay is hidden so the site is never blocked. -->
+    <!-- Preloader: home page only, once per browser session. Runs before first paint so
+         nothing flashes; without JS the overlay stays hidden so the site is never blocked. -->
     <script is:inline>
       (function () {
-        var r = document.documentElement;
         try {
-          if (sessionStorage.getItem('big-preloader')) { r.classList.add('preloader-skip'); return; }
+          if (location.pathname === '/' && !sessionStorage.getItem('bigPreloaderSeen')) {
+            document.documentElement.classList.add('preloader-on');
+          }
         } catch (e) {}
-        r.classList.add('preloader-active');
       })();
     </script>
     <noscript><style>#preloader { display: none !important; }</style></noscript>

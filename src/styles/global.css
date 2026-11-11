@@ -17,6 +17,13 @@
   --line:     #E5E7EB;
   /* Paragraph text in page content (not header/footer/dark bands). */
   --body-text: #000000;
+  /* The one body font stack (what the homepage paragraphs use via Tailwind's font-sans).
+     "Microsoft YaHei UI" on Windows; Inter (loaded in BaseLayout) elsewhere. Defined only
+     here: tailwind.config.mjs `sans` and every component stylesheet read this variable. */
+  --font-body: "Microsoft YaHei UI", "Microsoft YaHei", "Inter", system-ui, sans-serif;
+  /* The one heading font (every homepage h1/h2). Defined only here: tailwind.config.mjs
+     `serif` and the component stylesheets read this variable. Newsreader loads in BaseLayout. */
+  --font-heading: "Newsreader", "Source Serif 4", Georgia, serif;
   /* Left padding of the navbar row (Navbar.astro: px-6, then pl-10 from 900px).
      The footer brand block uses it to line up with the navbar logo. Keep in sync. */
   --nav-pad-x: 24px;
@@ -147,10 +154,18 @@ section.bg-ink .absolute.bg-acid { background-color: #FFFFFF; }
 
 @layer base {
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-body);
     color: var(--ink);
     background: var(--paper);
     scroll-behavior: smooth;
+  }
+  body { font-family: var(--font-body); }
+  /* Headings use the heading font on every page (a .font-sans class would override this). */
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+  /* Text elements take the body font. (Form controls and buttons do not inherit it by
+     default.) Utilities such as .font-serif and component rules still win over this. */
+  p, li, a, span, button, input, textarea, select, label, td, th, blockquote, figcaption, dt, dd {
+    font-family: inherit;
   }
 
   * {
@@ -238,8 +253,12 @@ section.bg-ink .absolute.bg-acid { background-color: #FFFFFF; }
   .hero-copy p:not(.hero-eyebrow) {
     text-align: justify;
     text-align-last: left;
-    hyphens: auto;
-    overflow-wrap: break-word;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    text-wrap: pretty;
+    word-spacing: normal;
+    overflow-wrap: normal;
+    word-break: normal;
   }
   @media (max-width: 767px) {
     .hero-content p:not(.hero-eyebrow):not(.hero-locations),
@@ -262,6 +281,65 @@ section.bg-ink .absolute.bg-acid { background-color: #FFFFFF; }
   }
   .hero-content p.hero-eyebrow + h1,
   .hero-copy p.hero-eyebrow + h1 { margin-top: 0; }
+  /* Large eyebrow used by the home hero and the PSX & Global Markets hero. Add
+     `hero-eyebrow-lg` next to `hero-eyebrow`. The doubled class outranks the base
+     eyebrow rule above; other heroes keep the base size. */
+  .hero-content p.hero-eyebrow.hero-eyebrow-lg {
+    font-size: clamp(31px, 3.24vw, 61px);
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    white-space: normal;
+    text-wrap: balance;
+  }
+  @media (min-width: 1200px) {
+    .hero-content p.hero-eyebrow.hero-eyebrow-lg { white-space: nowrap; }
+  }
+  @media (max-width: 767px) {
+    .hero-content p.hero-eyebrow.hero-eyebrow-lg { font-size: clamp(25px, 6.8vw, 31px); }
+  }
+  /* Medium h1 under the large eyebrow (home hero and PSX hero): `hero-h1-md`. */
+  .hero-content h1.hero-h1-md { font-size: clamp(23.5px, 2.4vw, 46px); }
+  @media (max-width: 767px) {
+    .hero-content h1.hero-h1-md { font-size: clamp(19px, 5.2vw, 23.5px); }
+  }
+  /* Subheading under it: `hero-sub` (size comes from the base hero paragraph).
+     Left-aligned, not justified. The doubled class outranks the shared hero
+     paragraph justify rule above. */
+  .hero-content p.hero-sub.hero-sub {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: manual;
+    word-spacing: normal;
+    letter-spacing: 0.01em;
+  }
+  /* Service page heroes (PSX, Asset Management, Private Wealth, Specialised
+     Services): add `service-hero` to the `.hero-content` wrapper. Sizes are the PSX
+     hero's: top line > h1 > paragraph. The h1 wraps; the paragraph is 33em wide from
+     1280px. PSX adds its own one-line h1 and paragraph width on top (page-scoped). */
+  .hero-content.service-hero p.hero-eyebrow.hero-eyebrow-lg { font-size: clamp(36.3px, 3.79vw, 71.4px); }
+  .hero-content.service-hero h1.hero-h1-md { font-size: clamp(24.3px, 2.48vw, 47.6px); white-space: normal; max-width: 100%; }
+  .hero-content.service-hero p.hero-sub.hero-sub { max-width: 100%; }
+  @media (min-width: 1280px) {
+    .hero-content.service-hero p.hero-sub.hero-sub { max-width: 33em; }
+  }
+  @media (max-width: 767px) {
+    .hero-content.service-hero p.hero-eyebrow.hero-eyebrow-lg { font-size: clamp(29.3px, 7.96vw, 36.3px); }
+    .hero-content.service-hero h1.hero-h1-md { font-size: clamp(19.7px, 5.38vw, 24.3px); }
+  }
+  /* One-line variant (PSX, Asset Management, Specialised Services): from 1440px the
+     block is as wide as the h1 (the top line is held to the same width, the paragraphs
+     are 0 wide with a 85% minimum), so paragraphs end 15% before the end of the h1.
+     Below 1440px the h1 wraps and paragraphs fill the text block. */
+  @media (min-width: 1440px) {
+    .hero-content.service-hero.service-hero--oneline { width: fit-content; max-width: none; }
+    .hero-content.service-hero.service-hero--oneline h1.hero-h1-md { white-space: nowrap; }
+    .hero-content.service-hero.service-hero--oneline p.hero-eyebrow.hero-eyebrow-lg { width: 0; min-width: 100%; }
+    .hero-content.service-hero.service-hero--oneline p.hero-sub.hero-sub { width: 0; min-width: 85%; max-width: none; }
+  }
+  @media (max-width: 1439px) {
+    .hero-content.service-hero.service-hero--oneline p.hero-sub.hero-sub { width: 100%; min-width: 0; max-width: 100%; }
+  }
   /* Locations line between the subheading and the button. */
   .hero-content p.hero-locations {
     @apply text-white;
@@ -275,8 +353,11 @@ section.bg-ink .absolute.bg-acid { background-color: #FFFFFF; }
   main p:not(.no-justify) {
     text-align: justify;
     text-align-last: left;
-    hyphens: auto;
-    overflow-wrap: break-word;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    overflow-wrap: normal;
+    word-break: normal;
+    word-spacing: normal;
     text-wrap: pretty;
   }
   /* Opt-outs: justify opens gaps in short lines, so these stay left-aligned.
@@ -290,7 +371,6 @@ section.bg-ink .absolute.bg-acid { background-color: #FFFFFF; }
   main p.firm-value-body,                                  /* About values grid */
   main p.firm-card-body,                                   /* About carousel cards */
   main p.firm-person-name, main p.firm-person-title,       /* About leadership */
-  main p.firm-pdflink-wrap,                                 /* About PDF link line */
   main p.svc-card-para {                                   /* PSX service cards */
     text-align: left;
     text-align-last: auto;
@@ -303,8 +383,50 @@ section.bg-ink .absolute.bg-acid { background-color: #FFFFFF; }
     }
   }
 
+  /* ── Star bullets for content lists ──────────────────────────────────────
+     Every <ul> in <main> is a star-bullet list. The navbar, footer and mobile drawer sit
+     outside <main>, so they are untouched; <ol> is untouched. A list in <main> that is
+     really a layout/link list opts out with class="no-star". The star is centred on the
+     first text line (top uses the line-height unit where supported, 0.36em otherwise). */
+  main ul:not(.no-star) {
+    list-style: none;
+    padding-left: 0;
+  }
+  main ul:not(.no-star) > li {
+    position: relative;
+    padding-left: 1.75em;
+  }
+  main ul:not(.no-star) > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.36em;
+    top: calc((1lh - 0.9em) / 2);
+    width: 0.9em;
+    height: 0.9em;
+    background: url("/images/star-bullet.png") center / contain no-repeat;
+  }
+
   /* Hairline divider */
   .divider {
     @apply border-t border-line;
+  }
+}
+
+/* ── Raised service hero (Private Wealth, Specialised Services) ───────────────
+   Add `service-hero--raised` to the hero <section>. From 1024px the text block's
+   vertical centre sits at 45% of the hero height (5% above centre) instead of
+   being anchored to the bottom. Outside @layer so it outranks the `relative`,
+   `w-full` and padding utilities on the container. The 200px floor keeps the
+   block's top edge at least 24px below the navbar on very short windows. */
+@media (min-width: 1024px) {
+  .service-hero--raised > .hero-gutter {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: max(var(--hero-block-top, 45%), 200px); /* per-page override via --hero-block-top */
+    transform: translateY(-50%);
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }

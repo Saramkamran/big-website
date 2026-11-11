@@ -11,7 +11,7 @@ import Button from '../components/Button.astro';
   <StatBand />
 
   <!-- ── What We Do header ─────────────────────────────────────────────── -->
-  <section id="what-we-do" class="py-16 lg:py-20 bg-paper border-t border-line">
+  <section id="what-we-do" class="py-[57.6px] lg:py-[72px] bg-paper border-t border-line">
     <div class="container-big">
       <p class="label text-copy mb-4">What We Do</p>
       <h2
@@ -38,7 +38,7 @@ import Button from '../components/Button.astro';
       <!-- Text -->
       <div class="bg-paper flex items-center px-8 py-16 lg:px-14 xl:px-20">
         <div class="max-w-xl w-full">
-          <p class="label text-copy mb-4">PSX &amp; Global Markets</p>
+          <p class="label text-copy mb-4">PSX AND Global Markets</p>
           <!-- Same serif/weight/tracking as the hero h1, scaled for a half-width column.
                Each phrase is nowrap so the heading breaks only between phrases, and the
                &nbsp; keeps every "|" attached to the phrase before it (never starts a line).
@@ -47,7 +47,7 @@ import Button from '../components/Button.astro';
             class="pillar-h2 font-serif font-normal text-copy mb-5"
             style="line-height: 1.15;"
           >
-            <span class="whitespace-nowrap">Tailored Strategy&nbsp;|</span> <span class="whitespace-nowrap">Smart Execution&nbsp;|</span> <span class="whitespace-nowrap">Timely Exist</span>
+            <span class="whitespace-nowrap">Tailored Strategy&nbsp;|</span> <span class="whitespace-nowrap">Smart Execution&nbsp;|</span> <span class="whitespace-nowrap">Timely Exit</span>
           </h2>
           <p class="font-sans text-sm text-copy leading-relaxed mb-7">
             Our equities business combines niche research, rigorous analysis, and deep market expertise to deliver tailored, timely and independent investment solutions for our distinguished investors.
@@ -55,7 +55,7 @@ import Button from '../components/Button.astro';
           <ul class="mb-8 space-y-2.5">
             {['Shariah Equities', 'Portfolio Consultancy', 'Portfolio Supervision', 'Sukuks and Green Sukuks', 'Transaction Services', 'Blackstone Intel'].map(s => (
               <li class="flex items-center gap-3 font-sans text-sm text-ink">
-                <span class="w-1.5 h-1.5 bg-acid flex-shrink-0"></span>{s}
+                {s}
               </li>
             ))}
           </ul>
@@ -94,7 +94,7 @@ import Button from '../components/Button.astro';
           <ul class="mb-8 space-y-2.5">
             {['Shariah Fixed Income Funds', 'Shariah Equity Funds', 'Shariah ETF', 'Shariah Multi-Asset Funds', 'Shariah Pensions'].map(s => (
               <li class="flex items-center gap-3 font-sans text-sm text-ink">
-                <span class="w-1.5 h-1.5 bg-acid flex-shrink-0"></span>{s}
+                {s}
               </li>
             ))}
           </ul>
@@ -152,7 +152,7 @@ import Button from '../components/Button.astro';
           <ul class="mb-8 space-y-2.5">
             {['Wealth Planning', 'Private Equity', 'Pakistan Energy', 'Real Estate'].map(s => (
               <li class="flex items-center gap-3 font-sans text-sm text-ink">
-                <span class="w-1.5 h-1.5 bg-acid flex-shrink-0"></span>{s}
+                {s}
               </li>
             ))}
           </ul>
@@ -188,7 +188,7 @@ import Button from '../components/Button.astro';
           <ul class="mb-8 space-y-2.5">
             {['Basirah Family Office', 'Lifestyle Management', 'PR Campaign', 'Philanthropy and Zakat', 'M&A and Carve Out', 'Initial Public Offer', 'Professional Services'].map(s => (
               <li class="flex items-center gap-3 font-sans text-sm text-ink">
-                <span class="w-1.5 h-1.5 bg-acid flex-shrink-0"></span>{s}
+                {s}
               </li>
             ))}
           </ul>
@@ -196,7 +196,7 @@ import Button from '../components/Button.astro';
             href="/what-we-do/specialized-services"
             class="group inline-flex items-center gap-3 bg-acid text-ink font-sans font-semibold text-sm px-8 py-4 transition-all duration-300 hover:bg-ink hover:text-white"
           >
-            Explore Specialized Services
+            Explore Specialised Services
             <span class="inline-block transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true">→</span>
           </a>
         </div>

@@ -2,15 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 
-const accreditations = [
-  { name: 'ACCA', label: 'ACCA Employer Accreditation' },
-  { name: 'ICAP', label: 'ICAP Registered Employer' },
-  { name: 'ISO/UKSAS', label: 'ISO / UKSAS Certified' },
-  { name: 'MUFAP', label: 'MUFAP Member' },
-  { name: 'SECP', label: 'SECP Licensed' },
-  { name: 'TREC', label: 'PSX TREC Holder' },
-  { name: 'PSX', label: 'Pakistan Stock Exchange' },
-];
+// Lecture recording (ICAP SharePoint). Not a public link: viewers may need access/sign-in.
+const LECTURE_VIDEO_URL = "https://icapedu-my.sharepoint.com/personal/usman_khan_icap_org_pk/_layouts/15/stream.aspx?id=%2Fpersonal%2Fusman%5Fkhan%5Ficap%5Forg%5Fpk%2FDocuments%2FMiss%20Nazia%20Akmal%2FNRC%2FPlease%20do%20not%20delete%20this%20folder%20for%20one%20year%2FFinance%20To%20fortune%20The%20Future%20of%20Intelligent%20Investing%20Through%20the%20PSX%20and%20Beyond%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&ga=1&LOF=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ebbcde74f%2Db88e%2D4f79%2Db0c9%2D7e5d2d603761";
 
 // Leadership cards + the shared bio dialog both read this array (it is also
 // serialised into the page for the dialog script).
@@ -32,7 +25,7 @@ const leadership = [
   {
     name: 'Amina Asif',
     title: 'Co-Founder and Director - Strategy & Legal',
-    image: '/images/2.2.png',
+    image: '/images/5.3.jpeg',
     popupImage: '/images/2.2.png',
     alt: 'Amina Asif, seated at a desk in a black jacket and a cream headscarf with a gold-trimmed border, looking at the camera',
     bio: [
@@ -46,9 +39,9 @@ const leadership = [
 ];
 
 const values = [
-  { title: 'Integrity',    body: 'Truthful to all stakeholders.' },
-  { title: 'Intelligence', body: 'To act smartly.' },
-  { title: 'Impact',       body: 'Targeting value and wealth.' },
+  { title: 'Integrity',    body: 'Truthful to all stakeholders' },
+  { title: 'Intelligence', body: 'To act smartly' },
+  { title: 'Impact',       body: 'Targeting value and wealth' },
 ];
 
 // The BIG Journey, split one card per existing paragraph. Wording is verbatim;
@@ -68,7 +61,7 @@ const journey = [
   },
   {
     heading: 'Our ambition',
-    body: `What began with PKR 25,000 support from his mother has grown into an inspiring ambition to help individuals and institutional clients build, preserve, and steward wealth with wisdom, faith, and agility.`,
+    body: `What began with $400 support from his mother has grown into an inspiring ambition to help individuals and institutional clients build, preserve, and steward wealth with wisdom, faith, and agility.`,
   },
 ];
 ---
@@ -85,7 +78,7 @@ const journey = [
       <div class="firm-container">
         <p class="firm-eyebrow font-sans">Our Firm</p>
 
-        <h1 class="firm-h1 font-serif text-ink">24 Years of Excellence</h1>
+        <h1 class="firm-h1 font-serif text-ink">25 Years of Excellence</h1>
 
         <p class="firm-intro font-sans">
           Since inception, our business philosophy has remained simple: unlock fundamentally strong, technically sound, and sentimentally stable investments. Yet, above all, our pursuit of excellence has always centred on exceptional service, trusted relationships, and meaningful delivery for our esteemed clients.
@@ -108,8 +101,8 @@ const journey = [
       <div>
         <div class="firm-gallery-grid">
           <img
-            src="/images/big-1.7.jpg"
-            alt="Two men holding a glass award trophy in front of an ICAEW backdrop, one in dark traditional dress and one smiling in a navy suit"
+            src="/images/big-1.4.jpg"
+            alt="Speaker presenting at ICAP Pakistan"
             width="854" height="1280" loading="lazy"
           />
           <img
@@ -118,9 +111,10 @@ const journey = [
             width="917" height="1280" loading="lazy"
           />
           <img
-            src="/images/2.3.jpg"
-            alt="A woman in an orange scarf presenting to seated attendees at a training workshop, with a projector screen and green-covered tables"
+            src="/images/2.4.jpg"
+            alt="Instructor presenting to a seminar audience"
             width="1280" height="789" loading="lazy"
+            style="object-position: 100% center;"
           />
           <img
             src="/images/big-1.3.jpg"
@@ -149,13 +143,12 @@ const journey = [
       <div class="firm-container">
         <div class="firm-aboutus">
           <div class="firm-aboutus-side">
-            <p class="firm-eyebrow-sm font-sans">About Us</p>
             <h2 class="firm-aboutus-h2 font-serif text-ink">About Us</h2>
             <span class="firm-rule" aria-hidden="true"></span>
           </div>
 
           <div class="firm-aboutus-main">
-            <p class="firm-lead font-sans text-copy" data-reveal>
+            <p class="firm-lead firm-aboutus-p no-justify font-sans text-copy" data-reveal>
               Blackstone Islamic Global 'BIG' is a Shariah enabled brokerage, asset management, and wealth management consultancy serving institutional and individual clients globally. Our practice combines deep markets research and expertise to deliver structured and faith-aligned investment solutions.
             </p>
 
@@ -164,31 +157,30 @@ const journey = [
                 At BIG, we believe that adherence to Shariah principles and the pursuit of superior performance are not competing objectives, they are mutually reinforcing.
               </p>
             </blockquote>
-            <p class="firm-quote-after font-sans" data-reveal>
+            <p class="firm-quote-after firm-aboutus-p no-justify font-sans text-copy" data-reveal>
               Our approach is built on transparency, trust, and a long-term commitment to our clients' financial well-being and legacy
             </p>
 
-            <p class="firm-body font-sans" data-reveal>
-              We also provide access to Pakistan's private equity, real estate, and specialized professional services including M&amp;A, IPOs, and family office management.
+            <p class="firm-body firm-aboutus-p no-justify font-sans text-copy" data-reveal>
+              We also provide access to Pakistan's private equity, real estate, and specialised professional services including M&amp;A, IPOs, and family office management.
             </p>
 
             {/* Labels drawn only from the wording above. Rendered as plain rows:
                 the five entries do not map one to one onto the four What We Do
                 pages, so they are not linked. */}
-            <ol class="firm-dolist">
+            <ul class="firm-dolist">
               {[
                 'Shariah enabled brokerage',
                 'Asset management',
                 'Wealth management consultancy',
                 "Access to Pakistan's private equity and real estate",
                 'M&A, IPOs and family office management',
-              ].map((item, i) => (
+              ].map((item) => (
                 <li class="firm-dorow" data-reveal>
-                  <span class="firm-doindex font-sans">{String(i + 1).padStart(2, '0')}</span>
                   <span class="firm-dolabel font-serif text-ink">{item}</span>
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
         </div>
       </div>
@@ -198,10 +190,9 @@ const journey = [
     <section class="firm-values-section">
       <div class="firm-container">
         <h2 class="firm-values-h2 font-serif font-normal">Our Values</h2>
-        <ul class="firm-values-list">
-          {values.map((v, i) => (
+        <ul class="firm-values-list no-star">
+          {values.map((v) => (
             <li class="firm-value-item">
-              <span class="firm-value-num font-serif" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
               <h3 class="firm-value-name font-serif font-normal">{v.title}</h3>
               <p class="firm-value-body no-justify font-sans">{v.body}</p>
             </li>
@@ -215,13 +206,13 @@ const journey = [
       <div class="firm-mosaic-wrap">
         <div class="firm-mosaic">
           <img
-            src="/images/big-1.9.jpg"
-            alt="About twenty colleagues in business attire standing in a row on a stage in front of an ICAEW backdrop"
+            src="/images/big-1.6.jpg"
+            alt="Group photo at a CA Pakistan event"
             class="firm-mosaic-wide" loading="lazy" width="1280" height="854"
           />
           <img
-            src="/images/big-1.6.jpg"
-            alt="Group photo of staff and guests in a lecture hall with a large 'CA Pakistan' logo on the wall behind them"
+            src="/images/big-1.5.jpg"
+            alt="Award presentation at an ICAP Northern Regional Committee event"
             class="firm-mosaic-left" loading="lazy" width="1280" height="853"
           />
           <img
@@ -230,6 +221,39 @@ const journey = [
             class="firm-mosaic-right" loading="lazy" width="1380" height="1840"
           />
         </div>
+      </div>
+    </section>
+
+    {/* 5b — Our Lectures: white band (the mist Journey band follows). Same two-column
+        split, gutters and vertical padding as the BIG Journey section. */}
+    <section class="firm-section firm-lectures" id="lectures">
+      <div class="firm-container">
+        <h2 class="firm-h2 font-serif text-ink">Our Lectures</h2>
+        <div class="firm-lectures-row">
+          <img
+            src="/images/5.2.jpeg"
+            alt="Finance to Fortune event poster, organised by the Northern Regional Committee of ICAP"
+            class="firm-lectures-img-a" loading="lazy"
+          />
+          <img
+            src="/images/5.1.jpeg"
+            alt="Speaker poster: Mian Muhammad Husnain Yasin, Founder, Blackstone Islamic Global, University of Lahore School of Accountancy & Finance"
+            class="firm-lectures-img-b" loading="lazy"
+          />
+        </div>
+
+        <p class="firm-lectures-p font-sans">
+          Finance To Fortune: The Future of Intelligent Investing Through PSX and Beyond<br />
+          The Institute of Chartered Accountants of Pakistan (ICAP)
+        </p>
+        <a
+          href={LECTURE_VIDEO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="firm-lectures-btn inline-block bg-ink text-white font-sans text-sm font-semibold px-7 py-3 hover:bg-stone transition-colors"
+        >
+          Watch Now
+        </a>
       </div>
     </section>
 
@@ -242,8 +266,8 @@ const journey = [
             <h2 class="firm-h2 font-serif text-ink">The BIG Journey</h2>
           </div>
           <div class="firm-prose">
-            <p>
-              This philosophy has evolved through an epic journey, shaping who we are today and continuing to guide us towards tomorrow.
+            <p class="font-sans">
+              Our philosophy has evolved through an epic journey, shaping who we are today and continuing to guide us towards tomorrow.
             </p>
           </div>
         </div>
@@ -259,7 +283,7 @@ const journey = [
       >
         {journey.map((c) => (
           <article class="firm-card bg-paper">
-            <h3 class="firm-card-title font-sans text-ink">{c.heading}</h3>
+            <h3 class="firm-card-title font-serif text-ink">{c.heading}</h3>
             <p class="firm-card-body font-sans">{c.body}</p>
           </article>
         ))}
@@ -274,37 +298,18 @@ const journey = [
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
-        <p class="firm-pdflink-wrap">
-          <a
-            href="/the-big-journey.pdf"
-            class="firm-pdflink font-sans"
-            download
-            type="application/pdf"
-          >Download as PDF<span class="sr-only"> (PDF)</span></a>
-        </p>
       </div>
     </section>
 
     {/* 7 — Vendor Selection Programme + Accreditations list */}
-    <section class="bg-paper firm-section">
+    <section class="bg-paper firm-section firm-vendor-section">
       <div class="firm-container">
-        <div class="firm-split firm-vendor">
+        <div class="firm-vendor">
           <div>
             <h2 class="firm-h2 font-serif text-ink">Vendor Selection Programme</h2>
             <p class="firm-prose firm-vendor-body">
               Our Vendor Selection Programme enables us to work with professionally vetted and reputable organisations, allowing us to deliver market leading services and solutions to our clients.
             </p>
-          </div>
-          <div>
-            <p class="firm-eyebrow-sm font-sans">Accreditations &amp; Memberships</p>
-            <ul class="firm-list">
-              {accreditations.map((acc) => (
-                <li class="firm-list-row">
-                  <span class="firm-list-name font-sans text-ink">{acc.name}</span>
-                  <span class="firm-list-label font-sans">{acc.label}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
@@ -314,19 +319,19 @@ const journey = [
     <section class="bg-mist firm-section">
       <div class="firm-container">
         <p class="firm-eyebrow-sm font-sans">Leadership &amp; Board</p>
-        <h2 class="firm-h2 font-serif text-ink firm-leader-head">Experienced. Principled. Client-Focused.</h2>
+        <h2 class="firm-h2 font-serif text-ink firm-leader-head">Experienced&nbsp;| Principled&nbsp;| Client-Focused</h2>
 
         <div class="firm-people">
           {leadership.map((person, i) => (
             <article class="firm-person">
-              <button type="button" class="firm-person-btn" data-bio={i} aria-haspopup="dialog">
+              <button type="button" class="firm-person-btn" data-bio={i} aria-haspopup="dialog" aria-expanded="false">
                 <span class="firm-portrait">
                   <img src={person.image} alt={person.alt} loading="lazy" width="1280" height="853" />
                 </span>
                 <span class="firm-person-name font-sans text-copy">{person.name}</span>
               </button>
               <p class="firm-person-title font-sans">{person.title}</p>
-              <button type="button" class="firm-person-more font-sans" data-bio={i} aria-haspopup="dialog" aria-label={`View bio of ${person.name}`}>View bio +</button>
+              <button type="button" class="firm-person-more font-sans" data-bio={i} aria-haspopup="dialog" aria-expanded="false" aria-label={`The Reflection: ${person.name}`}>The Reflection +</button>
             </article>
           ))}
         </div>
@@ -357,6 +362,7 @@ const journey = [
     <div class="firm-cta">
       <ContactCTA
         headline="Speak with Our Team"
+        ctaLabel="Let’s Engage"
         subtext="We would welcome the opportunity to discuss how BIG can serve your investment and advisory needs."
         image="/images/person.jpg"
         imageAlt="Smiling woman in a cream hijab and white patterned blouse working on a laptop at an outdoor table, with an orange building behind her"
@@ -366,6 +372,11 @@ const journey = [
 </BaseLayout>
 
 <style>
+  /* About page body text uses the heading face (Newsreader). Everything inside <main>
+     that reads --font-body (the font-sans class, the bio popup) resolves to it; the
+     navbar and footer sit outside <main> and keep the site body font. */
+  :global(#main) { --font-body: var(--font-heading); }
+
   /* ────────────────────────────────────────────────────────────────────────
      Our Firm, editorial layout. Everything is scoped under .firm and to this
      page only, so no other route and no shared component changes behavior.
@@ -374,6 +385,10 @@ const journey = [
 
   /* One shared container with equal gutters: 20px mobile, 50px from 1024px,
      100px from 1700px. Content and images run its full width. */
+  /* One gap value for the white space between sections (per side; two sides = the
+     total gap, about 10% of the old spacing). */
+  .firm { --about-section-gap: clamp(6.4px, 0.8vw, 12.8px); }
+
   .firm-container {
     width: 100%;
     padding-left: 20px;
@@ -386,8 +401,11 @@ const journey = [
     .firm-container { padding-left: 100px; padding-right: 100px; }
   }
 
-  .firm-section       { padding-block: clamp(64px, 8vw, 128px); }
+  .firm-section       { padding-block: clamp(32px, 4vw, 64px); }   /* halved: About Us, Lectures, Journey, Leadership */
   .firm-section-tight { padding-block: clamp(32px, 4vw, 56px); }
+  /* The white (non-banded) sections use the shared gap; the coloured bands keep their own
+     padding because it sits inside their background. */
+  .firm-section.bg-paper { padding-block: var(--about-section-gap); }
 
   /* 1 — page header block. Spacing steps follow the reference: eyebrow sits
      ~90px below the navbar, H1 ~16px under it, intro ~50px under the H1,
@@ -395,7 +413,7 @@ const journey = [
      before the hero image. */
   .firm-header {
     padding-top: clamp(48px, 6.2vw, 90px);
-    padding-bottom: clamp(48px, 5.5vw, 80px);
+    padding-bottom: var(--about-section-gap);
   }
 
   .firm-eyebrow {
@@ -451,7 +469,7 @@ const journey = [
   /* 1b — image gallery: full-bleed strip (no container, no side padding, no gaps).
      4 columns from 1024px, 2 below. Tiles are cropped with the crop anchored high so
      faces stay in frame; white space above and below only. */
-  .firm-gallery { padding-block: 64px; padding-inline: 0; margin: 0; }
+  .firm-gallery { padding-block: var(--about-section-gap); padding-inline: 0; margin: 0; }
   .firm-gallery > div { width: 100%; max-width: none; margin: 0; padding: 0; }
   .firm-gallery-grid {
     display: grid;
@@ -471,9 +489,6 @@ const journey = [
     aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: center 20%;
-  }
-  @media (max-width: 767px) {
-    .firm-gallery { padding-block: 40px; }
   }
   @media (min-width: 1024px) {
     .firm-gallery-grid { grid-template-columns: repeat(4, 1fr); }
@@ -503,7 +518,7 @@ const journey = [
   @media (max-width: 900px) { .firm-split { grid-template-columns: 1fr; } }
 
   /* ~100px of air above and below the statement on desktop. */
-  .firm-statement-section { padding-block: clamp(56px, 7vw, 100px); }
+  .firm-statement-section { padding-block: clamp(24px, 2.2vw, 48px); }
 
   /* ── About Us ──────────────────────────────────────────────────────────── */
   .firm-aboutus {
@@ -535,9 +550,17 @@ const journey = [
     margin-top: 24px;
   }
 
-  .firm-lead {
+  /* The three About Us paragraphs share this look (the lead paragraph's). */
+  .firm-aboutus-p {
     font-size: clamp(22px, 2.3vw, 34px);
     line-height: 1.45;
+    text-align: left;
+    text-align-last: left;
+    word-spacing: normal;
+    hyphens: manual;
+    overflow-wrap: normal;
+  }
+  .firm-lead {
     margin: 0;
   }
 
@@ -554,16 +577,10 @@ const journey = [
     margin: 0;
   }
   .firm-quote-after {
-    font-size: clamp(17px, 1.4vw, 20px);
-    line-height: 1.5;
-    color: var(--body-text);
     margin: 24px 0 0;
   }
 
   .firm-body {
-    font-size: clamp(17px, 1.4vw, 20px);
-    line-height: 1.5;
-    color: var(--body-text);
     margin: clamp(32px, 3.5vw, 48px) 0 0;
   }
 
@@ -573,20 +590,25 @@ const journey = [
     padding: 0;
     counter-reset: none;
   }
-  .firm-dorow {
+  .firm-dolist > li.firm-dorow {
     display: flex;
-    align-items: baseline;
-    gap: 20px;
+    /* The star is the first flex item, centred on the row; gap = 39px minus the star's
+       width, so the text still starts 39px in. */
+    align-items: center;
+    gap: calc(39px - 0.9em);
+    padding-left: 0;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.21;
     padding-block: 22px;
     border-bottom: 1px solid var(--line);
   }
-  .firm-dorow:first-child { border-top: 1px solid var(--line); }
-  .firm-doindex {
+  .firm-dolist > li.firm-dorow:first-child { border-top: 1px solid var(--line); }
+  .firm-dolist > li.firm-dorow::before {
+    position: static;
     flex: none;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: var(--stone);
+    top: auto;
+    margin: 0;
+    line-height: 1;
   }
   .firm-dolabel {
     font-weight: 400;
@@ -598,7 +620,7 @@ const journey = [
     display: grid;
     gap: 20px;
     font-size: clamp(17px, 1.4vw, 20px);
-    line-height: 1.5;
+    line-height: 1.625;
     color: var(--body-text);
     max-width: 68ch;
   }
@@ -619,7 +641,7 @@ const journey = [
   .firm-values-section {
     background: var(--ink);
     color: #fff;
-    padding-block: 112px;
+    padding-block: 56px;   /* halved from 112px */
   }
   .firm-values-h2 {
     font-size: clamp(32px, 3vw, 48px);
@@ -642,14 +664,8 @@ const journey = [
     border-top: 1px solid rgba(255, 255, 255, .18);
     transition: opacity 0.35s ease;
   }
-  .firm-value-num {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    color: rgba(255, 255, 255, .5);
-    padding-bottom: 0.9em;
-  }
   .firm-value-name {
+    grid-column: 2;   /* keeps the heading where it sat beside the (removed) number */
     font-size: clamp(48px, 8vw, 128px);
     line-height: 1;
     letter-spacing: -0.02em;
@@ -658,8 +674,8 @@ const journey = [
     transition: transform 0.45s cubic-bezier(.2, .7, .2, 1);
   }
   .firm-value-body {
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 24.84px;   /* 18px x 1.15 x 1.2 */
+    line-height: 1.625;
     color: rgba(255, 255, 255, .78);
     max-width: 30ch;
     text-align: left;
@@ -678,18 +694,16 @@ const journey = [
   @media (max-width: 1023px) {
     .firm-value-item { grid-template-columns: 56px minmax(0, 1fr); row-gap: 20px; }
     .firm-value-body { grid-column: 2; padding-bottom: 0; }
-    .firm-value-num { padding-bottom: 0.6em; }
   }
   @media (max-width: 767px) {
-    .firm-values-section { padding-block: 64px; }
+    .firm-values-section { padding-block: 32px; }
     .firm-values-h2 { margin-bottom: 40px; }
     .firm-value-item { grid-template-columns: 1fr; padding: 32px 0 36px; }
-    .firm-value-body { grid-column: 1; }
-    .firm-value-num { padding-bottom: 0; }
+    .firm-value-name, .firm-value-body { grid-column: 1; }
   }
 
   /* 5 — photo mosaic: one wide tile, then two side by side. No gaps. */
-  .firm-mosaic-section { padding-block: 64px; }
+  .firm-mosaic-section { padding-block: var(--about-section-gap); }
   .firm-mosaic-wrap {
     max-width: 1000px;
     margin-inline: auto;
@@ -712,12 +726,11 @@ const journey = [
     grid-column: 1 / -1;
     height: auto !important;
     aspect-ratio: 3 / 1;
-    object-position: center 62%;
+    object-position: center 35%;
   }
-  .firm-mosaic-left  { object-position: center 40%; }
+  .firm-mosaic-left  { object-position: center 30%; }
   .firm-mosaic-right { object-position: center 22%; }
   @media (max-width: 767px) {
-    .firm-mosaic-section { padding-block: 40px; }
     .firm-mosaic-wrap { padding-inline: 0; }
     .firm-mosaic { grid-template-columns: 1fr; }
     .firm-mosaic img,
@@ -726,6 +739,42 @@ const journey = [
 
   /* 6 — journey band + carousel */
   .firm-heritage { align-items: start; }
+
+  /* Our Lectures (white band; padding comes from .firm-section, as for the Journey band) */
+  .firm-lectures { background: var(--paper); }
+  .firm-lectures-p {
+    width: 90%;
+    max-width: none;
+    margin: 32px 0 0;
+    font-size: clamp(20px, 1.6vw, 30px);
+    line-height: 1.5;
+    color: var(--body-text);
+    text-align: left;
+  }
+  .firm-lectures-btn { margin-top: 32px; }
+  /* Posters carry text, so they are never cropped (object-fit: contain, no radius). */
+  .firm-lectures-row {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-top: 48px;
+  }
+  .firm-lectures-row img {
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    object-fit: contain;
+    display: block;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .firm-lectures-img-a { flex: 1.591 1 0; aspect-ratio: 1050 / 660; }
+  .firm-lectures-img-b { flex: 1 1 0; aspect-ratio: 1 / 1; }
+  @media (max-width: 767px) {
+    .firm-lectures-row { flex-direction: column; gap: 16px; }
+    .firm-lectures-row img { flex: none; }
+  }
   .firm-h2 {
     font-weight: 400;
     font-size: clamp(32px, 5vw, 60px);
@@ -762,16 +811,24 @@ const journey = [
   @media (max-width: 480px) { .firm-card { flex-basis: 82vw; } }
 
   .firm-card-title {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 26px;
     line-height: 1.23;
     margin: 0 0 12px;
   }
   .firm-card-body {
     font-size: 16px;
-    line-height: 1.55;
+    line-height: 1.625;
     color: var(--body-text);
     margin: 0;
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 7 3 3;
+    text-wrap: pretty;
+    word-spacing: normal;
+    overflow-wrap: normal;
   }
 
   .firm-controls {
@@ -796,46 +853,10 @@ const journey = [
   .firm-nav:disabled { opacity: 0.25; cursor: default; }
   .firm-nav:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-  .firm-pdflink-wrap {
-    display: flex;
-    justify-content: flex-end;
-    margin: 12px 0 0;
-    color: var(--body-text);
-  }
-  .firm-pdflink {
-    font-size: 16px;
-    color: var(--ink);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }
-  .firm-pdflink:hover { opacity: 0.7; }
-  .firm-pdflink:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-
   /* 7 — vendor + accreditation list */
-  .firm-vendor-body { margin-top: 28px; }
-  .firm-list { list-style: none; margin: 0; padding: 0; }
-  .firm-list-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 4px 16px;
-    padding-block: 24px;
-    border-bottom: 1px solid var(--line);
-  }
-  .firm-list-row:first-child { border-top: 1px solid var(--line); }
-  .firm-list-name {
-    font-weight: 500;
-    font-size: clamp(20px, 2.2vw, 26px);
-    line-height: 1.23;
-  }
-  .firm-list-label {
-    font-size: 16px;
-    color: var(--stone);
-  }
-
+  .firm-section.bg-paper.firm-vendor-section { padding-block: clamp(24px, 2.1vw, 48px); }
+  .firm-vendor-body { margin-top: 28px; width: 90%; max-width: none; }
+  @media (max-width: 767px) { .firm-vendor-body { width: 100%; } }
   /* 8 — leadership */
   .firm-leader-head { margin-top: 12px; margin-bottom: clamp(40px, 5vw, 64px); }
   .firm-people {
@@ -870,18 +891,22 @@ const journey = [
     .firm-person-btn .firm-portrait img { transition: none; }
     .firm-person-btn:hover .firm-portrait img { transform: none; }
   }
+  /* "The Reflection +" as a boxed (outline) button; fills ink on hover. */
   .firm-person-more {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 6px 0;
-    border: 0;
-    background: none;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 16px;
+    padding: 12px 24px;
+    border: 1px solid var(--ink);
+    background: transparent;
     font-size: 14px;
-    line-height: 1.4;
+    font-weight: 600;
+    line-height: 1.2;
     color: #000;
     cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease;
   }
-  .firm-person-more:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .firm-person-more:hover { background: var(--ink); color: #fff; }
 
   /* ── Bio dialog ───────────────────────────────────────────────────────────
      Native <dialog> (showModal): Esc, inert page and top layer come for free; the
@@ -961,9 +986,9 @@ const journey = [
   }
   .firm-bio-bar { display: block; width: 40px; height: 2px; background: #000; margin: 24px 0; }
   .firm-bio-text :global(.firm-bio-p) {
-    font-family: theme('fontFamily.sans');
+    font-family: var(--font-body);
     font-size: 17px;
-    line-height: 1.7;
+    line-height: 1.625;
     color: #000;
     text-align: left;
     hyphens: manual;
@@ -1163,6 +1188,13 @@ const journey = [
       html.style.paddingRight = '';
     };
 
+    /* aria-expanded on every trigger of the person whose bio is open (card photo + button). */
+    const setExpanded = (index: number | null) => {
+      document.querySelectorAll<HTMLElement>('[data-bio]').forEach((b) => {
+        b.setAttribute('aria-expanded', String(index !== null && Number(b.dataset.bio) === index));
+      });
+    };
+
     const open = (index: number, trigger: HTMLElement) => {
       const p = people[index];
       if (!p) return;
@@ -1182,6 +1214,7 @@ const journey = [
         })
       );
       textEl.scrollTop = 0;
+      setExpanded(index);
       lock();
       dlg.showModal();
       closeBtn.focus();
@@ -1200,6 +1233,7 @@ const journey = [
     /* Focus returns to the card that opened it; scroll unlocks whichever way it closed. */
     dlg.addEventListener('close', () => {
       unlock();
+      setExpanded(null);
       closing = false;
       opener?.focus();
       opener = null;

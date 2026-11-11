@@ -1,4 +1,6 @@
 ---
+// TODO page not created yet
+const journalHref = '/the-blackstone-journal';
 ---
 
 <header id="site-header" class="sticky top-0 z-50 bg-ink border-b-2 border-ink" style="height: var(--header-h);">
@@ -48,6 +50,7 @@
     <!-- Right cluster — secondary links (and the mobile hamburger) -->
     <div class="ml-auto flex items-center gap-2 h-full">
       <nav class="hidden min-[900px]:flex items-center h-full" aria-label="Utility navigation">
+        <a href={journalHref} class="nav-link whitespace-nowrap">The Blackstone Journal</a>
         <div class="relative group" id="coaching-menu-container">
           <button
             id="coaching-btn"
@@ -70,22 +73,8 @@
             aria-controls="newsroom-menu"
             class="nav-link flex items-center gap-1"
           >
-            Newsroom
+            Media
             <svg class="w-3 h-3 transition-transform duration-200" id="newsroom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-        </div>
-        <div class="relative group" id="pressroom-menu-container">
-          <button
-            id="pressroom-btn"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="pressroom-menu"
-            class="nav-link flex items-center gap-1"
-          >
-            Pressroom
-            <svg class="w-3 h-3 transition-transform duration-200" id="pressroom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
@@ -131,11 +120,11 @@
       <div class="flex gap-0">
 
         <!-- Left intro panel -->
-        <div class="w-56 flex-shrink-0 pr-8 border-r border-line mr-8 flex flex-col justify-between">
+        <div class="mega-left border-r border-line flex flex-col justify-between">
           <div>
             <h2 class="font-serif font-normal text-ink text-2xl leading-tight mb-4">What We Do</h2>
-            <p class="font-sans text-sm text-stone leading-relaxed mb-6">
-              We empower our distinguished clients with intellectual capital grounded in real-world challenges, helping them unlock opportunities, and convert insight into impact.
+            <p class="mega-intro font-sans text-sm text-stone leading-relaxed mb-6">
+              We empower our distinguished clients with intellectual capital grounded in <span style="white-space: nowrap">real-world</span> challenges, helping them unlock opportunities, and convert insight into impact
             </p>
             <a
               href="/#what-we-do"
@@ -152,7 +141,7 @@
         </div>
 
         <!-- 4 service columns -->
-        <div class="flex-1 grid grid-cols-4 gap-8">
+        <div class="mega-cols flex-1 min-w-0 grid">
           <!-- PSX & Global Markets -->
           <div>
             <a href="/what-we-do/psx-global-markets" class="block label mb-5 text-ink hover:text-stone transition-colors">
@@ -182,7 +171,7 @@
           <!-- Private Wealth -->
           <div>
             <a href="/what-we-do/private-wealth" class="block label mb-5 text-ink hover:text-stone transition-colors">
-              Private Wealth Mgmt
+              Private Wealth Management
             </a>
             <ul class="space-y-3">
               <li><a href="/what-we-do/private-wealth#wealth-planning" class="mega-link">Wealth Planning</a></li>
@@ -194,7 +183,7 @@
           <!-- Specialized Services -->
           <div>
             <a href="/what-we-do/specialized-services" class="block label mb-5 text-ink hover:text-stone transition-colors">
-              Specialized Services
+              Specialised Services
             </a>
             <ul class="space-y-3">
               <li><a href="/what-we-do/specialized-services#family-office" class="mega-link">Basirah Family Office</a></li>
@@ -277,7 +266,7 @@
   <div
     id="newsroom-menu"
     role="region"
-    aria-label="Newsroom menu"
+    aria-label="Media menu"
     class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-2xl z-40"
   >
     <div class="container-big py-10">
@@ -290,26 +279,6 @@
               <li><a href="https://www.wsj.com/" target="_blank" rel="noopener noreferrer" class="mega-link">Wall Street Journal</a></li>
               <li><a href="https://www.economist.com/" target="_blank" rel="noopener noreferrer" class="mega-link">The Economist</a></li>
               <li><a href="https://www.brecorder.com/" target="_blank" rel="noopener noreferrer" class="mega-link">Business Recorder</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Pressroom menu (desktop) ─────────────────────────────────────────── -->
-  <div
-    id="pressroom-menu"
-    role="region"
-    aria-label="Pressroom menu"
-    class="hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-2xl z-40"
-  >
-    <div class="container-big py-10">
-      <div class="flex gap-0">
-        <div class="flex-1 grid grid-cols-1 gap-8 max-w-xs">
-          <div>
-            <ul class="space-y-3">
-              <li><span class="mega-link">Coming soon</span></li>
             </ul>
           </div>
         </div>
@@ -359,8 +328,8 @@
         </button>
         <div id="mobile-services-panel" class="hidden bg-mist px-4 py-4 space-y-6">
           <!-- Mobile intro blurb -->
-          <p class="font-sans text-sm text-stone leading-relaxed border-l-2 border-ink pl-3">
-            We empower our distinguished clients with intellectual capital grounded in real-world challenges, helping them unlock opportunities, and convert insight into impact.
+          <p class="mega-intro font-sans text-sm text-stone leading-relaxed border-l-2 border-ink pl-3">
+            We empower our distinguished clients with intellectual capital grounded in <span style="white-space: nowrap">real-world</span> challenges, helping them unlock opportunities, and convert insight into impact
           </p>
           <div>
             <a href="/what-we-do/psx-global-markets" class="label mb-3 block hover:text-ink transition-colors">PSX &amp; Global Markets</a>
@@ -383,7 +352,7 @@
             </ul>
           </div>
           <div>
-            <a href="/what-we-do/private-wealth" class="label mb-3 block hover:text-ink transition-colors">Private Wealth Mgmt</a>
+            <a href="/what-we-do/private-wealth" class="label mb-3 block hover:text-ink transition-colors">Private Wealth Management</a>
             <ul class="space-y-2 pl-2">
               <li><a href="/what-we-do/private-wealth#wealth-planning" class="mobile-sub-link">Wealth Planning</a></li>
               <li><a href="/what-we-do/private-wealth#private-equity" class="mobile-sub-link">Private Equity</a></li>
@@ -392,7 +361,7 @@
               </ul>
           </div>
           <div>
-            <a href="/what-we-do/specialized-services" class="label mb-3 block hover:text-ink transition-colors">Specialized Services</a>
+            <a href="/what-we-do/specialized-services" class="label mb-3 block hover:text-ink transition-colors">Specialised Services</a>
             <ul class="space-y-2 pl-2">
               <li><a href="/what-we-do/specialized-services#family-office" class="mobile-sub-link">Basirah Family Office</a></li>
               <li><a href="/what-we-do/specialized-services#lifestyle-management" class="mobile-sub-link">Lifestyle Management</a></li>
@@ -409,6 +378,7 @@
       <a href="/contact" class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">Contact</a>
 
       <!-- Secondary / utility links (same order as the desktop right cluster) -->
+      <a href={journalHref} class="block py-4 font-sans text-base font-semibold text-ink border-b border-line">The Blackstone Journal</a>
       <div>
         <button
           id="mobile-coaching-btn"
@@ -464,7 +434,7 @@
           aria-expanded="false"
           aria-controls="mobile-newsroom-panel"
         >
-          Newsroom
+          Media
           <svg class="w-4 h-4 transition-transform duration-200" id="mobile-newsroom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
           </svg>
@@ -477,26 +447,6 @@
               <li><a href="https://www.wsj.com/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Wall Street Journal</a></li>
               <li><a href="https://www.economist.com/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">The Economist</a></li>
               <li><a href="https://www.brecorder.com/" target="_blank" rel="noopener noreferrer" class="mobile-sub-link">Business Recorder</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <button
-          id="mobile-pressroom-btn"
-          class="w-full flex items-center justify-between py-4 font-sans text-base font-semibold text-ink border-b border-line"
-          aria-expanded="false"
-          aria-controls="mobile-pressroom-panel"
-        >
-          Pressroom
-          <svg class="w-4 h-4 transition-transform duration-200" id="mobile-pressroom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <div id="mobile-pressroom-panel" class="hidden bg-mist px-4 py-4 space-y-6">
-          <div>
-            <ul class="space-y-2 pl-2">
-              <li><span class="mobile-sub-link">Coming soon</span></li>
             </ul>
           </div>
         </div>
@@ -527,6 +477,43 @@
 </header>
 
 <style>
+  /* What We Do intro paragraph (desktop panel + mobile drawer). The header sits
+     outside <main>, so the global justify rule does not reach it. Left-aligned by
+     default; only the desktop panel (1280px and up) is justified, below. */
+  .mega-intro {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    word-spacing: normal;
+    overflow-wrap: normal;
+    text-wrap: pretty;
+    max-width: 46ch;
+  }
+  /* Desktop left panel: fixed width, divider on its right. Below 1280px it is 300px
+     with a left-aligned paragraph; from 1280px it is 380px with a justified one.
+     (The old `text-align: left` that overrode the justify lived on this selector.) */
+  .mega-left { flex: 0 0 300px; width: 300px; padding-right: 24px; margin-right: 32px; }
+  .mega-left .mega-intro {
+    font-size: 15px;
+    line-height: 1.65;
+    width: 100%;
+    word-break: normal;
+  }
+  /* Link columns size to their content and never wrap. */
+  .mega-cols { grid-template-columns: repeat(4, max-content); column-gap: 32px; }
+  .mega-cols a.label, .mega-cols .mega-link { white-space: nowrap; }
+  @media (min-width: 1280px) {
+    .mega-left { flex-basis: 340px; width: 340px; padding-right: 32px; margin-right: 32px; }
+    .mega-left .mega-intro { max-width: 300px; text-align: justify; text-align-last: left; }
+    .mega-cols { column-gap: 32px; }
+  }
+  /* 1280-1439px: the longer "Private Wealth Management" heading needs the room. */
+  @media (min-width: 1280px) and (max-width: 1439px) {
+    .mega-left { flex-basis: 300px; width: 300px; padding-right: 24px; margin-right: 24px; }
+    .mega-left .mega-intro { max-width: 276px; }
+    .mega-cols { column-gap: 24px; }
+  }
   /* 14px / 400 / normal tracking, 8px padding each side → 16px between adjacent
      links, full navbar height so the label is vertically centred. */
   .nav-link {
@@ -567,7 +554,6 @@
     ['mobile-services-btn', 'mobile-services-panel', 'mobile-chevron'],
     ['mobile-coaching-btn', 'mobile-coaching-panel', 'mobile-coaching-chevron'],
     ['mobile-newsroom-btn', 'mobile-newsroom-panel', 'mobile-newsroom-chevron'],
-    ['mobile-pressroom-btn', 'mobile-pressroom-panel', 'mobile-pressroom-chevron'],
     ['mobile-careers-btn', 'mobile-careers-panel', 'mobile-careers-chevron'],
   ] as const;
 
@@ -577,7 +563,6 @@
     ['services-btn', 'mega-menu', 'services-chevron', 'services-menu-container'],
     ['coaching-btn', 'coaching-menu', 'coaching-chevron', 'coaching-menu-container'],
     ['newsroom-btn', 'newsroom-menu', 'newsroom-chevron', 'newsroom-menu-container'],
-    ['pressroom-btn', 'pressroom-menu', 'pressroom-chevron', 'pressroom-menu-container'],
     ['careers-btn', 'careers-menu', 'careers-chevron', 'careers-menu-container'],
   ] as const;
 

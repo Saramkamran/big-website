@@ -21,20 +21,20 @@ Our specialists engage with you and your team to develop and implement wealth st
     headingLines: ['Private Equity'],
     image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Business growth discussion during a private equity partnership',
-    body: `Our Private Equity specialists bring 50+ years of collective advisory experience with oversight of $7+ billion in transnational portfolios. Through this international network and strategic partnerships, we provide direct access to select private investment opportunities across oil & gas exploration in Pakistan's Southern belt, Gilgit-Baltistan gemstones, USA rare minerals, Ghana gold mining, New Zealand meat, Pakistani textile, sports and sugar, and hospitality JVs near the Holy Sites of Makkah and Madinah.
+    body: `Our Private Equity specialists bring 50+ years of collective advisory experience with oversight of transnational portfolios. Through this international network and strategic partnerships, we provide direct access to select private investment opportunities across oil & gas exploration in Pakistan's Southern belt, Gilgit-Baltistan gemstones, USA rare minerals, Ghana gold mining, New Zealand meat, Pakistani textile, sports and sugar, and hospitality JVs near the Holy Sites of Makkah and Madinah.
 
 We can also position you as an exclusive underwriter for IPOs and Sukuks; and as a corporate financier to our prestigious clients in Türkiye, Pakistan and Saudi Arabia.
 
-Whether an investor seeking a strategic partnership or a business owner looking to accelerate growth, we connect capital with opportunity, and flip the asset within 5 to 7 years for you.`,
+Whether an investor seeking a strategic partnership or a business owner looking to accelerate growth, we connect capital with opportunity, and flip the asset at 1-5x within 5 to 7 years for you.`,
     cta: { label: 'Explore Private Equity', href: '/contact' },
   },
   {
     id: 'pakistan-energy',
     eyebrow: '03 · OMC Sector',
     headingLines: ['Pakistan Energy'],
-    image: '/images/pump.jpg',
-    imageAlt: 'Close-up of a row of fuel pump nozzles in white, green, orange and black hanging on a petrol station dispenser, with a blurred forecourt behind',
-    body: `For ultra-high-net-worth individuals and corporates seeking entry into Pakistan's OMC sector, we provide end-to-end advisory across deal origination, due diligence, transaction execution, and post-acquisition support.
+    image: '/images/oil.jpg',
+    imageAlt: 'Aerial view of an oil refinery and storage tanks',
+    body: `For ultra-high-net-worth individuals and corporates seeking entry into Pakistan's oil and gas sector, we provide end-to-end advisory across deal origination, due diligence, transaction execution, and post-acquisition support.
 
 Combining deep sector expertise, strong industry relationships, and a track record of successful execution, we help you build value-accretive energy businesses while navigating Pakistan's downstream market.`,
     cta: { label: 'Explore Pakistan Energy', href: '/contact' },
@@ -59,7 +59,7 @@ Combining deep sector expertise, strong industry relationships, and a track reco
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h));">
+  <section class="service-hero--raised relative flex items-end bg-ink" style="min-height: calc(100vh - var(--header-h));">
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -72,16 +72,13 @@ Combining deep sector expertise, strong industry relationships, and a track reco
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-acid"></div>
     </div>
 
-    <div class="relative z-10 container-big hero-inner w-full pt-12 pb-12">
-      <div class="max-w-3xl hero-copy">
-        <!-- pw-hero-h1 is a page-only override: 38 characters, so it holds one
-             line comfortably at the larger size. The shared hero-h1 class is
-             left untouched. -->
-        <p class="hero-eyebrow">Private Wealth Management</p>
-        <h1 class="hero-h1 pw-hero-h1 font-serif text-white font-normal leading-[1.05] mb-6">
+    <div class="relative z-10 container-big hero-gutter w-full pt-12 pb-12">
+      <div class="hero-content service-hero">
+        <p class="hero-eyebrow hero-eyebrow-lg">Private Wealth Management</p>
+        <h1 class="hero-h1-md">
           Your Wealth | Your Legacy | Your Terms
         </h1>
-        <p class="pw-hero-p font-sans text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
+        <p class="hero-sub">
           We steward your wealth towards lasting security and a satisfying legacy
         </p>
         <Button variant="acid" href="#wealth-planning">Explore What We Do</Button>
@@ -95,67 +92,3 @@ Combining deep sector expertise, strong industry relationships, and a track reco
   <ServiceAlternating services={services} />
 
 </BaseLayout>
-
-<style>
-  /* ── Hero, matched to the PSX & Global Markets page ─────────────────────
-     hero-h1 / hero-copy are scoped per-component in Astro, so they are
-     defined here rather than inherited. */
-  .hero-h1 {
-    margin-top: 2.1em;
-    max-width: none;
-  }
-  @media (max-width: 640px) {
-    .hero-h1 { margin-top: 0; }
-  }
-
-  /* 38 characters — comfortably holds one line at the full size. */
-  .pw-hero-h1 {
-    font-size: clamp(1.75rem, 3vw, 3.75rem);
-    white-space: nowrap;
-  }
-  @media (max-width: 767px) {
-    .pw-hero-h1 {
-      white-space: normal;
-      font-size: clamp(1.5rem, 6vw, 2rem);
-    }
-  }
-
-  /* Soft shadow so the copy stays legible over the photo. */
-  .hero-copy h1,
-  .hero-copy p {
-    text-shadow: 0 2px 18px rgba(11, 11, 11, 0.55), 0 1px 3px rgba(11, 11, 11, 0.4);
-  }
-
-  /* Private Wealth hero paragraph: a short tagline kept on one line on desktop,
-     left-aligned instead of justified. The extra `.hero-copy p` in the selector
-     outranks the shared hero justify rule in global.css (other heroes unchanged). */
-  .hero-copy p.pw-hero-p {
-    max-width: none;
-    width: auto;
-    white-space: nowrap;
-    text-wrap: nowrap;
-    text-align: left;
-    text-align-last: auto;
-    hyphens: manual;
-    word-spacing: 0.06em;
-    letter-spacing: 0.01em;
-    text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
-    color: #fff;
-    opacity: 1;
-  }
-  @media (max-width: 767px) {
-    .hero-copy p.pw-hero-p {
-      white-space: normal;
-      text-wrap: balance;
-      max-width: 100%;
-      word-spacing: normal;
-    }
-  }
-
-  /* Trim the shared container gutter for this hero only; container-big
-     (px-6 / lg:px-16) is used site-wide and is left alone. */
-  .hero-inner { padding-left: 8px; }
-  @media (min-width: 1024px) {
-    .hero-inner { padding-left: 24px; }
-  }
-</style>

@@ -27,13 +27,13 @@ const services = [
   'Private Wealth: Private Equity',
   'Private Wealth: Pakistan Energy',
   'Private Wealth: Real Estate',
-  'Specialized: Basirah Family Office',
-  'Specialized: Lifestyle Management',
-  'Specialized: PR Campaign',
-  'Specialized: Philanthropy and Zakat',
-  'Specialized: M&A and Carve Out',
-  'Specialized: Initial Public Offer',
-  'Specialized: Professional Services',
+  'Specialised: Basirah Family Office',
+  'Specialised: Lifestyle Management',
+  'Specialised: PR Campaign',
+  'Specialised: Philanthropy and Zakat',
+  'Specialised: M&A and Carve Out',
+  'Specialised: Initial Public Offer',
+  'Specialised: Professional Services',
   'General Enquiry',
 ];
 
@@ -76,13 +76,15 @@ const services = [
               <p class="no-justify pl-5 text-copy"><a href="https://wa.me/message/XME45L4Z5SOKF1" target="_blank" rel="noopener noreferrer" class="text-copy underline hover:text-stone">Join Channel</a></p>
               <div class="pl-5">
                 <a href="https://wa.me/message/XME45L4Z5SOKF1" target="_blank" rel="noopener noreferrer" class="block" style="width: 160px;">
-                  <img
-                    src="/images/whatsapp-qr.jpg"
-                    alt="QR code to join the Blackstone Intel WhatsApp channel"
-                    width="340" height="340"
-                    loading="lazy"
-                    style="display: block; width: 160px; height: auto; margin-top: 16px; background: #fff; border: 1px solid rgba(0,0,0,.15); border-radius: 0; box-shadow: none;"
-                  />
+                  <!-- Channel QR, cropped with CSS only to the code plus its white margin (720x1280 file). -->
+                  <div style="position: relative; overflow: hidden; width: 160px; aspect-ratio: 1 / 1; margin-top: 16px; background: #fff; border: 1px solid rgba(0,0,0,.15); border-radius: 0; box-shadow: none;">
+                    <img
+                      src="/images/Channel.jpeg"
+                      alt="QR code to join the Blackstone Intel WhatsApp channel"
+                      loading="lazy"
+                      style="position: absolute; display: block; width: 211.76%; max-width: none; height: auto; left: -55.88%; top: -139.71%;"
+                    />
+                  </div>
                 </a>
               </div>
             </div>
@@ -229,6 +231,8 @@ const services = [
     ctaHref="https://wa.me/message/XME45L4Z5SOKF1"
     ctaExternal
     ctaAriaLabel="Chat with Blackstone Intel on WhatsApp"
+    qrImage="/images/whatsapp-link.jpeg"
+    qrAlt="WhatsApp QR code for Blackstone Intel"
     image="/images/speaker.jpg"
     imageAlt="Blue smart speaker with a glowing light ring reflected on a glossy surface"
     imagePosition="50% 34%"

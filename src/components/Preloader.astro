@@ -1,27 +1,86 @@
 ---
-/* First-visit intro: pitch-black screen, white lettering in Segoe UI Black (falls back to
-   Inter Black off Windows).
-   B, I, G rise in one under the other; then each word is COMPLETED in place: the rest of
-   the letters are written straight after its initial (B + lackstone, I + slamic, G + lobal);
-   then the black panel slides up to reveal the page.
-   Plays once per browser session (BaseLayout's head script sets html.preloader-skip /
-   html.preloader-active before first paint). About 5.5 s in total. */
-const rows = [
-  { initial: 'B', rest: 'lackstone', initialDelay: '0.30s', restDelay: '2.15s', restDur: '1.00s' },
-  { initial: 'I', rest: 'slamic',    initialDelay: '0.85s', restDelay: '2.85s', restDur: '0.80s' },
-  { initial: 'G', rest: 'lobal',     initialDelay: '1.40s', restDelay: '3.55s', restDur: '0.65s' },
-];
+/* Home-page intro: black screen, white Bismillah with the English and Chinese translations
+   below. Plays once per browser session, on "/" only.
+   BaseLayout's head script adds html.preloader-on (before first paint) only when the path is
+   "/" and sessionStorage "bigPreloaderSeen" is unset. Without JS the overlay stays hidden.
+   Only the Arabic 400 file of Amiri is imported (no Google Fonts link).
+   Timeline (from the first paint of the overlay): Arabic 0.3-1.7s, English 1.6-2.6s,
+   Chinese 2.1-3.1s (each fades in and rises 12px); fade-out starts at 4.6s (1s long) once the
+   page has loaded and the font is ready, hard cap 8s; whole run 5.6s or longer. */
+import '@fontsource/amiri/arabic-400.css';
 ---
 
-<div id="preloader" class="preloader" aria-hidden="true">
-  <div class="preloader__lockup">
-    {rows.map((r) => (
-      <div class="preloader__row">
-        <span class="preloader__initial" style={`--d: ${r.initialDelay}`}>{r.initial}</span><span class="preloader__rest" style={`--d: ${r.restDelay}; --dur: ${r.restDur}`}>{r.rest}</span>
-      </div>
-    ))}
-  </div>
+<div id="preloader" class="preloader">
+  <p class="preloader__t preloader__ar" lang="ar" dir="rtl">بِسْـــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+  <p class="preloader__t preloader__en" lang="en">In the name of Allah, the Most Gracious, the Most Merciful</p>
+  <p class="preloader__t preloader__zh" lang="zh-Hans">奉至仁至慈的真主之名</p>
 </div>
+
+<style is:global>
+  /* Hidden unless the head script turned it on. */
+  #preloader { display: none; }
+  html.preloader-on { overflow: hidden; }
+  html.preloader-on #preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: #0a0a0a;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+  html.preloader-on #preloader.is-leaving { opacity: 0; pointer-events: none; }
+  /* Click / Escape: a quicker fade-out. */
+  html.preloader-on #preloader.is-skip { transition-duration: 0.6s; }
+
+  #preloader p { margin: 0; color: #fff; text-align: center; }
+
+  /* Each line starts invisible, 12px low; .is-play (added after first paint) runs the
+     staggered fade + rise. Only opacity and transform are animated. */
+  #preloader .preloader__t {
+    opacity: 0;
+    transform: translateY(12px);
+    will-change: opacity, transform;
+  }
+  #preloader.is-play .preloader__t { opacity: 1; transform: translateY(0); }
+
+  #preloader .preloader__ar {
+    font-family: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
+    font-size: clamp(44px, 7vw, 112px);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  #preloader.is-play .preloader__ar {
+    transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s, transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+  }
+
+  #preloader .preloader__en,
+  #preloader .preloader__zh {
+    font-size: clamp(18.4px, 1.73vw, 27.6px);
+    letter-spacing: 0.02em;
+  }
+  #preloader .preloader__en { font-family: var(--font-heading); margin-bottom: 12px; }
+  #preloader .preloader__zh { font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif; }
+  #preloader.is-play .preloader__en {
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 1.6s, transform 1s cubic-bezier(0.22, 1, 0.36, 1) 1.6s;
+  }
+  #preloader.is-play .preloader__zh {
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 2.1s, transform 1s cubic-bezier(0.22, 1, 0.36, 1) 2.1s;
+  }
+
+  /* Reduced motion: same timing, opacity fades only (no rise). */
+  @media (prefers-reduced-motion: reduce) {
+    #preloader .preloader__t,
+    #preloader.is-play .preloader__t { transform: none; }
+  }
+</style>
 
 <script is:inline>
   (function () {
@@ -29,117 +88,48 @@ const rows = [
     if (!el) return;
     var root = document.documentElement;
 
-    /* Already seen this session: the head script hid it with CSS; drop it from the DOM. */
-    if (root.classList.contains('preloader-skip')) { el.remove(); return; }
+    /* Not the home page, or already seen this session: nothing to play. */
+    if (!root.classList.contains('preloader-on')) { el.remove(); return; }
 
-    try { sessionStorage.setItem('big-preloader', '1'); } catch (e) {}
+    var HOLD = 4600;   /* earliest start of the fade-out, from first paint */
+    var CAP = 8000;    /* start the fade-out anyway if the page still has not loaded */
+    var leaving = false;
+    var minDone = false;
+    var loaded = document.readyState === 'complete';
+    var fontReady = !(document.fonts && document.fonts.load);
 
-    var MIN = 4800;   /* never leave before the animation (and a short hold) has finished */
-    var MAX = 7500;   /* never hold the page longer than this (slow connection, big video) */
-    var t0 = Date.now();
-    var left = false;
-
-    function finish() {
-      if (el.parentNode) el.parentNode.removeChild(el);
-      root.classList.remove('preloader-active');
+    function cleanup() {
+      root.classList.remove('preloader-on');
+      el.setAttribute('aria-hidden', 'true');
+      el.remove();
+      try { sessionStorage.setItem('bigPreloaderSeen', '1'); } catch (e) {}
     }
-    function leave() {
-      if (left) return;
-      left = true;
+    function leave(skip) {
+      if (leaving) return;
+      leaving = true;
+      if (skip) el.classList.add('is-skip');
       el.classList.add('is-leaving');
-      el.addEventListener('transitionend', function (e) { if (e.target === el) finish(); });
-      setTimeout(finish, 1200); /* fallback if transitionend never fires */
+      setTimeout(cleanup, skip ? 600 : 1000);
     }
+    function check() { if (minDone && loaded && fontReady) leave(false); }
 
-    var loaded = new Promise(function (resolve) {
-      if (document.readyState === 'complete') resolve();
-      else window.addEventListener('load', resolve, { once: true });
-    });
-    var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    if (!fontReady) {
+      var done = function () { fontReady = true; check(); };
+      document.fonts.load('1em Amiri').then(done, done);
+    }
+    if (!loaded) window.addEventListener('load', function () { loaded = true; check(); });
 
-    Promise.all([loaded, fonts]).then(function () {
-      setTimeout(leave, Math.max(0, MIN - (Date.now() - t0)));
+    /* The clock starts once the overlay has actually painted. */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        el.classList.add('is-play');
+        setTimeout(function () { minDone = true; check(); }, HOLD);
+        setTimeout(function () { leave(false); }, CAP);
+      });
     });
-    setTimeout(leave, MAX);
+
+    /* Click or Escape skips straight to the (quicker) fade-out. */
+    el.addEventListener('click', function () { leave(true); });
+    window.addEventListener('keydown', function (e) { if (e.key === 'Escape') leave(true); });
   })();
 </script>
-
-<style is:global>
-  /* html.preloader-active is added by the head script: locks scroll while the panel is up. */
-  html.preloader-active { overflow: hidden; }
-  html.preloader-skip #preloader { display: none; }
-
-  .preloader {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000;
-    color: #fff;
-    /* Segoe UI Black on Windows; Inter 900 (loaded in BaseLayout) everywhere else. */
-    font-family: 'Segoe UI Black', 'Inter', 'Segoe UI', system-ui, sans-serif;
-    font-weight: 900;
-    transform: translateY(0);
-  }
-  .preloader.is-leaving {
-    transform: translateY(-100%);
-    transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
-  }
-  .preloader.is-leaving .preloader__lockup {
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
-
-  .preloader__lockup { padding: 0 24px; }
-  .preloader__row {
-    display: block;
-    white-space: nowrap;
-    font-size: clamp(48px, min(9.5vw, 15vh), 128px);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-  }
-
-  .preloader__initial,
-  .preloader__rest { display: inline-block; }
-
-  .preloader__initial {
-    opacity: 0;
-    animation: preloader-rise 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-    animation-delay: var(--d);
-  }
-
-  /* The rest of the word is written left to right, straight after its initial. */
-  .preloader__rest {
-    clip-path: inset(-0.3em 100% -0.3em -0.05em);   /* hidden; the keyframes wipe it open */
-    animation: preloader-write var(--dur, 0.8s) cubic-bezier(0.65, 0, 0.35, 1) both;
-    animation-delay: var(--d);
-  }
-
-  @keyframes preloader-rise {
-    from { opacity: 0; transform: translateY(32px); }
-    to   { opacity: 1; transform: none; }
-  }
-  @keyframes preloader-write {
-    from { clip-path: inset(-0.3em 100% -0.3em -0.05em); }
-    to   { clip-path: inset(-0.3em -0.1em -0.3em -0.05em); }
-  }
-  @keyframes preloader-fade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
-  /* Reduced motion: NOT switched off. Windows' "show animations off" reports this on many
-     ordinary machines (see Hero.astro) and the preloader would look broken. Only the sliding
-     movement goes: initials fade in place, the words are still written left to right (a plain
-     reveal, no travel), and the panel fades out instead of sliding up. Same timing. */
-  @media (prefers-reduced-motion: reduce) {
-    .preloader__initial { animation-name: preloader-fade; transform: none; }
-    .preloader.is-leaving {
-      transform: none;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-  }
-</style>
